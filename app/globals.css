@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #080a0d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(201, 139, 90, 0.12), transparent 28rem),
+    linear-gradient(145deg, #080a0d 0%, #111418 46%, #17202a 100%);
+  color: #f4efe7;
+}
+
+::selection {
+  background: rgba(224, 190, 124, 0.32);
+  color: #fffaf1;
+}
+
+textarea,
+input,
+button,
+select {
+  font: inherit;
+}
+
+.page-grid {
+  background-image:
+    linear-gradient(rgba(244, 239, 231, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 239, 231, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
+}
+
+.glass-panel {
+  border: 1px solid rgba(244, 239, 231, 0.13);
+  background: linear-gradient(150deg, rgba(23, 32, 42, 0.92), rgba(12, 15, 19, 0.82));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(18px);
+}
+
+.field-focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.field-focus:focus {
+  border-color: rgba(224, 190, 124, 0.68);
+  box-shadow: 0 0 0 4px rgba(224, 190, 124, 0.09);
+}
