@@ -7,5 +7,6 @@ out/
 dist/
 .vercel/
 *.log
+*.tsbuildinfo
 .env*
 !.env.example
