@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { mandates } from "@/data/mission";
+import { mandates, simulation } from "@/data/mission";
 import {
   defaultTrainerSession,
+  loadTriggeredEventIds,
   loadTrainerSession,
-  saveTrainerSession
+  resetLocalSimulationEvents,
+  saveTrainerSession,
+  triggerMissionEvent
 } from "@/lib/storage";
 import type { TrainerSession } from "@/lib/types";
 
@@ -15,10 +18,12 @@ function generateSessionCode() {
 
 export function TrainerDashboard() {
   const [session, setSession] = useState<TrainerSession>(defaultTrainerSession);
+  const [triggeredIds, setTriggeredIds] = useState<string[]>([]);
   const hasSession = session.sessionCode.trim().length > 0;
 
   useEffect(() => {
     setSession(loadTrainerSession());
+    setTriggeredIds(loadTriggeredEventIds());
   }, []);
 
   function update(key: keyof TrainerSession, value: string) {
@@ -39,9 +44,20 @@ export function TrainerDashboard() {
     saveTrainerSession(next);
   }
 
+  function triggerEvent(eventId: string) {
+    triggerMissionEvent(eventId);
+    setTriggeredIds(loadTriggeredEventIds());
+  }
+
+  function resetEvents() {
+    resetLocalSimulationEvents();
+    setTriggeredIds([]);
+  }
+
   return (
-    <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-      <section className="glass-panel rounded-lg p-6 sm:p-8">
+    <div className="space-y-6">
+      <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+        <section className="glass-panel rounded-lg p-6 sm:p-8">
         <div className="flex items-start justify-between gap-5 border-b border-inkline pb-5">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brass">
@@ -108,30 +124,101 @@ export function TrainerDashboard() {
         >
           Creer la mission
         </button>
-      </section>
+        </section>
+
+        <section className="rounded-lg border border-inkline bg-white/[0.035] p-6 sm:p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
+            Mandats disponibles
+          </p>
+          <div className="mt-5 divide-y divide-inkline">
+            {mandates.map((mandate) => (
+              <article
+                key={mandate.cabinetName}
+                className="grid gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center"
+              >
+                <h3 className="text-lg font-semibold text-porcelain">
+                  {mandate.cabinetName}
+                </h3>
+                <p className="rounded-md border border-copper/35 bg-copper/10 px-3 py-2 text-sm font-semibold text-brass">
+                  {mandate.referential}
+                </p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-6 rounded-md border border-inkline bg-obsidian/35 p-4 text-sm leading-7 text-mist">
+            Les mandats sont statiques pour cette release. La mission reste
+            pilotee localement depuis ce navigateur.
+          </div>
+        </section>
+      </div>
 
       <section className="rounded-lg border border-inkline bg-white/[0.035] p-6 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
-          Mandats disponibles
-        </p>
-        <div className="mt-5 divide-y divide-inkline">
-          {mandates.map((mandate) => (
-            <article
-              key={mandate.cabinetName}
-              className="grid gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center"
-            >
-              <h3 className="text-lg font-semibold text-porcelain">
-                {mandate.cabinetName}
-              </h3>
-              <p className="rounded-md border border-copper/35 bg-copper/10 px-3 py-2 text-sm font-semibold text-brass">
-                {mandate.referential}
-              </p>
-            </article>
-          ))}
+        <div className="flex flex-col justify-between gap-4 border-b border-inkline pb-5 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+              Evenements de Mission 001
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold text-porcelain">
+              Console de declenchement
+            </h2>
+          </div>
+          <button
+            type="button"
+            onClick={resetEvents}
+            className="rounded-md border border-inkline px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-mist transition hover:border-brass/50 hover:text-brass"
+          >
+            Reinitialiser la simulation locale
+          </button>
         </div>
-        <div className="mt-6 rounded-md border border-inkline bg-obsidian/35 p-4 text-sm leading-7 text-mist">
-          Les mandats sont statiques pour cette release. La mission reste
-          pilotee localement depuis ce navigateur.
+
+        <div className="mt-5 divide-y divide-inkline">
+          {simulation.preparedEvents.map((event) => {
+            const isTriggered = triggeredIds.includes(event.id);
+
+            return (
+              <article
+                key={event.id}
+                className="grid gap-4 py-5 first:pt-0 last:pb-0 lg:grid-cols-[1fr_0.78fr_auto]"
+              >
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="text-lg font-semibold text-porcelain">
+                      {event.triggerTitle}
+                    </h3>
+                    {isTriggered ? (
+                      <span className="rounded-full border border-brass/40 bg-brass/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-brass">
+                        Declenche
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="mt-2 text-sm leading-7 text-mist">
+                    {event.summary}
+                  </p>
+                </div>
+                <div className="text-sm leading-7 text-mist">
+                  <p>
+                    <span className="text-porcelain">Auteur :</span> {event.sender}
+                  </p>
+                  <p>
+                    <span className="text-porcelain">Heure simulee :</span>{" "}
+                    {event.simulatedTime}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => triggerEvent(event.id)}
+                  disabled={isTriggered}
+                  className={`h-fit rounded-md px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] transition ${
+                    isTriggered
+                      ? "cursor-not-allowed border border-inkline text-mist/60"
+                      : "bg-brass text-obsidian hover:bg-porcelain"
+                  }`}
+                >
+                  Declencher
+                </button>
+              </article>
+            );
+          })}
         </div>
       </section>
     </div>

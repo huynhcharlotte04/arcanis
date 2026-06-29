@@ -31,10 +31,11 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".next-arcanis/types/**/*.ts",
     ".next-sprint1/types/**/*.ts",
     ".next/types/**/*.ts",
     "next-env.d.ts",
-    ".next-arcanis/types/**/*.ts"
+    ".next-runtime/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

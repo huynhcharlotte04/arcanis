@@ -1,6 +1,7 @@
 .next/
 .next-sprint1/
 .next-arcanis/
+.next-runtime/
 node_modules/
 out/
 dist/

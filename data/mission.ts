@@ -183,6 +183,88 @@ export const simulation: SimulationData = {
       ]
     }
   ],
+  preparedEvents: [
+    {
+      id: "dg-confirmation-mandat",
+      triggerTitle: "Mail DG - Confirmation du mandat",
+      sender: "Claire Montreuil",
+      role: "Directrice generale",
+      simulatedTime: "13:05",
+      summary:
+        "La direction confirme qu'elle attend une recommandation assumee et directement exploitable.",
+      subject: "Confirmation du mandat attendu par le COMEX",
+      body: [
+        "Bonjour,",
+        "Je vous confirme que le COMEX attend une position claire sur le referentiel a engager en priorite.",
+        "Votre recommandation devra montrer pourquoi cette trajectoire est pertinente pour ARCANIS Industries, au regard de notre strategie de diversification et de notre maturite actuelle.",
+        "Nous serons attentifs a la solidite de votre arbitrage, pas seulement a la description du referentiel."
+      ]
+    },
+    {
+      id: "commercial-nouveau-marche",
+      triggerTitle: "Mail Directeur Commercial - Nouveau marche prioritaire",
+      sender: "Nadia Khelifi",
+      role: "Directrice commerciale",
+      simulatedTime: "13:35",
+      summary:
+        "Un marche cible renforce la pression sur la credibilite du referentiel propose.",
+      subject: "Nouveau marche prioritaire a integrer",
+      body: [
+        "Bonjour,",
+        "Nous venons de recevoir un signal fort d'un prospect prioritaire. Il recherche un fournisseur capable de demontrer une maitrise plus robuste des exigences qualite, des risques et de la tracabilite.",
+        "Votre proposition devra nous aider a comprendre si le referentiel recommande renforce vraiment notre position commerciale.",
+        "Merci aussi d'identifier les ecarts avec ISO 9001 que le COMEX devra anticiper."
+      ]
+    },
+    {
+      id: "qualite-limites-iso9001",
+      triggerTitle: "Mail Responsable Qualite - Limites du systeme ISO9001 actuel",
+      sender: "Marc Bellanger",
+      role: "Responsable qualite",
+      simulatedTime: "14:10",
+      summary:
+        "Le systeme ISO 9001 actuel est utile mais insuffisant pour certains marches cibles.",
+      subject: "Limites du systeme ISO 9001 actuel",
+      body: [
+        "Bonjour,",
+        "Notre systeme ISO 9001 donne un cadre solide, mais il ne couvre pas toutes les exigences sectorielles que nous rencontrons dans les nouveaux appels d'offres.",
+        "Les principaux points sensibles sont la profondeur des preuves, la gestion des competences, la maitrise fournisseur et la formalisation des risques.",
+        "Votre analyse devra expliquer ce que le nouveau referentiel ajoute vraiment, et ce que cela implique pour l'organisation."
+      ]
+    },
+    {
+      id: "industrie-contraintes-ressources",
+      triggerTitle: "Mail Directeur Industriel - Contraintes de ressources",
+      sender: "Laurent Vasseur",
+      role: "Directeur industriel",
+      simulatedTime: "14:45",
+      summary:
+        "Les operations alertent sur la capacite reelle a absorber une transformation trop lourde.",
+      subject: "Contraintes de ressources operationnelles",
+      body: [
+        "Bonjour,",
+        "Je souhaite attirer votre attention sur notre capacite de deploiement. Les sites sont deja mobilises sur plusieurs chantiers de production et de livraison.",
+        "Une trajectoire ambitieuse peut etre pertinente, mais elle doit rester soutenable pour les operations.",
+        "Le COMEX aura besoin d'un plan de transition credible, avec des priorites, des jalons et des risques clairement assumes."
+      ]
+    },
+    {
+      id: "comex-attentes-restitution",
+      triggerTitle: "Mail COMEX - Attentes de restitution",
+      sender: "Secretariat COMEX",
+      role: "COMEX",
+      simulatedTime: "15:30",
+      summary:
+        "Le COMEX precise les attendus de la restitution orale finale.",
+      subject: "Attentes pour la restitution de 16h30",
+      body: [
+        "Bonjour,",
+        "Pour la restitution, le COMEX attend une recommandation argumentee, le referentiel propose, les impacts organisationnels, les risques majeurs et un plan de transition.",
+        "La presentation devra permettre une decision. Evitez une restitution descriptive : nous attendons un arbitrage et une trajectoire defendable.",
+        "Merci de preparer une conclusion claire sur les conditions de reussite."
+      ]
+    }
+  ],
   comexExpectations: [
     {
       title: "Une recommandation argumentee",

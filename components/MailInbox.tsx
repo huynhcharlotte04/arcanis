@@ -1,11 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { simulation } from "@/data/mission";
+import { loadTriggeredEventIds } from "@/lib/storage";
+import type { MailMessage } from "@/lib/types";
 
 export function MailInbox() {
+  const [triggeredIds, setTriggeredIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    setTriggeredIds(loadTriggeredEventIds());
+  }, []);
+
+  const messages = useMemo<MailMessage[]>(() => {
+    const triggeredMessages = simulation.preparedEvents
+      .filter((event) => triggeredIds.includes(event.id))
+      .map((event) => ({
+        id: event.id,
+        sender: event.sender,
+        role: event.role,
+        subject: event.subject,
+        preview: event.summary,
+        receivedAt: event.simulatedTime,
+        body: event.body,
+        isNew: true
+      }));
+
+    return [...simulation.messages, ...triggeredMessages].sort((a, b) =>
+      a.receivedAt.localeCompare(b.receivedAt)
+    );
+  }, [triggeredIds]);
+
   const [selectedId, setSelectedId] = useState(simulation.messages[0]?.id ?? "");
-  const selected = simulation.messages.find((message) => message.id === selectedId);
+  const selected = messages.find((message) => message.id === selectedId) ?? messages[0];
+
+  useEffect(() => {
+    if (!selectedId && messages[0]) {
+      setSelectedId(messages[0].id);
+    }
+  }, [messages, selectedId]);
 
   return (
     <div className="grid min-h-[560px] overflow-hidden rounded-lg border border-inkline bg-white/[0.035] lg:grid-cols-[0.42fr_0.58fr]">
@@ -16,7 +49,7 @@ export function MailInbox() {
           </p>
         </div>
         <div className="divide-y divide-inkline">
-          {simulation.messages.map((message) => (
+          {messages.map((message) => (
             <button
               key={message.id}
               type="button"
@@ -33,9 +66,16 @@ export function MailInbox() {
                 </p>
                 <span className="text-xs text-mist">{message.receivedAt}</span>
               </div>
-              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-brass">
-                {message.role}
-              </p>
+              <div className="mt-1 flex flex-wrap items-center gap-2">
+                <p className="text-xs uppercase tracking-[0.16em] text-brass">
+                  {message.role}
+                </p>
+                {message.isNew ? (
+                  <span className="rounded-full border border-brass/45 bg-brass/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-brass">
+                    Nouveau
+                  </span>
+                ) : null}
+              </div>
               <p className="mt-3 text-sm font-medium text-porcelain">
                 {message.subject}
               </p>

@@ -4,6 +4,7 @@ import type { ConsultantSession, TrainerSession } from "@/lib/types";
 
 const CONSULTANT_STORAGE_KEY = "arcanis:v1:consultant-session";
 const TRAINER_STORAGE_KEY = "arcanis:v1:trainer-session";
+const TRIGGERED_EVENTS_STORAGE_KEY = "arcanis:v1:triggered-events";
 
 export const emptyConsultantSession: ConsultantSession = {
   sessionCode: "",
@@ -82,4 +83,44 @@ export function clearConsultantSession() {
   }
 
   window.localStorage.removeItem(CONSULTANT_STORAGE_KEY);
+}
+
+export function loadTriggeredEventIds(): string[] {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  try {
+    const raw = window.localStorage.getItem(TRIGGERED_EVENTS_STORAGE_KEY);
+    if (!raw) {
+      return [];
+    }
+
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((item) => typeof item === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+export function triggerMissionEvent(eventId: string) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const ids = loadTriggeredEventIds();
+  if (!ids.includes(eventId)) {
+    window.localStorage.setItem(
+      TRIGGERED_EVENTS_STORAGE_KEY,
+      JSON.stringify([...ids, eventId])
+    );
+  }
+}
+
+export function resetLocalSimulationEvents() {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  window.localStorage.removeItem(TRIGGERED_EVENTS_STORAGE_KEY);
 }
