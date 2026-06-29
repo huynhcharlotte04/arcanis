@@ -16,9 +16,6 @@ export function BrandHeader() {
           </span>
         </span>
       </Link>
-      <span className="hidden text-xs uppercase tracking-[0.24em] text-mist sm:block">
-        V0 Mission Qualite
-      </span>
     </header>
   );
 }

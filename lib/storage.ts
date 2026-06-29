@@ -1,55 +1,85 @@
 "use client";
 
-import type { Recommendation } from "@/lib/types";
+import type { ConsultantSession, TrainerSession } from "@/lib/types";
 
-const STORAGE_KEY = "arcanis:v0:recommendation";
+const CONSULTANT_STORAGE_KEY = "arcanis:v1:consultant-session";
+const TRAINER_STORAGE_KEY = "arcanis:v1:trainer-session";
 
-export const emptyRecommendation: Recommendation = {
-  teamName: "",
-  referential: "",
-  justification: "",
-  similarities: "",
-  differences: "",
-  newRequirements: "",
-  organizationalImpacts: "",
-  risks: "",
-  actionPlan: "",
-  executiveRecommendation: "",
+export const emptyConsultantSession: ConsultantSession = {
+  sessionCode: "",
+  cabinetName: "",
   updatedAt: ""
 };
 
-export function loadRecommendation(): Recommendation {
+export const defaultTrainerSession: TrainerSession = {
+  promotionName: "MS QSE",
+  moduleName: "Autres referentiels",
+  clientCompany: "ARCANIS Industries",
+  sessionCode: "",
+  createdAt: "",
+  updatedAt: ""
+};
+
+export function loadConsultantSession(): ConsultantSession {
   if (typeof window === "undefined") {
-    return emptyRecommendation;
+    return emptyConsultantSession;
   }
 
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const raw = window.localStorage.getItem(CONSULTANT_STORAGE_KEY);
     if (!raw) {
-      return emptyRecommendation;
+      return emptyConsultantSession;
     }
 
-    return { ...emptyRecommendation, ...JSON.parse(raw) };
+    return { ...emptyConsultantSession, ...JSON.parse(raw) };
   } catch {
-    return emptyRecommendation;
+    return emptyConsultantSession;
   }
 }
 
-export function saveRecommendation(recommendation: Recommendation) {
+export function saveConsultantSession(session: ConsultantSession) {
   if (typeof window === "undefined") {
     return;
   }
 
   window.localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({ ...recommendation, updatedAt: new Date().toISOString() })
+    CONSULTANT_STORAGE_KEY,
+    JSON.stringify({ ...session, updatedAt: new Date().toISOString() })
   );
 }
 
-export function clearRecommendation() {
+export function loadTrainerSession(): TrainerSession {
+  if (typeof window === "undefined") {
+    return defaultTrainerSession;
+  }
+
+  try {
+    const raw = window.localStorage.getItem(TRAINER_STORAGE_KEY);
+    if (!raw) {
+      return defaultTrainerSession;
+    }
+
+    return { ...defaultTrainerSession, ...JSON.parse(raw) };
+  } catch {
+    return defaultTrainerSession;
+  }
+}
+
+export function saveTrainerSession(session: TrainerSession) {
   if (typeof window === "undefined") {
     return;
   }
 
-  window.localStorage.removeItem(STORAGE_KEY);
+  window.localStorage.setItem(
+    TRAINER_STORAGE_KEY,
+    JSON.stringify({ ...session, updatedAt: new Date().toISOString() })
+  );
+}
+
+export function clearConsultantSession() {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  window.localStorage.removeItem(CONSULTANT_STORAGE_KEY);
 }

@@ -1,6 +1,6 @@
 # ARCANIS V0
 
-ARCANIS est un simulateur de prise de decision professionnelle pour consultants QSE.
+ARCANIS est une plateforme de simulation professionnelle immersive pour consultants QSE.
 
 ## Lancer en local
 

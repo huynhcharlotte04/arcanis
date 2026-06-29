@@ -23,7 +23,7 @@ const config: Config = {
         premium: "0 28px 90px rgba(0, 0, 0, 0.38)"
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "Arial", "sans-serif"]
+        sans: ["Inter", "Segoe UI", "Arial", "sans-serif"]
       }
     }
   },

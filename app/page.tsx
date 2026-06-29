@@ -23,22 +23,22 @@ export default function HomePage() {
                 Where professionals are forged.
               </p>
               <p className="mt-8 max-w-2xl text-base leading-8 text-mist">
-                Une immersion de decision pour consultants QSE charges
-                d&apos;accompagner ARCANIS Industries dans une strategie de
-                diversification exigeante.
+                Une entreprise virtuelle ou les consultants vivent une mission
+                QSE complete, depuis le mandat jusqu&apos;a la restitution devant le
+                COMEX.
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/equipe"
+                  href="/rejoindre"
                   className="inline-flex items-center justify-center rounded-md bg-brass px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-obsidian transition hover:bg-porcelain"
                 >
-                  Demarrer la mission
+                  Demarrer une mission
                 </Link>
                 <Link
-                  href="/entreprise"
+                  href="/pilotage"
                   className="inline-flex items-center justify-center rounded-md border border-inkline px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-porcelain transition hover:border-brass/60 hover:text-brass"
                 >
-                  Voir le contexte
+                  Pilotage formateur
                 </Link>
               </div>
             </div>
@@ -63,8 +63,8 @@ export default function HomePage() {
                   {[
                     ["Secteur", "Equipements industriels"],
                     ["Enjeu", "Diversification"],
-                    ["Decision", "Referentiel cible"],
-                    ["Livrable", "Recommandation CODIR"]
+                    ["Instance", "COMEX"],
+                    ["Format", "Mission consultant"]
                   ].map(([label, value]) => (
                     <div
                       key={label}
@@ -80,8 +80,8 @@ export default function HomePage() {
                   ))}
                 </div>
                 <div className="rounded-md border border-copper/35 bg-copper/10 p-4 text-sm leading-7 text-porcelain">
-                  Objectif : transformer une analyse de referentiels en
-                  recommandation exploitable par un comite de direction.
+                  Objectif : comprendre le client, analyser les signaux et
+                  preparer une position defendable devant la direction.
                 </div>
               </div>
             </div>

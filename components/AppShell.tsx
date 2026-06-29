@@ -1,5 +1,5 @@
 import { BrandHeader } from "@/components/BrandHeader";
-import { MissionProgress } from "@/components/MissionProgress";
+import { SimulationNav } from "@/components/SimulationNav";
 import type { StepId } from "@/lib/types";
 
 export function AppShell({
@@ -20,7 +20,7 @@ export function AppShell({
           <BrandHeader />
         </div>
       </div>
-      <MissionProgress currentStep={currentStep} />
+      <SimulationNav currentStep={currentStep} />
       <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-12">
         {children}
       </div>

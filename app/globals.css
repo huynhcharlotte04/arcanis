@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: dark;
-  background: #080a0d;
+  background: #0d0b09;
 }
 
 * {
@@ -18,8 +18,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 12% 8%, rgba(201, 139, 90, 0.12), transparent 28rem),
-    linear-gradient(145deg, #080a0d 0%, #111418 46%, #17202a 100%);
+    radial-gradient(circle at 14% 10%, rgba(224, 190, 124, 0.13), transparent 30rem),
+    radial-gradient(circle at 86% 18%, rgba(201, 139, 90, 0.09), transparent 26rem),
+    linear-gradient(145deg, #0d0b09 0%, #171410 48%, #24201a 100%);
   color: #f4efe7;
 }
 
@@ -37,15 +38,15 @@ select {
 
 .page-grid {
   background-image:
-    linear-gradient(rgba(244, 239, 231, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244, 239, 231, 0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
+    linear-gradient(115deg, rgba(244, 239, 231, 0.06), transparent 42%),
+    radial-gradient(circle at 48% 34%, rgba(244, 239, 231, 0.06), transparent 24rem);
+  background-size: cover;
   mask-image: linear-gradient(to bottom, black 0%, transparent 72%);
 }
 
 .glass-panel {
   border: 1px solid rgba(244, 239, 231, 0.13);
-  background: linear-gradient(150deg, rgba(23, 32, 42, 0.92), rgba(12, 15, 19, 0.82));
+  background: linear-gradient(150deg, rgba(37, 31, 24, 0.92), rgba(17, 14, 11, 0.84));
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
   backdrop-filter: blur(18px);
 }
