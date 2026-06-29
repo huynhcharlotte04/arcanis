@@ -11,6 +11,7 @@ export type StepId =
 export type ConsultantSession = {
   sessionCode: string;
   cabinetName: string;
+  mandateId: string;
   updatedAt: string;
 };
 
@@ -24,8 +25,16 @@ export type TrainerSession = {
 };
 
 export type Mandate = {
+  id: string;
   cabinetName: string;
+  title: string;
+  sector: string;
   referential: string;
+  objective: string;
+  issues: string[];
+  comexExpectations: string[];
+  documentFolders: DocumentFolder[];
+  specificMessages: MailMessage[];
 };
 
 export type ClientCompany = {

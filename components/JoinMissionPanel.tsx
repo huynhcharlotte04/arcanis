@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { getMandateByCabinetName, hasKnownCabinetName } from "@/lib/mandates";
 import {
   emptyConsultantSession,
   loadConsultantSession,
@@ -15,14 +16,40 @@ export function JoinMissionPanel() {
     session.sessionCode.trim().length > 0 && session.cabinetName.trim().length > 0;
 
   useEffect(() => {
-    setSession(loadConsultantSession());
+    const storedSession = loadConsultantSession();
+    const next = storedSession.cabinetName
+      ? { ...storedSession, mandateId: getMandateByCabinetName(storedSession.cabinetName).id }
+      : storedSession;
+
+    setSession(next);
+    if (storedSession.cabinetName) {
+      saveConsultantSession(next);
+    }
   }, []);
 
   function update(key: keyof ConsultantSession, value: string) {
     const next = { ...session, [key]: value };
+
+    if (key === "cabinetName") {
+      next.mandateId = getMandateByCabinetName(value).id;
+    }
+
     setSession(next);
     saveConsultantSession(next);
   }
+
+  function persistDeducedMandate() {
+    const next = {
+      ...session,
+      mandateId: getMandateByCabinetName(session.cabinetName).id
+    };
+
+    setSession(next);
+    saveConsultantSession(next);
+  }
+
+  const hasCabinet = session.cabinetName.trim().length > 0;
+  const isKnownCabinet = hasKnownCabinetName(session.cabinetName);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
@@ -56,11 +83,18 @@ export function JoinMissionPanel() {
               className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/55"
             />
           </label>
+          {hasCabinet && !isKnownCabinet ? (
+            <p className="rounded-md border border-brass/30 bg-brass/10 px-4 py-3 text-sm leading-6 text-mist">
+              Cabinet non reconnu dans la session locale. Un mandat par defaut
+              sera ouvert et confirme dans la lettre de mission.
+            </p>
+          ) : null}
         </div>
 
         {canJoin ? (
           <Link
             href="/lettre-mission"
+            onClick={persistDeducedMandate}
             className="mt-7 inline-flex w-full justify-center rounded-md bg-brass px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-obsidian transition hover:bg-porcelain"
           >
             Rejoindre la mission
@@ -88,6 +122,15 @@ export function JoinMissionPanel() {
           prepare ensuite sa position hors plateforme, comme dans une mission
           reelle.
         </p>
+        <div className="mt-6 rounded-md border border-brass/25 bg-brass/10 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brass">
+            Mandat actif
+          </p>
+          <p className="mt-2 text-sm leading-7 text-mist">
+            Le mandat de votre cabinet est prepare en amont. Il sera revele
+            dans la lettre de mission.
+          </p>
+        </div>
       </aside>
     </div>
   );

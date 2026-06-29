@@ -9,6 +9,7 @@ const TRIGGERED_EVENTS_STORAGE_KEY = "arcanis:v1:triggered-events";
 export const emptyConsultantSession: ConsultantSession = {
   sessionCode: "",
   cabinetName: "",
+  mandateId: "",
   updatedAt: ""
 };
 

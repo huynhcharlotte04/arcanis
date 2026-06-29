@@ -1,4 +1,11 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { company } from "@/data/company";
+import { mandates } from "@/data/mission";
+import { getMandateById } from "@/lib/mandates";
+import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
+import type { ConsultantSession } from "@/lib/types";
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
@@ -28,7 +35,26 @@ function BriefList({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+function SnapshotItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-b border-inkline pb-3 last:border-b-0 last:pb-0">
+      <p className="text-xs uppercase tracking-[0.18em] text-mist">{label}</p>
+      <p className="mt-1 text-sm font-semibold leading-6 text-porcelain">
+        {value}
+      </p>
+    </div>
+  );
+}
+
 export function ClientDossier() {
+  const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
+
+  useEffect(() => {
+    setSession(loadConsultantSession());
+  }, []);
+
+  const mandate = getMandateById(session.mandateId);
+
   return (
     <div className="space-y-6">
       <section className="glass-panel overflow-hidden rounded-lg">
@@ -61,19 +87,36 @@ export function ClientDossier() {
           </div>
 
           <div className="border-t border-inkline bg-gradient-to-br from-brass/14 via-white/[0.045] to-obsidian/20 p-6 sm:p-8 lg:border-l lg:border-t-0">
-            <div className="flex h-full min-h-72 flex-col justify-between rounded-lg border border-brass/25 bg-obsidian/30 p-6">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
-                  Siege
-                </p>
-                <h3 className="mt-3 max-w-sm text-2xl font-semibold leading-9 text-porcelain">
-                  {company.headquartersVisual}
-                </h3>
-              </div>
-              <div className="mt-10 grid grid-cols-3 gap-2">
-                <span className="h-20 rounded bg-white/[0.08]" />
-                <span className="h-20 rounded bg-brass/15" />
-                <span className="h-20 rounded bg-white/[0.05]" />
+            <div className="h-full rounded-lg border border-brass/25 bg-obsidian/30 p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+                Instantane client
+              </p>
+              <div className="mt-5 space-y-4">
+                <SnapshotItem label="Certification actuelle" value="ISO 9001" />
+                <SnapshotItem
+                  label="Objectif strategique"
+                  value="Diversification vers de nouveaux marches"
+                />
+                <SnapshotItem
+                  label="Marches actuels"
+                  value={company.clients.join(", ")}
+                />
+                <SnapshotItem
+                  label="Marches cibles"
+                  value={mandates.map((item) => item.sector).join(", ")}
+                />
+                <SnapshotItem
+                  label="Interlocuteur principal"
+                  value={`${company.mainContact.name}, ${company.mainContact.role}`}
+                />
+                <SnapshotItem
+                  label="Contexte de mission"
+                  value="Restitution attendue devant le COMEX aujourd'hui a 16h30"
+                />
+                <SnapshotItem
+                  label="Enjeu COMEX"
+                  value="Arbitrer une trajectoire credible sans surestimer la maturite interne"
+                />
               </div>
             </div>
           </div>
@@ -99,6 +142,24 @@ export function ClientDossier() {
           items={company.strategicObjectives.slice(0, 2)}
         />
       </div>
+
+      <section className="rounded-lg border border-brass/30 bg-brass/10 p-5">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-brass">
+          Mandat confie a votre cabinet
+        </h2>
+        <div className="mt-4 grid gap-4 lg:grid-cols-[0.32fr_0.28fr_1fr]">
+          <Metric label="Secteur" value={mandate.sector} />
+          <Metric label="Referentiel" value={mandate.referential} />
+          <div className="rounded-md border border-inkline bg-obsidian/35 p-4">
+            <p className="text-xs uppercase tracking-[0.18em] text-mist">
+              Objectif
+            </p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-porcelain">
+              {mandate.objective}
+            </p>
+          </div>
+        </div>
+      </section>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <BriefList title="Certifications actuelles" items={company.certifications.slice(0, 3)} />

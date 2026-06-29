@@ -128,26 +128,38 @@ export function TrainerDashboard() {
 
         <section className="rounded-lg border border-inkline bg-white/[0.035] p-6 sm:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist">
-            Mandats disponibles
+            Attribution des mandats
           </p>
-          <div className="mt-5 divide-y divide-inkline">
-            {mandates.map((mandate) => (
-              <article
-                key={mandate.cabinetName}
-                className="grid gap-2 py-5 first:pt-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center"
-              >
-                <h3 className="text-lg font-semibold text-porcelain">
-                  {mandate.cabinetName}
-                </h3>
-                <p className="rounded-md border border-copper/35 bg-copper/10 px-3 py-2 text-sm font-semibold text-brass">
-                  {mandate.referential}
-                </p>
-              </article>
-            ))}
+          <div className="mt-5 overflow-hidden rounded-md border border-inkline">
+            <div className="grid grid-cols-[0.75fr_1fr_0.48fr_0.36fr] gap-3 bg-obsidian/45 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-mist">
+              <span>Cabinet</span>
+              <span>Mandat</span>
+              <span>Referentiel</span>
+              <span>Statut</span>
+            </div>
+            <div className="divide-y divide-inkline">
+              {mandates.map((mandate) => (
+                <article
+                  key={mandate.id}
+                  className="grid grid-cols-[0.75fr_1fr_0.48fr_0.36fr] items-center gap-3 px-4 py-4"
+                >
+                  <p className="text-sm font-semibold text-porcelain">
+                    {mandate.cabinetName}
+                  </p>
+                  <p className="text-sm leading-6 text-mist">{mandate.title}</p>
+                  <p className="text-sm font-semibold text-brass">
+                    {mandate.referential}
+                  </p>
+                  <p className="text-xs uppercase tracking-[0.14em] text-brass">
+                    Attribue
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
           <div className="mt-6 rounded-md border border-inkline bg-obsidian/35 p-4 text-sm leading-7 text-mist">
-            Les mandats sont statiques pour cette release. La mission reste
-            pilotee localement depuis ce navigateur.
+            Les attributions sont preparees avant la mission. Chaque cabinet
+            ouvre automatiquement son mandat depuis son nom.
           </div>
         </section>
       </div>

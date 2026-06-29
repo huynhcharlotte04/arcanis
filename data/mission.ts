@@ -1,10 +1,238 @@
 import type { Mandate, SimulationData } from "@/lib/types";
 
 export const mandates: Mandate[] = [
-  { cabinetName: "Cabinet Horizon", referential: "ISO 13485" },
-  { cabinetName: "Cabinet Polaris", referential: "IATF 16949" },
-  { cabinetName: "Cabinet Meridian", referential: "EN 9100" },
-  { cabinetName: "Cabinet Nova", referential: "ISO 22000" }
+  {
+    id: "iso13485",
+    cabinetName: "Cabinet Horizon",
+    title: "Diversification Dispositifs medicaux",
+    sector: "Dispositifs medicaux",
+    referential: "ISO 13485",
+    objective:
+      "Evaluer si ARCANIS Industries peut devenir fournisseur credible pour des fabricants de dispositifs medicaux.",
+    issues: [
+      "Maitrise documentaire et preuves attendues plus strictes que dans le systeme ISO 9001 actuel.",
+      "Exigences renforcees sur la gestion des risques, la tracabilite et les fournisseurs critiques.",
+      "Credibilite a construire face a des clients tres sensibles a la conformite reglementaire."
+    ],
+    comexExpectations: [
+      "Clarifier les ecarts majeurs entre ISO 9001 et ISO 13485.",
+      "Identifier les impacts sur conception, achats, production et controle.",
+      "Proposer une trajectoire soutenable avant engagement commercial."
+    ],
+    documentFolders: [
+      {
+        name: "Mission 001 / ISO13485",
+        documents: [
+          {
+            name: "Note mandat ISO13485.pdf",
+            owner: "Direction",
+            type: "PDF",
+            date: "20/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/ISO13485/Note-Mandat-ISO13485.pdf"
+          },
+          {
+            name: "Qualification fournisseurs medicaux.pdf",
+            owner: "Qualite",
+            type: "PDF",
+            date: "21/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/ISO13485/Qualification-Fournisseurs-Medicaux.pdf"
+          }
+        ]
+      }
+    ],
+    specificMessages: [
+      {
+        id: "mandate-iso13485-industrie",
+        sender: "Laurent Vasseur",
+        role: "Directeur industriel",
+        subject: "Capacite de tracabilite pour le medical",
+        preview:
+          "Nos lignes actuelles n'ont pas toutes le meme niveau de preuve documentaire.",
+        receivedAt: "10:32",
+        body: [
+          "Bonjour,",
+          "Sur le medical, la question centrale sera notre capacite a produire des preuves robustes et homogenes sur plusieurs sites.",
+          "Merci d'evaluer l'impact reel d'ISO 13485 sur les dossiers de lot, la maitrise fournisseur et le controle des changements."
+        ]
+      }
+    ]
+  },
+  {
+    id: "iatf16949",
+    cabinetName: "Cabinet Polaris",
+    title: "Diversification Automobile",
+    sector: "Automobile",
+    referential: "IATF 16949",
+    objective:
+      "Determiner si l'entree sur le marche automobile peut s'appuyer sur une trajectoire IATF 16949 credible.",
+    issues: [
+      "Attentes elevees sur la robustesse processus, l'APQP, la maitrise des changements et les fournisseurs.",
+      "Pression forte sur les delais, la preuve de capabilite et la performance serie.",
+      "Risque d'ecart entre le niveau ISO 9001 actuel et les exigences client automobile."
+    ],
+    comexExpectations: [
+      "Identifier les prerequis avant de viser des donneurs d'ordre automobile.",
+      "Evaluer les impacts sur production, methodes, achats et pilotage performance.",
+      "Definir les risques d'une entree trop rapide sur ce marche."
+    ],
+    documentFolders: [
+      {
+        name: "Mission 001 / IATF16949",
+        documents: [
+          {
+            name: "Note mandat IATF16949.pdf",
+            owner: "Direction Commerciale",
+            type: "PDF",
+            date: "20/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/IATF16949/Note-Mandat-IATF16949.pdf"
+          },
+          {
+            name: "Cartographie capacite production automobile.pdf",
+            owner: "Operations",
+            type: "PDF",
+            date: "21/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/IATF16949/Capacite-Production-Automobile.pdf"
+          }
+        ]
+      }
+    ],
+    specificMessages: [
+      {
+        id: "mandate-iatf16949-industrie",
+        sender: "Laurent Vasseur",
+        role: "Directeur industriel",
+        subject: "Exigences serie et pression automobile",
+        preview:
+          "Le niveau d'exigence automobile pourrait transformer nos routines industrielles.",
+        receivedAt: "10:32",
+        body: [
+          "Bonjour,",
+          "L'automobile suppose un niveau de discipline operationnelle tres superieur a notre fonctionnement actuel sur certaines lignes.",
+          "Merci d'integrer les impacts sur la capabilite, la validation process, la gestion des modifications et les fournisseurs critiques."
+        ]
+      }
+    ]
+  },
+  {
+    id: "en9100",
+    cabinetName: "Cabinet Meridian",
+    title: "Diversification Aeronautique",
+    sector: "Aeronautique",
+    referential: "EN 9100",
+    objective:
+      "Evaluer la pertinence d'une trajectoire EN 9100 pour acceder a des clients aeronautiques europeens.",
+    issues: [
+      "Exigences renforcees sur la gestion des risques, la configuration et la maitrise des fournisseurs.",
+      "Besoin de preuves fiables dans un environnement ou la securite et la conformite sont decisives.",
+      "Transformation culturelle necessaire pour passer d'un referentiel generaliste a un cadre sectoriel exigeant."
+    ],
+    comexExpectations: [
+      "Montrer ce que l'EN 9100 apporte au-dela d'ISO 9001.",
+      "Prioriser les impacts sur l'organisation et la gouvernance qualite.",
+      "Estimer les risques de credibilite face aux donneurs d'ordre."
+    ],
+    documentFolders: [
+      {
+        name: "Mission 001 / EN9100",
+        documents: [
+          {
+            name: "Note mandat EN9100.pdf",
+            owner: "Direction",
+            type: "PDF",
+            date: "20/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/EN9100/Note-Mandat-EN9100.pdf"
+          },
+          {
+            name: "Analyse exigences aeronautiques.pdf",
+            owner: "Qualite",
+            type: "PDF",
+            date: "21/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/EN9100/Analyse-Exigences-Aeronautiques.pdf"
+          }
+        ]
+      }
+    ],
+    specificMessages: [
+      {
+        id: "mandate-en9100-industrie",
+        sender: "Laurent Vasseur",
+        role: "Directeur industriel",
+        subject: "Maitrise configuration et aeronautique",
+        preview:
+          "La gestion de configuration n'est pas encore structuree au niveau attendu.",
+        receivedAt: "10:32",
+        body: [
+          "Bonjour,",
+          "Pour l'aeronautique, notre point faible probable sera la gestion de configuration et la formalisation des preuves de conformite.",
+          "Merci d'evaluer l'effort de structuration necessaire si le COMEX choisit une trajectoire EN 9100."
+        ]
+      }
+    ]
+  },
+  {
+    id: "iso22000",
+    cabinetName: "Cabinet Nova",
+    title: "Diversification Agroalimentaire",
+    sector: "Agroalimentaire",
+    referential: "ISO 22000",
+    objective:
+      "Determiner si ISO 22000 peut soutenir une diversification vers des clients agroalimentaires exigeants.",
+    issues: [
+      "Integration de la securite des denrees, des PRP et de l'approche HACCP dans un systeme industriel existant.",
+      "Nouveaux controles sur hygiene, contamination, nettoyage et maitrise des dangers.",
+      "Besoin de clarifier les limites entre opportunite commerciale et transformation operationnelle."
+    ],
+    comexExpectations: [
+      "Expliquer les exigences nouvelles par rapport au socle ISO 9001.",
+      "Identifier les transformations necessaires sur sites, fournisseurs et controles.",
+      "Recommander une trajectoire realiste pour eviter un engagement premature."
+    ],
+    documentFolders: [
+      {
+        name: "Mission 001 / ISO22000",
+        documents: [
+          {
+            name: "Note mandat ISO22000.pdf",
+            owner: "Direction Commerciale",
+            type: "PDF",
+            date: "20/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/ISO22000/Note-Mandat-ISO22000.pdf"
+          },
+          {
+            name: "Diagnostic hygiene et flux.pdf",
+            owner: "Operations",
+            type: "PDF",
+            date: "21/06/2026",
+            classification: "Interne",
+            href: "/documents/mission-001/ISO22000/Diagnostic-Hygiene-Flux.pdf"
+          }
+        ]
+      }
+    ],
+    specificMessages: [
+      {
+        id: "mandate-iso22000-industrie",
+        sender: "Laurent Vasseur",
+        role: "Directeur industriel",
+        subject: "Contraintes hygiene et flux agroalimentaires",
+        preview:
+          "Nos ateliers n'ont pas ete concus pour des exigences alimentaires.",
+        receivedAt: "10:32",
+        body: [
+          "Bonjour,",
+          "L'agroalimentaire peut ouvrir un marche interessant, mais nos ateliers n'ont pas ete penses autour de contraintes hygiene aussi fortes.",
+          "Merci d'evaluer les impacts sur les flux, le nettoyage, la prevention des contaminations et la competence des equipes."
+        ]
+      }
+    ]
+  }
 ];
 
 export const simulation: SimulationData = {

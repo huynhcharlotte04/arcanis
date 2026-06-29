@@ -2,17 +2,25 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { simulation } from "@/data/mission";
-import { loadTriggeredEventIds } from "@/lib/storage";
-import type { MailMessage } from "@/lib/types";
+import { getMandateById } from "@/lib/mandates";
+import {
+  emptyConsultantSession,
+  loadConsultantSession,
+  loadTriggeredEventIds
+} from "@/lib/storage";
+import type { ConsultantSession, MailMessage } from "@/lib/types";
 
 export function MailInbox() {
   const [triggeredIds, setTriggeredIds] = useState<string[]>([]);
+  const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
 
   useEffect(() => {
     setTriggeredIds(loadTriggeredEventIds());
+    setSession(loadConsultantSession());
   }, []);
 
   const messages = useMemo<MailMessage[]>(() => {
+    const mandate = getMandateById(session.mandateId);
     const triggeredMessages = simulation.preparedEvents
       .filter((event) => triggeredIds.includes(event.id))
       .map((event) => ({
@@ -26,10 +34,10 @@ export function MailInbox() {
         isNew: true
       }));
 
-    return [...simulation.messages, ...triggeredMessages].sort((a, b) =>
+    return [...simulation.messages, ...mandate.specificMessages, ...triggeredMessages].sort((a, b) =>
       a.receivedAt.localeCompare(b.receivedAt)
     );
-  }, [triggeredIds]);
+  }, [session.mandateId, triggeredIds]);
 
   const [selectedId, setSelectedId] = useState(simulation.messages[0]?.id ?? "");
   const selected = messages.find((message) => message.id === selectedId) ?? messages[0];
