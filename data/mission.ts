@@ -20,42 +20,95 @@ export const simulation: SimulationData = {
       "Une prise de position orale devant le COMEX, appuyee par un support prepare hors plateforme.",
     presentationDate: "Aujourd'hui, 16h30"
   },
-  documentCategories: [
+  documentFolders: [
     {
-      title: "Historique",
-      description:
-        "Repères sur la croissance, les sites industriels et les decisions structurantes du groupe.",
-      status: "Dossier en preparation"
+      name: "Direction",
+      documents: [
+        {
+          name: "Plan strategique 2030.pdf",
+          owner: "Direction",
+          type: "PDF",
+          date: "12/05/2026",
+          classification: "Interne",
+          href: "/documents/mission-001/Plan-Strategique-2030.pdf"
+        }
+      ]
     },
     {
-      title: "Organigramme",
-      description:
-        "Lecture des responsabilites, lignes de decision et interfaces entre directions.",
-      status: "Dossier en preparation"
+      name: "Qualite",
+      documents: [
+        {
+          name: "Politique Qualite.pdf",
+          owner: "Qualite",
+          type: "PDF",
+          date: "04/02/2026",
+          classification: "Interne",
+          href: "/documents/mission-001/Politique-Qualite.pdf"
+        },
+        {
+          name: "Manuel Qualite.pdf",
+          owner: "Qualite",
+          type: "PDF",
+          date: "18/03/2026",
+          classification: "Interne",
+          href: "/documents/mission-001/Manuel-Qualite.pdf"
+        },
+        {
+          name: "Cartographie des processus.pdf",
+          owner: "Qualite",
+          type: "PDF",
+          date: "21/03/2026",
+          classification: "Interne",
+          href: "/documents/mission-001/Cartographie-Processus.pdf"
+        },
+        {
+          name: "Rapport audit ISO9001.pdf",
+          owner: "Qualite",
+          type: "PDF",
+          date: "09/04/2026",
+          classification: "Interne",
+          href: "/documents/mission-001/Rapport-Audit-ISO9001.pdf"
+        }
+      ]
     },
     {
-      title: "Rapports",
-      description:
-        "Syntheses d'audits, analyses internes et indicateurs utiles a la mission.",
-      status: "Dossier en preparation"
+      name: "Ressources Humaines",
+      documents: [
+        {
+          name: "Organigramme.pdf",
+          owner: "Ressources Humaines",
+          type: "PDF",
+          date: "15/01/2026",
+          classification: "Interne",
+          href: "/documents/mission-001/Organigramme.pdf"
+        }
+      ]
     },
     {
-      title: "Procedures",
-      description:
-        "Elements du systeme de management actuel et pratiques operationnelles.",
-      status: "Dossier en preparation"
+      name: "Commercial",
+      documents: [
+        {
+          name: "Catalogue produits.pdf",
+          owner: "Commercial",
+          type: "PDF",
+          date: "02/05/2026",
+          classification: "Interne",
+          href: "/documents/mission-001/Catalogue-Produits.pdf"
+        }
+      ]
     },
     {
-      title: "Certifications",
-      description:
-        "Statut des certifications existantes et pistes de referentiels envisageables.",
-      status: "Dossier en preparation"
-    },
-    {
-      title: "Actualites",
-      description:
-        "Signaux de marche, contraintes client et informations recentes autour du mandat.",
-      status: "Dossier en preparation"
+      name: "Certifications",
+      documents: [
+        {
+          name: "Certificat ISO9001.pdf",
+          owner: "Certifications",
+          type: "PDF",
+          date: "30/11/2025",
+          classification: "Interne",
+          href: "/documents/mission-001/Certificat-ISO9001.pdf"
+        }
+      ]
     }
   ],
   messages: [

@@ -30,12 +30,22 @@ export type Mandate = {
 
 export type ClientCompany = {
   name: string;
+  monogram: string;
   presentation: string;
+  location: string;
+  headquartersVisual: string;
   sector: string;
   products: string[];
   organization: string[];
   certifications: string[];
   strategicObjectives: string[];
+  mainContact: {
+    name: string;
+    role: string;
+    email: string;
+  };
+  mandateIssues: string[];
+  currentSituation: string[];
   constraints: string[];
   risks: string[];
   revenue: string;
@@ -52,10 +62,18 @@ export type MissionLetter = {
   presentationDate: string;
 };
 
-export type DocumentCategory = {
-  title: string;
-  description: string;
-  status: string;
+export type MissionDocument = {
+  name: string;
+  owner: string;
+  type: "PDF";
+  date: string;
+  classification: "Interne";
+  href: string;
+};
+
+export type DocumentFolder = {
+  name: string;
+  documents: MissionDocument[];
 };
 
 export type MailMessage = {
@@ -75,7 +93,7 @@ export type ComexExpectation = {
 
 export type SimulationData = {
   missionLetter: MissionLetter;
-  documentCategories: DocumentCategory[];
+  documentFolders: DocumentFolder[];
   messages: MailMessage[];
   comexExpectations: ComexExpectation[];
   keyDates: string[];

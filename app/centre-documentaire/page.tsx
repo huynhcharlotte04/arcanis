@@ -7,8 +7,8 @@ export default function DocumentCenterPage() {
   return (
     <AppShell currentStep="centre-documentaire">
       <SectionHeader eyebrow="Centre documentaire" title="Bibliotheque client">
-        Parcourez les dossiers disponibles pour comprendre les contraintes de
-        l&apos;entreprise et preparer votre position.
+        Accedez aux documents internes transmis par ARCANIS Industries pour
+        preparer votre analyse.
       </SectionHeader>
       <DocumentCenter />
       <div className="mt-8">

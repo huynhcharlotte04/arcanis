@@ -1,31 +1,56 @@
-import Link from "next/link";
 import { simulation } from "@/data/mission";
 
 export function DocumentCenter() {
   return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      {simulation.documentCategories.map((category) => (
-        <Link
-          key={category.title}
-          href={`/centre-documentaire/${encodeURIComponent(category.title.toLowerCase())}`}
-          className="glass-panel group rounded-lg p-6 transition hover:-translate-y-0.5 hover:border-brass/45"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <h2 className="text-2xl font-semibold text-porcelain">
-              {category.title}
-            </h2>
-            <span className="rounded-full border border-brass/35 px-3 py-1 text-xs text-brass">
-              A venir
-            </span>
-          </div>
-          <p className="mt-5 text-sm leading-7 text-mist">
-            {category.description}
-          </p>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-mist group-hover:text-brass">
-            {category.status}
-          </p>
-        </Link>
-      ))}
+    <div className="overflow-hidden rounded-lg border border-inkline bg-white/[0.035]">
+      <div className="grid grid-cols-[1fr_0.7fr_0.28fr_0.34fr_0.28fr] gap-4 border-b border-inkline bg-obsidian/45 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-mist">
+        <span>Document</span>
+        <span>Service proprietaire</span>
+        <span>Type</span>
+        <span>Date</span>
+        <span className="text-right">Acces</span>
+      </div>
+
+      <div className="divide-y divide-inkline">
+        {simulation.documentFolders.map((folder) => (
+          <section key={folder.name}>
+            <div className="bg-brass/10 px-5 py-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+                {folder.name}
+              </p>
+            </div>
+
+            <div className="divide-y divide-inkline">
+              {folder.documents.map((document) => (
+                <article
+                  key={document.href}
+                  className="grid grid-cols-[1fr_0.7fr_0.28fr_0.34fr_0.28fr] items-center gap-4 px-5 py-4 transition hover:bg-white/[0.035]"
+                >
+                  <div>
+                    <p className="font-semibold text-porcelain">{document.name}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.16em] text-mist">
+                      {document.classification}
+                    </p>
+                  </div>
+                  <p className="text-sm text-mist">{document.owner}</p>
+                  <p className="text-sm font-semibold text-porcelain">
+                    {document.type}
+                  </p>
+                  <p className="text-sm text-mist">{document.date}</p>
+                  <a
+                    href={document.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="justify-self-end rounded-md border border-brass/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-brass transition hover:bg-brass hover:text-obsidian"
+                  >
+                    Ouvrir
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

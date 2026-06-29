@@ -2,8 +2,11 @@ import type { ClientCompany } from "@/lib/types";
 
 export const company: ClientCompany = {
   name: "ARCANIS Industries",
+  monogram: "AI",
   presentation:
     "Groupe industriel francais en croissance, ARCANIS Industries concoit et assemble des equipements techniques pour des clients europeens exigeants. L'entreprise dispose d'un savoir-faire reconnu, mais doit structurer ses pratiques pour acceder a de nouveaux marches.",
+  location: "Lyon, Auvergne-Rhone-Alpes, France",
+  headquartersVisual: "Siege social et centre de coordination industrielle",
   sector:
     "Conception et fabrication d'equipements industriels pour environnements techniques exigeants",
   products: [
@@ -28,6 +31,22 @@ export const company: ClientCompany = {
     "Renforcer la credibilite du groupe aupres de grands comptes",
     "Reduire les risques de non-conformite lors des prochains appels d'offres",
     "Aligner le systeme de management avec la strategie de diversification"
+  ],
+  mainContact: {
+    name: "Claire Montreuil",
+    role: "Directrice generale",
+    email: "claire.montreuil@arcanis-industries.example"
+  },
+  mandateIssues: [
+    "Choisir un referentiel compatible avec la diversification visee",
+    "Convaincre le COMEX d'engager une trajectoire realiste",
+    "Preserver la credibilite commerciale sans surestimer la maturite interne"
+  ],
+  currentSituation: [
+    "ARCANIS Industries dispose d'un socle ISO 9001 installe, mais les pratiques restent heterogenes entre sites.",
+    "La direction souhaite acceder a de nouveaux marches ou les exigences clients sont plus sectorielles et plus documentees.",
+    "Les equipes operationnelles sont deja mobilisees sur les delais commerciaux et les tensions fournisseurs.",
+    "Le COMEX attend une recommandation claire, soutenable et reliee aux priorites de transformation."
   ],
   constraints: [
     "Calendrier commercial serre",

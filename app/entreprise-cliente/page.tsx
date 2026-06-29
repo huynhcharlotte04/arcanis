@@ -6,9 +6,9 @@ import { SectionHeader } from "@/components/SectionHeader";
 export default function ClientCompanyPage() {
   return (
     <AppShell currentStep="entreprise-cliente">
-      <SectionHeader eyebrow="Entreprise cliente" title="Dossier ARCANIS Industries">
-        Lisez le client comme le ferait un cabinet avant une reunion de
-        direction.
+      <SectionHeader eyebrow="Client Brief" title="ARCANIS Industries">
+        Une synthese courte pour situer le client avant d&apos;ouvrir l&apos;espace
+        documentaire.
       </SectionHeader>
       <ClientDossier />
       <div className="mt-8">
