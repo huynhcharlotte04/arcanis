@@ -6,8 +6,8 @@ export default function RestitutionPage() {
   return (
     <AppShell currentStep="restitution">
       <SectionHeader eyebrow="Preparation de la restitution" title="Face au COMEX">
-        Votre cabinet prepare maintenant sa position et son support hors
-        plateforme.
+        Votre cabinet prepare maintenant son evaluation de faisabilite et son
+        support hors plateforme.
       </SectionHeader>
       <RestitutionPrep />
     </AppShell>

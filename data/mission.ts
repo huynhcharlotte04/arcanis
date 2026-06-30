@@ -8,7 +8,7 @@ export const mandates: Mandate[] = [
     sector: "Dispositifs medicaux",
     referential: "ISO 13485",
     objective:
-      "Evaluer si ARCANIS Industries peut devenir fournisseur credible pour des fabricants de dispositifs medicaux.",
+      "Evaluer la faisabilite d'une entree sur le marche des dispositifs medicaux avec le referentiel ISO 13485 impose par le mandat.",
     issues: [
       "Maitrise documentaire et preuves attendues plus strictes que dans le systeme ISO 9001 actuel.",
       "Exigences renforcees sur la gestion des risques, la tracabilite et les fournisseurs critiques.",
@@ -66,7 +66,7 @@ export const mandates: Mandate[] = [
     sector: "Automobile",
     referential: "IATF 16949",
     objective:
-      "Determiner si l'entree sur le marche automobile peut s'appuyer sur une trajectoire IATF 16949 credible.",
+      "Evaluer la faisabilite d'une entree sur le marche automobile avec le referentiel IATF 16949 impose par le mandat.",
     issues: [
       "Attentes elevees sur la robustesse processus, l'APQP, la maitrise des changements et les fournisseurs.",
       "Pression forte sur les delais, la preuve de capabilite et la performance serie.",
@@ -124,7 +124,7 @@ export const mandates: Mandate[] = [
     sector: "Aeronautique",
     referential: "EN 9100",
     objective:
-      "Evaluer la pertinence d'une trajectoire EN 9100 pour acceder a des clients aeronautiques europeens.",
+      "Evaluer la faisabilite d'une entree sur le marche aeronautique avec le referentiel EN 9100 impose par le mandat.",
     issues: [
       "Exigences renforcees sur la gestion des risques, la configuration et la maitrise des fournisseurs.",
       "Besoin de preuves fiables dans un environnement ou la securite et la conformite sont decisives.",
@@ -170,7 +170,7 @@ export const mandates: Mandate[] = [
         body: [
           "Bonjour,",
           "Pour l'aeronautique, notre point faible probable sera la gestion de configuration et la formalisation des preuves de conformite.",
-          "Merci d'evaluer l'effort de structuration necessaire si le COMEX choisit une trajectoire EN 9100."
+          "Merci d'evaluer l'effort de structuration necessaire si le COMEX engage la trajectoire EN 9100."
         ]
       }
     ]
@@ -182,16 +182,16 @@ export const mandates: Mandate[] = [
     sector: "Agroalimentaire",
     referential: "ISO 22000",
     objective:
-      "Determiner si ISO 22000 peut soutenir une diversification vers des clients agroalimentaires exigeants.",
+      "Evaluer la faisabilite d'une entree sur le marche agroalimentaire avec le referentiel ISO 22000 impose par le mandat.",
     issues: [
       "Integration de la securite des denrees, des PRP et de l'approche HACCP dans un systeme industriel existant.",
       "Nouveaux controles sur hygiene, contamination, nettoyage et maitrise des dangers.",
-      "Besoin de clarifier les limites entre opportunite commerciale et transformation operationnelle."
+      "Besoin de clarifier les conditions de faisabilite entre opportunite commerciale et transformation operationnelle."
     ],
     comexExpectations: [
       "Expliquer les exigences nouvelles par rapport au socle ISO 9001.",
       "Identifier les transformations necessaires sur sites, fournisseurs et controles.",
-      "Recommander une trajectoire realiste pour eviter un engagement premature."
+      "Proposer une trajectoire realiste pour eviter un engagement premature."
     ],
     documentFolders: [
       {
@@ -239,13 +239,13 @@ export const simulation: SimulationData = {
   missionLetter: {
     clientCompany: "ARCANIS Industries",
     context:
-      "Le COMEX souhaite diversifier le groupe vers des marches plus exigeants. Plusieurs options de referentiels sont envisagees, mais aucune trajectoire n'a encore ete arbitree.",
+      "Le COMEX a retenu plusieurs axes de diversification a instruire. Chaque cabinet recoit un mandat ferme et doit evaluer la faisabilite de la trajectoire confiee.",
     objective:
-      "Eclairer la decision du COMEX en identifiant le referentiel le plus coherent avec la strategie, la maturite actuelle et les contraintes de transformation.",
+      "Eclairer la decision du COMEX en identifiant les ecarts avec ISO 9001, les impacts organisationnels, les risques et les conditions de mise en oeuvre.",
     assignedMandate:
-      "Votre cabinet doit defendre une strategie de diversification fondee sur un referentiel cible. La recommandation devra etre credible, argumentee et directement exploitable par la direction.",
+      "Votre cabinet doit analyser le mandat confie par le COMEX. Le referentiel associe au mandat est une contrainte de depart, pas une variable d'arbitrage.",
     expectedDeliverable:
-      "Une prise de position orale devant le COMEX, appuyee par un support prepare hors plateforme.",
+      "Une recommandation de mise en oeuvre devant le COMEX, appuyee par un support prepare hors plateforme.",
     presentationDate: "Aujourd'hui, 16h30"
   },
   documentFolders: [
@@ -346,11 +346,11 @@ export const simulation: SimulationData = {
       role: "Directrice generale",
       subject: "Clarification attendue avant le COMEX",
       preview:
-        "Le COMEX attend une position claire, pas une liste d'options equivalentes.",
+        "Le COMEX attend une position claire sur la faisabilite du mandat confie.",
       receivedAt: "08:42",
       body: [
         "Bonjour,",
-        "Nous avons besoin d'une recommandation ferme. Le COMEX ne souhaite pas comparer tous les referentiels possibles, mais comprendre quelle trajectoire vous jugez la plus coherente pour ARCANIS Industries.",
+        "Nous avons besoin d'une recommandation ferme sur la faisabilite du mandat confie a votre cabinet.",
         "Votre position devra tenir compte de notre maturite actuelle et du calendrier commercial."
       ]
     },
@@ -419,13 +419,13 @@ export const simulation: SimulationData = {
       role: "Directrice generale",
       simulatedTime: "13:05",
       summary:
-        "La direction confirme qu'elle attend une recommandation assumee et directement exploitable.",
+        "La direction confirme qu'elle attend une evaluation de faisabilite assumee et directement exploitable.",
       subject: "Confirmation du mandat attendu par le COMEX",
       body: [
         "Bonjour,",
-        "Je vous confirme que le COMEX attend une position claire sur le referentiel a engager en priorite.",
-        "Votre recommandation devra montrer pourquoi cette trajectoire est pertinente pour ARCANIS Industries, au regard de notre strategie de diversification et de notre maturite actuelle.",
-        "Nous serons attentifs a la solidite de votre arbitrage, pas seulement a la description du referentiel."
+        "Je vous confirme que le COMEX attend une position claire sur la faisabilite du mandat confie a votre cabinet.",
+        "Votre recommandation devra montrer comment cette trajectoire peut etre mise en oeuvre par ARCANIS Industries, au regard de notre strategie de diversification et de notre maturite actuelle.",
+        "Nous serons attentifs a la solidite de votre analyse, pas seulement a la description du referentiel associe."
       ]
     },
     {
@@ -435,12 +435,12 @@ export const simulation: SimulationData = {
       role: "Directrice commerciale",
       simulatedTime: "13:35",
       summary:
-        "Un marche cible renforce la pression sur la credibilite du referentiel propose.",
+        "Un marche cible renforce la pression sur la credibilite de la trajectoire confiee.",
       subject: "Nouveau marche prioritaire a integrer",
       body: [
         "Bonjour,",
         "Nous venons de recevoir un signal fort d'un prospect prioritaire. Il recherche un fournisseur capable de demontrer une maitrise plus robuste des exigences qualite, des risques et de la tracabilite.",
-        "Votre proposition devra nous aider a comprendre si le referentiel recommande renforce vraiment notre position commerciale.",
+        "Votre proposition devra nous aider a comprendre si la trajectoire confiee renforce vraiment notre position commerciale.",
         "Merci aussi d'identifier les ecarts avec ISO 9001 que le COMEX devra anticiper."
       ]
     },
@@ -458,6 +458,22 @@ export const simulation: SimulationData = {
         "Notre systeme ISO 9001 donne un cadre solide, mais il ne couvre pas toutes les exigences sectorielles que nous rencontrons dans les nouveaux appels d'offres.",
         "Les principaux points sensibles sont la profondeur des preuves, la gestion des competences, la maitrise fournisseur et la formalisation des risques.",
         "Votre analyse devra expliquer ce que le nouveau referentiel ajoute vraiment, et ce que cela implique pour l'organisation."
+      ]
+    },
+    {
+      id: "qualite-confirmation-perimetre",
+      triggerTitle: "Mail Directrice Qualite - Confirmation du perimetre",
+      sender: "Claire Martin",
+      role: "Directrice qualite",
+      simulatedTime: "14:25",
+      summary:
+        "La direction qualite confirme que l'analyse doit rester centree sur le referentiel associe au mandat.",
+      subject: "Confirmation du perimetre de votre analyse",
+      body: [
+        "Bonjour,",
+        "Je vous confirme que votre cabinet travaille bien sur le referentiel associe a son mandat. Ce perimetre a ete fixe par le COMEX afin d'evaluer une trajectoire precise de diversification.",
+        "Une analyse fondee sur un autre referentiel ne repondrait pas au besoin exprime par la direction.",
+        "Merci de concentrer votre recommandation sur la faisabilite, les ecarts avec ISO 9001, les impacts organisationnels et les conditions de transition."
       ]
     },
     {
@@ -487,25 +503,25 @@ export const simulation: SimulationData = {
       subject: "Attentes pour la restitution de 16h30",
       body: [
         "Bonjour,",
-        "Pour la restitution, le COMEX attend une recommandation argumentee, le referentiel propose, les impacts organisationnels, les risques majeurs et un plan de transition.",
-        "La presentation devra permettre une decision. Evitez une restitution descriptive : nous attendons un arbitrage et une trajectoire defendable.",
+        "Pour la restitution, le COMEX attend une evaluation de faisabilite, les ecarts majeurs avec ISO 9001, les impacts organisationnels, les risques majeurs et un plan de transition.",
+        "La presentation devra permettre une decision. Evitez une restitution descriptive : nous attendons une evaluation de faisabilite et une trajectoire defendable.",
         "Merci de preparer une conclusion claire sur les conditions de reussite."
       ]
     }
   ],
   comexExpectations: [
     {
-      title: "Une recommandation argumentee",
+      title: "Une evaluation de faisabilite",
       detail:
-        "Le COMEX attend une position assumee, pas une exploration neutre de toutes les options."
+        "Le COMEX attend une position claire sur la capacite d'ARCANIS Industries a engager le mandat confie."
     },
     {
-      title: "Le referentiel propose",
+      title: "Les ecarts majeurs avec ISO 9001",
       detail:
-        "Le choix doit etre relie a la strategie de diversification et au niveau de maturite actuel."
+        "Les ecarts doivent etre relies au referentiel associe au mandat et au niveau de maturite actuel."
     },
     {
-      title: "Les impacts",
+      title: "Les impacts organisationnels",
       detail:
         "La direction veut comprendre les consequences sur les processus, roles, competences et preuves attendues."
     },
@@ -515,9 +531,14 @@ export const simulation: SimulationData = {
         "La recommandation doit integrer les risques de deploiement, d'adhesion et de credibilite marche."
     },
     {
-      title: "Le plan de transition",
+      title: "La trajectoire de transition",
       detail:
         "Le COMEX attend une trajectoire realiste, lisible et defendable devant les operations."
+    },
+    {
+      title: "Une proposition realiste",
+      detail:
+        "Les couts, delais et ressources necessaires doivent etre assumes et compatibles avec les contraintes du client."
     }
   ],
   keyDates: [

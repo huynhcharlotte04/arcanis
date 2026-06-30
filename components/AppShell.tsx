@@ -1,4 +1,5 @@
 import { BrandHeader } from "@/components/BrandHeader";
+import { MissionAccessGuard } from "@/components/MissionAccessGuard";
 import { SimulationNav } from "@/components/SimulationNav";
 import type { StepId } from "@/lib/types";
 
@@ -22,7 +23,7 @@ export function AppShell({
       </div>
       <SimulationNav currentStep={currentStep} />
       <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-12">
-        {children}
+        <MissionAccessGuard currentStep={currentStep}>{children}</MissionAccessGuard>
       </div>
     </main>
   );

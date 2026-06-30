@@ -14,11 +14,14 @@ export function MissionLetterDocument() {
   }, []);
 
   const mandate = getMandateById(session.mandateId);
+  const closedMissionContext = `Le COMEX souhaite explorer l'entree sur le marche ${mandate.sector}. Votre cabinet est mandate pour evaluer la faisabilite de cette trajectoire, identifier les ecarts avec le systeme ISO 9001 actuel et proposer un plan de transition realiste.`;
+  const imposedScope = `Le referentiel ${mandate.referential} est associe au mandat confie par le COMEX. Il constitue une contrainte de depart, pas une variable d'arbitrage.`;
   const letterRows = [
     ["Entreprise cliente", simulation.missionLetter.clientCompany],
-    ["Contexte", simulation.missionLetter.context],
+    ["Contexte", closedMissionContext],
     ["Objectif", mandate.objective],
     ["Mandat attribue", `${mandate.title} - ${mandate.referential}`],
+    ["Perimetre impose", imposedScope],
     ["Enjeux prioritaires", mandate.issues.join(" ")],
     ["Attentes du COMEX", mandate.comexExpectations.join(" ")],
     ["Livrable attendu", simulation.missionLetter.expectedDeliverable],

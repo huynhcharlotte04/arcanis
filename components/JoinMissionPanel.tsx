@@ -12,10 +12,13 @@ import type { ConsultantSession } from "@/lib/types";
 
 export function JoinMissionPanel() {
   const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
+  const [accessRequired, setAccessRequired] = useState(false);
   const canJoin =
     session.sessionCode.trim().length > 0 && session.cabinetName.trim().length > 0;
 
   useEffect(() => {
+    setAccessRequired(new URLSearchParams(window.location.search).get("access") === "required");
+
     const storedSession = loadConsultantSession();
     const next = storedSession.cabinetName
       ? { ...storedSession, mandateId: getMandateByCabinetName(storedSession.cabinetName).id }
@@ -57,6 +60,11 @@ export function JoinMissionPanel() {
         <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brass">
           Acces mission
         </p>
+        {accessRequired ? (
+          <div className="mt-5 rounded-md border border-brass/35 bg-brass/10 px-4 py-3 text-sm font-semibold leading-6 text-porcelain">
+            Rejoignez une mission pour acceder a cet espace.
+          </div>
+        ) : null}
         <div className="mt-6 space-y-5">
           <label className="block" htmlFor="sessionCode">
             <span className="text-sm font-semibold text-porcelain">

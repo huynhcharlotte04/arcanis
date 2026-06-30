@@ -32,6 +32,10 @@ export function RestitutionPrep() {
           Votre cabinet prepare son support, ses arbitrages et sa defense en
           autonomie. ARCANIS fournit le contexte professionnel, pas le livrable.
         </p>
+        <p className="mt-4 rounded-md border border-brass/30 bg-obsidian/35 p-4 text-sm leading-7 text-mist">
+          Une proposition techniquement pertinente pourra etre challengee si
+          elle est jugee trop couteuse, trop longue ou insuffisamment realiste.
+        </p>
       </aside>
     </div>
   );
