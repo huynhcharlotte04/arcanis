@@ -33,7 +33,6 @@ export type Mandate = {
   objective: string;
   issues: string[];
   comexExpectations: string[];
-  documentFolders: DocumentFolder[];
   specificMessages: MailMessage[];
 };
 
@@ -71,13 +70,39 @@ export type MissionLetter = {
   presentationDate: string;
 };
 
+export type DocumentStatus = "Brouillon" | "Valide";
+
+export type DocumentVisibility = "Consultant" | "Formateur" | "Administrateur";
+
+export type DocumentFileType = "PDF" | "DOCX" | "PNG" | "JPG" | "WEBP";
+
+export type DocumentLibraryItem = {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  version: string;
+  status: DocumentStatus;
+  missions: string[];
+  mandateIds?: string[];
+  visibility: DocumentVisibility[];
+  type: DocumentFileType;
+  href: string;
+  owner: string;
+  date: string;
+  classification: "Interne";
+};
+
 export type MissionDocument = {
   name: string;
   owner: string;
-  type: "PDF";
+  type: DocumentFileType;
   date: string;
   classification: "Interne";
   href: string;
+  description?: string;
+  version?: string;
+  status?: DocumentStatus;
 };
 
 export type DocumentFolder = {
@@ -114,7 +139,6 @@ export type MissionEvent = {
 
 export type SimulationData = {
   missionLetter: MissionLetter;
-  documentFolders: DocumentFolder[];
   messages: MailMessage[];
   preparedEvents: MissionEvent[];
   comexExpectations: ComexExpectation[];

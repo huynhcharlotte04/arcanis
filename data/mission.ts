@@ -19,29 +19,6 @@ export const mandates: Mandate[] = [
       "Identifier les impacts sur conception, achats, production et controle.",
       "Proposer une trajectoire soutenable avant engagement commercial."
     ],
-    documentFolders: [
-      {
-        name: "Mission 001 / ISO13485",
-        documents: [
-          {
-            name: "Note mandat ISO13485.pdf",
-            owner: "Direction",
-            type: "PDF",
-            date: "20/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/ISO13485/Note-Mandat-ISO13485.pdf"
-          },
-          {
-            name: "Qualification fournisseurs medicaux.pdf",
-            owner: "Qualite",
-            type: "PDF",
-            date: "21/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/ISO13485/Qualification-Fournisseurs-Medicaux.pdf"
-          }
-        ]
-      }
-    ],
     specificMessages: [
       {
         id: "mandate-iso13485-industrie",
@@ -76,29 +53,6 @@ export const mandates: Mandate[] = [
       "Identifier les prerequis avant de viser des donneurs d'ordre automobile.",
       "Evaluer les impacts sur production, methodes, achats et pilotage performance.",
       "Definir les risques d'une entree trop rapide sur ce marche."
-    ],
-    documentFolders: [
-      {
-        name: "Mission 001 / IATF16949",
-        documents: [
-          {
-            name: "Note mandat IATF16949.pdf",
-            owner: "Direction Commerciale",
-            type: "PDF",
-            date: "20/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/IATF16949/Note-Mandat-IATF16949.pdf"
-          },
-          {
-            name: "Cartographie capacite production automobile.pdf",
-            owner: "Operations",
-            type: "PDF",
-            date: "21/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/IATF16949/Capacite-Production-Automobile.pdf"
-          }
-        ]
-      }
     ],
     specificMessages: [
       {
@@ -135,29 +89,6 @@ export const mandates: Mandate[] = [
       "Prioriser les impacts sur l'organisation et la gouvernance qualite.",
       "Estimer les risques de credibilite face aux donneurs d'ordre."
     ],
-    documentFolders: [
-      {
-        name: "Mission 001 / EN9100",
-        documents: [
-          {
-            name: "Note mandat EN9100.pdf",
-            owner: "Direction",
-            type: "PDF",
-            date: "20/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/EN9100/Note-Mandat-EN9100.pdf"
-          },
-          {
-            name: "Analyse exigences aeronautiques.pdf",
-            owner: "Qualite",
-            type: "PDF",
-            date: "21/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/EN9100/Analyse-Exigences-Aeronautiques.pdf"
-          }
-        ]
-      }
-    ],
     specificMessages: [
       {
         id: "mandate-en9100-industrie",
@@ -193,29 +124,6 @@ export const mandates: Mandate[] = [
       "Identifier les transformations necessaires sur sites, fournisseurs et controles.",
       "Proposer une trajectoire realiste pour eviter un engagement premature."
     ],
-    documentFolders: [
-      {
-        name: "Mission 001 / ISO22000",
-        documents: [
-          {
-            name: "Note mandat ISO22000.pdf",
-            owner: "Direction Commerciale",
-            type: "PDF",
-            date: "20/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/ISO22000/Note-Mandat-ISO22000.pdf"
-          },
-          {
-            name: "Diagnostic hygiene et flux.pdf",
-            owner: "Operations",
-            type: "PDF",
-            date: "21/06/2026",
-            classification: "Interne",
-            href: "/documents/mission-001/ISO22000/Diagnostic-Hygiene-Flux.pdf"
-          }
-        ]
-      }
-    ],
     specificMessages: [
       {
         id: "mandate-iso22000-industrie",
@@ -248,97 +156,6 @@ export const simulation: SimulationData = {
       "Une recommandation de mise en oeuvre devant le COMEX, appuyee par un support prepare hors plateforme.",
     presentationDate: "Aujourd'hui, 16h30"
   },
-  documentFolders: [
-    {
-      name: "Direction",
-      documents: [
-        {
-          name: "Plan strategique 2030.pdf",
-          owner: "Direction",
-          type: "PDF",
-          date: "12/05/2026",
-          classification: "Interne",
-          href: "/documents/mission-001/Plan-Strategique-2030.pdf"
-        }
-      ]
-    },
-    {
-      name: "Qualite",
-      documents: [
-        {
-          name: "Politique Qualite.pdf",
-          owner: "Qualite",
-          type: "PDF",
-          date: "04/02/2026",
-          classification: "Interne",
-          href: "/documents/mission-001/Politique-Qualite.pdf"
-        },
-        {
-          name: "Manuel Qualite.pdf",
-          owner: "Qualite",
-          type: "PDF",
-          date: "18/03/2026",
-          classification: "Interne",
-          href: "/documents/mission-001/Manuel-Qualite.pdf"
-        },
-        {
-          name: "Cartographie des processus.pdf",
-          owner: "Qualite",
-          type: "PDF",
-          date: "21/03/2026",
-          classification: "Interne",
-          href: "/documents/mission-001/Cartographie-Processus.pdf"
-        },
-        {
-          name: "Rapport audit ISO9001.pdf",
-          owner: "Qualite",
-          type: "PDF",
-          date: "09/04/2026",
-          classification: "Interne",
-          href: "/documents/mission-001/Rapport-Audit-ISO9001.pdf"
-        }
-      ]
-    },
-    {
-      name: "Ressources Humaines",
-      documents: [
-        {
-          name: "Organigramme.pdf",
-          owner: "Ressources Humaines",
-          type: "PDF",
-          date: "15/01/2026",
-          classification: "Interne",
-          href: "/documents/mission-001/Organigramme.pdf"
-        }
-      ]
-    },
-    {
-      name: "Commercial",
-      documents: [
-        {
-          name: "Catalogue produits.pdf",
-          owner: "Commercial",
-          type: "PDF",
-          date: "02/05/2026",
-          classification: "Interne",
-          href: "/documents/mission-001/Catalogue-Produits.pdf"
-        }
-      ]
-    },
-    {
-      name: "Certifications",
-      documents: [
-        {
-          name: "Certificat ISO9001.pdf",
-          owner: "Certifications",
-          type: "PDF",
-          date: "30/11/2025",
-          classification: "Interne",
-          href: "/documents/mission-001/Certificat-ISO9001.pdf"
-        }
-      ]
-    }
-  ],
   messages: [
     {
       id: "dg",

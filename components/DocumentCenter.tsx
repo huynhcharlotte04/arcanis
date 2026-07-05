@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { simulation } from "@/data/mission";
+import { getDocumentsForMission, groupDocumentsByCategory } from "@/lib/documents";
 import { getMandateById } from "@/lib/mandates";
 import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
-import type { ConsultantSession, DocumentFolder } from "@/lib/types";
+import type { ConsultantSession } from "@/lib/types";
 
 export function DocumentCenter() {
   const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
@@ -14,13 +14,13 @@ export function DocumentCenter() {
   }, []);
 
   const mandate = getMandateById(session.mandateId);
-  const folders: DocumentFolder[] = [
-    ...mandate.documentFolders,
-    {
-      name: "Mission 001 / Documents communs",
-      documents: simulation.documentFolders.flatMap((folder) => folder.documents)
-    }
-  ];
+  const folders = groupDocumentsByCategory(
+    getDocumentsForMission({
+      missionId: "mission-001",
+      mandateId: mandate.id,
+      visibility: "Consultant"
+    })
+  );
 
   return (
     <div className="overflow-hidden rounded-lg border border-inkline bg-white/[0.035]">
@@ -60,7 +60,13 @@ export function DocumentCenter() {
                     <p className="font-semibold text-porcelain">{document.name}</p>
                     <p className="mt-1 text-xs uppercase tracking-[0.16em] text-mist">
                       {document.classification}
+                      {document.version ? ` - v${document.version}` : ""}
                     </p>
+                    {document.description ? (
+                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-mist">
+                        {document.description}
+                      </p>
+                    ) : null}
                   </div>
                   <p className="text-sm text-mist">{document.owner}</p>
                   <p className="text-sm font-semibold text-porcelain">
