@@ -1,9 +1,13 @@
 import type { SimulationModule } from "@/lib/types";
 import { autresReferentielsModule } from "./modules/autres-referentiels";
+import { qseal13BpmModule } from "./modules/qseal13-bpm";
 
 // Registre central de tous les modules de simulation disponibles.
 // Ajouter un module = importer son dossier et l'ajouter a cette liste.
-export const modules: SimulationModule[] = [autresReferentielsModule];
+export const modules: SimulationModule[] = [
+  autresReferentielsModule,
+  qseal13BpmModule
+];
 
 // Module ouvert par defaut. Toute resolution qui echoue retombe dessus,
 // ce qui garantit qu'aucun code de session existant ne casse.
