@@ -1,7 +1,18 @@
-import { getDefaultModule } from "@/data/modules-registry";
+"use client";
+
+import { useEffect, useState } from "react";
+import { getModuleById } from "@/data/modules-registry";
+import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
+import type { ConsultantSession } from "@/lib/types";
 
 export function RestitutionPrep() {
-  const { simulation } = getDefaultModule();
+  const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
+
+  useEffect(() => {
+    setSession(loadConsultantSession());
+  }, []);
+
+  const { simulation } = getModuleById(session.moduleId);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_0.72fr]">

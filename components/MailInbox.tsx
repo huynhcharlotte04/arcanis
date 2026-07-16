@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { getDefaultModule } from "@/data/modules-registry";
+import { getModuleById } from "@/data/modules-registry";
 import { getMandateById } from "@/lib/mandates";
 import {
   emptyConsultantSession,
@@ -19,7 +19,7 @@ export function MailInbox() {
     setSession(loadConsultantSession());
   }, []);
 
-  const activeModule = getDefaultModule();
+  const activeModule = getModuleById(session.moduleId);
   const { simulation } = activeModule;
 
   const messages = useMemo<MailMessage[]>(() => {

@@ -20,3 +20,23 @@ export function getModuleById(moduleId: string | undefined): SimulationModule {
 
   return modules.find((module) => module.id === moduleId) ?? getDefaultModule();
 }
+
+// Le module est encode dans le prefixe du code de session (ex: "QSEAL13-4F2A").
+// Prefixe inconnu ou absent => repli sur le module par defaut, ce qui garantit
+// qu'aucun code de session deja distribue ne casse.
+export function getModuleByCode(sessionCode: string | undefined): SimulationModule {
+  const prefix = (sessionCode ?? "").trim().split("-")[0]?.toUpperCase() ?? "";
+  if (!prefix) {
+    return getDefaultModule();
+  }
+
+  return (
+    modules.find((module) => module.sessionCodePrefix.toUpperCase() === prefix) ??
+    getDefaultModule()
+  );
+}
+
+export function generateSessionCode(module: SimulationModule): string {
+  const random = Math.floor(1000 + Math.random() * 9000);
+  return `${module.sessionCodePrefix}-${random}`;
+}

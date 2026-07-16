@@ -8,6 +8,7 @@ const TRIGGERED_EVENTS_STORAGE_KEY = "arcanis:v1:triggered-events";
 
 export const emptyConsultantSession: ConsultantSession = {
   sessionCode: "",
+  moduleId: "",
   cabinetName: "",
   mandateId: "",
   updatedAt: ""
@@ -15,6 +16,7 @@ export const emptyConsultantSession: ConsultantSession = {
 
 export const defaultTrainerSession: TrainerSession = {
   promotionName: "MS QSE",
+  moduleId: "autres-referentiels",
   moduleName: "Autres referentiels",
   clientCompany: "ARCANIS Industries",
   sessionCode: "",

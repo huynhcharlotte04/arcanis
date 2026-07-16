@@ -5,6 +5,7 @@ import { mandates, simulation } from "./mission";
 export const autresReferentielsModule: SimulationModule = {
   id: "autres-referentiels",
   label: "Autres referentiels",
+  sessionCodePrefix: "AR",
   missionId: "mission-001",
   company,
   mandates,

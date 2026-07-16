@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getDefaultModule } from "@/data/modules-registry";
+import { getModuleById } from "@/data/modules-registry";
 import { getMandateById } from "@/lib/mandates";
 import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
 import type { ConsultantSession } from "@/lib/types";
@@ -13,7 +13,7 @@ export function MissionLetterDocument() {
     setSession(loadConsultantSession());
   }, []);
 
-  const activeModule = getDefaultModule();
+  const activeModule = getModuleById(session.moduleId);
   const { simulation } = activeModule;
   const mandate = getMandateById(activeModule.mandates, session.mandateId);
   const closedMissionContext = `Le COMEX souhaite explorer l'entree sur le marche ${mandate.sector}. Votre cabinet est mandate pour evaluer la faisabilite de cette trajectoire, identifier les ecarts avec le systeme ISO 9001 actuel et proposer un plan de transition realiste.`;

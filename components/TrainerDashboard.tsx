@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getDefaultModule } from "@/data/modules-registry";
+import {
+  generateSessionCode,
+  getModuleById,
+  modules
+} from "@/data/modules-registry";
 import {
   defaultTrainerSession,
   loadTriggeredEventIds,
@@ -12,15 +16,16 @@ import {
 } from "@/lib/storage";
 import type { TrainerSession } from "@/lib/types";
 
-function generateSessionCode() {
-  return `AR-${Math.floor(1000 + Math.random() * 9000)}`;
-}
-
 export function TrainerDashboard() {
   const [session, setSession] = useState<TrainerSession>(defaultTrainerSession);
   const [triggeredIds, setTriggeredIds] = useState<string[]>([]);
-  const { mandates, simulation } = getDefaultModule();
+  const [copied, setCopied] = useState(false);
+  const selectedModule = getModuleById(session.moduleId);
+  const { mandates, simulation } = selectedModule;
   const hasSession = session.sessionCode.trim().length > 0;
+  const shareLink = hasSession
+    ? `${typeof window !== "undefined" ? window.location.origin : ""}/rejoindre?code=${session.sessionCode}`
+    : "";
 
   useEffect(() => {
     setSession(loadTrainerSession());
@@ -33,16 +38,43 @@ export function TrainerDashboard() {
     saveTrainerSession(next);
   }
 
+  function selectModule(moduleId: string) {
+    const nextModule = getModuleById(moduleId);
+    const next = {
+      ...session,
+      moduleId: nextModule.id,
+      moduleName: nextModule.label,
+      clientCompany: nextModule.company.name
+    };
+    setSession(next);
+    saveTrainerSession(next);
+  }
+
   function createSession() {
     const now = new Date().toISOString();
     const next = {
       ...session,
-      sessionCode: generateSessionCode(),
+      sessionCode: generateSessionCode(selectedModule),
       createdAt: session.createdAt || now,
       updatedAt: now
     };
     setSession(next);
     saveTrainerSession(next);
+    setCopied(false);
+  }
+
+  async function copyShareLink() {
+    if (!shareLink) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareLink);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   }
 
   function triggerEvent(eventId: string) {
@@ -93,29 +125,35 @@ export function TrainerDashboard() {
             />
           </label>
 
-          <label className="block" htmlFor="moduleName">
+          <label className="block" htmlFor="moduleId">
             <span className="text-sm font-semibold text-porcelain">
               Module
             </span>
-            <input
-              id="moduleName"
-              value={session.moduleName}
-              onChange={(event) => update("moduleName", event.target.value)}
+            <select
+              id="moduleId"
+              value={session.moduleId}
+              onChange={(event) => selectModule(event.target.value)}
               className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain"
-            />
+            >
+              {modules.map((module) => (
+                <option key={module.id} value={module.id}>
+                  {module.label}
+                </option>
+              ))}
+            </select>
           </label>
 
-          <label className="block" htmlFor="clientCompany">
+          <div>
             <span className="text-sm font-semibold text-porcelain">
               Entreprise cliente
             </span>
-            <input
-              id="clientCompany"
-              value={session.clientCompany}
-              onChange={(event) => update("clientCompany", event.target.value)}
-              className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain"
-            />
-          </label>
+            <p className="mt-3 w-full rounded-md border border-inkline bg-obsidian/40 px-4 py-3 text-porcelain">
+              {selectedModule.company.name}
+            </p>
+            <span className="mt-2 block text-xs leading-6 text-mist">
+              Determinee par le module selectionne.
+            </span>
+          </div>
         </div>
 
         <button
@@ -125,6 +163,33 @@ export function TrainerDashboard() {
         >
           Creer la mission
         </button>
+
+        {hasSession ? (
+          <div className="mt-6 rounded-md border border-brass/30 bg-obsidian/35 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brass">
+              Lien de session
+            </p>
+            <p className="mt-2 text-sm leading-6 text-mist">
+              Partagez ce lien : la bonne simulation s&apos;ouvre automatiquement,
+              sans saisie du code.
+            </p>
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+              <input
+                readOnly
+                value={shareLink}
+                onFocus={(event) => event.target.select()}
+                className="field-focus w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-2 text-sm text-porcelain"
+              />
+              <button
+                type="button"
+                onClick={copyShareLink}
+                className="whitespace-nowrap rounded-md border border-brass/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-brass transition hover:bg-brass hover:text-obsidian"
+              >
+                {copied ? "Copie" : "Copier"}
+              </button>
+            </div>
+          </div>
+        ) : null}
         </section>
 
         <section className="rounded-lg border border-inkline bg-white/[0.035] p-6 sm:p-8">

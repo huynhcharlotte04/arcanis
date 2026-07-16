@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getDefaultModule } from "@/data/modules-registry";
+import { getModuleByCode } from "@/data/modules-registry";
 import { getMandateByCabinetName, hasKnownCabinetName } from "@/lib/mandates";
 import {
   emptyConsultantSession,
@@ -14,39 +14,53 @@ import type { ConsultantSession } from "@/lib/types";
 export function JoinMissionPanel() {
   const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
   const [accessRequired, setAccessRequired] = useState(false);
-  const { mandates } = getDefaultModule();
+  const activeModule = getModuleByCode(session.sessionCode);
   const canJoin =
     session.sessionCode.trim().length > 0 && session.cabinetName.trim().length > 0;
 
   useEffect(() => {
-    setAccessRequired(new URLSearchParams(window.location.search).get("access") === "required");
+    const params = new URLSearchParams(window.location.search);
+    setAccessRequired(params.get("access") === "required");
 
+    // Le lien de session partage par le formateur pre-remplit le code (?code=...).
+    const codeFromUrl = params.get("code")?.trim() ?? "";
     const storedSession = loadConsultantSession();
-    const next = storedSession.cabinetName
-      ? { ...storedSession, mandateId: getMandateByCabinetName(mandates, storedSession.cabinetName).id }
-      : storedSession;
+    const sessionCode = codeFromUrl || storedSession.sessionCode;
+    const moduleForSession = getModuleByCode(sessionCode);
+
+    const next: ConsultantSession = {
+      ...storedSession,
+      sessionCode,
+      moduleId: moduleForSession.id,
+      mandateId: storedSession.cabinetName
+        ? getMandateByCabinetName(moduleForSession.mandates, storedSession.cabinetName).id
+        : storedSession.mandateId
+    };
 
     setSession(next);
-    if (storedSession.cabinetName) {
+    if (storedSession.cabinetName || codeFromUrl) {
       saveConsultantSession(next);
     }
-  }, [mandates]);
+  }, []);
 
   function update(key: keyof ConsultantSession, value: string) {
     const next = { ...session, [key]: value };
-
-    if (key === "cabinetName") {
-      next.mandateId = getMandateByCabinetName(mandates, value).id;
-    }
+    const moduleForNext = getModuleByCode(next.sessionCode);
+    next.moduleId = moduleForNext.id;
+    next.mandateId = next.cabinetName.trim().length
+      ? getMandateByCabinetName(moduleForNext.mandates, next.cabinetName).id
+      : "";
 
     setSession(next);
     saveConsultantSession(next);
   }
 
   function persistDeducedMandate() {
+    const moduleForNext = getModuleByCode(session.sessionCode);
     const next = {
       ...session,
-      mandateId: getMandateByCabinetName(mandates, session.cabinetName).id
+      moduleId: moduleForNext.id,
+      mandateId: getMandateByCabinetName(moduleForNext.mandates, session.cabinetName).id
     };
 
     setSession(next);
@@ -54,7 +68,8 @@ export function JoinMissionPanel() {
   }
 
   const hasCabinet = session.cabinetName.trim().length > 0;
-  const isKnownCabinet = hasKnownCabinetName(mandates, session.cabinetName);
+  const hasSessionCode = session.sessionCode.trim().length > 0;
+  const isKnownCabinet = hasKnownCabinetName(activeModule.mandates, session.cabinetName);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
@@ -76,9 +91,15 @@ export function JoinMissionPanel() {
               id="sessionCode"
               value={session.sessionCode}
               onChange={(event) => update("sessionCode", event.target.value)}
-              placeholder="Ex. ARCANIS-01"
+              placeholder="Ex. AR-4821"
               className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/55"
             />
+            {hasSessionCode ? (
+              <span className="mt-2 block text-xs leading-6 text-mist">
+                Ce code ouvre la simulation :{" "}
+                <span className="font-semibold text-brass">{activeModule.label}</span>
+              </span>
+            ) : null}
           </label>
 
           <label className="block" htmlFor="cabinetName">
