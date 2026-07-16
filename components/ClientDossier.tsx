@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { company } from "@/data/company";
-import { mandates } from "@/data/mission";
+import { getModuleById } from "@/data/modules-registry";
+import { getDossierFraming } from "@/lib/deliverable";
 import { getMandateById } from "@/lib/mandates";
 import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
 import type { ConsultantSession } from "@/lib/types";
@@ -53,7 +53,10 @@ export function ClientDossier() {
     setSession(loadConsultantSession());
   }, []);
 
-  const mandate = getMandateById(session.mandateId);
+  const activeModule = getModuleById(session.moduleId);
+  const { company, mandates } = activeModule;
+  const mandate = getMandateById(mandates, session.mandateId);
+  const framing = getDossierFraming(activeModule.deliverableType);
 
   return (
     <div className="space-y-6">
@@ -95,14 +98,14 @@ export function ClientDossier() {
                 <SnapshotItem label="Certification actuelle" value="ISO 9001" />
                 <SnapshotItem
                   label="Objectif strategique"
-                  value="Diversification vers de nouveaux marches"
+                  value={framing.strategicObjective}
                 />
                 <SnapshotItem
                   label="Marches actuels"
                   value={company.clients.join(", ")}
                 />
                 <SnapshotItem
-                  label="Marches cibles"
+                  label={framing.targetsLabel}
                   value={mandates.map((item) => item.sector).join(", ")}
                 />
                 <SnapshotItem
@@ -111,11 +114,11 @@ export function ClientDossier() {
                 />
                 <SnapshotItem
                   label="Contexte de mission"
-                  value="Restitution attendue devant le COMEX aujourd'hui a 16h30"
+                  value={framing.missionContext}
                 />
                 <SnapshotItem
-                  label="Enjeu COMEX"
-                  value="Arbitrer une trajectoire credible sans surestimer la maturite interne"
+                  label={framing.stakeLabel}
+                  value={framing.stakeValue}
                 />
               </div>
             </div>
@@ -149,7 +152,7 @@ export function ClientDossier() {
         </h2>
         <div className="mt-4 grid gap-4 lg:grid-cols-[0.32fr_0.28fr_1fr]">
           <Metric label="Secteur" value={mandate.sector} />
-          <Metric label="Referentiel" value={mandate.referential} />
+          <Metric label={framing.frameworkLabel} value={mandate.referential} />
           <div className="rounded-md border border-inkline bg-obsidian/35 p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-mist">
               Objectif

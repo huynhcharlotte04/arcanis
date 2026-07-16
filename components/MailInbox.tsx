@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { simulation } from "@/data/mission";
+import { getModuleById } from "@/data/modules-registry";
 import { getMandateById } from "@/lib/mandates";
 import {
   emptyConsultantSession,
@@ -19,8 +19,11 @@ export function MailInbox() {
     setSession(loadConsultantSession());
   }, []);
 
+  const activeModule = getModuleById(session.moduleId);
+  const { simulation } = activeModule;
+
   const messages = useMemo<MailMessage[]>(() => {
-    const mandate = getMandateById(session.mandateId);
+    const mandate = getMandateById(activeModule.mandates, session.mandateId);
     const triggeredMessages = simulation.preparedEvents
       .filter((event) => triggeredIds.includes(event.id))
       .map((event) => ({
@@ -37,7 +40,7 @@ export function MailInbox() {
     return [...simulation.messages, ...mandate.specificMessages, ...triggeredMessages].sort((a, b) =>
       a.receivedAt.localeCompare(b.receivedAt)
     );
-  }, [session.mandateId, triggeredIds]);
+  }, [activeModule, simulation, session.mandateId, triggeredIds]);
 
   const [selectedId, setSelectedId] = useState(simulation.messages[0]?.id ?? "");
   const selected = messages.find((message) => message.id === selectedId) ?? messages[0];

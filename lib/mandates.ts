@@ -1,12 +1,11 @@
-import { mandates } from "@/data/mission";
 import type { Mandate } from "@/lib/types";
 
-export function getDefaultMandate(): Mandate {
+export function getDefaultMandate(mandates: Mandate[]): Mandate {
   return mandates[0];
 }
 
-export function getMandateById(mandateId: string): Mandate {
-  return mandates.find((mandate) => mandate.id === mandateId) ?? getDefaultMandate();
+export function getMandateById(mandates: Mandate[], mandateId: string): Mandate {
+  return mandates.find((mandate) => mandate.id === mandateId) ?? getDefaultMandate(mandates);
 }
 
 function normalizeCabinetName(cabinetName: string): string {
@@ -18,17 +17,23 @@ function normalizeCabinetName(cabinetName: string): string {
     .replace(/\s+/g, " ");
 }
 
-export function getMandateByCabinetName(cabinetName: string): Mandate {
+export function getMandateByCabinetName(
+  mandates: Mandate[],
+  cabinetName: string
+): Mandate {
   const normalizedCabinetName = normalizeCabinetName(cabinetName);
 
   return (
     mandates.find(
       (mandate) => normalizeCabinetName(mandate.cabinetName) === normalizedCabinetName
-    ) ?? getDefaultMandate()
+    ) ?? getDefaultMandate(mandates)
   );
 }
 
-export function hasKnownCabinetName(cabinetName: string): boolean {
+export function hasKnownCabinetName(
+  mandates: Mandate[],
+  cabinetName: string
+): boolean {
   const normalizedCabinetName = normalizeCabinetName(cabinetName);
 
   return mandates.some(

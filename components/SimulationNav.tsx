@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getModuleById } from "@/data/modules-registry";
 import { hasMissionAccess } from "@/lib/access";
-import { loadConsultantSession } from "@/lib/storage";
-import type { StepId } from "@/lib/types";
+import { getRestitutionFraming } from "@/lib/deliverable";
+import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
+import type { ConsultantSession, StepId } from "@/lib/types";
 
 const steps: Array<{ id: StepId; label: string; href: string }> = [
   { id: "rejoindre", label: "Mission", href: "/rejoindre" },
@@ -16,11 +18,16 @@ const steps: Array<{ id: StepId; label: string; href: string }> = [
 ];
 
 export function SimulationNav({ currentStep }: { currentStep: StepId }) {
-  const [hasAccess, setHasAccess] = useState(false);
+  const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
 
   useEffect(() => {
-    setHasAccess(hasMissionAccess(loadConsultantSession()));
+    setSession(loadConsultantSession());
   }, []);
+
+  const hasAccess = hasMissionAccess(session);
+  const restitutionLabel = getRestitutionFraming(
+    getModuleById(session.moduleId).deliverableType
+  ).navLabel;
 
   if (currentStep === "accueil") {
     return null;
@@ -32,6 +39,7 @@ export function SimulationNav({ currentStep }: { currentStep: StepId }) {
         {steps.map((step) => {
           const isActive = step.id === currentStep;
           const isAccessible = step.id === "rejoindre" || hasAccess;
+          const label = step.id === "restitution" ? restitutionLabel : step.label;
           const className = `whitespace-nowrap rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition ${
             isActive
               ? "bg-brass text-obsidian"
@@ -43,7 +51,7 @@ export function SimulationNav({ currentStep }: { currentStep: StepId }) {
           if (!isAccessible) {
             return (
               <span key={step.id} className={className} title="Rejoignez une mission pour acceder a cet espace.">
-                {step.label}
+                {label}
               </span>
             );
           }
@@ -54,7 +62,7 @@ export function SimulationNav({ currentStep }: { currentStep: StepId }) {
               href={step.href}
               className={className}
             >
-              {step.label}
+              {label}
             </Link>
           );
         })}

@@ -10,6 +10,7 @@ export type StepId =
 
 export type ConsultantSession = {
   sessionCode: string;
+  moduleId: string;
   cabinetName: string;
   mandateId: string;
   updatedAt: string;
@@ -17,6 +18,7 @@ export type ConsultantSession = {
 
 export type TrainerSession = {
   promotionName: string;
+  moduleId: string;
   moduleName: string;
   clientCompany: string;
   sessionCode: string;
@@ -143,4 +145,21 @@ export type SimulationData = {
   preparedEvents: MissionEvent[];
   comexExpectations: ComexExpectation[];
   keyDates: string[];
+};
+
+export type DeliverableType =
+  | "restitution-comex"
+  | "cartographie-annotee"
+  | "plan-action";
+
+export type SimulationModule = {
+  id: string;
+  label: string;
+  sessionCodePrefix: string;
+  missionId: string;
+  company: ClientCompany;
+  mandates: Mandate[];
+  simulation: SimulationData;
+  documentBasePath: string;
+  deliverableType: DeliverableType;
 };
