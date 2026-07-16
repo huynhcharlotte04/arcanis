@@ -24,12 +24,12 @@ export function DocumentCenter() {
     })
   );
   const missionLabel = activeModule.missionId.replace("mission-", "Mission ");
-  // Referentiel court (ISO13485...) pour les modules "referentiel", perimetre
-  // du processus pour les modules "cartographie".
+  // Referentiel court (ISO13485...) pour le module "referentiel" ; perimetre
+  // (processus ou domaine de veille) pour les autres modules.
   const scopeTag =
-    activeModule.deliverableType === "cartographie-annotee"
-      ? mandate.sector
-      : mandate.referential.replace(/\s/g, "");
+    activeModule.deliverableType === "restitution-comex"
+      ? mandate.referential.replace(/\s/g, "")
+      : mandate.sector;
 
   return (
     <div className="overflow-hidden rounded-lg border border-inkline bg-white/[0.035]">

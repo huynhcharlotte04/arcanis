@@ -2,8 +2,9 @@ import type { DeliverableType, Mandate } from "@/lib/types";
 
 // Cadrage d'affichage selon le type de livrable du module.
 // La branche "restitution-comex" reproduit a l'identique les textes existants
-// du module "Autres referentiels" (aucune regression). La branche
-// "cartographie-annotee" fournit le cadrage "revue de direction" de QSEAL13.
+// du module "Autres referentiels" (aucune regression). "cartographie-annotee"
+// fournit le cadrage "revue de direction" de QSEAL13. "plan-action" fournit le
+// cadrage "comite de conformite" du module Veille reglementaire.
 
 export type LetterFraming = {
   audienceSuffix: string;
@@ -49,6 +50,17 @@ export function getLetterFraming(
     };
   }
 
+  if (type === "plan-action") {
+    return {
+      audienceSuffix: "Comite de conformite",
+      context: `A la suite d'un audit ayant revele une detection trop tardive des evolutions applicables, ARCANIS Industries structure sa veille reglementaire et normative. Votre equipe prend en charge la veille du domaine ${mandate.sector} : identifier les exigences applicables, evaluer l'impact des evolutions recentes et proposer un plan de mise en conformite.`,
+      scope: `Le domaine ${mandate.sector} constitue le perimetre de veille confie a votre equipe. Il s'agit d'en couvrir les sources, les exigences applicables et les evolutions recentes.`,
+      mandateLine: mandate.title,
+      expectationsLabel: "Attentes du comite de conformite",
+      presentationLabel: "Restitution au comite de conformite"
+    };
+  }
+
   return {
     audienceSuffix: "COMEX",
     context: `Le COMEX souhaite explorer l'entree sur le marche ${mandate.sector}. Votre cabinet est mandate pour evaluer la faisabilite de cette trajectoire, identifier les ecarts avec le systeme ISO 9001 actuel et proposer un plan de transition realiste.`,
@@ -67,6 +79,17 @@ export function getDossierFraming(type: DeliverableType): DossierFraming {
       missionContext: "Restitution attendue en revue de direction aujourd'hui a 16h30",
       stakeLabel: "Enjeu direction",
       stakeValue: "Reduire les reclamations en embarquant les pilotes de processus",
+      frameworkLabel: "Cadre"
+    };
+  }
+
+  if (type === "plan-action") {
+    return {
+      strategicObjective: "Structurer la veille reglementaire et normative",
+      targetsLabel: "Domaines de veille",
+      missionContext: "Restitution attendue au comite de conformite aujourd'hui a 16h30",
+      stakeLabel: "Enjeu conformite",
+      stakeValue: "Detecter a temps les evolutions applicables et rester en conformite",
       frameworkLabel: "Cadre"
     };
   }
@@ -95,6 +118,22 @@ export function getRestitutionFraming(type: DeliverableType): RestitutionFraming
         "Votre equipe prepare sa cartographie de processus annotee, son plan d'indicateurs et ses leviers de mobilisation en autonomie. ARCANIS fournit le contexte professionnel, pas le livrable.",
       panelNote:
         "Une cartographie techniquement juste pourra etre challengee si elle ignore les interfaces, les reclamations reelles ou l'adhesion des pilotes."
+    };
+  }
+
+  if (type === "plan-action") {
+    return {
+      navLabel: "Conformite",
+      pageTitle: "Face au comite de conformite",
+      pageSubtitle:
+        "Votre equipe prepare maintenant son tableau de veille annote et son plan de mise en conformite.",
+      expectationsTitle: "Le comite de conformite attend",
+      panelEyebrow: "Restitution au comite de conformite",
+      panelTitle: "Preparation hors plateforme",
+      panelBody:
+        "Votre equipe prepare son tableau de veille, son analyse d'impact et son plan de mise en conformite en autonomie. ARCANIS fournit le contexte professionnel, pas le livrable.",
+      panelNote:
+        "Un tableau de veille exhaustif pourra etre challenge s'il n'evalue pas l'impact reel des evolutions ni les priorites de mise en conformite."
     };
   }
 
