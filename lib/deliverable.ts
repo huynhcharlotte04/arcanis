@@ -25,6 +25,8 @@ export type DossierFraming = {
 
 export type RestitutionFraming = {
   navLabel: string;
+  pageTitle: string;
+  pageSubtitle: string;
   expectationsTitle: string;
   panelEyebrow: string;
   panelTitle: string;
@@ -83,6 +85,9 @@ export function getRestitutionFraming(type: DeliverableType): RestitutionFraming
   if (type === "cartographie-annotee") {
     return {
       navLabel: "Revue",
+      pageTitle: "Face a la revue de direction",
+      pageSubtitle:
+        "Votre equipe prepare maintenant sa cartographie de processus annotee et son plan d'indicateurs.",
       expectationsTitle: "La revue de direction attend",
       panelEyebrow: "Restitution en revue de direction",
       panelTitle: "Preparation hors plateforme",
@@ -95,6 +100,9 @@ export function getRestitutionFraming(type: DeliverableType): RestitutionFraming
 
   return {
     navLabel: "COMEX",
+    pageTitle: "Face au COMEX",
+    pageSubtitle:
+      "Votre cabinet prepare maintenant son evaluation de faisabilite et son support hors plateforme.",
     expectationsTitle: "Le COMEX attend",
     panelEyebrow: "Restitution orale",
     panelTitle: "Preparation hors plateforme",

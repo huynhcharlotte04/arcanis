@@ -23,12 +23,19 @@ export function DocumentCenter() {
       visibility: "Consultant"
     })
   );
+  const missionLabel = activeModule.missionId.replace("mission-", "Mission ");
+  // Referentiel court (ISO13485...) pour les modules "referentiel", perimetre
+  // du processus pour les modules "cartographie".
+  const scopeTag =
+    activeModule.deliverableType === "cartographie-annotee"
+      ? mandate.sector
+      : mandate.referential.replace(/\s/g, "");
 
   return (
     <div className="overflow-hidden rounded-lg border border-inkline bg-white/[0.035]">
       <div className="border-b border-inkline bg-obsidian/45 px-5 py-4">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
-          Mission 001 / {mandate.referential.replace(/\s/g, "")}
+          {missionLabel} / {scopeTag}
         </p>
         <p className="mt-2 text-sm leading-6 text-mist">
           Documents ouverts pour le mandat {mandate.sector}.
