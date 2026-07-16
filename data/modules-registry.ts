@@ -1,12 +1,14 @@
 import type { SimulationModule } from "@/lib/types";
 import { autresReferentielsModule } from "./modules/autres-referentiels";
 import { qseal13BpmModule } from "./modules/qseal13-bpm";
+import { veilleReglementaireModule } from "./modules/veille-reglementaire";
 
 // Registre central de tous les modules de simulation disponibles.
 // Ajouter un module = importer son dossier et l'ajouter a cette liste.
 export const modules: SimulationModule[] = [
   autresReferentielsModule,
-  qseal13BpmModule
+  qseal13BpmModule,
+  veilleReglementaireModule
 ];
 
 // Module ouvert par defaut. Toute resolution qui echoue retombe dessus,

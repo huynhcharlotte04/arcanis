@@ -234,7 +234,7 @@ export function TrainerDashboard() {
         <div className="flex flex-col justify-between gap-4 border-b border-inkline pb-5 sm:flex-row sm:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
-              Evenements de Mission 001
+              Evenements de {selectedModule.missionId.replace("mission-", "Mission ")}
             </p>
             <h2 className="mt-2 text-2xl font-semibold text-porcelain">
               Console de declenchement
