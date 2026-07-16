@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getDefaultModule } from "@/data/modules-registry";
 import { getDocumentsForMission, groupDocumentsByCategory } from "@/lib/documents";
 import { getMandateById } from "@/lib/mandates";
 import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
@@ -13,10 +14,11 @@ export function DocumentCenter() {
     setSession(loadConsultantSession());
   }, []);
 
-  const mandate = getMandateById(session.mandateId);
+  const activeModule = getDefaultModule();
+  const mandate = getMandateById(activeModule.mandates, session.mandateId);
   const folders = groupDocumentsByCategory(
     getDocumentsForMission({
-      missionId: "mission-001",
+      missionId: activeModule.missionId,
       mandateId: mandate.id,
       visibility: "Consultant"
     })

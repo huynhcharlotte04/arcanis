@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { mandates, simulation } from "@/data/mission";
+import { getDefaultModule } from "@/data/modules-registry";
 import {
   defaultTrainerSession,
   loadTriggeredEventIds,
@@ -19,6 +19,7 @@ function generateSessionCode() {
 export function TrainerDashboard() {
   const [session, setSession] = useState<TrainerSession>(defaultTrainerSession);
   const [triggeredIds, setTriggeredIds] = useState<string[]>([]);
+  const { mandates, simulation } = getDefaultModule();
   const hasSession = session.sessionCode.trim().length > 0;
 
   useEffect(() => {

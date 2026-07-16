@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { getDefaultModule } from "@/data/modules-registry";
 import { getMandateByCabinetName, hasKnownCabinetName } from "@/lib/mandates";
 import {
   emptyConsultantSession,
@@ -13,6 +14,7 @@ import type { ConsultantSession } from "@/lib/types";
 export function JoinMissionPanel() {
   const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
   const [accessRequired, setAccessRequired] = useState(false);
+  const { mandates } = getDefaultModule();
   const canJoin =
     session.sessionCode.trim().length > 0 && session.cabinetName.trim().length > 0;
 
@@ -21,20 +23,20 @@ export function JoinMissionPanel() {
 
     const storedSession = loadConsultantSession();
     const next = storedSession.cabinetName
-      ? { ...storedSession, mandateId: getMandateByCabinetName(storedSession.cabinetName).id }
+      ? { ...storedSession, mandateId: getMandateByCabinetName(mandates, storedSession.cabinetName).id }
       : storedSession;
 
     setSession(next);
     if (storedSession.cabinetName) {
       saveConsultantSession(next);
     }
-  }, []);
+  }, [mandates]);
 
   function update(key: keyof ConsultantSession, value: string) {
     const next = { ...session, [key]: value };
 
     if (key === "cabinetName") {
-      next.mandateId = getMandateByCabinetName(value).id;
+      next.mandateId = getMandateByCabinetName(mandates, value).id;
     }
 
     setSession(next);
@@ -44,7 +46,7 @@ export function JoinMissionPanel() {
   function persistDeducedMandate() {
     const next = {
       ...session,
-      mandateId: getMandateByCabinetName(session.cabinetName).id
+      mandateId: getMandateByCabinetName(mandates, session.cabinetName).id
     };
 
     setSession(next);
@@ -52,7 +54,7 @@ export function JoinMissionPanel() {
   }
 
   const hasCabinet = session.cabinetName.trim().length > 0;
-  const isKnownCabinet = hasKnownCabinetName(session.cabinetName);
+  const isKnownCabinet = hasKnownCabinetName(mandates, session.cabinetName);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">

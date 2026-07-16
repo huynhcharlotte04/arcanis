@@ -1,6 +1,8 @@
-import { simulation } from "@/data/mission";
+import { getDefaultModule } from "@/data/modules-registry";
 
 export function RestitutionPrep() {
+  const { simulation } = getDefaultModule();
+
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_0.72fr]">
       <section className="glass-panel rounded-lg p-6 sm:p-8">

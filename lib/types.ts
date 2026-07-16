@@ -144,3 +144,19 @@ export type SimulationData = {
   comexExpectations: ComexExpectation[];
   keyDates: string[];
 };
+
+export type DeliverableType =
+  | "restitution-comex"
+  | "cartographie-annotee"
+  | "plan-action";
+
+export type SimulationModule = {
+  id: string;
+  label: string;
+  missionId: string;
+  company: ClientCompany;
+  mandates: Mandate[];
+  simulation: SimulationData;
+  documentBasePath: string;
+  deliverableType: DeliverableType;
+};

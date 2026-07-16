@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { company } from "@/data/company";
-import { mandates } from "@/data/mission";
+import { getDefaultModule } from "@/data/modules-registry";
 import { getMandateById } from "@/lib/mandates";
 import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
 import type { ConsultantSession } from "@/lib/types";
@@ -53,7 +52,8 @@ export function ClientDossier() {
     setSession(loadConsultantSession());
   }, []);
 
-  const mandate = getMandateById(session.mandateId);
+  const { company, mandates } = getDefaultModule();
+  const mandate = getMandateById(mandates, session.mandateId);
 
   return (
     <div className="space-y-6">

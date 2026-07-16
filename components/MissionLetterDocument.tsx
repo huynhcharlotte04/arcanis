@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { simulation } from "@/data/mission";
+import { getDefaultModule } from "@/data/modules-registry";
 import { getMandateById } from "@/lib/mandates";
 import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
 import type { ConsultantSession } from "@/lib/types";
@@ -13,7 +13,9 @@ export function MissionLetterDocument() {
     setSession(loadConsultantSession());
   }, []);
 
-  const mandate = getMandateById(session.mandateId);
+  const activeModule = getDefaultModule();
+  const { simulation } = activeModule;
+  const mandate = getMandateById(activeModule.mandates, session.mandateId);
   const closedMissionContext = `Le COMEX souhaite explorer l'entree sur le marche ${mandate.sector}. Votre cabinet est mandate pour evaluer la faisabilite de cette trajectoire, identifier les ecarts avec le systeme ISO 9001 actuel et proposer un plan de transition realiste.`;
   const imposedScope = `Le referentiel ${mandate.referential} est associe au mandat confie par le COMEX. Il constitue une contrainte de depart, pas une variable d'arbitrage.`;
   const letterRows = [
