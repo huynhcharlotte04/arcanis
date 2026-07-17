@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { BrandHeader } from "@/components/BrandHeader";
+import { MontrelMark } from "@/components/MontrelMark";
 
 export default function HomePage() {
   return (
@@ -53,11 +54,16 @@ export default function HomePage() {
                 </span>
               </div>
               <div className="space-y-5">
-                <div>
-                  <p className="text-sm text-mist">Entreprise</p>
-                  <p className="mt-1 text-2xl font-semibold text-porcelain">
-                    Montrel Industries
-                  </p>
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md border border-brass/55 bg-brass/10 text-brass">
+                    <MontrelMark size={34} title="Emblème Montrel Industries" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-mist">Entreprise</p>
+                    <p className="mt-1 text-2xl font-semibold text-porcelain">
+                      Montrel Industries
+                    </p>
+                  </div>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {[
