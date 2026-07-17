@@ -16,15 +16,15 @@ export const company: ClientCompany = {
   ],
   organization: [
     "Direction générale basée au siège de Lyon",
-    "Deux sites industriels : assemblage et essais",
-    "Direction qualité rattachée aux opérations",
-    "Service commercial engage sur plusieurs appels d'offres européens"
+    "Deux sites industriels : Lyon (siège et production) et un site secondaire",
+    "Direction qualité groupe rattachée à la direction générale",
+    "Service commercial engagé sur plusieurs appels d'offres européens"
   ],
   certifications: [
     "ISO 9001 depuis 2018",
     "Audit de suivi sans non-conformité majeure",
     "Pratiques environnementales formalisées mais non certifiées",
-    "Culture sécurité presente, encore peu structurée au niveau système"
+    "Culture sécurité présente, encore peu structurée au niveau système"
   ],
   strategicObjectives: [
     "Entrer sur des marchés soumis à des exigences sectorielles plus fortes",
@@ -40,22 +40,22 @@ export const company: ClientCompany = {
   mandateIssues: [
     "Choisir un référentiel compatible avec la diversification visée",
     "Convaincre le COMEX d'engager une trajectoire réaliste",
-    "Preserver la crédibilité commerciale sans surestimer la maturité interne"
+    "Préserver la crédibilité commerciale sans surestimer la maturité interne"
   ],
   currentSituation: [
-    "Montrel Industries dispose d'un socle ISO 9001 installe, mais les pratiques restent hétérogènes entre sites.",
+    "Montrel Industries dispose d'un socle ISO 9001 installé, mais les pratiques restent hétérogènes entre sites.",
     "La direction souhaite accéder à de nouveaux marchés où les exigences clients sont plus sectorielles et plus documentées.",
     "Les équipes opérationnelles sont déjà mobilisées sur les délais commerciaux et les tensions fournisseurs.",
     "Le COMEX attend une recommandation claire, soutenable et reliée aux priorités de transformation."
   ],
   constraints: [
-    "Calendrier commercial serre",
+    "Calendrier commercial serré",
     "Ressources internes limitées pour conduire plusieurs transformations",
-    "Maturité QSE inegale entre les deux sites",
+    "Maturité QSE inégale entre les deux sites",
     "Besoin de convaincre le COMEX avant d'engager les investissements"
   ],
   risks: [
-    "Choisir un référentiel attractif mais disproportionne",
+    "Choisir un référentiel attractif mais disproportionné",
     "Sous-estimer les impacts sur les compétences et la documentation",
     "Mobiliser les équipes sur un chantier mal priorisé",
     "Promettre au marché une maturité que l'organisation ne maîtrise pas encore"
