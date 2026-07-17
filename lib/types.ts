@@ -155,6 +155,7 @@ export type DeliverableType =
 export type SimulationModule = {
   id: string;
   label: string;
+  accent: string;
   sessionCodePrefix: string;
   missionId: string;
   company: ClientCompany;

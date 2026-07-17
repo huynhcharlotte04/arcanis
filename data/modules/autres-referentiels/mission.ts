@@ -4,19 +4,19 @@ export const mandates: Mandate[] = [
   {
     id: "iso13485",
     cabinetName: "Cabinet Horizon",
-    title: "Diversification Dispositifs medicaux",
-    sector: "Dispositifs medicaux",
+    title: "Diversification Dispositifs médicaux",
+    sector: "Dispositifs médicaux",
     referential: "ISO 13485",
     objective:
-      "Evaluer la faisabilite d'une entree sur le marche des dispositifs medicaux avec le referentiel ISO 13485 impose par le mandat.",
+      "Évaluer la faisabilité d'une entrée sur le marché des dispositifs médicaux avec le référentiel ISO 13485 imposé par le mandat.",
     issues: [
-      "Maitrise documentaire et preuves attendues plus strictes que dans le systeme ISO 9001 actuel.",
-      "Exigences renforcees sur la gestion des risques, la tracabilite et les fournisseurs critiques.",
-      "Credibilite a construire face a des clients tres sensibles a la conformite reglementaire."
+      "Maîtrise documentaire et preuves attendues plus strictes que dans le système ISO 9001 actuel.",
+      "Exigences renforcées sur la gestion des risques, la traçabilité et les fournisseurs critiques.",
+      "Crédibilité à construire face à des clients très sensibles à la conformité réglementaire."
     ],
     comexExpectations: [
-      "Clarifier les ecarts majeurs entre ISO 9001 et ISO 13485.",
-      "Identifier les impacts sur conception, achats, production et controle.",
+      "Clarifier les écarts majeurs entre ISO 9001 et ISO 13485.",
+      "Identifier les impacts sur conception, achats, production et contrôle.",
       "Proposer une trajectoire soutenable avant engagement commercial."
     ],
     specificMessages: [
@@ -24,14 +24,14 @@ export const mandates: Mandate[] = [
         id: "mandate-iso13485-industrie",
         sender: "Laurent Vasseur",
         role: "Directeur industriel",
-        subject: "Capacite de tracabilite pour le medical",
+        subject: "Capacité de traçabilité pour le médical",
         preview:
-          "Nos lignes actuelles n'ont pas toutes le meme niveau de preuve documentaire.",
+          "Nos lignes actuelles n'ont pas toutes le même niveau de preuve documentaire.",
         receivedAt: "10:32",
         body: [
           "Bonjour,",
-          "Sur le medical, la question centrale sera notre capacite a produire des preuves robustes et homogenes sur plusieurs sites.",
-          "Merci d'evaluer l'impact reel d'ISO 13485 sur les dossiers de lot, la maitrise fournisseur et le controle des changements."
+          "Sur le médical, la question centrale sera notre capacité à produire des preuves robustes et homogènes sur plusieurs sites.",
+          "Merci d'évaluer l'impact réel d'ISO 13485 sur les dossiers de lot, la maîtrise fournisseur et le contrôle des changements."
         ]
       }
     ]
@@ -43,30 +43,30 @@ export const mandates: Mandate[] = [
     sector: "Automobile",
     referential: "IATF 16949",
     objective:
-      "Evaluer la faisabilite d'une entree sur le marche automobile avec le referentiel IATF 16949 impose par le mandat.",
+      "Évaluer la faisabilité d'une entrée sur le marché automobile avec le référentiel IATF 16949 imposé par le mandat.",
     issues: [
-      "Attentes elevees sur la robustesse processus, l'APQP, la maitrise des changements et les fournisseurs.",
-      "Pression forte sur les delais, la preuve de capabilite et la performance serie.",
-      "Risque d'ecart entre le niveau ISO 9001 actuel et les exigences client automobile."
+      "Attentes élevées sur la robustesse processus, l'APQP, la maîtrise des changements et les fournisseurs.",
+      "Pression forte sur les délais, la preuve de capabilite et la performance série.",
+      "Risque d'écart entre le niveau ISO 9001 actuel et les exigences client automobile."
     ],
     comexExpectations: [
       "Identifier les prerequis avant de viser des donneurs d'ordre automobile.",
-      "Evaluer les impacts sur production, methodes, achats et pilotage performance.",
-      "Definir les risques d'une entree trop rapide sur ce marche."
+      "Évaluer les impacts sur production, methodes, achats et pilotage performance.",
+      "Définir les risques d'une entrée trop rapide sur ce marché."
     ],
     specificMessages: [
       {
         id: "mandate-iatf16949-industrie",
         sender: "Laurent Vasseur",
         role: "Directeur industriel",
-        subject: "Exigences serie et pression automobile",
+        subject: "Exigences série et pression automobile",
         preview:
           "Le niveau d'exigence automobile pourrait transformer nos routines industrielles.",
         receivedAt: "10:32",
         body: [
           "Bonjour,",
-          "L'automobile suppose un niveau de discipline operationnelle tres superieur a notre fonctionnement actuel sur certaines lignes.",
-          "Merci d'integrer les impacts sur la capabilite, la validation process, la gestion des modifications et les fournisseurs critiques."
+          "L'automobile suppose un niveau de discipline opérationnelle très superieur à notre fonctionnement actuel sur certaines lignes.",
+          "Merci d'intégrer les impacts sur la capabilite, la validation process, la gestion des modifications et les fournisseurs critiques."
         ]
       }
     ]
@@ -74,34 +74,34 @@ export const mandates: Mandate[] = [
   {
     id: "en9100",
     cabinetName: "Cabinet Meridian",
-    title: "Diversification Aeronautique",
-    sector: "Aeronautique",
+    title: "Diversification Aéronautique",
+    sector: "Aéronautique",
     referential: "EN 9100",
     objective:
-      "Evaluer la faisabilite d'une entree sur le marche aeronautique avec le referentiel EN 9100 impose par le mandat.",
+      "Évaluer la faisabilité d'une entrée sur le marché aéronautique avec le référentiel EN 9100 imposé par le mandat.",
     issues: [
-      "Exigences renforcees sur la gestion des risques, la configuration et la maitrise des fournisseurs.",
-      "Besoin de preuves fiables dans un environnement ou la securite et la conformite sont decisives.",
-      "Transformation culturelle necessaire pour passer d'un referentiel generaliste a un cadre sectoriel exigeant."
+      "Exigences renforcées sur la gestion des risques, la configuration et la maîtrise des fournisseurs.",
+      "Besoin de preuves fiables dans un environnement où la sécurité et la conformité sont décisives.",
+      "Transformation culturelle nécessaire pour passer d'un référentiel généraliste à un cadre sectoriel exigeant."
     ],
     comexExpectations: [
-      "Montrer ce que l'EN 9100 apporte au-dela d'ISO 9001.",
-      "Prioriser les impacts sur l'organisation et la gouvernance qualite.",
-      "Estimer les risques de credibilite face aux donneurs d'ordre."
+      "Montrer ce que l'EN 9100 apporte au-delà d'ISO 9001.",
+      "Prioriser les impacts sur l'organisation et la gouvernance qualité.",
+      "Estimer les risques de crédibilité face aux donneurs d'ordre."
     ],
     specificMessages: [
       {
         id: "mandate-en9100-industrie",
         sender: "Laurent Vasseur",
         role: "Directeur industriel",
-        subject: "Maitrise configuration et aeronautique",
+        subject: "Maîtrise configuration et aéronautique",
         preview:
-          "La gestion de configuration n'est pas encore structuree au niveau attendu.",
+          "La gestion de configuration n'est pas encore structurée au niveau attendu.",
         receivedAt: "10:32",
         body: [
           "Bonjour,",
-          "Pour l'aeronautique, notre point faible probable sera la gestion de configuration et la formalisation des preuves de conformite.",
-          "Merci d'evaluer l'effort de structuration necessaire si le COMEX engage la trajectoire EN 9100."
+          "Pour l'aéronautique, notre point faible probable sera la gestion de configuration et la formalisation des preuves de conformité.",
+          "Merci d'évaluer l'effort de structuration nécessaire si le COMEX engage la trajectoire EN 9100."
         ]
       }
     ]
@@ -113,16 +113,16 @@ export const mandates: Mandate[] = [
     sector: "Agroalimentaire",
     referential: "ISO 22000",
     objective:
-      "Evaluer la faisabilite d'une entree sur le marche agroalimentaire avec le referentiel ISO 22000 impose par le mandat.",
+      "Évaluer la faisabilité d'une entrée sur le marché agroalimentaire avec le référentiel ISO 22000 imposé par le mandat.",
     issues: [
-      "Integration de la securite des denrees, des PRP et de l'approche HACCP dans un systeme industriel existant.",
-      "Nouveaux controles sur hygiene, contamination, nettoyage et maitrise des dangers.",
-      "Besoin de clarifier les conditions de faisabilite entre opportunite commerciale et transformation operationnelle."
+      "Intégration de la sécurité des denrées, des PRP et de l'approche HACCP dans un système industriel existant.",
+      "Nouveaux contrôles sur hygiene, contamination, nettoyage et maîtrise des dangers.",
+      "Besoin de clarifier les conditions de faisabilité entre opportunite commerciale et transformation opérationnelle."
     ],
     comexExpectations: [
       "Expliquer les exigences nouvelles par rapport au socle ISO 9001.",
-      "Identifier les transformations necessaires sur sites, fournisseurs et controles.",
-      "Proposer une trajectoire realiste pour eviter un engagement premature."
+      "Identifier les transformations nécessaires sur sites, fournisseurs et contrôles.",
+      "Proposer une trajectoire réaliste pour éviter un engagement prématuré."
     ],
     specificMessages: [
       {
@@ -135,8 +135,8 @@ export const mandates: Mandate[] = [
         receivedAt: "10:32",
         body: [
           "Bonjour,",
-          "L'agroalimentaire peut ouvrir un marche interessant, mais nos ateliers n'ont pas ete penses autour de contraintes hygiene aussi fortes.",
-          "Merci d'evaluer les impacts sur les flux, le nettoyage, la prevention des contaminations et la competence des equipes."
+          "L'agroalimentaire peut ouvrir un marché intéressant, mais nos ateliers n'ont pas ete penses autour de contraintes hygiene aussi fortes.",
+          "Merci d'évaluer les impacts sur les flux, le nettoyage, la prévention des contaminations et la compétence des équipes."
         ]
       }
     ]
@@ -145,30 +145,30 @@ export const mandates: Mandate[] = [
 
 export const simulation: SimulationData = {
   missionLetter: {
-    clientCompany: "ARCANIS Industries",
+    clientCompany: "Montrel Industries",
     context:
-      "Le COMEX a retenu plusieurs axes de diversification a instruire. Chaque cabinet recoit un mandat ferme et doit evaluer la faisabilite de la trajectoire confiee.",
+      "Le COMEX à retenu plusieurs axes de diversification à instruire. Chaque cabinet recoit un mandat ferme et doit évaluer la faisabilité de la trajectoire confiée.",
     objective:
-      "Eclairer la decision du COMEX en identifiant les ecarts avec ISO 9001, les impacts organisationnels, les risques et les conditions de mise en oeuvre.",
+      "Éclairer la décision du COMEX en identifiant les écarts avec ISO 9001, les impacts organisationnels, les risques et les conditions de mise en œuvre.",
     assignedMandate:
-      "Votre cabinet doit analyser le mandat confie par le COMEX. Le referentiel associe au mandat est une contrainte de depart, pas une variable d'arbitrage.",
+      "Votre cabinet doit analyser le mandat confié par le COMEX. Le référentiel associé au mandat est une contrainte de départ, pas une variable d'arbitrage.",
     expectedDeliverable:
-      "Une recommandation de mise en oeuvre devant le COMEX, appuyee par un support prepare hors plateforme.",
+      "Une recommandation de mise en œuvre devant le COMEX, appuyée par un support préparé hors plateforme.",
     presentationDate: "Aujourd'hui, 16h30"
   },
   messages: [
     {
       id: "dg",
       sender: "Claire Montreuil",
-      role: "Directrice generale",
+      role: "Directrice générale",
       subject: "Clarification attendue avant le COMEX",
       preview:
-        "Le COMEX attend une position claire sur la faisabilite du mandat confie.",
+        "Le COMEX attend une position claire sur la faisabilité du mandat confié.",
       receivedAt: "08:42",
       body: [
         "Bonjour,",
-        "Nous avons besoin d'une recommandation ferme sur la faisabilite du mandat confie a votre cabinet.",
-        "Votre position devra tenir compte de notre maturite actuelle et du calendrier commercial."
+        "Nous avons besoin d'une recommandation ferme sur la faisabilité du mandat confié à votre cabinet.",
+        "Votre position devra tenir compte de notre maturité actuelle et du calendrier commercial."
       ]
     },
     {
@@ -177,54 +177,54 @@ export const simulation: SimulationData = {
       role: "Directrice commerciale",
       subject: "Pression sur les prochains appels d'offres",
       preview:
-        "Deux prospects demandent des garanties plus fortes sur la maitrise des risques.",
+        "Deux prospects demandent des garanties plus fortes sur la maîtrise des risques.",
       receivedAt: "09:15",
       body: [
         "Bonjour,",
-        "Nous sommes en discussion avec deux grands comptes europeens. Ils ne demandent pas seulement un certificat, ils veulent etre rassures sur notre capacite a tenir les exigences dans la duree.",
+        "Nous sommes en discussion avec deux grands comptes européens. Ils ne demandent pas seulement un certificat, ils veulent être rassures sur notre capacité à tenir les exigences dans la durée.",
         "Une trajectoire trop lente pourrait fragiliser notre position commerciale."
       ]
     },
     {
-      id: "qualite",
+      id: "qualité",
       sender: "Marc Bellanger",
-      role: "Responsable qualite",
-      subject: "Maturite ISO 9001",
+      role: "Responsable qualité",
+      subject: "Maturité ISO 9001",
       preview:
-        "Le socle ISO 9001 existe, mais les pratiques ne sont pas homogenes entre sites.",
+        "Le socle ISO 9001 existe, mais les pratiques ne sont pas homogènes entre sites.",
       receivedAt: "10:05",
       body: [
         "Bonjour,",
-        "Notre systeme ISO 9001 est solide sur le papier. En revanche, certaines pratiques restent tres dependantes des responsables locaux.",
-        "Si le nouveau referentiel impose davantage de preuves ou de pilotage transversal, il faudra prevoir un accompagnement serieux."
+        "Notre système ISO 9001 est solide sur le papier. En revanche, certaines pratiques restent très dependantes des responsables locaux.",
+        "Si le nouveau référentiel impose davantage de preuves ou de pilotage transversal, il faudra prévoir un accompagnement sérieux."
       ]
     },
     {
       id: "client",
       sender: "Service achats client",
-      role: "Client strategique",
+      role: "Client stratégique",
       subject: "Exigences de qualification fournisseur",
       preview:
-        "Notre grille fournisseur evoluera lors du prochain cycle de selection.",
+        "Notre grille fournisseur evoluera lors du prochain cycle de sélection.",
       receivedAt: "11:20",
       body: [
         "Madame, Monsieur,",
-        "Notre prochain cycle de selection integrera des exigences renforcees en matiere de maitrise operationnelle, gestion des risques et preuves de conformite.",
-        "Les fournisseurs capables de demontrer une trajectoire structuree seront privilegies."
+        "Notre prochain cycle de sélection integrera des exigences renforcées en matière de maîtrise opérationnelle, gestion des risques et preuves de conformité.",
+        "Les fournisseurs capables de demontrer une trajectoire structurée seront privilegies."
       ]
     },
     {
       id: "fournisseur",
       sender: "Partenaire composants",
       role: "Fournisseur critique",
-      subject: "Delais sur composants sensibles",
+      subject: "Délais sur composants sensibles",
       preview:
         "Les tensions d'approvisionnement pourraient peser sur la trajectoire de transformation.",
       receivedAt: "12:10",
       body: [
         "Bonjour,",
         "Nous anticipons des tensions ponctuelles sur plusieurs composants critiques au prochain trimestre.",
-        "Toute evolution de referentiel qui augmenterait les exigences de tracabilite devra etre anticipee avec nos equipes."
+        "Toute évolution de référentiel qui augmenterait les exigences de traçabilité devra être anticipée avec nos équipes."
       ]
     }
   ],
@@ -233,64 +233,64 @@ export const simulation: SimulationData = {
       id: "dg-confirmation-mandat",
       triggerTitle: "Mail DG - Confirmation du mandat",
       sender: "Claire Montreuil",
-      role: "Directrice generale",
+      role: "Directrice générale",
       simulatedTime: "13:05",
       summary:
-        "La direction confirme qu'elle attend une evaluation de faisabilite assumee et directement exploitable.",
+        "La direction confirme qu'elle attend une évaluation de faisabilité assumée et directement exploitable.",
       subject: "Confirmation du mandat attendu par le COMEX",
       body: [
         "Bonjour,",
-        "Je vous confirme que le COMEX attend une position claire sur la faisabilite du mandat confie a votre cabinet.",
-        "Votre recommandation devra montrer comment cette trajectoire peut etre mise en oeuvre par ARCANIS Industries, au regard de notre strategie de diversification et de notre maturite actuelle.",
-        "Nous serons attentifs a la solidite de votre analyse, pas seulement a la description du referentiel associe."
+        "Je vous confirme que le COMEX attend une position claire sur la faisabilité du mandat confié à votre cabinet.",
+        "Votre recommandation devra montrer comment cette trajectoire peut être mise en œuvre par Montrel Industries, au regard de notre stratégie de diversification et de notre maturité actuelle.",
+        "Nous serons attentifs à la solidite de votre analyse, pas seulement à la description du référentiel associé."
       ]
     },
     {
       id: "commercial-nouveau-marche",
-      triggerTitle: "Mail Directeur Commercial - Nouveau marche prioritaire",
+      triggerTitle: "Mail Directeur Commercial - Nouveau marché prioritaire",
       sender: "Nadia Khelifi",
       role: "Directrice commerciale",
       simulatedTime: "13:35",
       summary:
-        "Un marche cible renforce la pression sur la credibilite de la trajectoire confiee.",
-      subject: "Nouveau marche prioritaire a integrer",
+        "Un marché cible renforce la pression sur la crédibilité de la trajectoire confiée.",
+      subject: "Nouveau marché prioritaire à intégrer",
       body: [
         "Bonjour,",
-        "Nous venons de recevoir un signal fort d'un prospect prioritaire. Il recherche un fournisseur capable de demontrer une maitrise plus robuste des exigences qualite, des risques et de la tracabilite.",
-        "Votre proposition devra nous aider a comprendre si la trajectoire confiee renforce vraiment notre position commerciale.",
-        "Merci aussi d'identifier les ecarts avec ISO 9001 que le COMEX devra anticiper."
+        "Nous venons de recevoir un signal fort d'un prospect prioritaire. Il recherche un fournisseur capable de demontrer une maîtrise plus robuste des exigences qualité, des risques et de la traçabilité.",
+        "Votre proposition devra nous aider à comprendre si la trajectoire confiée renforce vraiment notre position commerciale.",
+        "Merci aussi d'identifier les écarts avec ISO 9001 que le COMEX devra anticiper."
       ]
     },
     {
       id: "qualite-limites-iso9001",
-      triggerTitle: "Mail Responsable Qualite - Limites du systeme ISO9001 actuel",
+      triggerTitle: "Mail Responsable Qualité - Limites du système ISO9001 actuel",
       sender: "Marc Bellanger",
-      role: "Responsable qualite",
+      role: "Responsable qualité",
       simulatedTime: "14:10",
       summary:
-        "Le systeme ISO 9001 actuel est utile mais insuffisant pour certains marches cibles.",
-      subject: "Limites du systeme ISO 9001 actuel",
+        "Le système ISO 9001 actuel est utile mais insuffisant pour certains marchés cibles.",
+      subject: "Limites du système ISO 9001 actuel",
       body: [
         "Bonjour,",
-        "Notre systeme ISO 9001 donne un cadre solide, mais il ne couvre pas toutes les exigences sectorielles que nous rencontrons dans les nouveaux appels d'offres.",
-        "Les principaux points sensibles sont la profondeur des preuves, la gestion des competences, la maitrise fournisseur et la formalisation des risques.",
-        "Votre analyse devra expliquer ce que le nouveau referentiel ajoute vraiment, et ce que cela implique pour l'organisation."
+        "Notre système ISO 9001 donne un cadre solide, mais il ne couvre pas toutes les exigences sectorielles que nous rencontrons dans les nouveaux appels d'offres.",
+        "Les principaux points sensibles sont la profondeur des preuves, la gestion des compétences, la maîtrise fournisseur et la formalisation des risques.",
+        "Votre analyse devra expliquer ce que le nouveau référentiel ajoute vraiment, et ce que cela implique pour l'organisation."
       ]
     },
     {
       id: "qualite-confirmation-perimetre",
-      triggerTitle: "Mail Directrice Qualite - Confirmation du perimetre",
+      triggerTitle: "Mail Directrice Qualité - Confirmation du périmètre",
       sender: "Claire Martin",
-      role: "Directrice qualite",
+      role: "Directrice qualité",
       simulatedTime: "14:25",
       summary:
-        "La direction qualite confirme que l'analyse doit rester centree sur le referentiel associe au mandat.",
-      subject: "Confirmation du perimetre de votre analyse",
+        "La direction qualité confirme que l'analyse doit rester centrée sur le référentiel associé au mandat.",
+      subject: "Confirmation du périmètre de votre analyse",
       body: [
         "Bonjour,",
-        "Je vous confirme que votre cabinet travaille bien sur le referentiel associe a son mandat. Ce perimetre a ete fixe par le COMEX afin d'evaluer une trajectoire precise de diversification.",
-        "Une analyse fondee sur un autre referentiel ne repondrait pas au besoin exprime par la direction.",
-        "Merci de concentrer votre recommandation sur la faisabilite, les ecarts avec ISO 9001, les impacts organisationnels et les conditions de transition."
+        "Je vous confirme que votre cabinet travaille bien sur le référentiel associé à son mandat. Ce périmètre a été fixe par le COMEX afin d'évaluer une trajectoire précise de diversification.",
+        "Une analyse fondée sur un autre référentiel ne repondrait pas au besoin exprime par la direction.",
+        "Merci de concentrer votre recommandation sur la faisabilité, les écarts avec ISO 9001, les impacts organisationnels et les conditions de transition."
       ]
     },
     {
@@ -300,68 +300,68 @@ export const simulation: SimulationData = {
       role: "Directeur industriel",
       simulatedTime: "14:45",
       summary:
-        "Les operations alertent sur la capacite reelle a absorber une transformation trop lourde.",
-      subject: "Contraintes de ressources operationnelles",
+        "Les opérations alertent sur la capacité réelle à absorber une transformation trop lourde.",
+      subject: "Contraintes de ressources opérationnelles",
       body: [
         "Bonjour,",
-        "Je souhaite attirer votre attention sur notre capacite de deploiement. Les sites sont deja mobilises sur plusieurs chantiers de production et de livraison.",
-        "Une trajectoire ambitieuse peut etre pertinente, mais elle doit rester soutenable pour les operations.",
-        "Le COMEX aura besoin d'un plan de transition credible, avec des priorites, des jalons et des risques clairement assumes."
+        "Je souhaite attirer votre attention sur notre capacité de déploiement. Les sites sont déjà mobilises sur plusieurs chantiers de production et de livraison.",
+        "Une trajectoire ambitieuse peut être pertinente, mais elle doit rester soutenable pour les opérations.",
+        "Le COMEX aura besoin d'un plan de transition crédible, avec des priorités, des jalons et des risques clairement assumes."
       ]
     },
     {
       id: "comex-attentes-restitution",
       triggerTitle: "Mail COMEX - Attentes de restitution",
-      sender: "Secretariat COMEX",
+      sender: "Secrétariat COMEX",
       role: "COMEX",
       simulatedTime: "15:30",
       summary:
-        "Le COMEX precise les attendus de la restitution orale finale.",
+        "Le COMEX précise les attendus de la restitution orale finale.",
       subject: "Attentes pour la restitution de 16h30",
       body: [
         "Bonjour,",
-        "Pour la restitution, le COMEX attend une evaluation de faisabilite, les ecarts majeurs avec ISO 9001, les impacts organisationnels, les risques majeurs et un plan de transition.",
-        "La presentation devra permettre une decision. Evitez une restitution descriptive : nous attendons une evaluation de faisabilite et une trajectoire defendable.",
-        "Merci de preparer une conclusion claire sur les conditions de reussite."
+        "Pour la restitution, le COMEX attend une évaluation de faisabilité, les écarts majeurs avec ISO 9001, les impacts organisationnels, les risques majeurs et un plan de transition.",
+        "La présentation devra permettre une décision. Evitez une restitution descriptive : nous attendons une évaluation de faisabilité et une trajectoire défendable.",
+        "Merci de préparer une conclusion claire sur les conditions de réussite."
       ]
     }
   ],
   comexExpectations: [
     {
-      title: "Une evaluation de faisabilite",
+      title: "Une évaluation de faisabilité",
       detail:
-        "Le COMEX attend une position claire sur la capacite d'ARCANIS Industries a engager le mandat confie."
+        "Le COMEX attend une position claire sur la capacité de Montrel Industries à engager le mandat confié."
     },
     {
-      title: "Les ecarts majeurs avec ISO 9001",
+      title: "Les écarts majeurs avec ISO 9001",
       detail:
-        "Les ecarts doivent etre relies au referentiel associe au mandat et au niveau de maturite actuel."
+        "Les écarts doivent être reliés au référentiel associé au mandat et au niveau de maturité actuel."
     },
     {
       title: "Les impacts organisationnels",
       detail:
-        "La direction veut comprendre les consequences sur les processus, roles, competences et preuves attendues."
+        "La direction veut comprendre les conséquences sur les processus, roles, compétences et preuves attendues."
     },
     {
       title: "Les risques",
       detail:
-        "La recommandation doit integrer les risques de deploiement, d'adhesion et de credibilite marche."
+        "La recommandation doit intégrer les risques de déploiement, d'adhésion et de crédibilité marché."
     },
     {
       title: "La trajectoire de transition",
       detail:
-        "Le COMEX attend une trajectoire realiste, lisible et defendable devant les operations."
+        "Le COMEX attend une trajectoire réaliste, lisible et défendable devant les opérations."
     },
     {
-      title: "Une proposition realiste",
+      title: "Une proposition réaliste",
       detail:
-        "Les couts, delais et ressources necessaires doivent etre assumes et compatibles avec les contraintes du client."
+        "Les coûts, délais et ressources nécessaires doivent être assumes et compatibles avec les contraintes du client."
     }
   ],
   keyDates: [
     "09h00 - Ouverture de mission",
-    "11h30 - Informations complementaires",
-    "14h00 - Preparation cabinet",
-    "16h30 - Presentation devant le COMEX"
+    "11h30 - Informations complémentaires",
+    "14h00 - Préparation cabinet",
+    "16h30 - Présentation devant le COMEX"
   ]
 };

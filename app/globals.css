@@ -5,6 +5,20 @@
 :root {
   color-scheme: dark;
   background: #0d0b09;
+  /* Accent actif : defini par module (voir SimulationNav). Defaut = laiton. */
+  --accent: #E0BE7C;
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.border-accent {
+  border-color: var(--accent);
 }
 
 * {

@@ -16,7 +16,7 @@ const config: Config = {
         copper: "#C98B5A",
         brass: "#E0BE7C",
         porcelain: "#F4EFE7",
-        mist: "#AAB6C2",
+        mist: "#C4CEDA",
         inkline: "rgba(244, 239, 231, 0.12)"
       },
       boxShadow: {

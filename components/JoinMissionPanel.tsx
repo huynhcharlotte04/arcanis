@@ -75,11 +75,11 @@ export function JoinMissionPanel() {
     <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
       <section className="glass-panel rounded-lg p-6 sm:p-8">
         <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brass">
-          Acces mission
+          Accès mission
         </p>
         {accessRequired ? (
           <div className="mt-5 rounded-md border border-brass/35 bg-brass/10 px-4 py-3 text-sm font-semibold leading-6 text-porcelain">
-            Rejoignez une mission pour acceder a cet espace.
+            Rejoignez une mission pour accéder à cet espace.
           </div>
         ) : null}
         <div className="mt-6 space-y-5">
@@ -92,7 +92,7 @@ export function JoinMissionPanel() {
               value={session.sessionCode}
               onChange={(event) => update("sessionCode", event.target.value)}
               placeholder="Ex. AR-4821"
-              className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/55"
+              className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/72"
             />
             {hasSessionCode ? (
               <span className="mt-2 block text-xs leading-6 text-mist">
@@ -111,12 +111,12 @@ export function JoinMissionPanel() {
               value={session.cabinetName}
               onChange={(event) => update("cabinetName", event.target.value)}
               placeholder="Ex. Cabinet Meridian"
-              className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/55"
+              className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/72"
             />
           </label>
           {hasCabinet && !isKnownCabinet ? (
             <p className="rounded-md border border-brass/30 bg-brass/10 px-4 py-3 text-sm leading-6 text-mist">
-              Cabinet non reconnu dans la session locale. Un mandat par defaut
+              Cabinet non reconnu dans la session locale. Un mandat par défaut
               sera ouvert et confirme dans la lettre de mission.
             </p>
           ) : null}
@@ -134,7 +134,7 @@ export function JoinMissionPanel() {
           <button
             type="button"
             disabled
-            className="mt-7 inline-flex w-full cursor-not-allowed justify-center rounded-md border border-inkline bg-white/[0.03] px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-mist/60"
+            className="mt-7 inline-flex w-full cursor-not-allowed justify-center rounded-md border border-inkline bg-white/[0.03] px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-mist/75"
           >
             Rejoindre la mission
           </button>
@@ -150,15 +150,15 @@ export function JoinMissionPanel() {
         </h2>
         <p className="mt-5 text-base leading-8 text-mist">
           La plateforme vous ouvre le contexte professionnel. Votre cabinet
-          prepare ensuite sa position hors plateforme, comme dans une mission
-          reelle.
+          prépare ensuite sa position hors plateforme, comme dans une mission
+          réelle.
         </p>
         <div className="mt-6 rounded-md border border-brass/25 bg-brass/10 p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brass">
             Mandat actif
           </p>
           <p className="mt-2 text-sm leading-7 text-mist">
-            Le mandat de votre cabinet est prepare en amont. Il sera revele
+            Le mandat de votre cabinet est prépare en amont. Il sera révélé
             dans la lettre de mission.
           </p>
         </div>

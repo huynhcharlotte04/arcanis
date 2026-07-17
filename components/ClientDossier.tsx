@@ -92,16 +92,16 @@ export function ClientDossier() {
           <div className="border-t border-inkline bg-gradient-to-br from-brass/14 via-white/[0.045] to-obsidian/20 p-6 sm:p-8 lg:border-l lg:border-t-0">
             <div className="h-full rounded-lg border border-brass/25 bg-obsidian/30 p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
-                Instantane client
+                Instantané client
               </p>
               <div className="mt-5 space-y-4">
                 <SnapshotItem label="Certification actuelle" value="ISO 9001" />
                 <SnapshotItem
-                  label="Objectif strategique"
+                  label="Objectif stratégique"
                   value={framing.strategicObjective}
                 />
                 <SnapshotItem
-                  label="Marches actuels"
+                  label="Marchés actuels"
                   value={company.clients.join(", ")}
                 />
                 <SnapshotItem
@@ -141,14 +141,14 @@ export function ClientDossier() {
         </section>
 
         <BriefList
-          title="Objectif strategique de la mission"
+          title="Objectif stratégique de la mission"
           items={company.strategicObjectives.slice(0, 2)}
         />
       </div>
 
       <section className="rounded-lg border border-brass/30 bg-brass/10 p-5">
         <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-brass">
-          Mandat confie a votre cabinet
+          Mandat confié à votre cabinet
         </h2>
         <div className="mt-4 grid gap-4 lg:grid-cols-[0.32fr_0.28fr_1fr]">
           <Metric label="Secteur" value={mandate.sector} />

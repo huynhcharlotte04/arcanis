@@ -1,70 +1,70 @@
 import type { ClientCompany } from "@/lib/types";
 
 export const company: ClientCompany = {
-  name: "ARCANIS Industries",
-  monogram: "AI",
+  name: "Montrel Industries",
+  monogram: "MI",
   presentation:
-    "Groupe industriel francais en croissance, ARCANIS Industries concoit et assemble des equipements techniques pour des clients europeens exigeants. L'entreprise dispose d'un savoir-faire reconnu, mais doit structurer ses pratiques pour acceder a de nouveaux marches.",
-  location: "Lyon, Auvergne-Rhone-Alpes, France",
-  headquartersVisual: "Siege social et centre de coordination industrielle",
+    "Groupe industriel français en croissance, Montrel Industries conçoit et assemble des équipements techniques pour des clients européens exigeants. L'entreprise dispose d'un savoir-faire reconnu, mais doit structurer ses pratiques pour accéder à de nouveaux marchés.",
+  location: "Lyon, Auvergne-Rhône-Alpes, France",
+  headquartersVisual: "Siège social et centre de coordination industrielle",
   sector:
-    "Conception et fabrication d'equipements industriels pour environnements techniques exigeants",
+    "Conception et fabrication d'équipements industriels pour environnements techniques exigeants",
   products: [
-    "Modules de pilotage pour lignes automatisees",
-    "Sous-ensembles mecaniques a forte contrainte documentaire",
-    "Solutions d'integration pour sites industriels sensibles"
+    "Modules de pilotage pour lignes automatisées",
+    "Sous-ensembles mécaniques à forte contrainte documentaire",
+    "Solutions d'intégration pour sites industriels sensibles"
   ],
   organization: [
-    "Direction generale basee au siege de Lyon",
+    "Direction générale basée au siège de Lyon",
     "Deux sites industriels : assemblage et essais",
-    "Direction qualite rattachee aux operations",
-    "Service commercial engage sur plusieurs appels d'offres europeens"
+    "Direction qualité rattachée aux opérations",
+    "Service commercial engage sur plusieurs appels d'offres européens"
   ],
   certifications: [
     "ISO 9001 depuis 2018",
-    "Audit de suivi sans non-conformite majeure",
-    "Pratiques environnementales formalisees mais non certifiees",
-    "Culture securite presente, encore peu structuree au niveau systeme"
+    "Audit de suivi sans non-conformité majeure",
+    "Pratiques environnementales formalisées mais non certifiées",
+    "Culture sécurité presente, encore peu structurée au niveau système"
   ],
   strategicObjectives: [
-    "Entrer sur des marches soumis a des exigences sectorielles plus fortes",
-    "Renforcer la credibilite du groupe aupres de grands comptes",
-    "Reduire les risques de non-conformite lors des prochains appels d'offres",
-    "Aligner le systeme de management avec la strategie de diversification"
+    "Entrer sur des marchés soumis à des exigences sectorielles plus fortes",
+    "Renforcer la crédibilité du groupe aupres de grands comptes",
+    "Réduire les risques de non-conformité lors des prochains appels d'offres",
+    "Aligner le système de management avec la stratégie de diversification"
   ],
   mainContact: {
     name: "Claire Montreuil",
-    role: "Directrice generale",
-    email: "claire.montreuil@arcanis-industries.example"
+    role: "Directrice générale",
+    email: "claire.montreuil@montrel-industries.example"
   },
   mandateIssues: [
-    "Choisir un referentiel compatible avec la diversification visee",
-    "Convaincre le COMEX d'engager une trajectoire realiste",
-    "Preserver la credibilite commerciale sans surestimer la maturite interne"
+    "Choisir un référentiel compatible avec la diversification visée",
+    "Convaincre le COMEX d'engager une trajectoire réaliste",
+    "Preserver la crédibilité commerciale sans surestimer la maturité interne"
   ],
   currentSituation: [
-    "ARCANIS Industries dispose d'un socle ISO 9001 installe, mais les pratiques restent heterogenes entre sites.",
-    "La direction souhaite acceder a de nouveaux marches ou les exigences clients sont plus sectorielles et plus documentees.",
-    "Les equipes operationnelles sont deja mobilisees sur les delais commerciaux et les tensions fournisseurs.",
-    "Le COMEX attend une recommandation claire, soutenable et reliee aux priorites de transformation."
+    "Montrel Industries dispose d'un socle ISO 9001 installe, mais les pratiques restent hétérogènes entre sites.",
+    "La direction souhaite accéder à de nouveaux marchés où les exigences clients sont plus sectorielles et plus documentées.",
+    "Les équipes opérationnelles sont déjà mobilisées sur les délais commerciaux et les tensions fournisseurs.",
+    "Le COMEX attend une recommandation claire, soutenable et reliée aux priorités de transformation."
   ],
   constraints: [
     "Calendrier commercial serre",
-    "Ressources internes limitees pour conduire plusieurs transformations",
-    "Maturite QSE inegale entre les deux sites",
+    "Ressources internes limitées pour conduire plusieurs transformations",
+    "Maturité QSE inegale entre les deux sites",
     "Besoin de convaincre le COMEX avant d'engager les investissements"
   ],
   risks: [
-    "Choisir un referentiel attractif mais disproportionne",
-    "Sous-estimer les impacts sur les competences et la documentation",
-    "Mobiliser les equipes sur un chantier mal priorise",
-    "Promettre au marche une maturite que l'organisation ne maitrise pas encore"
+    "Choisir un référentiel attractif mais disproportionne",
+    "Sous-estimer les impacts sur les compétences et la documentation",
+    "Mobiliser les équipes sur un chantier mal priorisé",
+    "Promettre au marché une maturité que l'organisation ne maîtrise pas encore"
   ],
   revenue: "86 M EUR",
-  headcount: "420 collaborateurs repartis sur deux sites",
+  headcount: "420 collaborateurs répartis sur deux sites",
   clients: [
-    "Donneurs d'ordre industriels europeens",
-    "Integrateurs de solutions automatisees",
-    "Clients sensibles aux delais, a la tracabilite et a la conformite"
+    "Donneurs d'ordre industriels européens",
+    "Intégrateurs de solutions automatisées",
+    "Clients sensibles aux délais, à la traçabilité et à la conformité"
   ]
 };

@@ -3,8 +3,8 @@ import type { DocumentLibraryItem } from "@/lib/types";
 export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-001-plan-strategique-2030",
-    name: "STRAT-001 - Plan Strategique.pdf",
-    description: "Orientations de diversification et priorites de transformation du groupe.",
+    name: "STRAT-001 - Plan Stratégique.pdf",
+    description: "Orientations de diversification et priorités de transformation du groupe.",
     category: "Direction",
     version: "1.0",
     status: "Valide",
@@ -33,61 +33,61 @@ export const documentLibrary: DocumentLibraryItem[] = [
   },
   {
     id: "mission-001-politique-qualite",
-    name: "POL-001 - Politique Qualite.pdf",
-    description: "Cadre qualite actuel communique aux cabinets.",
-    category: "Qualite",
+    name: "POL-001 - Politique Qualité.pdf",
+    description: "Cadre qualité actuel communique aux cabinets.",
+    category: "Qualité",
     version: "1.0",
     status: "Valide",
     missions: ["mission-001"],
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/mission-001/qualite/POL-001_Politique_Qualite.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "04/02/2026",
     classification: "Interne"
   },
   {
     id: "mission-001-manuel-qualite",
-    name: "Manuel Qualite.pdf",
-    description: "Description du systeme de management qualite existant.",
-    category: "Qualite",
+    name: "Manuel Qualité.pdf",
+    description: "Description du système de management qualité existant.",
+    category: "Qualité",
     version: "1.0",
     status: "Brouillon",
     missions: ["mission-001"],
     visibility: ["Formateur"],
     type: "PDF",
     href: "/documents/mission-001/Manuel-Qualite.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "18/03/2026",
     classification: "Interne"
   },
   {
     id: "mission-001-cartographie-processus",
     name: "Cartographie des processus.pdf",
-    description: "Vue processus utilisee pour identifier les impacts organisationnels.",
-    category: "Qualite",
+    description: "Vue processus utilisée pour identifier les impacts organisationnels.",
+    category: "Qualité",
     version: "1.0",
     status: "Brouillon",
     missions: ["mission-001"],
     visibility: ["Formateur"],
     type: "PDF",
     href: "/documents/mission-001/Cartographie-Processus.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "21/03/2026",
     classification: "Interne"
   },
   {
     id: "mission-001-rapport-audit-iso9001",
     name: "AUD-001 - Rapport Audit ISO9001.pdf",
-    description: "Constats d'audit du systeme ISO 9001 actuel.",
-    category: "Qualite",
+    description: "Constats d'audit du système ISO 9001 actuel.",
+    category: "Qualité",
     version: "1.0",
     status: "Valide",
     missions: ["mission-001"],
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/mission-001/qualite/AUD-001_Rapport_Audit_ISO9001.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "09/04/2026",
     classification: "Interne"
   },
@@ -108,7 +108,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   },
   {
     id: "mission-001-catalogue-produits",
-    name: "CAT-001 - Catalogue Produits Marches.pdf",
+    name: "CAT-001 - Catalogue Produits Marchés.pdf",
     description: "Catalogue des familles de produits et solutions industrielles.",
     category: "Commercial",
     version: "1.0",
@@ -124,7 +124,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-001-certificat-iso9001",
     name: "CERT-001 - Certificat ISO9001.pdf",
-    description: "Certificat ISO 9001 en vigueur pour le perimetre actuel.",
+    description: "Certificat ISO 9001 en vigueur pour le périmètre actuel.",
     category: "Certifications",
     version: "1.0",
     status: "Valide",
@@ -139,7 +139,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-001-iso13485-note-mandat",
     name: "Note mandat ISO13485.pdf",
-    description: "Note de cadrage pour le mandat dispositifs medicaux.",
+    description: "Note de cadrage pour le mandat dispositifs médicaux.",
     category: "Mission 001 / ISO13485",
     version: "1.0",
     status: "Valide",
@@ -154,8 +154,8 @@ export const documentLibrary: DocumentLibraryItem[] = [
   },
   {
     id: "mission-001-iso13485-qualification-fournisseurs",
-    name: "Qualification fournisseurs medicaux.pdf",
-    description: "Elements de vigilance sur la maitrise fournisseur medicale.",
+    name: "Qualification fournisseurs médicaux.pdf",
+    description: "Éléments de vigilance sur la maîtrise fournisseur médicale.",
     category: "Mission 001 / ISO13485",
     version: "1.0",
     status: "Valide",
@@ -164,7 +164,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/mission-001/ISO13485/Qualification-Fournisseurs-Medicaux.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "21/06/2026",
     classification: "Interne"
   },
@@ -186,8 +186,8 @@ export const documentLibrary: DocumentLibraryItem[] = [
   },
   {
     id: "mission-001-iatf16949-capacite-production",
-    name: "Cartographie capacite production automobile.pdf",
-    description: "Synthese des capacites industrielles utiles au mandat automobile.",
+    name: "Cartographie capacité production automobile.pdf",
+    description: "Synthèse des capacités industrielles utiles au mandat automobile.",
     category: "Mission 001 / IATF16949",
     version: "1.0",
     status: "Valide",
@@ -196,14 +196,14 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/mission-001/IATF16949/Capacite-Production-Automobile.pdf",
-    owner: "Operations",
+    owner: "Opérations",
     date: "21/06/2026",
     classification: "Interne"
   },
   {
     id: "mission-001-en9100-note-mandat",
     name: "Note mandat EN9100.pdf",
-    description: "Note de cadrage pour le mandat aeronautique.",
+    description: "Note de cadrage pour le mandat aéronautique.",
     category: "Mission 001 / EN9100",
     version: "1.0",
     status: "Valide",
@@ -218,8 +218,8 @@ export const documentLibrary: DocumentLibraryItem[] = [
   },
   {
     id: "mission-001-en9100-exigences",
-    name: "Analyse exigences aeronautiques.pdf",
-    description: "Premiere analyse des exigences sectorielles aeronautiques.",
+    name: "Analyse exigences aéronautiques.pdf",
+    description: "Première analyse des exigences sectorielles aéronautiques.",
     category: "Mission 001 / EN9100",
     version: "1.0",
     status: "Valide",
@@ -228,7 +228,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/mission-001/EN9100/Analyse-Exigences-Aeronautiques.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "21/06/2026",
     classification: "Interne"
   },
@@ -260,31 +260,31 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/mission-001/ISO22000/Diagnostic-Hygiene-Flux.pdf",
-    owner: "Operations",
+    owner: "Opérations",
     date: "21/06/2026",
     classification: "Interne"
   },
 
   // ===== Module QSEAL13 — Management des processus (mission-002) =====
-  // Documents communs a toutes les equipes (sans mandateIds).
+  // Documents communs à toutes les équipes (sans mandateIds).
   {
     id: "mission-002-cartographie-processus",
     name: "CART-002 - Cartographie des processus.pdf",
-    description: "Vue macro des processus d'ARCANIS Industries (management, realisation, support).",
-    category: "Qualite",
+    description: "Vue macro des processus de Montrel Industries (management, réalisation, support).",
+    category: "Qualité",
     version: "1.0",
     status: "Valide",
     missions: ["mission-002"],
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal13-bpm/qualite/CART-002_Cartographie_Processus.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "02/07/2026",
     classification: "Interne"
   },
   {
     id: "mission-002-plan-strategique-processus",
-    name: "STRAT-002 - Plan strategique processus.pdf",
+    name: "STRAT-002 - Plan stratégique processus.pdf",
     description: "Orientations de la direction pour le management par les processus.",
     category: "Direction",
     version: "1.0",
@@ -299,8 +299,8 @@ export const documentLibrary: DocumentLibraryItem[] = [
   },
   {
     id: "mission-002-synthese-reclamations",
-    name: "RECL-002 - Synthese des reclamations.pdf",
-    description: "Familles et origines des reclamations sur le traitement des commandes.",
+    name: "RECL-002 - Synthèse des réclamations.pdf",
+    description: "Familles et origines des réclamations sur le traitement des commandes.",
     category: "Service client",
     version: "1.0",
     status: "Valide",
@@ -357,7 +357,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal13-bpm/commande/NM-COM_Note_Mandat_Commande.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -391,17 +391,17 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal13-bpm/achats/NM-ACH_Note_Mandat_Achats.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
 
-  // Processus Production / Realisation (Cabinet Meridian).
+  // Processus Production / Réalisation (Cabinet Meridian).
   {
     id: "mission-002-production-fiche-pilote",
     name: "FP-PROD - Fiche pilote Production.pdf",
-    description: "Fiche pilote du processus de production et realisation.",
-    category: "Processus Production / Realisation",
+    description: "Fiche pilote du processus de production et réalisation.",
+    category: "Processus Production / Réalisation",
     version: "1.0",
     status: "Valide",
     missions: ["mission-002"],
@@ -417,7 +417,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     id: "mission-002-production-note-mandat",
     name: "NM-PROD - Note de mandat Production.pdf",
     description: "Note de cadrage pour la cartographie du processus production.",
-    category: "Processus Production / Realisation",
+    category: "Processus Production / Réalisation",
     version: "1.0",
     status: "Valide",
     missions: ["mission-002"],
@@ -425,16 +425,16 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal13-bpm/production/NM-PROD_Note_Mandat_Production.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
 
-  // Processus Livraison & traitement des reclamations (Cabinet Nova).
+  // Processus Livraison & traitement des réclamations (Cabinet Nova).
   {
     id: "mission-002-livraison-fiche-pilote",
     name: "FP-SAV - Fiche pilote Livraison.pdf",
-    description: "Fiche pilote du processus de livraison et traitement des reclamations.",
+    description: "Fiche pilote du processus de livraison et traitement des réclamations.",
     category: "Processus Livraison / SAV",
     version: "1.0",
     status: "Valide",
@@ -450,7 +450,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-002-livraison-note-mandat",
     name: "NM-SAV - Note de mandat Livraison.pdf",
-    description: "Note de cadrage pour la cartographie du processus livraison et reclamations.",
+    description: "Note de cadrage pour la cartographie du processus livraison et réclamations.",
     category: "Processus Livraison / SAV",
     version: "1.0",
     status: "Valide",
@@ -459,18 +459,18 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal13-bpm/livraison/NM-SAV_Note_Mandat_Livraison.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
 
-  // ===== Module Veille reglementaire et normative (mission-003) =====
-  // Documents communs a toutes les equipes (sans mandateIds).
+  // ===== Module Veille réglementaire et normative (mission-003) =====
+  // Documents communs à toutes les équipes (sans mandateIds).
   {
     id: "mission-003-rapport-audit-veille",
     name: "AUD-003 - Rapport d'audit veille.pdf",
-    description: "Constat de detection tardive des evolutions applicables, a l'origine de la mission.",
-    category: "Qualite",
+    description: "Constat de détection tardive des évolutions applicables, à l'origine de la mission.",
+    category: "Qualité",
     version: "1.0",
     status: "Valide",
     missions: ["mission-003"],
@@ -484,22 +484,22 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-003-tableau-veille-actuel",
     name: "TAB-003 - Tableau de veille actuel.pdf",
-    description: "Etat existant de la veille, partiel et non consolide.",
-    category: "Qualite",
+    description: "État existant de la veille, partiel et non consolidé.",
+    category: "Qualité",
     version: "0.9",
     status: "Valide",
     missions: ["mission-003"],
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/qualite/TAB-003_Tableau_Veille_Actuel.pdf",
-    owner: "Qualite",
+    owner: "Qualité",
     date: "02/07/2026",
     classification: "Interne"
   },
   {
     id: "mission-003-note-cadrage-veille",
     name: "NOTE-003 - Note de cadrage veille.pdf",
-    description: "Orientations de la direction pour structurer la veille reglementaire.",
+    description: "Orientations de la direction pour structurer la veille réglementaire.",
     category: "Direction",
     version: "1.0",
     status: "Valide",
@@ -512,9 +512,9 @@ export const documentLibrary: DocumentLibraryItem[] = [
     classification: "Interne"
   },
   {
-    id: "mission-003-ordre-du-jour-comite",
-    name: "COPIL-003 - Ordre du jour comite de conformite.pdf",
-    description: "Cadre et attendus de la restitution au comite de conformite.",
+    id: "mission-003-ordre-du-jour-comité",
+    name: "COPIL-003 - Ordre du jour comité de conformité.pdf",
+    description: "Cadre et attendus de la restitution au comité de conformité.",
     category: "Direction",
     version: "1.0",
     status: "Valide",
@@ -531,7 +531,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-003-env-exigences",
     name: "FV-ENV - Exigences Environnement.pdf",
-    description: "Exigences applicables et evolutions recentes du domaine environnement.",
+    description: "Exigences applicables et évolutions récentes du domaine environnement.",
     category: "Domaine Environnement",
     version: "1.0",
     status: "Valide",
@@ -556,17 +556,17 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/environnement/NM-ENV_Note_Mandat_Environnement.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
 
-  // Domaine Sante-securite au travail (Cabinet Polaris).
+  // Domaine Santé-sécurité au travail (Cabinet Polaris).
   {
     id: "mission-003-sst-exigences",
-    name: "FV-SST - Exigences Sante-securite au travail.pdf",
-    description: "Exigences applicables et evolutions recentes du domaine sante-securite au travail.",
-    category: "Domaine Sante-securite au travail",
+    name: "FV-SST - Exigences Santé-sécurité au travail.pdf",
+    description: "Exigences applicables et évolutions récentes du domaine santé-sécurité au travail.",
+    category: "Domaine Santé-sécurité au travail",
     version: "1.0",
     status: "Valide",
     missions: ["mission-003"],
@@ -574,15 +574,15 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/sst/FV-SST_Exigences_SST.pdf",
-    owner: "Prevention",
+    owner: "Prévention",
     date: "01/07/2026",
     classification: "Interne"
   },
   {
     id: "mission-003-sst-note-mandat",
-    name: "NM-SST - Note de mandat Sante-securite au travail.pdf",
-    description: "Note de cadrage pour la veille du domaine sante-securite au travail.",
-    category: "Domaine Sante-securite au travail",
+    name: "NM-SST - Note de mandat Santé-sécurité au travail.pdf",
+    description: "Note de cadrage pour la veille du domaine santé-sécurité au travail.",
+    category: "Domaine Santé-sécurité au travail",
     version: "1.0",
     status: "Valide",
     missions: ["mission-003"],
@@ -590,7 +590,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/sst/NM-SST_Note_Mandat_SST.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -599,7 +599,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-003-produit-exigences",
     name: "FV-PROD - Exigences Produit & normes.pdf",
-    description: "Exigences applicables et evolutions recentes du domaine produit et normes sectorielles.",
+    description: "Exigences applicables et évolutions récentes du domaine produit et normes sectorielles.",
     category: "Domaine Produit & normes sectorielles",
     version: "1.0",
     status: "Valide",
@@ -608,7 +608,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/produit/FV-PROD_Exigences_Produit.pdf",
-    owner: "Bureau d'etudes",
+    owner: "Bureau d'études",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -624,17 +624,17 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/produit/NM-PROD_Note_Mandat_Produit.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
 
-  // Domaine Systeme & transverse (Cabinet Nova).
+  // Domaine Système & transverse (Cabinet Nova).
   {
     id: "mission-003-systeme-exigences",
-    name: "FV-SYS - Exigences Systeme & transverse.pdf",
-    description: "Exigences applicables et evolutions recentes du domaine systeme et transverse.",
-    category: "Domaine Systeme & transverse",
+    name: "FV-SYS - Exigences Système & transverse.pdf",
+    description: "Exigences applicables et évolutions récentes du domaine système et transverse.",
+    category: "Domaine Système & transverse",
     version: "1.0",
     status: "Valide",
     missions: ["mission-003"],
@@ -642,15 +642,15 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/systeme/FV-SYS_Exigences_Systeme.pdf",
-    owner: "Systeme qualite",
+    owner: "Système qualité",
     date: "01/07/2026",
     classification: "Interne"
   },
   {
     id: "mission-003-systeme-note-mandat",
-    name: "NM-SYS - Note de mandat Systeme & transverse.pdf",
-    description: "Note de cadrage pour la veille du domaine systeme et transverse.",
-    category: "Domaine Systeme & transverse",
+    name: "NM-SYS - Note de mandat Système & transverse.pdf",
+    description: "Note de cadrage pour la veille du domaine système et transverse.",
+    category: "Domaine Système & transverse",
     version: "1.0",
     status: "Valide",
     missions: ["mission-003"],
@@ -658,7 +658,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/veille-reglementaire/systeme/NM-SYS_Note_Mandat_Systeme.pdf",
-    owner: "Direction qualite",
+    owner: "Direction qualité",
     date: "01/07/2026",
     classification: "Interne"
   }

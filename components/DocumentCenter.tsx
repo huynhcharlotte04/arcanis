@@ -24,7 +24,7 @@ export function DocumentCenter() {
     })
   );
   const missionLabel = activeModule.missionId.replace("mission-", "Mission ");
-  // Referentiel court (ISO13485...) pour le module "referentiel" ; perimetre
+  // Référentiel court (ISO13485...) pour le module "référentiel" ; périmètre
   // (processus ou domaine de veille) pour les autres modules.
   const scopeTag =
     activeModule.deliverableType === "restitution-comex"
@@ -44,10 +44,10 @@ export function DocumentCenter() {
 
       <div className="grid grid-cols-[1fr_0.7fr_0.28fr_0.34fr_0.28fr] gap-4 border-b border-inkline bg-obsidian/45 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-mist">
           <span>Document</span>
-          <span>Service proprietaire</span>
+          <span>Service propriétaire</span>
           <span>Type</span>
           <span>Date</span>
-          <span className="text-right">Acces</span>
+          <span className="text-right">Accès</span>
       </div>
 
       <div className="divide-y divide-inkline">

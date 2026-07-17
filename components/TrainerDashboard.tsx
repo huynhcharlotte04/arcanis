@@ -94,7 +94,7 @@ export function TrainerDashboard() {
         <div className="flex items-start justify-between gap-5 border-b border-inkline pb-5">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brass">
-              Preparation locale
+              Préparation locale
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-porcelain">
               Nouvelle mission
@@ -126,7 +126,12 @@ export function TrainerDashboard() {
           </label>
 
           <label className="block" htmlFor="moduleId">
-            <span className="text-sm font-semibold text-porcelain">
+            <span className="flex items-center gap-2 text-sm font-semibold text-porcelain">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: selectedModule.accent }}
+                aria-hidden
+              />
               Module
             </span>
             <select
@@ -151,7 +156,7 @@ export function TrainerDashboard() {
               {selectedModule.company.name}
             </p>
             <span className="mt-2 block text-xs leading-6 text-mist">
-              Determinee par le module selectionne.
+              Déterminée par le module sélectionné.
             </span>
           </div>
         </div>
@@ -161,7 +166,7 @@ export function TrainerDashboard() {
           onClick={createSession}
           className="mt-7 inline-flex w-full justify-center rounded-md bg-brass px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-obsidian transition hover:bg-porcelain"
         >
-          Creer la mission
+          Créer la mission
         </button>
 
         {hasSession ? (
@@ -185,7 +190,7 @@ export function TrainerDashboard() {
                 onClick={copyShareLink}
                 className="whitespace-nowrap rounded-md border border-brass/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-brass transition hover:bg-brass hover:text-obsidian"
               >
-                {copied ? "Copie" : "Copier"}
+                {copied ? "Copié" : "Copier"}
               </button>
             </div>
           </div>
@@ -200,7 +205,7 @@ export function TrainerDashboard() {
             <div className="grid grid-cols-[0.75fr_1fr_0.48fr_0.36fr] gap-3 bg-obsidian/45 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-mist">
               <span>Cabinet</span>
               <span>Mandat</span>
-              <span>Referentiel</span>
+              <span>Référentiel</span>
               <span>Statut</span>
             </div>
             <div className="divide-y divide-inkline">
@@ -217,14 +222,14 @@ export function TrainerDashboard() {
                     {mandate.referential}
                   </p>
                   <p className="text-xs uppercase tracking-[0.14em] text-brass">
-                    Attribue
+                    Attribué
                   </p>
                 </article>
               ))}
             </div>
           </div>
           <div className="mt-6 rounded-md border border-inkline bg-obsidian/35 p-4 text-sm leading-7 text-mist">
-            Les attributions sont preparees avant la mission. Chaque cabinet
+            Les attributions sont preparées avant la mission. Chaque cabinet
             ouvre automatiquement son mandat depuis son nom.
           </div>
         </section>
@@ -234,10 +239,10 @@ export function TrainerDashboard() {
         <div className="flex flex-col justify-between gap-4 border-b border-inkline pb-5 sm:flex-row sm:items-end">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
-              Evenements de {selectedModule.missionId.replace("mission-", "Mission ")}
+              Événements de {selectedModule.missionId.replace("mission-", "Mission ")}
             </p>
             <h2 className="mt-2 text-2xl font-semibold text-porcelain">
-              Console de declenchement
+              Console de déclenchement
             </h2>
           </div>
           <button
@@ -245,7 +250,7 @@ export function TrainerDashboard() {
             onClick={resetEvents}
             className="rounded-md border border-inkline px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-mist transition hover:border-brass/50 hover:text-brass"
           >
-            Reinitialiser la simulation locale
+            Réinitialiser la simulation locale
           </button>
         </div>
 
@@ -265,7 +270,7 @@ export function TrainerDashboard() {
                     </h3>
                     {isTriggered ? (
                       <span className="rounded-full border border-brass/40 bg-brass/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-brass">
-                        Declenche
+                        Déclenché
                       </span>
                     ) : null}
                   </div>
@@ -278,7 +283,7 @@ export function TrainerDashboard() {
                     <span className="text-porcelain">Auteur :</span> {event.sender}
                   </p>
                   <p>
-                    <span className="text-porcelain">Heure simulee :</span>{" "}
+                    <span className="text-porcelain">Heure simulée :</span>{" "}
                     {event.simulatedTime}
                   </p>
                 </div>
@@ -288,11 +293,11 @@ export function TrainerDashboard() {
                   disabled={isTriggered}
                   className={`h-fit rounded-md px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] transition ${
                     isTriggered
-                      ? "cursor-not-allowed border border-inkline text-mist/60"
+                      ? "cursor-not-allowed border border-inkline text-mist/75"
                       : "bg-brass text-obsidian hover:bg-porcelain"
                   }`}
                 >
-                  Declencher
+                  Déclencher
                 </button>
               </article>
             );

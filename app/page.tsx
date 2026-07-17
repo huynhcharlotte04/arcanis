@@ -24,7 +24,7 @@ export default function HomePage() {
               </p>
               <p className="mt-8 max-w-2xl text-base leading-8 text-mist">
                 Une entreprise virtuelle ou les consultants vivent une mission
-                QSE complete, depuis le mandat jusqu&apos;a la restitution devant le
+                QSE complète, depuis le mandat jusqu&apos;a la restitution devant le
                 COMEX.
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -56,12 +56,12 @@ export default function HomePage() {
                 <div>
                   <p className="text-sm text-mist">Entreprise</p>
                   <p className="mt-1 text-2xl font-semibold text-porcelain">
-                    ARCANIS Industries
+                    Montrel Industries
                   </p>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {[
-                    ["Secteur", "Equipements industriels"],
+                    ["Secteur", "Équipements industriels"],
                     ["Enjeu", "Diversification"],
                     ["Instance", "COMEX"],
                     ["Format", "Mission consultant"]
@@ -81,7 +81,7 @@ export default function HomePage() {
                 </div>
                 <div className="rounded-md border border-copper/35 bg-copper/10 p-4 text-sm leading-7 text-porcelain">
                   Objectif : comprendre le client, analyser les signaux et
-                  preparer une position defendable devant la direction.
+                  préparer une position défendable devant la direction.
                 </div>
               </div>
             </div>
