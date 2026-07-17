@@ -42,7 +42,7 @@ export function DocumentCenter() {
         </p>
       </div>
 
-      <div className="grid grid-cols-[1fr_0.7fr_0.28fr_0.34fr_0.28fr] gap-4 border-b border-inkline bg-obsidian/45 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-mist">
+      <div className="hidden grid-cols-[1fr_0.7fr_0.28fr_0.34fr_0.28fr] gap-4 border-b border-inkline bg-obsidian/45 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-mist sm:grid">
           <span>Document</span>
           <span>Service propriétaire</span>
           <span>Type</span>
@@ -63,7 +63,7 @@ export function DocumentCenter() {
               {folder.documents.map((document) => (
                 <article
                   key={document.href}
-                  className="grid grid-cols-[1fr_0.7fr_0.28fr_0.34fr_0.28fr] items-center gap-4 px-5 py-4 transition hover:bg-white/[0.035]"
+                  className="flex flex-col gap-3 px-5 py-4 transition hover:bg-white/[0.035] sm:grid sm:grid-cols-[1fr_0.7fr_0.28fr_0.34fr_0.28fr] sm:items-center sm:gap-4"
                 >
                   <div>
                     <p className="font-semibold text-porcelain">{document.name}</p>
@@ -77,16 +77,18 @@ export function DocumentCenter() {
                       </p>
                     ) : null}
                   </div>
-                  <p className="text-sm text-mist">{document.owner}</p>
-                  <p className="text-sm font-semibold text-porcelain">
-                    {document.type}
-                  </p>
-                  <p className="text-sm text-mist">{document.date}</p>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 sm:contents">
+                    <p className="text-sm text-mist">{document.owner}</p>
+                    <p className="text-sm font-semibold text-porcelain">
+                      {document.type}
+                    </p>
+                    <p className="text-sm text-mist">{document.date}</p>
+                  </div>
                   <a
                     href={document.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="justify-self-end rounded-md border border-brass/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-brass transition hover:bg-brass hover:text-obsidian"
+                    className="self-start rounded-md border border-brass/45 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-brass transition hover:bg-brass hover:text-obsidian sm:justify-self-end"
                   >
                     Ouvrir
                   </a>
