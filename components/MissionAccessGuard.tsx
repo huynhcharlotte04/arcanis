@@ -36,7 +36,7 @@ export function MissionAccessGuard({
   if (isChecking) {
     return (
       <div className="rounded-lg border border-inkline bg-white/[0.035] p-6 text-sm leading-7 text-mist">
-        Rejoignez une mission pour acceder a cet espace.
+        Rejoignez une mission pour accéder à cet espace.
       </div>
     );
   }

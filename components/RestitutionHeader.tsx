@@ -17,7 +17,7 @@ export function RestitutionHeader() {
   const framing = getRestitutionFraming(getModuleById(session.moduleId).deliverableType);
 
   return (
-    <SectionHeader eyebrow="Preparation de la restitution" title={framing.pageTitle}>
+    <SectionHeader eyebrow="Préparation de la restitution" title={framing.pageTitle}>
       {framing.pageSubtitle}
     </SectionHeader>
   );

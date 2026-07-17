@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 export default function MissionLetterPage() {
   return (
     <AppShell currentStep="lettre-mission">
-      <SectionHeader eyebrow="Lettre de mission" title="Mandat strategique">
+      <SectionHeader eyebrow="Lettre de mission" title="Mandat stratégique">
         Prenez connaissance du mandat avant d&apos;ouvrir le dossier client.
       </SectionHeader>
 

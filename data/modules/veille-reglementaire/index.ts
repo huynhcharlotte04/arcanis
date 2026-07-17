@@ -4,7 +4,8 @@ import { mandates, simulation } from "./mission";
 
 export const veilleReglementaireModule: SimulationModule = {
   id: "veille-reglementaire",
-  label: "Veille reglementaire et normative",
+  label: "Veille réglementaire et normative",
+  accent: "#8FA3C8",
   sessionCodePrefix: "VRN",
   missionId: "mission-003",
   company,

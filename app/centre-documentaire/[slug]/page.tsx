@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 export default function DocumentComingSoonPage() {
   return (
     <AppShell currentStep="centre-documentaire">
-      <SectionHeader eyebrow="Centre documentaire" title="Dossier a venir">
+      <SectionHeader eyebrow="Centre documentaire" title="Dossier à venir">
         Ce dossier sera ouvert dans une prochaine version de la simulation.
       </SectionHeader>
       <section className="glass-panel rounded-lg p-8">

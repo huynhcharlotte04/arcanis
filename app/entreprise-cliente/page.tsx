@@ -6,8 +6,8 @@ import { SectionHeader } from "@/components/SectionHeader";
 export default function ClientCompanyPage() {
   return (
     <AppShell currentStep="entreprise-cliente">
-      <SectionHeader eyebrow="Client Brief" title="ARCANIS Industries">
-        Une synthese courte pour situer le client avant d&apos;ouvrir l&apos;espace
+      <SectionHeader eyebrow="Client Brief" title="Montrel Industries">
+        Une synthèse courte pour situer le client avant d&apos;ouvrir l&apos;espace
         documentaire.
       </SectionHeader>
       <ClientDossier />
@@ -16,7 +16,7 @@ export default function ClientCompanyPage() {
           href="/centre-documentaire"
           className="inline-flex rounded-md bg-brass px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-obsidian transition hover:bg-porcelain"
         >
-          Acceder aux documents
+          Accéder aux documents
         </Link>
       </div>
     </AppShell>

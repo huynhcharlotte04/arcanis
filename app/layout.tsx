@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ARCANIS | Academy of Professional Judgment",
   description:
-    "Experience immersive de mission professionnelle pour consultants QSE."
+    "Expérience immersive de mission professionnelle pour consultants QSE."
 };
 
 export default function RootLayout({

@@ -25,9 +25,13 @@ export function SimulationNav({ currentStep }: { currentStep: StepId }) {
   }, []);
 
   const hasAccess = hasMissionAccess(session);
-  const restitutionLabel = getRestitutionFraming(
-    getModuleById(session.moduleId).deliverableType
-  ).navLabel;
+  const activeModule = getModuleById(session.moduleId);
+  const restitutionLabel = getRestitutionFraming(activeModule.deliverableType).navLabel;
+
+  // Teinte la plateforme avec l'accent du module actif (variable CSS globale).
+  useEffect(() => {
+    document.documentElement.style.setProperty("--accent", activeModule.accent);
+  }, [activeModule.accent]);
 
   if (currentStep === "accueil") {
     return null;
@@ -42,15 +46,15 @@ export function SimulationNav({ currentStep }: { currentStep: StepId }) {
           const label = step.id === "restitution" ? restitutionLabel : step.label;
           const className = `whitespace-nowrap rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition ${
             isActive
-              ? "bg-brass text-obsidian"
+              ? "bg-accent text-obsidian"
               : isAccessible
                 ? "text-mist hover:bg-white/[0.05] hover:text-porcelain"
-                : "cursor-not-allowed border border-inkline/70 text-mist/35"
+                : "cursor-not-allowed border border-inkline/70 text-mist/55"
           }`;
 
           if (!isAccessible) {
             return (
-              <span key={step.id} className={className} title="Rejoignez une mission pour acceder a cet espace.">
+              <span key={step.id} className={className} title="Rejoignez une mission pour accéder à cet espace.">
                 {label}
               </span>
             );

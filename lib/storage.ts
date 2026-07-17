@@ -17,8 +17,8 @@ export const emptyConsultantSession: ConsultantSession = {
 export const defaultTrainerSession: TrainerSession = {
   promotionName: "MS QSE",
   moduleId: "autres-referentiels",
-  moduleName: "Autres referentiels",
-  clientCompany: "ARCANIS Industries",
+  moduleName: "Autres référentiels",
+  clientCompany: "Montrel Industries",
   sessionCode: "",
   createdAt: "",
   updatedAt: ""

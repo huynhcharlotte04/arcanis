@@ -1,75 +1,75 @@
 import type { ClientCompany } from "@/lib/types";
 
-// Veille reglementaire et normative — reutilise ARCANIS Industries. Le contexte
-// est recentre sur un defaut de veille : l'entreprise detecte trop tard les
-// evolutions reglementaires et normatives applicables, ce qui l'expose a des
-// non-conformites. L'identite de l'entreprise reste identique aux autres
+// Veille réglementaire et normative — reutilise Montrel Industries. Le contexte
+// est recentre sur un défaut de veille : l'entreprise détecte trop tard les
+// évolutions réglementaires et normatives applicables, ce qui l'expose à des
+// non-conformités. L'identite de l'entreprise reste identique aux autres
 // modules.
 export const company: ClientCompany = {
-  name: "ARCANIS Industries",
-  monogram: "AI",
+  name: "Montrel Industries",
+  monogram: "MI",
   presentation:
-    "Groupe industriel francais en croissance, ARCANIS Industries concoit et assemble des equipements techniques pour des clients europeens exigeants. Son activite est soumise a un cadre reglementaire et normatif dense, qu'elle peine aujourd'hui a suivre de facon structuree.",
-  location: "Lyon, Auvergne-Rhone-Alpes, France",
-  headquartersVisual: "Siege social et centre de coordination industrielle",
+    "Groupe industriel français en croissance, Montrel Industries conçoit et assemble des équipements techniques pour des clients européens exigeants. Son activité est soumise à un cadre réglementaire et normatif dense, qu'elle peine aujourd'hui à suivre de façon structurée.",
+  location: "Lyon, Auvergne-Rhône-Alpes, France",
+  headquartersVisual: "Siège social et centre de coordination industrielle",
   sector:
-    "Conception et fabrication d'equipements industriels pour environnements techniques exigeants",
+    "Conception et fabrication d'équipements industriels pour environnements techniques exigeants",
   products: [
-    "Modules de pilotage pour lignes automatisees",
-    "Sous-ensembles mecaniques a forte contrainte documentaire",
-    "Solutions d'integration pour sites industriels sensibles"
+    "Modules de pilotage pour lignes automatisées",
+    "Sous-ensembles mécaniques à forte contrainte documentaire",
+    "Solutions d'intégration pour sites industriels sensibles"
   ],
   organization: [
-    "Direction generale basee au siege de Lyon",
+    "Direction générale basée au siège de Lyon",
     "Deux sites industriels : assemblage et essais",
-    "Direction qualite rattachee aux operations",
-    "Veille reglementaire aujourd'hui dispersee entre plusieurs services, sans dispositif commun"
+    "Direction qualité rattachée aux opérations",
+    "Veille réglementaire aujourd'hui dispersée entre plusieurs services, sans dispositif commun"
   ],
   certifications: [
     "ISO 9001 depuis 2018",
-    "Audit de suivi ayant pointe une detection tardive des evolutions applicables",
-    "Obligations environnementales et sante-securite suivies de facon inegale",
-    "Exigences produit et normes sectorielles peu tracees dans le temps"
+    "Audit de suivi ayant pointe une détection tardive des évolutions applicables",
+    "Obligations environnementales et santé-sécurité suivies de façon inegale",
+    "Exigences produit et normes sectorielles peu tracées dans le temps"
   ],
   strategicObjectives: [
-    "Structurer la veille reglementaire et normative",
-    "Detecter a temps les evolutions applicables a l'entreprise",
-    "Evaluer l'impact des evolutions et prioriser la mise en conformite",
-    "Perenniser un dispositif de veille avec des responsabilites claires"
+    "Structurer la veille réglementaire et normative",
+    "Détecter à temps les évolutions applicables à l'entreprise",
+    "Évaluer l'impact des évolutions et prioriser la mise en conformité",
+    "Pérenniser un dispositif de veille avec des responsabilités claires"
   ],
   mainContact: {
     name: "Claire Martin",
-    role: "Directrice qualite",
-    email: "claire.martin@arcanis-industries.example"
+    role: "Directrice qualité",
+    email: "claire.martin@montrel-industries.example"
   },
   mandateIssues: [
-    "Identifier les exigences reglementaires et normatives applicables au domaine",
-    "Evaluer l'impact des evolutions recentes sur l'entreprise",
-    "Proposer un dispositif de veille et un plan de mise en conformite realiste"
+    "Identifier les exigences réglementaires et normatives applicables au domaine",
+    "Évaluer l'impact des évolutions récentes sur l'entreprise",
+    "Proposer un dispositif de veille et un plan de mise en conformité réaliste"
   ],
   currentSituation: [
-    "Un audit recent a montre qu'ARCANIS Industries detecte trop tard certaines evolutions reglementaires applicables.",
-    "La veille existe de maniere informelle, mais elle est dispersee et depend de quelques personnes.",
-    "Aucun tableau de veille consolide ne relie les exigences, leurs sources et leur impact.",
-    "La direction veut un dispositif structure, sans alourdir inutilement le fonctionnement des equipes."
+    "Un audit récent a montré qu'Montrel Industries détecte trop tard certaines évolutions réglementaires applicables.",
+    "La veille existe de manière informelle, mais elle est dispersée et depend de quelques personnes.",
+    "Aucun tableau de veille consolidé ne relie les exigences, leurs sources et leur impact.",
+    "La direction veut un dispositif structure, sans alourdir inutilement le fonctionnement des équipes."
   ],
   constraints: [
-    "Cadre reglementaire dense et evolutif sur plusieurs domaines",
-    "Ressources limitees pour assurer une veille continue",
-    "Information dispersee entre services et sources multiples",
-    "Besoin de prioriser sans tout traiter en meme temps"
+    "Cadre réglementaire dense et evolutif sur plusieurs domaines",
+    "Ressources limitées pour assurer une veille continue",
+    "Information dispersée entre services et sources multiples",
+    "Besoin de prioriser sans tout traiter en même temps"
   ],
   risks: [
-    "Passer a cote d'une evolution applicable et tomber en non-conformite",
+    "Passer à côté d'une évolution applicable et tomber en non-conformité",
     "Produire un tableau de veille exhaustif mais inexploitable",
-    "Sous-estimer l'impact reel d'une evolution sur l'organisation",
+    "Sous-estimer l'impact réel d'une évolution sur l'organisation",
     "Mettre en place un dispositif trop lourd, vite abandonne"
   ],
   revenue: "86 M EUR",
-  headcount: "420 collaborateurs repartis sur deux sites",
+  headcount: "420 collaborateurs répartis sur deux sites",
   clients: [
-    "Donneurs d'ordre industriels europeens",
-    "Integrateurs de solutions automatisees",
-    "Clients sensibles aux delais, a la tracabilite et a la conformite"
+    "Donneurs d'ordre industriels européens",
+    "Intégrateurs de solutions automatisées",
+    "Clients sensibles aux délais, à la traçabilité et à la conformité"
   ]
 };

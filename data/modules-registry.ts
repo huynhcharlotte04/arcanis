@@ -4,14 +4,14 @@ import { qseal13BpmModule } from "./modules/qseal13-bpm";
 import { veilleReglementaireModule } from "./modules/veille-reglementaire";
 
 // Registre central de tous les modules de simulation disponibles.
-// Ajouter un module = importer son dossier et l'ajouter a cette liste.
+// Ajouter un module = importer son dossier et l'ajouter à cette liste.
 export const modules: SimulationModule[] = [
   autresReferentielsModule,
   qseal13BpmModule,
   veilleReglementaireModule
 ];
 
-// Module ouvert par defaut. Toute resolution qui echoue retombe dessus,
+// Module ouvert par défaut. Toute resolution qui echoue retombe dessus,
 // ce qui garantit qu'aucun code de session existant ne casse.
 export const DEFAULT_MODULE_ID = "autres-referentiels";
 
@@ -27,9 +27,9 @@ export function getModuleById(moduleId: string | undefined): SimulationModule {
   return modules.find((module) => module.id === moduleId) ?? getDefaultModule();
 }
 
-// Le module est encode dans le prefixe du code de session (ex: "QSEAL13-4F2A").
-// Prefixe inconnu ou absent => repli sur le module par defaut, ce qui garantit
-// qu'aucun code de session deja distribue ne casse.
+// Le module est encode dans le préfixe du code de session (ex: "QSEAL13-4F2A").
+// Préfixe inconnu ou absent => repli sur le module par défaut, ce qui garantit
+// qu'aucun code de session déjà distribue ne casse.
 export function getModuleByCode(sessionCode: string | undefined): SimulationModule {
   const prefix = (sessionCode ?? "").trim().split("-")[0]?.toUpperCase() ?? "";
   if (!prefix) {
