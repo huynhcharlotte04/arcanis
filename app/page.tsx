@@ -35,12 +35,8 @@ export default function HomePage() {
                 >
                   Demarrer une mission
                 </Link>
-                <Link
-                  href="/pilotage"
-                  className="inline-flex items-center justify-center rounded-md border border-inkline px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-porcelain transition hover:border-brass/60 hover:text-brass"
-                >
-                  Pilotage formateur
-                </Link>
+                {/* Accès formateur volontairement non affiché ici : la vue reste
+                    accessible en tapant directement l'URL /pilotage. */}
               </div>
             </div>
 
