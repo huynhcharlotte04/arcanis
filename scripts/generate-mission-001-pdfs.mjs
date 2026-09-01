@@ -186,7 +186,7 @@ await build("CERT-001", "Certificat de conformité ISO 9001", "Certificat de con
 ]);
 
 await build("COMEX-001", "Ordre du jour COMEX", "Ordre du jour — Comité exécutif", [
-  { meta: [["Référence", "COMEX-001"], ["Émetteur", "Assistante de Direction"], ["Date de la séance", "[à compléter par le formateur]"], ["Lieu", "Salle de Direction, siège de Lyon"], ["Horaire", "13h30 – 17h00"]] },
+  { meta: [["Référence", "COMEX-001"], ["Émetteur", "Assistante de Direction"], ["Date de la séance", "Aujourd'hui"], ["Lieu", "Salle de Direction, siège de Lyon"], ["Horaire", "13h30 – 17h00"]] },
   { h: "Participants" },
   { list: [
     "Claire MONTREUIL, Directrice Générale — présidence de séance",
