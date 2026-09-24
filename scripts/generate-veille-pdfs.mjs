@@ -60,6 +60,64 @@ function noteMandat(ref, rel, { domaine, cabinet, contexte, perimetre, attendus,
 
 // -- Documents communs (niveau mission) ------------------------------------
 
+// Organigramme et politique qualité : documents transverses de Montrel
+// Industries, identiques à ceux du module « Autres référentiels » (même
+// entreprise réelle). Repris ici pour que le centre documentaire tienne les
+// promesses du support de cours (immersion : organigramme, politique qualité,
+// rapport d'audit, messagerie).
+await build("ORG-003", "rh/ORG-003_Organigramme.pdf", "Organigramme de Direction", [
+  { meta: [["Référence", "ORG-003"], ["Indice de version", "4"], ["Mise à jour", "18/09/2023"], ["Diffusion", "Personnel encadrant, RH, sur demande auditeurs/clients"]] },
+  { h: "Comité exécutif (COMEX)" },
+  { table: { head: ["Fonction", "Nom", "Rattachement"], widths: [2.2, 1.6, 1.6], rows: [
+    ["Directrice Générale", "Claire MONTREUIL", "—"],
+    ["Responsable Qualité Groupe", "Camille FERRAND", "Directrice Générale"],
+    ["Directeur Commercial", "Karim BELKACEM", "Directrice Générale"],
+    ["Directrice de Production — Site de Lyon", "Sophie LANGLOIS", "Directrice Générale"],
+    ["Directeur du Site secondaire", "Marc DUBREUIL", "Directrice Générale"],
+    ["Directeur Financier", "Antoine MERCIER", "Directrice Générale"],
+    ["Responsable R&D / Bureau d'études", "Julie ANDRÉ", "Directrice de Production"],
+    ["Responsable Ressources Humaines", "Nadia SAÏDI", "Directrice Générale"]
+  ] } },
+  { h: "Fonction Qualité — détail des rattachements" },
+  { table: { head: ["Poste", "Titulaire", "Rattachement hiérarchique", "Rattachement fonctionnel"], widths: [1.8, 1.8, 1.4, 1.4], rows: [
+    ["Responsable Qualité Groupe", "Camille FERRAND", "Directrice Générale", "—"],
+    ["Responsable Qualité — Site de Lyon", "Élodie PASCAL", "Sophie LANGLOIS", "Camille FERRAND"],
+    ["Responsable Qualité — Site secondaire", "Poste en recrutement depuis juillet 2023", "Marc DUBREUIL", "Camille FERRAND (liaison non formalisée)"]
+  ] } },
+  { p: "Intérim assuré par Marc DUBREUIL sur les missions qualité courantes du site secondaire." },
+  { h: "Effectifs par site" },
+  { table: { head: ["Site", "Effectif", "Fonctions principales"], widths: [1.4, 0.9, 3], rows: [
+    ["Lyon (siège)", "260", "Direction, Commercial, R&D, Production, Qualité Groupe"],
+    ["Site secondaire", "160", "Production, Qualité (intérim), Logistique"]
+  ] } },
+  { p: "Le présent organigramme est mis à jour à chaque mouvement de personnel d'encadrement. Prochaine actualisation prévue à la clôture du recrutement du poste de Responsable Qualité — Site secondaire." }
+]);
+
+await build("POL-003", "qualite/POL-003_Politique_Qualite.pdf", "Politique Qualité", [
+  { meta: [["Référence", "POL-003"], ["Indice de version", "6"], ["Date d'application", "15/01/2024"], ["Diffusion", "Ensemble du personnel, clients et parties intéressées sur demande"]] },
+  { h: "Le mot de la Direction" },
+  { p: "Depuis 2018, Montrel Industries s'appuie sur un système de management de la qualité certifié ISO 9001. Ce système nous permet de répondre aux exigences de nos clients industriels européens, dans un contexte où la conformité, les délais et la traçabilité conditionnent notre capacité à conserver et développer nos marchés. Cette politique qualité fixe le cadre dans lequel s'inscrit l'ensemble de nos collaborateurs, sur nos deux sites de production." },
+  { h: "Présentation de l'entreprise" },
+  { p: "Montrel Industries conçoit et fabrique des équipements industriels pour des environnements techniques exigeants. L'entreprise emploie 420 collaborateurs répartis sur deux sites et réalise un chiffre d'affaires de 86 M€. Ses clients sont principalement des donneurs d'ordre industriels européens et des intégrateurs de solutions automatisées." },
+  { h: "Nos engagements" },
+  { list: [
+    "Garantir la conformité de nos produits et services aux exigences contractuelles et réglementaires applicables.",
+    "Respecter les délais de livraison convenus avec nos clients.",
+    "Assurer la traçabilité des opérations de conception, de fabrication et de contrôle.",
+    "Développer les compétences de nos équipes sur nos deux sites.",
+    "Être force de proposition auprès de nos clients historiques et les accompagner dans l'évolution de leurs besoins."
+  ] },
+  { h: "Objectifs qualité 2024" },
+  { table: { head: ["Objectif", "Cible", "Résultat 2023", "Résultat 2022"], widths: [3, 1, 1.2, 1.2], rows: [
+    ["Taux de service client (livraisons conformes et à l'heure)", ">= 95 %", "95,1 %", "94,8 %"],
+    ["Taux de non-conformité produit interne", "< 1,2 %", "1,3 %", "1,4 %"],
+    ["Réclamations clients traitées sous 15 jours", "100 %", "92 %", "90 %"]
+  ] } },
+  { h: "Revue et diffusion" },
+  { p: "Cette politique est revue lors de la revue de direction annuelle. Elle est diffusée à l'ensemble du personnel par voie d'affichage et transmise aux clients qui en font la demande dans le cadre de leurs audits fournisseurs." },
+  { signoff: [{ t: "Fait à Lyon, le 15 janvier 2024" }, { t: "La Directrice Générale" }, { t: "Claire MONTREUIL", b: true }] }
+]);
+
 await build("NOTE-003", "direction/NOTE-003_Cadrage_Veille.pdf", "Note de cadrage — Veille réglementaire", [
   { p: "Orientations de la direction pour structurer la veille." },
   { meta: [["Émetteur", "Direction générale"], ["Version", "1.0"], ["Statut", "Validé"]] },
@@ -197,4 +255,4 @@ await noteMandat("NM-SYS", "systeme/NM-SYS_Note_Mandat_Systeme.pdf", {
   vigilance: ["Consolider ce que chaque service détecte", "Clarifier les responsabilités transverses"]
 });
 
-console.log("12 documents veille-reglementaire générés.");
+console.log("14 documents veille-reglementaire générés.");

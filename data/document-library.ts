@@ -467,6 +467,36 @@ export const documentLibrary: DocumentLibraryItem[] = [
   // ===== Module Veille réglementaire et normative (mission-003) =====
   // Documents communs à toutes les équipes (sans mandateIds).
   {
+    id: "mission-003-organigramme",
+    name: "ORG-003 - Organigramme.pdf",
+    description: "Organisation actuelle des directions et sites industriels.",
+    category: "Ressources Humaines",
+    version: "1.0",
+    status: "Valide",
+    missions: ["mission-003"],
+    visibility: ["Consultant", "Formateur"],
+    type: "PDF",
+    href: "/documents/veille-reglementaire/rh/ORG-003_Organigramme.pdf",
+    owner: "Ressources Humaines",
+    date: "15/01/2026",
+    classification: "Interne"
+  },
+  {
+    id: "mission-003-politique-qualite",
+    name: "POL-003 - Politique Qualité.pdf",
+    description: "Cadre qualité actuel de l'entreprise.",
+    category: "Qualité",
+    version: "1.0",
+    status: "Valide",
+    missions: ["mission-003"],
+    visibility: ["Consultant", "Formateur"],
+    type: "PDF",
+    href: "/documents/veille-reglementaire/qualite/POL-003_Politique_Qualite.pdf",
+    owner: "Qualité",
+    date: "04/02/2026",
+    classification: "Interne"
+  },
+  {
     id: "mission-003-rapport-audit-veille",
     name: "AUD-003 - Rapport d'audit veille.pdf",
     description: "Constat de détection tardive des évolutions applicables, à l'origine de la mission.",

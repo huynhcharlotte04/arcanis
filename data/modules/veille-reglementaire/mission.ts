@@ -164,8 +164,8 @@ export const simulation: SimulationData = {
   messages: [
     {
       id: "dq",
-      sender: "Claire Martin",
-      role: "Directrice qualité",
+      sender: "Camille Ferrand",
+      role: "Responsable qualité groupe",
       subject: "Structurer la veille après l'audit",
       preview:
         "L'audit a montré que nous detectons trop tard les évolutions applicables.",
@@ -236,9 +236,9 @@ export const simulation: SimulationData = {
   preparedEvents: [
     {
       id: "dq-cadrage-domaine",
-      triggerTitle: "Mail Directrice Qualité - Cadrage du domaine",
-      sender: "Claire Martin",
-      role: "Directrice qualité",
+      triggerTitle: "Mail Responsable Qualité - Cadrage du domaine",
+      sender: "Camille Ferrand",
+      role: "Responsable qualité groupe",
       simulatedTime: "13:05",
       summary:
         "La direction qualité confirme le domaine de veille confié et le niveau d'analyse attendu.",

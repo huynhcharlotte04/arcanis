@@ -169,7 +169,7 @@ await noteMandat("NM-COM", "commande/NM-COM_Note_Mandat_Commande.pdf", {
 
 await fichePilote("FP-ACH", "achats/FP-ACH_Fiche_Pilote_Achats.pdf", {
   processus: "Achats / Approvisionnement",
-  pilote: "Karim Belkacem (Approvisionnement)",
+  pilote: "Bruno Giraud (Approvisionnement)",
   finalite: "Assurer la disponibilité des composants et matières nécessaires au respect des commandes clients.",
   entrees: ["Dossier de commande", "Prévisions et stocks", "Panel fournisseurs"],
   sorties: ["Composants disponibles pour la production", "Alertes en cas d'aléa fournisseur"],

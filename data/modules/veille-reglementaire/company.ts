@@ -38,9 +38,9 @@ export const company: ClientCompany = {
     "Pérenniser un dispositif de veille avec des responsabilités claires"
   ],
   mainContact: {
-    name: "Claire Martin",
-    role: "Directrice qualité",
-    email: "claire.martin@montrel-industries.example"
+    name: "Camille Ferrand",
+    role: "Responsable qualité groupe",
+    email: "camille.ferrand@montrel-industries.example"
   },
   mandateIssues: [
     "Identifier les exigences réglementaires et normatives applicables au domaine",
@@ -48,7 +48,7 @@ export const company: ClientCompany = {
     "Proposer un dispositif de veille et un plan de mise en conformité réaliste"
   ],
   currentSituation: [
-    "Un audit récent a montré qu'Montrel Industries détecte trop tard certaines évolutions réglementaires applicables.",
+    "Un audit récent a montré que Montrel Industries détecte trop tard certaines évolutions réglementaires applicables.",
     "La veille existe de manière informelle, mais elle est dispersée et depend de quelques personnes.",
     "Aucun tableau de veille consolidé ne relie les exigences, leurs sources et leur impact.",
     "La direction veut un dispositif structure, sans alourdir inutilement le fonctionnement des équipes."
