@@ -63,7 +63,7 @@ export const mandates: Mandate[] = [
     specificMessages: [
       {
         id: "mandate-achats-approv",
-        sender: "Karim Belkacem",
+        sender: "Bruno Giraud",
         role: "Responsable approvisionnement",
         subject: "Ruptures composants et effet domino",
         preview:
@@ -165,8 +165,8 @@ export const simulation: SimulationData = {
   messages: [
     {
       id: "dq",
-      sender: "Claire Martin",
-      role: "Directrice qualité",
+      sender: "Camille Ferrand",
+      role: "Responsable qualité groupe",
       subject: "Lancement de la démarche processus",
       preview:
         "La direction attend une cartographie utile au pilotage, pas un schéma de plus.",
@@ -237,9 +237,9 @@ export const simulation: SimulationData = {
   preparedEvents: [
     {
       id: "dq-cadrage-processus",
-      triggerTitle: "Mail Directrice Qualité - Cadrage du processus",
-      sender: "Claire Martin",
-      role: "Directrice qualité",
+      triggerTitle: "Mail Responsable Qualité - Cadrage du processus",
+      sender: "Camille Ferrand",
+      role: "Responsable qualité groupe",
       simulatedTime: "13:05",
       summary:
         "La direction qualité confirme le périmètre du processus confié et le niveau de détail attendu.",

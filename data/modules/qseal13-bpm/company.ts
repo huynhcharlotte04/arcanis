@@ -37,9 +37,9 @@ export const company: ClientCompany = {
     "Mobiliser les pilotes de processus autour d'objectifs partagés"
   ],
   mainContact: {
-    name: "Claire Martin",
-    role: "Directrice qualité",
-    email: "claire.martin@montrel-industries.example"
+    name: "Camille Ferrand",
+    role: "Responsable qualité groupe",
+    email: "camille.ferrand@montrel-industries.example"
   },
   mandateIssues: [
     "Cartographier un processus réel et en identifier les points de rupture",
