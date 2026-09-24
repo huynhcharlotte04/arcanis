@@ -5,6 +5,11 @@ import type { Mandate, SimulationData } from "@/lib/types";
 // une resolution "cabinet -> mandat" identique. Champs generiques reutilises :
 //   sector      = domaine de veille confié
 //   referential = cadre de travail (veille réglementaire et normative)
+//
+// Chaque domaine porte un scénario distinct et actuel (ICPE/REACH,
+// réforme santé au travail, transition Directive -> Règlement Machines,
+// NIS2), pour que les 4 équipes travaillent sur des problématiques
+// réellement différentes plutôt que des variations d'un même cas.
 export const mandates: Mandate[] = [
   {
     id: "veille-environnement",
@@ -13,30 +18,31 @@ export const mandates: Mandate[] = [
     sector: "Environnement",
     referential: "Veille réglementaire et normative",
     objective:
-      "Structurer la veille réglementaire du domaine environnement, identifier les exigences applicables et évaluer l'impact des évolutions récentes.",
+      "Déterminer si Montrel Industries est en situation régulière au regard de la réglementation ICPE et anticiper une restriction européenne à venir sur un produit chimique clé.",
     issues: [
-      "Obligations ICPE, déchets et émissions suivies de façon inegale entre les deux sites.",
-      "Détection tardive des évolutions réglementaires environnementales applicables.",
-      "Absence de tableau de veille reliant exigences, sources et échéances."
+      "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE, sans qu'aucune vérification de régime n'ait été refaite.",
+      "Si le seuil est confirmé dépassé, l'installation pourrait relever d'un régime ICPE plus contraignant que celui déclaré actuellement, ce qui exposerait l'entreprise à une exploitation non conforme depuis 8 mois.",
+      "Un fournisseur a notifié une restriction européenne (REACH) à venir sur un des solvants utilisés, avec un délai de mise en conformité serré."
     ],
     comexExpectations: [
-      "Un tableau de veille du domaine environnement, avec les exigences applicables.",
-      "L'analyse d'impact des évolutions récentes sur l'entreprise.",
-      "Un plan de mise en conformité priorisé."
+      "Une qualification claire du régime ICPE réellement applicable à la ligne de traitement de surface.",
+      "Une évaluation du risque lié à une éventuelle non-conformité déjà en cours.",
+      "Un plan de mise en conformité priorisé intégrant l'échéance REACH."
     ],
     specificMessages: [
       {
         id: "mandate-env-hse",
         sender: "Julien Faure",
         role: "Responsable HSE",
-        subject: "Évolution sur les déchets industriels",
+        subject: "Un problème que je n'ai découvert qu'en préparant votre dossier",
         preview:
-          "Une évolution récente sur le tri des déchets nous a pris de court.",
+          "La nouvelle ligne de traitement de surface a fait grimper nos volumes de solvants sans que personne ne revérifie notre classement ICPE.",
         receivedAt: "10:36",
         body: [
           "Bonjour,",
-          "Nous avons appris tardivement une évolution sur la gestion de certains déchets industriels, et nous avons du réagir dans l'urgence.",
-          "Il faut structurer la veille environnementale pour ne plus decouvrir ces exigences après coup."
+          "En préparant les éléments pour votre équipe, je me suis rendu compte d'un point qui m'inquiète : depuis l'ajout de la ligne de traitement de surface sur le site secondaire il y a 8 mois, notre volume de solvants stockés a clairement augmenté. Personne n'a revérifié si cela change notre classement ICPE.",
+          "En parallèle, notre fournisseur de solvants nous a prévenus qu'un des produits que nous utilisons sera restreint par la réglementation européenne REACH d'ici un an. Je n'ai pas encore eu le temps d'évaluer ce que ça implique concrètement pour nous.",
+          "J'ai besoin que votre équipe m'aide à y voir clair avant que ça ne devienne un vrai problème."
         ]
       }
     ]
@@ -48,30 +54,31 @@ export const mandates: Mandate[] = [
     sector: "Santé-sécurité au travail",
     referential: "Veille réglementaire et normative",
     objective:
-      "Structurer la veille du domaine santé-sécurité au travail, identifier les exigences applicables et évaluer l'impact des évolutions récentes.",
+      "Traiter un droit d'alerte du CSE sur un poste du site secondaire tout en structurant la veille sur les obligations récentes de conservation et de dépôt du DUERP.",
     issues: [
-      "Obligations du Code du travail et prévention des risques suivies sans dispositif commun.",
-      "Difficulte à relier les évolutions réglementaires aux situations de travail réelles.",
-      "Preuves de conformité dispersées, peu mobilisables en cas de contrôle."
+      "Un opérateur a exercé son droit de retrait sur la presse d'assemblage n°3 après un incident évité de peu ; le CSE a formalisé un droit d'alerte pour danger grave et imminent.",
+      "L'inspection du travail a été informée par le CSE et pourrait se présenter sans préavis.",
+      "Le DUERP du site secondaire n'a pas été mis à jour depuis 14 mois malgré l'arrivée de cette presse, alors que la réforme santé au travail impose désormais sa conservation 40 ans et, à terme, son dépôt dématérialisé."
     ],
     comexExpectations: [
-      "Un tableau de veille du domaine santé-sécurité au travail.",
-      "L'analyse d'impact des évolutions récentes sur les postes et les sites.",
-      "Un plan de mise en conformité priorisé."
+      "Un traitement documenté du droit d'alerte, distinct de la simple mise à jour du DUERP.",
+      "Une analyse d'impact des obligations récentes de conservation et de dépôt du DUERP.",
+      "Un plan de mise en conformité qui distingue l'urgence du poste n°3 et le chantier de fond sur le DUERP."
     ],
     specificMessages: [
       {
         id: "mandate-sst-prevention",
         sender: "Isabelle Roy",
         role: "Animatrice prévention",
-        subject: "Nouvelles obligations sur les postes sensibles",
+        subject: "Le CSE a formalisé un droit d'alerte, j'ai besoin de vous vite",
         preview:
-          "Des évolutions sur certains postes sensibles doivent être intégrées.",
+          "Un quasi-accident sur la presse n°3 a déclenché un droit de retrait puis un droit d'alerte du CSE.",
         receivedAt: "10:39",
         body: [
           "Bonjour,",
-          "Plusieurs évolutions concernant les postes sensibles et la prévention des risques doivent être intégrées dans nos pratiques.",
-          "Sans veille structurée, nous risquons de les appliquer trop tard, voire de les manquer."
+          "Un opérateur a actionné son droit de retrait hier sur la presse d'assemblage n°3, après un incident évité de peu. Le CSE a formalisé un droit d'alerte pour danger grave et imminent, et je crains qu'un contrôle de l'inspection du travail ne suive.",
+          "En creusant le dossier, j'ai réalisé que le DUERP du site secondaire n'avait pas été mis à jour depuis l'arrivée de cette presse, il y a 14 mois. Et je sais qu'il y a de nouvelles règles sur la durée de conservation du DUERP, mais je ne les maîtrise pas.",
+          "Sans veille structurée, nous risquons de traiter l'urgence sans jamais régler le fond."
         ]
       }
     ]
@@ -83,30 +90,31 @@ export const mandates: Mandate[] = [
     sector: "Produit & normes sectorielles",
     referential: "Veille réglementaire et normative",
     objective:
-      "Structurer la veille du domaine produit et normes sectorielles, identifier les exigences applicables et évaluer l'impact des évolutions récentes.",
+      "Anticiper la bascule de la Directive Machines vers le nouveau Règlement Machines européen, en particulier ses nouvelles exigences de cybersécurité, avant l'échéance de janvier 2027.",
     issues: [
-      "Exigences de marquage et normes techniques applicables aux produits peu tracées.",
-      "Évolutions normatives sectorielles suivies de façon réactive, au coup par coup.",
-      "Risque de mise sur le marché non conforme faute de veille anticipée."
+      "Le Règlement Machines (UE) 2023/1230 remplace progressivement la Directive Machines 2006/42/CE, avec une application générale prévue en janvier 2027 — dans quelques mois.",
+      "Ce règlement introduit, pour la première fois, des exigences de cybersécurité pour les machines connectées, ce qui concerne directement les modules de pilotage à supervision à distance vendus par Montrel.",
+      "Un client stratégique a demandé, dans un appel d'offres en cours, une attestation de conformité au nouveau règlement, alors que le marquage CE actuel de Montrel repose encore sur l'ancienne directive."
     ],
     comexExpectations: [
-      "Un tableau de veille du domaine produit et normes sectorielles.",
-      "L'analyse d'impact des évolutions normatives récentes sur les produits.",
-      "Un plan de mise en conformité priorisé."
+      "Une explication claire de ce qui change entre l'ancienne directive et le nouveau règlement, en particulier sur la cybersécurité.",
+      "Une évaluation de l'écart entre le dossier technique actuel de Montrel et les nouvelles exigences.",
+      "Une trajectoire de mise en conformité crédible avant l'échéance de janvier 2027, utilisable pour répondre à l'appel d'offres."
     ],
     specificMessages: [
       {
         id: "mandate-produit-normes",
         sender: "Thomas Girard",
         role: "Responsable bureau d'études",
-        subject: "Revision d'une norme technique produit",
+        subject: "Un appel d'offres nous demande une conformité qu'on n'a pas encore",
         preview:
-          "Une norme technique applicable à nos produits vient d'être revisée.",
+          "Un client demande une attestation de conformité au nouveau règlement européen sur les machines, cybersécurité incluse.",
         receivedAt: "10:42",
         body: [
           "Bonjour,",
-          "Une norme technique applicable à une de nos gammes vient d'être revisée, et nous n'avons pas de mécanisme pour le détecter systematiquement.",
-          "Il faut une veille produit qui relie chaque exigence normative aux produits concernes."
+          "Un client stratégique nous demande, dans le cadre d'un appel d'offres, une attestation de conformité au nouveau Règlement Machines européen — celui qui remplace la Directive Machines et qui devient pleinement applicable début 2027.",
+          "Le problème, c'est que ce règlement introduit des exigences de cybersécurité pour les machines connectées, et nos modules de pilotage à supervision à distance n'ont jamais été évalués sous cet angle. Notre dossier technique actuel repose entièrement sur l'ancienne directive.",
+          "J'ai besoin de comprendre précisément ce qui change et ce qu'il nous reste à faire, sans perdre ce client."
         ]
       }
     ]
@@ -118,30 +126,31 @@ export const mandates: Mandate[] = [
     sector: "Système & transverse",
     referential: "Veille réglementaire et normative",
     objective:
-      "Structurer la veille du domaine système et transverse, identifier les exigences applicables et évaluer l'impact des évolutions récentes.",
+      "Qualifier une exigence de cybersécurité insérée par un client stratégique dans un avenant contractuel, non couverte par le système ISO 9001 actuel, et arbitrer un engagement déjà pris par le commercial.",
     issues: [
-      "Évolutions des référentiels système (ISO 9001) et exigences clients peu anticipées.",
-      "Obligations transverses (données, contractuel) suivies sans responsable clair.",
-      "Absence de consolidation entre les veilles des différents services."
+      "Un donneur d'ordre représentant environ 18 % du chiffre d'affaires exige, dans un avenant contractuel, la démonstration d'un dispositif de sécurité de l'information pour les fonctions de télémaintenance de Montrel — en écho à la directive européenne NIS2, qui s'applique à ce client.",
+      "Montrel n'a aucun système de management de la sécurité de l'information formalisé ; l'ISO 9001 actuel ne couvre pas ce sujet.",
+      "Le service commercial a déjà répondu favorablement à cette clause pour ne pas risquer de perdre le client, sans consulter la direction qualité."
     ],
     comexExpectations: [
-      "Un tableau de veille du domaine système et transverse.",
-      "L'analyse d'impact des évolutions récentes sur le système de management.",
-      "Un plan de mise en conformité priorisé."
+      "Une qualification précise de l'exigence client et de son ancrage réglementaire (NIS2).",
+      "Une évaluation honnête de l'écart entre l'engagement commercial déjà pris et la capacité réelle de Montrel.",
+      "Un plan de mise en conformité qui rende l'engagement tenable, ou une position claire à faire remonter au COMEX si ce n'est pas le cas."
     ],
     specificMessages: [
       {
         id: "mandate-systeme-transverse",
         sender: "Sabrina Lopez",
         role: "Responsable système qualité",
-        subject: "Évolutions référentiels et exigences clients",
+        subject: "Le commercial a promis quelque chose qu'on ne sait pas encore tenir",
         preview:
-          "Les exigences clients evoluent plus vite que notre système.",
+          "Un client stratégique impose une clause de cybersécurité liée à NIS2 ; le commercial a déjà dit oui.",
         receivedAt: "10:45",
         body: [
           "Bonjour,",
-          "Les évolutions des référentiels et des exigences clients arrivent souvent sans que nous les ayons anticipées au niveau du système.",
-          "Une veille transverse permettrait de consolider ce que chaque service détecte de son côté."
+          "Je viens d'apprendre qu'un de nos clients stratégiques — environ 18 % de notre chiffre d'affaires — a inséré une clause dans son avenant contractuel exigeant que nous démontrions un dispositif de sécurité de l'information sur nos fonctions de télémaintenance. Cela fait écho à la directive européenne NIS2, qui s'applique à ce client.",
+          "Le souci, c'est que notre service commercial a déjà répondu favorablement pour ne pas risquer de perdre le contrat, sans nous consulter. Or nous n'avons rien de formalisé sur ce sujet, notre ISO 9001 ne le couvre pas.",
+          "J'ai besoin de savoir si cet engagement est tenable, et sinon, ce qu'on peut proposer de réaliste."
         ]
       }
     ]
@@ -152,7 +161,7 @@ export const simulation: SimulationData = {
   missionLetter: {
     clientCompany: "Montrel Industries",
     context:
-      "À la suite d'un audit ayant révélé une détection trop tardive des évolutions applicables, Montrel Industries structure sa veille réglementaire et normative. Chaque équipe prend en charge un domaine de veille.",
+      "À la suite d'un audit ayant révélé une détection trop tardive des évolutions applicables, Montrel Industries structure sa veille réglementaire et normative. Chaque équipe prend en charge un domaine de veille, avec une problématique distincte déjà en cours.",
     objective:
       "Identifier les exigences applicables au domaine confié, évaluer l'impact des évolutions récentes, et proposer un dispositif de veille et un plan de mise en conformité.",
     assignedMandate:
@@ -231,18 +240,15 @@ export const simulation: SimulationData = {
         "Le comité de conformité attend une vision claire des exigences applicables et un plan de mise en conformité priorisé.",
         "Je serai attentive à la pérennité du dispositif : responsabilités, sources et fréquence de veille doivent être tenables."
       ]
-    }
-  ],
-  preparedEvents: [
+    },
     {
       id: "dq-cadrage-domaine",
-      triggerTitle: "Mail Responsable Qualité - Cadrage du domaine",
       sender: "Camille Ferrand",
       role: "Responsable qualité groupe",
-      simulatedTime: "13:05",
-      summary:
-        "La direction qualité confirme le domaine de veille confié et le niveau d'analyse attendu.",
       subject: "Cadrage du domaine de veille",
+      preview:
+        "La direction qualité confirme le domaine de veille confié et le niveau d'analyse attendu.",
+      receivedAt: "13:05",
       body: [
         "Bonjour,",
         "Je vous confirme le domaine de veille confié à votre équipe. Concentrez-vous sur les exigences réellement applicables à Montrel Industries.",
@@ -251,13 +257,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "nouvelle-reglementation",
-      triggerTitle: "Mail Veille - Nouvelle réglementation parue",
       sender: "Service documentation",
       role: "Veille documentaire",
-      simulatedTime: "13:40",
-      summary:
-        "Une évolution réglementaire vient de paraître et pourrait concerner le domaine confié.",
       subject: "Nouvelle évolution réglementaire parue",
+      preview:
+        "Une évolution réglementaire vient de paraître et pourrait concerner le domaine confié.",
+      receivedAt: "13:40",
       body: [
         "Bonjour,",
         "Une évolution réglementaire vient de paraître et pourrait concerner votre domaine de veille.",
@@ -266,13 +271,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "audit-constat",
-      triggerTitle: "Mail Audit - Constat de détection tardive",
       sender: "Auditeur interne",
       role: "Audit interne",
-      simulatedTime: "14:15",
-      summary:
-        "L'audit interne précise le constat de détection tardive à l'origine de la mission.",
       subject: "Précisions sur le constat d'audit",
+      preview:
+        "L'audit interne précise le constat de détection tardive à l'origine de la mission.",
+      receivedAt: "14:15",
       body: [
         "Bonjour,",
         "Le constat d'audit portait sur plusieurs évolutions détectées après leur entrée en vigueur, faute de veille structurée.",
@@ -281,13 +285,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "qse-impact",
-      triggerTitle: "Mail Manager QSE - Évaluation d'impact",
       sender: "Nadia Cherif",
       role: "Manager QSE",
-      simulatedTime: "14:45",
-      summary:
-        "Le manager QSE rappelle d'évaluer l'impact et de prioriser plutot que de tout lister.",
       subject: "Évaluez l'impact avant de lister",
+      preview:
+        "Le manager QSE rappelle d'évaluer l'impact et de prioriser plutot que de tout lister.",
+      receivedAt: "14:45",
       body: [
         "Bonjour,",
         "Pour chaque exigence, precisez l'impact sur l'organisation et le niveau de priorité de la mise en conformité.",
@@ -296,13 +299,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "operationnel-faisabilite",
-      triggerTitle: "Mail Responsable opérationnel - Faisabilité du dispositif",
       sender: "Philippe Marchand",
       role: "Responsable opérationnel",
-      simulatedTime: "15:10",
-      summary:
-        "Les opérations alertent sur la charge d'un dispositif de veille trop ambitieux.",
       subject: "Un dispositif tenable dans le temps",
+      preview:
+        "Les opérations alertent sur la charge d'un dispositif de veille trop ambitieux.",
+      receivedAt: "15:10",
       body: [
         "Bonjour,",
         "Je veux bien soutenir la démarche, mais le dispositif de veille doit rester tenable pour les équipes.",
@@ -311,13 +313,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "comité-attentes-restitution",
-      triggerTitle: "Mail Comité de conformité - Attentes de restitution",
       sender: "Secrétariat du comité de conformité",
       role: "Comité de conformité",
-      simulatedTime: "15:35",
-      summary:
-        "Le comité de conformité précise les attendus de la restitution finale.",
       subject: "Attentes pour la restitution de 16h30",
+      preview:
+        "Le comité de conformité précise les attendus de la restitution finale.",
+      receivedAt: "15:35",
       body: [
         "Bonjour,",
         "Pour la restitution, le comité attend un tableau de veille annoté, l'analyse d'impact des évolutions, un plan de mise en conformité priorisé et un dispositif de veille pérenne.",

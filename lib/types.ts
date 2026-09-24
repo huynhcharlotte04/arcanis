@@ -120,7 +120,6 @@ export type MailMessage = {
   preview: string;
   receivedAt: string;
   body: string[];
-  isNew?: boolean;
 };
 
 export type ComexExpectation = {
@@ -128,21 +127,9 @@ export type ComexExpectation = {
   detail: string;
 };
 
-export type MissionEvent = {
-  id: string;
-  triggerTitle: string;
-  sender: string;
-  role: string;
-  simulatedTime: string;
-  summary: string;
-  subject: string;
-  body: string[];
-};
-
 export type SimulationData = {
   missionLetter: MissionLetter;
   messages: MailMessage[];
-  preparedEvents: MissionEvent[];
   comexExpectations: ComexExpectation[];
   keyDates: string[];
 };
