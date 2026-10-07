@@ -177,7 +177,7 @@ await build("TAB-003", "qualite/TAB-003_Tableau_Veille_Actuel.pdf", "Tableau de 
   { p: "La veille existe de façon informelle et dispersée. Le tableau ci-dessous illustre son caractère lacunaire — chaque domaine porte aujourd'hui une situation ouverte et non traitée." },
   { h: "Extrait du suivi actuel" },
   { table: { head: ["Domaine", "État actuel"], widths: [1.4, 3], rows: [
-    ["Environnement", "Seuil ICPE potentiellement dépassé sur le site secondaire, non revérifié ; restriction REACH en cours de notification."],
+    ["Environnement", "Seuil ICPE potentiellement dépassé sur le site secondaire, non revérifié ; restriction REACH sur la NMP (solvant utilisé sur la ligne) en cours de notification."],
     ["Santé-sécurité au travail", "Droit d'alerte CSE en cours sur un poste ; DUERP du site secondaire non mis à jour depuis 14 mois."],
     ["Produit & normes", "Dossier technique basé sur l'ancienne Directive Machines ; nouveau règlement et demande client non traités."],
     ["Système & transverse", "Exigence client liée à la cybersécurité déjà acceptée commercialement, sans dispositif interne."]
@@ -190,21 +190,21 @@ await build("TAB-003", "qualite/TAB-003_Tableau_Veille_Actuel.pdf", "Tableau de 
 
 await ficheVeille("FV-ENV", "environnement/FV-ENV_Exigences_Environnement.pdf", {
   domaine: "Environnement",
-  contexte: "Deux sujets coexistent actuellement : la vérification du régime ICPE d'une ligne récemment ajoutée sur le site secondaire, et l'anticipation d'une restriction européenne sur un solvant utilisé.",
+  contexte: "Deux sujets coexistent actuellement : la vérification du régime ICPE d'une ligne récemment ajoutée sur le site secondaire, et l'anticipation de la restriction REACH applicable à la NMP (N-méthylpyrrolidone), un solvant utilisé sur cette ligne.",
   exigences: [
     ["Classement ICPE des installations", "Nomenclature ICPE (rubriques stockage et traitement de surface)", "À revérifier depuis l'ajout de la nouvelle ligne"],
     ["Gestion et traçabilité des déchets industriels", "Code de l'environnement", "Suivi partiel"],
-    ["Substances soumises à restriction", "Règlement REACH, annexe XVII", "Notification fournisseur reçue, impact non évalué"]
+    ["Restriction REACH sur la NMP (N-méthylpyrrolidone)", "Règlement REACH, annexe XVII, entrée 71", "Notification fournisseur reçue, impact non évalué"]
   ],
   sources: ["Journal officiel et bases réglementaires environnement (Légifrance, base AIDA)", "AFNOR / Norm'Info pour les évolutions normatives", "Fédérations professionnelles", "Notifications réglementaires des fournisseurs de produits chimiques", "Prescriptions préfectorales des sites"],
-  evolutions: ["La ligne de traitement de surface ajoutée il y a 8 mois a fait grimper le volume de solvants stockés : le seuil de classement ICPE est à revérifier sans délai.", "Un fournisseur a notifié une restriction européenne à venir sur un solvant utilisé, avec un délai de mise en conformité serré."],
+  evolutions: ["La ligne de traitement de surface ajoutée il y a 8 mois a fait grimper le volume de solvants stockés : le seuil de classement ICPE est à revérifier sans délai.", "Un fournisseur a notifié la restriction européenne applicable à la NMP (N-méthylpyrrolidone), un solvant utilisé sur cette ligne, avec un délai de mise en conformité serré."],
   attention: ["Le régime ICPE applicable (déclaration, enregistrement, autorisation) conditionne des obligations très différentes : l'écart peut être lourd.", "Si une exploitation non conforme depuis 8 mois est confirmée, elle doit être traitée avec prudence dans la restitution."]
 });
 
 await noteMandat("NM-ENV", "environnement/NM-ENV_Note_Mandat_Environnement.pdf", {
   domaine: "Environnement",
   cabinet: "Cabinet Horizon",
-  contexte: "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE sans revérification du régime, et un fournisseur notifie une restriction REACH à venir sur un des produits utilisés.",
+  contexte: "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE sans revérification du régime, et un fournisseur notifie la restriction REACH applicable à la NMP (N-méthylpyrrolidone), un des produits utilisés sur cette ligne.",
   perimetre: "Qualifier le régime ICPE réellement applicable, évaluer le risque d'une exploitation déjà non conforme, et intégrer l'échéance REACH dans le plan de mise en conformité.",
   attendus: ["Tableau de veille environnement, avec le régime ICPE clarifié", "Analyse d'impact des deux évolutions (ICPE et REACH)", "Plan de mise en conformité priorisé, avec les échéances"],
   vigilance: ["Ne pas minimiser un possible dépassement de seuil déjà en cours depuis 8 mois", "Distinguer l'urgence ICPE du chantier REACH, aux échéances différentes"]
