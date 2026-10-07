@@ -18,16 +18,16 @@ export const mandates: Mandate[] = [
     sector: "Environnement",
     referential: "Veille réglementaire et normative",
     objective:
-      "Déterminer si Montrel Industries est en situation régulière au regard de la réglementation ICPE et anticiper une restriction européenne à venir sur un produit chimique clé.",
+      "Déterminer si Montrel Industries est en situation régulière au regard de la réglementation ICPE et anticiper la restriction européenne REACH applicable à la NMP (N-méthylpyrrolidone), un solvant clé de la nouvelle ligne.",
     issues: [
       "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE, sans qu'aucune vérification de régime n'ait été refaite.",
       "Si le seuil est confirmé dépassé, l'installation pourrait relever d'un régime ICPE plus contraignant que celui déclaré actuellement, ce qui exposerait l'entreprise à une exploitation non conforme depuis 8 mois.",
-      "Un fournisseur a notifié une restriction européenne (REACH) à venir sur un des solvants utilisés, avec un délai de mise en conformité serré."
+      "Un fournisseur a notifié la restriction européenne (REACH, annexe XVII, entrée 71) applicable à la NMP (N-méthylpyrrolidone), un des solvants utilisés sur cette ligne : son usage n'est permis que si l'exposition des opérateurs reste sous un seuil réglementaire précis, à démontrer sans délai."
     ],
     comexExpectations: [
       "Une qualification claire du régime ICPE réellement applicable à la ligne de traitement de surface.",
       "Une évaluation du risque lié à une éventuelle non-conformité déjà en cours.",
-      "Un plan de mise en conformité priorisé intégrant l'échéance REACH."
+      "Un plan de mise en conformité priorisé intégrant l'échéance REACH sur la NMP."
     ],
     specificMessages: [
       {
@@ -41,7 +41,7 @@ export const mandates: Mandate[] = [
         body: [
           "Bonjour,",
           "En préparant les éléments pour votre équipe, je me suis rendu compte d'un point qui m'inquiète : depuis l'ajout de la ligne de traitement de surface sur le site secondaire il y a 8 mois, notre volume de solvants stockés a clairement augmenté. Personne n'a revérifié si cela change notre classement ICPE.",
-          "En parallèle, notre fournisseur de solvants nous a prévenus qu'un des produits que nous utilisons sera restreint par la réglementation européenne REACH d'ici un an. Je n'ai pas encore eu le temps d'évaluer ce que ça implique concrètement pour nous.",
+          "En parallèle, notre fournisseur de solvants nous a prévenus que la NMP (N-méthylpyrrolidone), un des produits que nous utilisons sur cette ligne, est soumise à une restriction européenne REACH : son usage n'est autorisé que si l'exposition de nos opérateurs reste sous un seuil précis, que je n'ai jamais fait mesurer. Je n'ai pas encore eu le temps d'évaluer ce que ça implique concrètement pour nous.",
           "J'ai besoin que votre équipe m'aide à y voir clair avant que ça ne devienne un vrai problème."
         ]
       }
