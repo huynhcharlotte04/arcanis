@@ -38,7 +38,9 @@ export function DocumentCenter() {
           {missionLabel} / {scopeTag}
         </p>
         <p className="mt-2 text-sm leading-6 text-mist">
-          Documents ouverts pour le mandat {mandate.sector}.
+          Documents ouverts pour le mandat {mandate.sector} : certains sont
+          propres à votre domaine, d&apos;autres sont transversaux et
+          couvrent les 4 domaines à titre de contexte.
         </p>
       </div>
 

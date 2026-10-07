@@ -499,7 +499,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-003-rapport-audit-veille",
     name: "AUD-003 - Rapport d'audit veille.pdf",
-    description: "Constat de détection tardive des évolutions applicables, à l'origine de la mission.",
+    description: "Document transversal (les 4 domaines) : constat de détection tardive des évolutions applicables, à l'origine de la mission. Seul l'exemple de votre domaine vous concerne directement.",
     category: "Qualité",
     version: "1.0",
     status: "Valide",
@@ -514,7 +514,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
   {
     id: "mission-003-tableau-veille-actuel",
     name: "TAB-003 - Tableau de veille actuel.pdf",
-    description: "État existant de la veille, partiel et non consolidé.",
+    description: "Document transversal (les 4 domaines) : état existant de la veille, partiel et non consolidé. Seule la ligne de votre domaine vous concerne directement.",
     category: "Qualité",
     version: "0.9",
     status: "Valide",
