@@ -54,6 +54,17 @@ export function MissionLetterDocument() {
         </div>
       </div>
 
+      {mandate.problematique ? (
+        <div className="relative mt-6 rounded-md border border-brass/45 bg-brass/10 p-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brass">
+            Problématique de votre cabinet
+          </p>
+          <p className="mt-3 text-lg font-medium italic leading-8 text-porcelain">
+            {mandate.problematique}
+          </p>
+        </div>
+      ) : null}
+
       <div className="relative divide-y divide-inkline">
         {letterRows.map(([label, value]) => (
           <section key={label} className="grid gap-4 py-6 lg:grid-cols-[0.32fr_0.68fr]">
