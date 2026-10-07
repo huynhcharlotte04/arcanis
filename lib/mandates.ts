@@ -14,7 +14,9 @@ function normalizeCabinetName(cabinetName: string): string {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, " ");
+    .replace(/\bcabinet\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export function getMandateByCabinetName(
