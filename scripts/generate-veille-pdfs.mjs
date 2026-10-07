@@ -159,6 +159,7 @@ await build("AUD-003", "qualite/AUD-003_Rapport_Audit_Veille.pdf", "Rapport d'au
   { meta: [["Émetteur", "Audit interne"], ["Version", "1.0"], ["Statut", "Validé"]] },
   { h: "Constat" },
   { p: "L'audit a relevé plusieurs évolutions réglementaires et normatives détectées après leur entrée en vigueur, ou en passe de le devenir, faute de dispositif de veille structuré." },
+  { p: "Ce constat est transversal : il rassemble un exemple par domaine, pour les 4 équipes de veille. Seul l'exemple de votre propre domaine relève directement de votre mandat ; les autres illustrent, à titre de contexte, la même défaillance de veille chez les autres équipes." },
   { h: "Exemples relevés" },
   { list: [
     "Volume de solvants d'une nouvelle ligne de traitement de surface dépassant potentiellement un seuil ICPE, sans revérification du régime applicable",
@@ -175,6 +176,7 @@ await build("TAB-003", "qualite/TAB-003_Tableau_Veille_Actuel.pdf", "Tableau de 
   { meta: [["Émetteur", "Direction qualité"], ["Version", "0.9"], ["Statut", "Brouillon"]] },
   { h: "État des lieux" },
   { p: "La veille existe de façon informelle et dispersée. Le tableau ci-dessous illustre son caractère lacunaire — chaque domaine porte aujourd'hui une situation ouverte et non traitée." },
+  { p: "Ce tableau est transversal : il couvre les 4 domaines confiés aux 4 équipes de veille, à titre de contexte global. Seule la ligne correspondant à votre propre domaine relève directement de votre mandat." },
   { h: "Extrait du suivi actuel" },
   { table: { head: ["Domaine", "État actuel"], widths: [1.4, 3], rows: [
     ["Environnement", "Seuil ICPE potentiellement dépassé sur le site secondaire, non revérifié ; restriction REACH sur la NMP (solvant utilisé sur la ligne) en cours de notification."],
