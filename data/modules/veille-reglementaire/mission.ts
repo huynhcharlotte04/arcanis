@@ -18,16 +18,18 @@ export const mandates: Mandate[] = [
     sector: "Environnement",
     referential: "Veille réglementaire et normative",
     objective:
-      "Déterminer si Montrel Industries est en situation régulière au regard de la réglementation ICPE et anticiper la restriction européenne REACH applicable à la NMP (N-méthylpyrrolidone), un solvant clé de la nouvelle ligne.",
+      "Déterminer si Montrel Industries est en situation régulière au regard de la réglementation ICPE et évaluer l'exposition des opérateurs au toluène utilisé sur la nouvelle ligne, jamais mesurée au regard de la VLEP réglementaire.",
+    problematique:
+      "Votre cabinet saura-t-il clarifier à temps le risque ICPE et l'exposition au toluène jamais mesurée, avec une restitution assez solide pour que Montrel Industries vous confie la suite du dossier environnemental ?",
     issues: [
-      "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE, sans qu'aucune vérification de régime n'ait été refaite.",
+      "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire (rubrique ICPE 2565 - traitement de surface, et rubrique 4331 - stockage de liquides inflammables), a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE, sans qu'aucune vérification de régime n'ait été refaite.",
       "Si le seuil est confirmé dépassé, l'installation pourrait relever d'un régime ICPE plus contraignant que celui déclaré actuellement, ce qui exposerait l'entreprise à une exploitation non conforme depuis 8 mois.",
-      "Un fournisseur a notifié la restriction européenne (REACH, annexe XVII, entrée 71) applicable à la NMP (N-méthylpyrrolidone), un des solvants utilisés sur cette ligne : son usage n'est permis que si l'exposition des opérateurs reste sous un seuil réglementaire précis, à démontrer sans délai."
+      "Le toluène (CAS 108-88-3), l'un des solvants utilisés sur cette ligne, est soumis à une valeur limite d'exposition professionnelle (VLEP) réglementaire contraignante fixée par le Code du travail : l'exposition des opérateurs n'a jamais été mesurée depuis la mise en service de la ligne."
     ],
     comexExpectations: [
       "Une qualification claire du régime ICPE réellement applicable à la ligne de traitement de surface.",
       "Une évaluation du risque lié à une éventuelle non-conformité déjà en cours.",
-      "Un plan de mise en conformité priorisé intégrant l'échéance REACH sur la NMP."
+      "Un plan de mise en conformité priorisé intégrant la mise en conformité VLEP sur le toluène."
     ],
     specificMessages: [
       {
@@ -41,7 +43,7 @@ export const mandates: Mandate[] = [
         body: [
           "Bonjour,",
           "En préparant les éléments pour votre équipe, je me suis rendu compte d'un point qui m'inquiète : depuis l'ajout de la ligne de traitement de surface sur le site secondaire il y a 8 mois, notre volume de solvants stockés a clairement augmenté. Personne n'a revérifié si cela change notre classement ICPE.",
-          "En parallèle, notre fournisseur de solvants nous a prévenus que la NMP (N-méthylpyrrolidone), un des produits que nous utilisons sur cette ligne, est soumise à une restriction européenne REACH : son usage n'est autorisé que si l'exposition de nos opérateurs reste sous un seuil précis, que je n'ai jamais fait mesurer. Je n'ai pas encore eu le temps d'évaluer ce que ça implique concrètement pour nous.",
+          "En parallèle, je me suis rendu compte qu'on utilise du toluène (CAS 108-88-3) sur cette ligne, sans avoir jamais mesuré l'exposition de nos opérateurs. Je sais qu'il existe une valeur limite d'exposition professionnelle réglementaire à respecter, mais je n'ai ni la fiche de données de sécurité à jour ni la valeur applicable sous la main.",
           "J'ai besoin que votre équipe m'aide à y voir clair avant que ça ne devienne un vrai problème."
         ]
       }
@@ -55,10 +57,12 @@ export const mandates: Mandate[] = [
     referential: "Veille réglementaire et normative",
     objective:
       "Traiter un droit d'alerte du CSE sur un poste du site secondaire tout en structurant la veille sur les obligations récentes de conservation et de dépôt du DUERP.",
+    problematique:
+      "Votre cabinet saura-t-il désamorcer le droit d'alerte du CSE et rattraper le retard sur le DUERP, avec une restitution qui convaincra Montrel Industries de vous garder sur ce dossier plutôt que de le reprendre en interne ?",
     issues: [
-      "Un opérateur a exercé son droit de retrait sur la presse d'assemblage n°3 après un incident évité de peu ; le CSE a formalisé un droit d'alerte pour danger grave et imminent.",
+      "Un opérateur a exercé son droit de retrait (Code du travail, art. L.4131-1) sur la presse d'assemblage n°3 après un incident évité de peu ; le CSE a formalisé un droit d'alerte pour danger grave et imminent (art. L.4132-2).",
       "L'inspection du travail a été informée par le CSE et pourrait se présenter sans préavis.",
-      "Le DUERP du site secondaire n'a pas été mis à jour depuis 14 mois malgré l'arrivée de cette presse, alors que la réforme santé au travail impose désormais sa conservation 40 ans et, à terme, son dépôt dématérialisé."
+      "Le DUERP du site secondaire n'a pas été mis à jour depuis 14 mois malgré l'arrivée de cette presse. Depuis la loi du 2 août 2021 pour renforcer la prévention en santé au travail, sa conservation pendant 40 ans est déjà obligatoire ; son dépôt sur un portail numérique dématérialisé est une obligation distincte, à venir, dont le calendrier de déploiement reste à vérifier."
     ],
     comexExpectations: [
       "Un traitement documenté du droit d'alerte, distinct de la simple mise à jour du DUERP.",
@@ -77,7 +81,7 @@ export const mandates: Mandate[] = [
         body: [
           "Bonjour,",
           "Un opérateur a actionné son droit de retrait hier sur la presse d'assemblage n°3, après un incident évité de peu. Le CSE a formalisé un droit d'alerte pour danger grave et imminent, et je crains qu'un contrôle de l'inspection du travail ne suive.",
-          "En creusant le dossier, j'ai réalisé que le DUERP du site secondaire n'avait pas été mis à jour depuis l'arrivée de cette presse, il y a 14 mois. Et je sais qu'il y a de nouvelles règles sur la durée de conservation du DUERP, mais je ne les maîtrise pas.",
+          "En creusant le dossier, j'ai réalisé que le DUERP du site secondaire n'avait pas été mis à jour depuis l'arrivée de cette presse, il y a 14 mois. Et je sais que la loi du 2 août 2021 a changé la durée de conservation du DUERP, mais je ne maîtrise pas les détails ni ce qui est déjà obligatoire ou pas encore.",
           "Sans veille structurée, nous risquons de traiter l'urgence sans jamais régler le fond."
         ]
       }
@@ -91,6 +95,8 @@ export const mandates: Mandate[] = [
     referential: "Veille réglementaire et normative",
     objective:
       "Anticiper la bascule de la Directive Machines vers le nouveau Règlement Machines européen, en particulier ses nouvelles exigences de cybersécurité, avant l'échéance de janvier 2027.",
+    problematique:
+      "Votre cabinet saura-t-il sécuriser la réponse à l'appel d'offres malgré la bascule vers le nouveau Règlement Machines, avec une restitution qui donnera au comité de conformité confiance pour vous reconduire ?",
     issues: [
       "Le Règlement Machines (UE) 2023/1230 remplace progressivement la Directive Machines 2006/42/CE, avec une application générale prévue en janvier 2027 — dans quelques mois.",
       "Ce règlement introduit, pour la première fois, des exigences de cybersécurité pour les machines connectées, ce qui concerne directement les modules de pilotage à supervision à distance vendus par Montrel.",
@@ -127,9 +133,11 @@ export const mandates: Mandate[] = [
     referential: "Veille réglementaire et normative",
     objective:
       "Qualifier une exigence de cybersécurité insérée par un client stratégique dans un avenant contractuel, non couverte par le système ISO 9001 actuel, et arbitrer un engagement déjà pris par le commercial.",
+    problematique:
+      "Votre cabinet saura-t-il qualifier l'exigence NIS2 déjà promise au client stratégique, et convaincre, en restitution, que vous êtes le bon partenaire pour sécuriser cet engagement à 18 % du chiffre d'affaires ?",
     issues: [
-      "Un donneur d'ordre représentant environ 18 % du chiffre d'affaires exige, dans un avenant contractuel, la démonstration d'un dispositif de sécurité de l'information pour les fonctions de télémaintenance de Montrel — en écho à la directive européenne NIS2, qui s'applique à ce client.",
-      "Montrel n'a aucun système de management de la sécurité de l'information formalisé ; l'ISO 9001 actuel ne couvre pas ce sujet.",
+      "Un donneur d'ordre représentant environ 18 % du chiffre d'affaires exige, dans un avenant contractuel, la démonstration d'un dispositif de sécurité de l'information pour les fonctions de télémaintenance de Montrel — en écho à la directive (UE) 2022/2555 (dite NIS2), qui s'applique à ce client.",
+      "Montrel n'a aucun système de management de la sécurité de l'information formalisé (le référentiel ISO/IEC 27001 n'a jamais été envisagé) ; l'ISO 9001 actuel ne couvre pas ce sujet.",
       "Le service commercial a déjà répondu favorablement à cette clause pour ne pas risquer de perdre le client, sans consulter la direction qualité."
     ],
     comexExpectations: [
@@ -148,8 +156,8 @@ export const mandates: Mandate[] = [
         receivedAt: "10:45",
         body: [
           "Bonjour,",
-          "Je viens d'apprendre qu'un de nos clients stratégiques — environ 18 % de notre chiffre d'affaires — a inséré une clause dans son avenant contractuel exigeant que nous démontrions un dispositif de sécurité de l'information sur nos fonctions de télémaintenance. Cela fait écho à la directive européenne NIS2, qui s'applique à ce client.",
-          "Le souci, c'est que notre service commercial a déjà répondu favorablement pour ne pas risquer de perdre le contrat, sans nous consulter. Or nous n'avons rien de formalisé sur ce sujet, notre ISO 9001 ne le couvre pas.",
+          "Je viens d'apprendre qu'un de nos clients stratégiques — environ 18 % de notre chiffre d'affaires — a inséré une clause dans son avenant contractuel exigeant que nous démontrions un dispositif de sécurité de l'information sur nos fonctions de télémaintenance. Cela fait écho à la directive (UE) 2022/2555, dite NIS2, qui s'applique à ce client.",
+          "Le souci, c'est que notre service commercial a déjà répondu favorablement pour ne pas risquer de perdre le contrat, sans nous consulter. Or nous n'avons rien de formalisé sur ce sujet : notre ISO 9001 ne le couvre pas, et nous n'avons jamais regardé ce qu'impliquerait un référentiel comme l'ISO/IEC 27001.",
           "J'ai besoin de savoir si cet engagement est tenable, et sinon, ce qu'on peut proposer de réaliste."
         ]
       }

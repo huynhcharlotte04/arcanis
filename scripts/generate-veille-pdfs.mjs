@@ -179,7 +179,7 @@ await build("TAB-003", "qualite/TAB-003_Tableau_Veille_Actuel.pdf", "Tableau de 
   { p: "Ce tableau est transversal : il couvre les 4 domaines confiés aux 4 équipes de veille, à titre de contexte global. Seule la ligne correspondant à votre propre domaine relève directement de votre mandat." },
   { h: "Extrait du suivi actuel" },
   { table: { head: ["Domaine", "État actuel"], widths: [1.4, 3], rows: [
-    ["Environnement", "Seuil ICPE potentiellement dépassé sur le site secondaire, non revérifié ; restriction REACH sur la NMP (solvant utilisé sur la ligne) en cours de notification."],
+    ["Environnement", "Seuil ICPE potentiellement dépassé sur le site secondaire, non revérifié ; exposition au toluène (solvant utilisé sur la ligne) jamais mesurée au regard de la VLEP réglementaire."],
     ["Santé-sécurité au travail", "Droit d'alerte CSE en cours sur un poste ; DUERP du site secondaire non mis à jour depuis 14 mois."],
     ["Produit & normes", "Dossier technique basé sur l'ancienne Directive Machines ; nouveau règlement et demande client non traités."],
     ["Système & transverse", "Exigence client liée à la cybersécurité déjà acceptée commercialement, sans dispositif interne."]
@@ -192,43 +192,44 @@ await build("TAB-003", "qualite/TAB-003_Tableau_Veille_Actuel.pdf", "Tableau de 
 
 await ficheVeille("FV-ENV", "environnement/FV-ENV_Exigences_Environnement.pdf", {
   domaine: "Environnement",
-  contexte: "Deux sujets coexistent actuellement : la vérification du régime ICPE d'une ligne récemment ajoutée sur le site secondaire, et l'anticipation de la restriction REACH applicable à la NMP (N-méthylpyrrolidone), un solvant utilisé sur cette ligne.",
+  contexte: "Deux sujets coexistent actuellement : la vérification du régime ICPE d'une ligne récemment ajoutée sur le site secondaire, et l'exposition des opérateurs au toluène (CAS 108-88-3), un solvant utilisé sur cette ligne, jamais mesurée au regard de la VLEP réglementaire.",
   exigences: [
-    ["Classement ICPE des installations", "Nomenclature ICPE (rubriques stockage et traitement de surface)", "À revérifier depuis l'ajout de la nouvelle ligne"],
+    ["Classement ICPE des installations", "Nomenclature ICPE - rubrique 2565 (traitement de surface) et rubrique 4331 (stockage de liquides inflammables)", "À revérifier depuis l'ajout de la nouvelle ligne"],
     ["Gestion et traçabilité des déchets industriels", "Code de l'environnement", "Suivi partiel"],
-    ["Restriction REACH sur la NMP (N-méthylpyrrolidone)", "Règlement REACH, annexe XVII, entrée 71", "Notification fournisseur reçue, impact non évalué"]
+    ["VLEP réglementaire du toluène (CAS 108-88-3)", "Code du travail, art. R.4412-149 (tableau des VLEP contraignantes)", "Jamais mesurée sur cette ligne"]
   ],
-  sources: ["Journal officiel et bases réglementaires environnement (Légifrance, base AIDA)", "AFNOR / Norm'Info pour les évolutions normatives", "Fédérations professionnelles", "Notifications réglementaires des fournisseurs de produits chimiques", "Prescriptions préfectorales des sites"],
-  evolutions: ["La ligne de traitement de surface ajoutée il y a 8 mois a fait grimper le volume de solvants stockés : le seuil de classement ICPE est à revérifier sans délai.", "Un fournisseur a notifié la restriction européenne applicable à la NMP (N-méthylpyrrolidone), un solvant utilisé sur cette ligne, avec un délai de mise en conformité serré."],
+  sources: ["Journal officiel et bases réglementaires environnement (Légifrance, base AIDA)", "AFNOR / Norm'Info pour les évolutions normatives", "Fédérations professionnelles", "Fiches de données de sécurité (FDS) et fiches toxicologiques INRS des produits utilisés", "Prescriptions préfectorales des sites"],
+  evolutions: ["La ligne de traitement de surface ajoutée il y a 8 mois a fait grimper le volume de solvants stockés : le seuil de classement ICPE est à revérifier sans délai.", "Un contrôle interne a révélé que l'exposition des opérateurs au toluène (CAS 108-88-3) utilisé sur cette ligne n'a jamais été mesurée au regard de la VLEP réglementaire, alors que l'usage s'est intensifié avec la nouvelle ligne."],
   attention: ["Le régime ICPE applicable (déclaration, enregistrement, autorisation) conditionne des obligations très différentes : l'écart peut être lourd.", "Si une exploitation non conforme depuis 8 mois est confirmée, elle doit être traitée avec prudence dans la restitution."]
 });
 
 await noteMandat("NM-ENV", "environnement/NM-ENV_Note_Mandat_Environnement.pdf", {
   domaine: "Environnement",
   cabinet: "Cabinet Horizon",
-  contexte: "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE sans revérification du régime, et un fournisseur notifie la restriction REACH applicable à la NMP (N-méthylpyrrolidone), un des produits utilisés sur cette ligne.",
-  perimetre: "Qualifier le régime ICPE réellement applicable, évaluer le risque d'une exploitation déjà non conforme, et intégrer l'échéance REACH dans le plan de mise en conformité.",
-  attendus: ["Tableau de veille environnement, avec le régime ICPE clarifié", "Analyse d'impact des deux évolutions (ICPE et REACH)", "Plan de mise en conformité priorisé, avec les échéances"],
-  vigilance: ["Ne pas minimiser un possible dépassement de seuil déjà en cours depuis 8 mois", "Distinguer l'urgence ICPE du chantier REACH, aux échéances différentes"]
+  contexte: "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE sans revérification du régime, et l'exposition des opérateurs au toluène (CAS 108-88-3) utilisé sur cette ligne n'a jamais été mesurée au regard de la VLEP réglementaire.",
+  perimetre: "Qualifier le régime ICPE réellement applicable, évaluer le risque d'une exploitation déjà non conforme, et intégrer la mise en conformité VLEP dans le plan de mise en conformité.",
+  attendus: ["Tableau de veille environnement, avec le régime ICPE clarifié", "Analyse d'impact des deux évolutions (ICPE et VLEP toluène)", "Plan de mise en conformité priorisé, avec les échéances"],
+  vigilance: ["Ne pas minimiser un possible dépassement de seuil déjà en cours depuis 8 mois", "Distinguer l'urgence ICPE du chantier VLEP, aux échéances différentes"]
 });
 
 await ficheVeille("FV-SST", "sst/FV-SST_Exigences_SST.pdf", {
   domaine: "Santé-sécurité au travail",
-  contexte: "Une situation d'urgence (droit d'alerte du CSE sur un poste) coexiste avec un chantier de fond sur les obligations de conservation du DUERP issues de la réforme santé au travail.",
+  contexte: "Une situation d'urgence (droit d'alerte du CSE sur un poste) coexiste avec un chantier de fond sur les obligations de conservation et de dépôt du DUERP issues de la loi du 2 août 2021 pour renforcer la prévention en santé au travail.",
   exigences: [
     ["Obligation de sécurité de l'employeur", "Code du travail, art. L.4121-1", "Engagée sur la presse d'assemblage n°3"],
-    ["Droit d'alerte du CSE pour danger grave et imminent", "Code du travail, dispositions CSE", "En cours de traitement"],
-    ["Conservation et dépôt du DUERP", "Réforme santé au travail (loi du 2 août 2021)", "Non couvert : DUERP non mis à jour depuis 14 mois"]
+    ["Droit de retrait et droit d'alerte du CSE pour danger grave et imminent", "Code du travail, art. L.4131-1 (droit de retrait) et L.4132-2 (droit d'alerte du CSE)", "En cours de traitement"],
+    ["Conservation du DUERP (40 ans)", "Loi du 2 août 2021 pour renforcer la prévention en santé au travail", "Déjà obligatoire : DUERP non mis à jour depuis 14 mois"],
+    ["Dépôt dématérialisé du DUERP", "Loi du 2 août 2021 - portail numérique (obligation distincte, calendrier de déploiement à vérifier)", "Non couvert"]
   ],
   sources: ["Code du travail (Légifrance)", "INRS", "Retours du CSE et des animateurs prévention", "Organismes de prévention (CARSAT, services de santé au travail)"],
-  evolutions: ["Le CSE a formalisé un droit d'alerte pour danger grave et imminent sur la presse d'assemblage n°3, après un quasi-accident.", "La réforme santé au travail impose désormais une conservation du DUERP pendant 40 ans et, à terme, son dépôt sur un portail dématérialisé."],
+  evolutions: ["Le CSE a formalisé un droit d'alerte pour danger grave et imminent sur la presse d'assemblage n°3, après un quasi-accident.", "Depuis la loi du 2 août 2021, la conservation du DUERP pendant 40 ans est déjà obligatoire ; son dépôt sur un portail numérique dématérialisé est une obligation distincte, à venir."],
   attention: ["Distinguer le traitement de l'urgence (poste n°3) du chantier de fond (mise à jour et conservation du DUERP).", "Anticiper un contrôle possible de l'inspection du travail, déjà informée par le CSE."]
 });
 
 await noteMandat("NM-SST", "sst/NM-SST_Note_Mandat_SST.pdf", {
   domaine: "Santé-sécurité au travail",
   cabinet: "Cabinet Polaris",
-  contexte: "Un droit de retrait suivi d'un droit d'alerte du CSE sur la presse d'assemblage n°3 révèle, en creusant, un DUERP du site secondaire non mis à jour depuis 14 mois, alors que la réforme santé au travail a changé les obligations de conservation.",
+  contexte: "Un droit de retrait suivi d'un droit d'alerte du CSE sur la presse d'assemblage n°3 révèle, en creusant, un DUERP du site secondaire non mis à jour depuis 14 mois, alors que la loi du 2 août 2021 a changé les obligations de conservation et de dépôt du DUERP.",
   perimetre: "Traiter le droit d'alerte en cours et structurer la veille sur les obligations de mise à jour, de conservation et de dépôt du DUERP.",
   attendus: ["Tableau de veille SST, distinguant l'urgence du poste n°3 et le chantier DUERP", "Analyse d'impact sur les postes et les sites", "Plan de mise en conformité priorisé"],
   vigilance: ["Ne pas traiter l'urgence sans regarder le chantier de fond, et inversement", "Se préparer à un contrôle possible de l'inspection du travail"]
@@ -258,21 +259,22 @@ await noteMandat("NM-PROD", "produit/NM-PROD_Note_Mandat_Produit.pdf", {
 
 await ficheVeille("FV-SYS", "systeme/FV-SYS_Exigences_Systeme.pdf", {
   domaine: "Système & transverse",
-  contexte: "Une exigence contractuelle client, liée à la directive européenne NIS2, dépasse le périmètre couvert par l'ISO 9001 actuel — et un engagement a déjà été pris côté commercial.",
+  contexte: "Une exigence contractuelle client, liée à la directive (UE) 2022/2555 (NIS2), dépasse le périmètre couvert par l'ISO 9001 actuel — et un engagement a déjà été pris côté commercial.",
   exigences: [
     ["Système de management de la qualité", "ISO 9001:2015", "En place, ne couvre pas la sécurité de l'information"],
-    ["Sécurité de l'information pour les fonctions connectées (télémaintenance)", "Exigence contractuelle d'un client régulé au titre de la directive NIS2", "Engagement commercial pris, dispositif interne inexistant"],
+    ["Sécurité de l'information pour les fonctions connectées (télémaintenance)", "Exigence contractuelle d'un client régulé au titre de la directive (UE) 2022/2555 (NIS2)", "Engagement commercial pris, dispositif interne inexistant"],
+    ["Référentiel de sécurité de l'information", "ISO/IEC 27001 (système de management de la sécurité de l'information)", "Jamais envisagé à ce jour"],
     ["Traçabilité des exigences clients transverses", "Contrats et avenants", "Non consolidée entre services"]
   ],
   sources: ["Organismes de certification", "Veille clients et contrats", "Veille réglementaire européenne sur la cybersécurité", "Consolidation entre services (commercial, qualité, système d'information)"],
-  evolutions: ["Un client représentant environ 18 % du chiffre d'affaires impose une clause de sécurité de l'information sur la télémaintenance, en référence à la directive NIS2.", "Le service commercial a déjà répondu favorablement à cette clause sans consultation de la direction qualité."],
+  evolutions: ["Un client représentant environ 18 % du chiffre d'affaires impose une clause de sécurité de l'information sur la télémaintenance, en référence à la directive (UE) 2022/2555 (NIS2).", "Le service commercial a déjà répondu favorablement à cette clause sans consultation de la direction qualité."],
   attention: ["L'écart entre l'engagement déjà pris et la capacité réelle de Montrel doit être évalué sans détour.", "Un système de management de la sécurité de l'information formalisé n'existe pas encore : la réponse doit être réaliste, pas cosmétique."]
 });
 
 await noteMandat("NM-SYS", "systeme/NM-SYS_Note_Mandat_Systeme.pdf", {
   domaine: "Système & transverse",
   cabinet: "Cabinet Nova",
-  contexte: "Un client stratégique a inséré une clause de sécurité de l'information liée à NIS2 dans un avenant contractuel, déjà accepté par le commercial, alors que Montrel n'a aucun dispositif formalisé sur ce sujet et que l'ISO 9001 actuel ne le couvre pas.",
+  contexte: "Un client stratégique a inséré une clause de sécurité de l'information liée à la directive (UE) 2022/2555 (NIS2) dans un avenant contractuel, déjà accepté par le commercial, alors que Montrel n'a aucun dispositif formalisé sur ce sujet et que l'ISO 9001 actuel ne le couvre pas.",
   perimetre: "Qualifier l'exigence client et son ancrage réglementaire, évaluer l'écart avec l'engagement déjà pris, et proposer une trajectoire réaliste ou une position claire à faire remonter au COMEX.",
   attendus: ["Tableau de veille système, avec l'exigence NIS2 qualifiée", "Analyse d'impact sur le système de management actuel", "Plan de mise en conformité priorisé, ou alerte argumentée si l'engagement n'est pas tenable"],
   vigilance: ["Ne pas endosser silencieusement un engagement déjà pris sans en avoir vérifié la faisabilité", "Clarifier les responsabilités transverses entre commercial, qualité et système d'information"]
