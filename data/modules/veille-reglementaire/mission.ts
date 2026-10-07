@@ -18,18 +18,18 @@ export const mandates: Mandate[] = [
     sector: "Environnement",
     referential: "Veille réglementaire et normative",
     objective:
-      "Déterminer si Montrel Industries est en situation régulière au regard de la réglementation ICPE et anticiper la restriction européenne REACH applicable à la NMP (N-méthylpyrrolidone), un solvant clé de la nouvelle ligne.",
+      "Déterminer si Montrel Industries est en situation régulière au regard de la réglementation ICPE et évaluer l'exposition des opérateurs au toluène utilisé sur la nouvelle ligne, jamais mesurée au regard de la VLEP réglementaire.",
     problematique:
-      "Votre cabinet saura-t-il clarifier à temps le risque ICPE et la restriction REACH sur la NMP, avec une restitution assez solide pour que Montrel Industries vous confie la suite du dossier environnemental ?",
+      "Votre cabinet saura-t-il clarifier à temps le risque ICPE et l'exposition au toluène jamais mesurée, avec une restitution assez solide pour que Montrel Industries vous confie la suite du dossier environnemental ?",
     issues: [
       "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE, sans qu'aucune vérification de régime n'ait été refaite.",
       "Si le seuil est confirmé dépassé, l'installation pourrait relever d'un régime ICPE plus contraignant que celui déclaré actuellement, ce qui exposerait l'entreprise à une exploitation non conforme depuis 8 mois.",
-      "Un fournisseur a notifié la restriction européenne (REACH, annexe XVII, entrée 71) applicable à la NMP (N-méthylpyrrolidone), un des solvants utilisés sur cette ligne : son usage n'est permis que si l'exposition des opérateurs reste sous un seuil réglementaire précis, à démontrer sans délai."
+      "Le toluène (CAS 108-88-3), l'un des solvants utilisés sur cette ligne, est soumis à une valeur limite d'exposition professionnelle (VLEP) réglementaire contraignante fixée par le Code du travail : l'exposition des opérateurs n'a jamais été mesurée depuis la mise en service de la ligne."
     ],
     comexExpectations: [
       "Une qualification claire du régime ICPE réellement applicable à la ligne de traitement de surface.",
       "Une évaluation du risque lié à une éventuelle non-conformité déjà en cours.",
-      "Un plan de mise en conformité priorisé intégrant l'échéance REACH sur la NMP."
+      "Un plan de mise en conformité priorisé intégrant la mise en conformité VLEP sur le toluène."
     ],
     specificMessages: [
       {
@@ -43,7 +43,7 @@ export const mandates: Mandate[] = [
         body: [
           "Bonjour,",
           "En préparant les éléments pour votre équipe, je me suis rendu compte d'un point qui m'inquiète : depuis l'ajout de la ligne de traitement de surface sur le site secondaire il y a 8 mois, notre volume de solvants stockés a clairement augmenté. Personne n'a revérifié si cela change notre classement ICPE.",
-          "En parallèle, notre fournisseur de solvants nous a prévenus que la NMP (N-méthylpyrrolidone), un des produits que nous utilisons sur cette ligne, est soumise à une restriction européenne REACH : son usage n'est autorisé que si l'exposition de nos opérateurs reste sous un seuil précis, que je n'ai jamais fait mesurer. Je n'ai pas encore eu le temps d'évaluer ce que ça implique concrètement pour nous.",
+          "En parallèle, je me suis rendu compte qu'on utilise du toluène (CAS 108-88-3) sur cette ligne, sans avoir jamais mesuré l'exposition de nos opérateurs. Je sais qu'il existe une valeur limite d'exposition professionnelle réglementaire à respecter, mais je n'ai ni la fiche de données de sécurité à jour ni la valeur applicable sous la main.",
           "J'ai besoin que votre équipe m'aide à y voir clair avant que ça ne devienne un vrai problème."
         ]
       }
