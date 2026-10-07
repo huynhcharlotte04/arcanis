@@ -8,20 +8,16 @@ import {
 } from "@/data/modules-registry";
 import {
   defaultTrainerSession,
-  loadTriggeredEventIds,
   loadTrainerSession,
-  resetLocalSimulationEvents,
-  saveTrainerSession,
-  triggerMissionEvent
+  saveTrainerSession
 } from "@/lib/storage";
 import type { TrainerSession } from "@/lib/types";
 
 export function TrainerDashboard() {
   const [session, setSession] = useState<TrainerSession>(defaultTrainerSession);
-  const [triggeredIds, setTriggeredIds] = useState<string[]>([]);
   const [copied, setCopied] = useState(false);
   const selectedModule = getModuleById(session.moduleId);
-  const { mandates, simulation } = selectedModule;
+  const { mandates } = selectedModule;
   const hasSession = session.sessionCode.trim().length > 0;
   const shareLink = hasSession
     ? `${typeof window !== "undefined" ? window.location.origin : ""}/rejoindre?code=${session.sessionCode}`
@@ -29,7 +25,6 @@ export function TrainerDashboard() {
 
   useEffect(() => {
     setSession(loadTrainerSession());
-    setTriggeredIds(loadTriggeredEventIds());
   }, []);
 
   function update(key: keyof TrainerSession, value: string) {
@@ -75,16 +70,6 @@ export function TrainerDashboard() {
     } catch {
       setCopied(false);
     }
-  }
-
-  function triggerEvent(eventId: string) {
-    triggerMissionEvent(eventId);
-    setTriggeredIds(loadTriggeredEventIds());
-  }
-
-  function resetEvents() {
-    resetLocalSimulationEvents();
-    setTriggeredIds([]);
   }
 
   return (
@@ -234,76 +219,6 @@ export function TrainerDashboard() {
           </div>
         </section>
       </div>
-
-      <section className="rounded-lg border border-inkline bg-white/[0.035] p-6 sm:p-8">
-        <div className="flex flex-col justify-between gap-4 border-b border-inkline pb-5 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
-              Événements de {selectedModule.missionId.replace("mission-", "Mission ")}
-            </p>
-            <h2 className="mt-2 text-2xl font-semibold text-porcelain">
-              Console de déclenchement
-            </h2>
-          </div>
-          <button
-            type="button"
-            onClick={resetEvents}
-            className="rounded-md border border-inkline px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-mist transition hover:border-brass/50 hover:text-brass"
-          >
-            Réinitialiser la simulation locale
-          </button>
-        </div>
-
-        <div className="mt-5 divide-y divide-inkline">
-          {simulation.preparedEvents.map((event) => {
-            const isTriggered = triggeredIds.includes(event.id);
-
-            return (
-              <article
-                key={event.id}
-                className="grid gap-4 py-5 first:pt-0 last:pb-0 lg:grid-cols-[1fr_0.78fr_auto]"
-              >
-                <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="text-lg font-semibold text-porcelain">
-                      {event.triggerTitle}
-                    </h3>
-                    {isTriggered ? (
-                      <span className="rounded-full border border-brass/40 bg-brass/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-brass">
-                        Déclenché
-                      </span>
-                    ) : null}
-                  </div>
-                  <p className="mt-2 text-sm leading-7 text-mist">
-                    {event.summary}
-                  </p>
-                </div>
-                <div className="text-sm leading-7 text-mist">
-                  <p>
-                    <span className="text-porcelain">Auteur :</span> {event.sender}
-                  </p>
-                  <p>
-                    <span className="text-porcelain">Heure simulée :</span>{" "}
-                    {event.simulatedTime}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => triggerEvent(event.id)}
-                  disabled={isTriggered}
-                  className={`h-fit rounded-md px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] transition ${
-                    isTriggered
-                      ? "cursor-not-allowed border border-inkline text-mist/75"
-                      : "bg-brass text-obsidian hover:bg-porcelain"
-                  }`}
-                >
-                  Déclencher
-                </button>
-              </article>
-            );
-          })}
-        </div>
-      </section>
     </div>
   );
 }

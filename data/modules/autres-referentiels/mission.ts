@@ -186,18 +186,15 @@ export const simulation: SimulationData = {
         "Concernant le poste qualité du site secondaire mentionné dans le rapport, un recrutement est en cours ; nous espérons le finaliser prochainement.",
         "N'hésitez pas à revenir vers moi pour toute question complémentaire."
       ]
-    }
-  ],
-  preparedEvents: [
+    },
     {
       id: "commercial-signal-clients",
-      triggerTitle: "Mail Directeur Commercial — Signal côté clients",
       sender: "Karim Belkacem",
       role: "Directeur commercial",
-      simulatedTime: "13:35",
-      summary:
-        "Un signal client renforce l'intérêt d'une trajectoire vers des marchés plus réglementés.",
       subject: "Un signal côté clients qui va dans votre sens",
+      preview:
+        "Un signal client renforce l'intérêt d'une trajectoire vers des marchés plus réglementés.",
+      receivedAt: "13:35",
       body: [
         "Bonjour,",
         "Je voulais partager un élément utile pour votre réflexion : plusieurs de nos clients nous interrogent régulièrement sur notre capacité à investir des marchés plus réglementés que les nôtres aujourd'hui. C'est un vrai signal de confiance, et je pense que cela peut jouer en notre faveur si nous allons dans cette direction.",
@@ -206,13 +203,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "finance-cadrage-budgetaire",
-      triggerTitle: "Mail Directeur Financier — Cadrage budgétaire",
       sender: "Antoine Mercier",
       role: "Directeur financier",
-      simulatedTime: "14:30",
-      summary:
-        "Le directeur financier communique un ordre de grandeur : environ 800 000 € sur 24 mois, non encore arbitré.",
       subject: "Cadrage budgétaire indicatif",
+      preview:
+        "Le directeur financier communique un ordre de grandeur : environ 800 000 € sur 24 mois, non encore arbitré.",
+      receivedAt: "14:30",
       body: [
         "Bonjour,",
         "Pour cadrer votre recommandation, voici un ordre de grandeur : une enveloppe d'environ 800 000 € sur 24 mois pourrait être mobilisée pour ce projet, tous postes confondus (équipements, certification, formation). Ce montant a été évoqué en COMEX mais n'a pas encore été formellement arbitré à ce stade.",
@@ -222,13 +218,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "assistante-infos-comex",
-      triggerTitle: "Mail Assistante de direction — Informations pratiques COMEX",
       sender: "Assistante de direction",
       role: "Direction générale",
-      simulatedTime: "15:45",
-      summary:
-        "Le format de la restitution est précisé : 15 minutes, 10 minutes de questions, 15 diapositives et une note d'une page.",
       subject: "Informations pratiques — COMEX",
+      preview:
+        "Le format de la restitution est précisé : 15 minutes, 10 minutes de questions, 15 diapositives et une note d'une page.",
+      receivedAt: "15:45",
       body: [
         "Bonjour,",
         "Un rappel pratique avant votre passage devant le COMEX : la séance se tiendra en salle de Direction, au siège de Lyon. Vous disposerez de 15 minutes de présentation suivies de 10 minutes de questions.",

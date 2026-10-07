@@ -27,14 +27,14 @@ function build(ref, rel, docTitle, blocks) {
 
 // -- Fabriques de documents récurrents -------------------------------------
 
-function ficheVeille(ref, rel, { domaine, exigences, sources, evolutions, attention }) {
+function ficheVeille(ref, rel, { domaine, contexte, exigences, sources, evolutions, attention }) {
   return build(ref, rel, `Exigences applicables — ${domaine}`, [
     { p: "Panorama des exigences réglementaires et normatives du domaine." },
     { meta: [["Version", "1.0"], ["Statut", "Validé"]] },
     { h: "Périmètre du domaine" },
-    { p: `Domaine de veille : ${domaine}. Exigences applicables à Montrel Industries, à compléter et tenir à jour.` },
+    { p: contexte },
     { h: "Principales exigences applicables" },
-    { list: exigences },
+    { table: { head: ["Exigence", "Texte / référence", "Statut"], widths: [1.6, 1.9, 1.5], rows: exigences } },
     { h: "Sources de veille" },
     { list: sources },
     { h: "Évolutions récentes à évaluer" },
@@ -158,12 +158,13 @@ await build("AUD-003", "qualite/AUD-003_Rapport_Audit_Veille.pdf", "Rapport d'au
   { p: "Constat à l'origine de la mission de structuration de la veille." },
   { meta: [["Émetteur", "Audit interne"], ["Version", "1.0"], ["Statut", "Validé"]] },
   { h: "Constat" },
-  { p: "L'audit a relevé plusieurs évolutions réglementaires et normatives détectées après leur entrée en vigueur, faute de dispositif de veille structuré." },
+  { p: "L'audit a relevé plusieurs évolutions réglementaires et normatives détectées après leur entrée en vigueur, ou en passe de le devenir, faute de dispositif de veille structuré." },
   { h: "Exemples relevés" },
   { list: [
-    "Évolution sur la gestion de déchets industriels appliquée dans l'urgence",
-    "Obligations sur des postes sensibles intégrées avec retard",
-    "Révision d'une norme technique produit non détectée à temps"
+    "Volume de solvants d'une nouvelle ligne de traitement de surface dépassant potentiellement un seuil ICPE, sans revérification du régime applicable",
+    "Droit d'alerte du CSE sur un poste dont le DUERP n'a pas été mis à jour depuis 14 mois",
+    "Dossier technique produit resté sur l'ancienne Directive Machines alors que le nouveau règlement européen approche",
+    "Engagement contractuel de sécurité de l'information pris par le commercial, sans dispositif interne pour le tenir"
   ] },
   { h: "Recommandation" },
   { p: "Structurer une veille par domaine, reliant exigences, sources, impact et statut de conformité, avec des responsabilités et une fréquence définies." }
@@ -173,13 +174,13 @@ await build("TAB-003", "qualite/TAB-003_Tableau_Veille_Actuel.pdf", "Tableau de 
   { p: "État existant, partiel et non consolidé." },
   { meta: [["Émetteur", "Direction qualité"], ["Version", "0.9"], ["Statut", "Brouillon"]] },
   { h: "État des lieux" },
-  { p: "La veille existe de façon informelle et dispersée. Le tableau ci-dessous illustre son caractère lacunaire." },
+  { p: "La veille existe de façon informelle et dispersée. Le tableau ci-dessous illustre son caractère lacunaire — chaque domaine porte aujourd'hui une situation ouverte et non traitée." },
   { h: "Extrait du suivi actuel" },
   { table: { head: ["Domaine", "État actuel"], widths: [1.4, 3], rows: [
-    ["Environnement", "Suivi partiel, sources non formalisées, impact non évalué."],
-    ["Santé-sécurité au travail", "Suivi par la prévention, sans consolidation."],
-    ["Produit & normes", "Suivi réactif, au coup par coup."],
-    ["Système & transverse", "Pas de responsable identifié."]
+    ["Environnement", "Seuil ICPE potentiellement dépassé sur le site secondaire, non revérifié ; restriction REACH en cours de notification."],
+    ["Santé-sécurité au travail", "Droit d'alerte CSE en cours sur un poste ; DUERP du site secondaire non mis à jour depuis 14 mois."],
+    ["Produit & normes", "Dossier technique basé sur l'ancienne Directive Machines ; nouveau règlement et demande client non traités."],
+    ["Système & transverse", "Exigence client liée à la cybersécurité déjà acceptée commercialement, sans dispositif interne."]
   ] } },
   { h: "Limite principale" },
   { p: "Aucune analyse d'impact ni priorisation ne relie les exigences aux actions de mise en conformité." }
@@ -189,70 +190,90 @@ await build("TAB-003", "qualite/TAB-003_Tableau_Veille_Actuel.pdf", "Tableau de 
 
 await ficheVeille("FV-ENV", "environnement/FV-ENV_Exigences_Environnement.pdf", {
   domaine: "Environnement",
-  exigences: ["Classement et obligations ICPE des sites", "Gestion et traçabilité des déchets industriels", "Suivi des rejets et émissions"],
-  sources: ["Journal officiel et bases réglementaires environnement", "Fédérations professionnelles", "Prescriptions préfectorales des sites"],
-  evolutions: ["Évolution récente sur le tri de certains déchets industriels", "Renforcement attendu du suivi des rejets"],
-  attention: ["Différences entre les deux sites", "Preuves de conformité à consolider"]
+  contexte: "Deux sujets coexistent actuellement : la vérification du régime ICPE d'une ligne récemment ajoutée sur le site secondaire, et l'anticipation d'une restriction européenne sur un solvant utilisé.",
+  exigences: [
+    ["Classement ICPE des installations", "Nomenclature ICPE (rubriques stockage et traitement de surface)", "À revérifier depuis l'ajout de la nouvelle ligne"],
+    ["Gestion et traçabilité des déchets industriels", "Code de l'environnement", "Suivi partiel"],
+    ["Substances soumises à restriction", "Règlement REACH, annexe XVII", "Notification fournisseur reçue, impact non évalué"]
+  ],
+  sources: ["Journal officiel et bases réglementaires environnement (Légifrance, base AIDA)", "AFNOR / Norm'Info pour les évolutions normatives", "Fédérations professionnelles", "Notifications réglementaires des fournisseurs de produits chimiques", "Prescriptions préfectorales des sites"],
+  evolutions: ["La ligne de traitement de surface ajoutée il y a 8 mois a fait grimper le volume de solvants stockés : le seuil de classement ICPE est à revérifier sans délai.", "Un fournisseur a notifié une restriction européenne à venir sur un solvant utilisé, avec un délai de mise en conformité serré."],
+  attention: ["Le régime ICPE applicable (déclaration, enregistrement, autorisation) conditionne des obligations très différentes : l'écart peut être lourd.", "Si une exploitation non conforme depuis 8 mois est confirmée, elle doit être traitée avec prudence dans la restitution."]
 });
 
 await noteMandat("NM-ENV", "environnement/NM-ENV_Note_Mandat_Environnement.pdf", {
   domaine: "Environnement",
   cabinet: "Cabinet Horizon",
-  contexte: "Une évolution sur les déchets industriels a été appliquée dans l'urgence, faute de veille anticipée.",
-  perimetre: "Structurer la veille du domaine environnement et évaluer l'impact des évolutions récentes.",
-  attendus: ["Tableau de veille environnement", "Analyse d'impact des évolutions", "Plan de mise en conformité priorisé"],
-  vigilance: ["Couvrir les deux sites", "Relier chaque exigence à une source et un statut"]
+  contexte: "Une nouvelle ligne de traitement de surface, ajoutée il y a 8 mois sur le site secondaire, a fait grimper le volume de solvants stockés au-delà d'un seuil ICPE sans revérification du régime, et un fournisseur notifie une restriction REACH à venir sur un des produits utilisés.",
+  perimetre: "Qualifier le régime ICPE réellement applicable, évaluer le risque d'une exploitation déjà non conforme, et intégrer l'échéance REACH dans le plan de mise en conformité.",
+  attendus: ["Tableau de veille environnement, avec le régime ICPE clarifié", "Analyse d'impact des deux évolutions (ICPE et REACH)", "Plan de mise en conformité priorisé, avec les échéances"],
+  vigilance: ["Ne pas minimiser un possible dépassement de seuil déjà en cours depuis 8 mois", "Distinguer l'urgence ICPE du chantier REACH, aux échéances différentes"]
 });
 
 await ficheVeille("FV-SST", "sst/FV-SST_Exigences_SST.pdf", {
   domaine: "Santé-sécurité au travail",
-  exigences: ["Obligations du Code du travail applicables", "Prévention des risques sur postes sensibles", "Document unique et plans d'action"],
-  sources: ["Bases réglementaires travail et sécurité", "Organismes de prévention", "Retours des animateurs prévention"],
-  evolutions: ["Nouvelles obligations sur certains postes sensibles", "Évolution des règles de prévention"],
-  attention: ["Lien entre exigences et situations de travail réelles", "Preuves mobilisables en cas de contrôle"]
+  contexte: "Une situation d'urgence (droit d'alerte du CSE sur un poste) coexiste avec un chantier de fond sur les obligations de conservation du DUERP issues de la réforme santé au travail.",
+  exigences: [
+    ["Obligation de sécurité de l'employeur", "Code du travail, art. L.4121-1", "Engagée sur la presse d'assemblage n°3"],
+    ["Droit d'alerte du CSE pour danger grave et imminent", "Code du travail, dispositions CSE", "En cours de traitement"],
+    ["Conservation et dépôt du DUERP", "Réforme santé au travail (loi du 2 août 2021)", "Non couvert : DUERP non mis à jour depuis 14 mois"]
+  ],
+  sources: ["Code du travail (Légifrance)", "INRS", "Retours du CSE et des animateurs prévention", "Organismes de prévention (CARSAT, services de santé au travail)"],
+  evolutions: ["Le CSE a formalisé un droit d'alerte pour danger grave et imminent sur la presse d'assemblage n°3, après un quasi-accident.", "La réforme santé au travail impose désormais une conservation du DUERP pendant 40 ans et, à terme, son dépôt sur un portail dématérialisé."],
+  attention: ["Distinguer le traitement de l'urgence (poste n°3) du chantier de fond (mise à jour et conservation du DUERP).", "Anticiper un contrôle possible de l'inspection du travail, déjà informée par le CSE."]
 });
 
 await noteMandat("NM-SST", "sst/NM-SST_Note_Mandat_SST.pdf", {
   domaine: "Santé-sécurité au travail",
   cabinet: "Cabinet Polaris",
-  contexte: "Des évolutions concernant des postes sensibles doivent être intégrées sans dispositif de veille commun.",
-  perimetre: "Structurer la veille santé-sécurité au travail et évaluer l'impact des évolutions récentes.",
-  attendus: ["Tableau de veille SST", "Analyse d'impact sur postes et sites", "Plan de mise en conformité priorisé"],
-  vigilance: ["Relier exigences et situations réelles", "Consolider les preuves de conformité"]
+  contexte: "Un droit de retrait suivi d'un droit d'alerte du CSE sur la presse d'assemblage n°3 révèle, en creusant, un DUERP du site secondaire non mis à jour depuis 14 mois, alors que la réforme santé au travail a changé les obligations de conservation.",
+  perimetre: "Traiter le droit d'alerte en cours et structurer la veille sur les obligations de mise à jour, de conservation et de dépôt du DUERP.",
+  attendus: ["Tableau de veille SST, distinguant l'urgence du poste n°3 et le chantier DUERP", "Analyse d'impact sur les postes et les sites", "Plan de mise en conformité priorisé"],
+  vigilance: ["Ne pas traiter l'urgence sans regarder le chantier de fond, et inversement", "Se préparer à un contrôle possible de l'inspection du travail"]
 });
 
 await ficheVeille("FV-PROD", "produit/FV-PROD_Exigences_Produit.pdf", {
   domaine: "Produit & normes sectorielles",
-  exigences: ["Exigences de marquage applicables aux produits", "Normes techniques sectorielles par gamme", "Exigences de documentation technique"],
-  sources: ["Organismes de normalisation", "Fédérations sectorielles", "Exigences des donneurs d'ordre"],
-  evolutions: ["Révision récente d'une norme technique produit", "Évolutions attendues sur la documentation technique"],
-  attention: ["Relier chaque norme aux produits concernés", "Anticiper avant mise sur le marché"]
+  contexte: "La transition entre la Directive Machines et le nouveau Règlement Machines européen est en cours, avec une échéance qui approche et une demande de conformité immédiate formulée par un client.",
+  exigences: [
+    ["Marquage CE des machines", "Directive 2006/42/CE, puis Règlement (UE) 2023/1230 (application générale janvier 2027)", "Dossier technique actuel basé sur l'ancienne directive"],
+    ["Exigences de cybersécurité pour machines connectées", "Nouvelles exigences essentielles du Règlement Machines", "Non couvert à ce jour"],
+    ["Documentation technique et notice", "Réglementation machines", "À faire évoluer"]
+  ],
+  sources: ["Organismes de normalisation (AFNOR, CEN/CENELEC)", "Norm'Info et veille sectorielle", "Exigences exprimées par les donneurs d'ordre dans les appels d'offres"],
+  evolutions: ["Le Règlement Machines devient pleinement applicable en janvier 2027, avec de nouvelles exigences de cybersécurité pour les machines connectées.", "Un client a demandé une attestation de conformité au nouveau règlement dans un appel d'offres en cours."],
+  attention: ["Les modules de pilotage à supervision à distance sont directement concernés par le volet cybersécurité, entièrement nouveau pour Montrel.", "Le calendrier de l'appel d'offres peut être plus court que celui laissé par le règlement lui-même."]
 });
 
 await noteMandat("NM-PROD", "produit/NM-PROD_Note_Mandat_Produit.pdf", {
   domaine: "Produit & normes sectorielles",
   cabinet: "Cabinet Meridian",
-  contexte: "Une norme technique applicable à une gamme a été révisée sans détection systématique.",
-  perimetre: "Structurer la veille produit et normes sectorielles et évaluer l'impact des évolutions.",
-  attendus: ["Tableau de veille produit", "Analyse d'impact sur les produits", "Plan de mise en conformité priorisé"],
-  vigilance: ["Relier normes et produits", "Anticiper les évolutions avant commercialisation"]
+  contexte: "Le Règlement Machines (UE) 2023/1230 remplace progressivement la Directive Machines, avec de nouvelles exigences de cybersécurité pour les machines connectées ; un client demande déjà une attestation de conformité au nouveau texte.",
+  perimetre: "Clarifier ce qui change entre l'ancienne directive et le nouveau règlement, évaluer l'écart du dossier technique actuel, et construire une trajectoire crédible avant l'échéance de janvier 2027.",
+  attendus: ["Tableau de veille produit, avec le volet cybersécurité identifié", "Analyse d'impact sur le dossier technique et les produits concernés", "Plan de mise en conformité priorisé, exploitable pour répondre au client"],
+  vigilance: ["Ne pas confondre l'échéance réglementaire (2027) et l'échéance commerciale, plus courte", "Le volet cybersécurité est entièrement nouveau : ne pas le sous-traiter à un simple ajustement documentaire"]
 });
 
 await ficheVeille("FV-SYS", "systeme/FV-SYS_Exigences_Systeme.pdf", {
   domaine: "Système & transverse",
-  exigences: ["Évolutions du référentiel ISO 9001", "Exigences clients transverses", "Obligations contractuelles et données"],
-  sources: ["Organismes de certification", "Exigences clients et contrats", "Veilles des différents services à consolider"],
-  evolutions: ["Nouvelles exigences clients transverses", "Évolutions attendues des référentiels système"],
-  attention: ["Consolider les veilles des services", "Identifier un responsable transverse"]
+  contexte: "Une exigence contractuelle client, liée à la directive européenne NIS2, dépasse le périmètre couvert par l'ISO 9001 actuel — et un engagement a déjà été pris côté commercial.",
+  exigences: [
+    ["Système de management de la qualité", "ISO 9001:2015", "En place, ne couvre pas la sécurité de l'information"],
+    ["Sécurité de l'information pour les fonctions connectées (télémaintenance)", "Exigence contractuelle d'un client régulé au titre de la directive NIS2", "Engagement commercial pris, dispositif interne inexistant"],
+    ["Traçabilité des exigences clients transverses", "Contrats et avenants", "Non consolidée entre services"]
+  ],
+  sources: ["Organismes de certification", "Veille clients et contrats", "Veille réglementaire européenne sur la cybersécurité", "Consolidation entre services (commercial, qualité, système d'information)"],
+  evolutions: ["Un client représentant environ 18 % du chiffre d'affaires impose une clause de sécurité de l'information sur la télémaintenance, en référence à la directive NIS2.", "Le service commercial a déjà répondu favorablement à cette clause sans consultation de la direction qualité."],
+  attention: ["L'écart entre l'engagement déjà pris et la capacité réelle de Montrel doit être évalué sans détour.", "Un système de management de la sécurité de l'information formalisé n'existe pas encore : la réponse doit être réaliste, pas cosmétique."]
 });
 
 await noteMandat("NM-SYS", "systeme/NM-SYS_Note_Mandat_Systeme.pdf", {
   domaine: "Système & transverse",
   cabinet: "Cabinet Nova",
-  contexte: "Les évolutions des référentiels et des exigences clients arrivent sans anticipation au niveau système.",
-  perimetre: "Structurer la veille système et transverse et évaluer l'impact des évolutions récentes.",
-  attendus: ["Tableau de veille système", "Analyse d'impact sur le système de management", "Plan de mise en conformité priorisé"],
-  vigilance: ["Consolider ce que chaque service détecte", "Clarifier les responsabilités transverses"]
+  contexte: "Un client stratégique a inséré une clause de sécurité de l'information liée à NIS2 dans un avenant contractuel, déjà accepté par le commercial, alors que Montrel n'a aucun dispositif formalisé sur ce sujet et que l'ISO 9001 actuel ne le couvre pas.",
+  perimetre: "Qualifier l'exigence client et son ancrage réglementaire, évaluer l'écart avec l'engagement déjà pris, et proposer une trajectoire réaliste ou une position claire à faire remonter au COMEX.",
+  attendus: ["Tableau de veille système, avec l'exigence NIS2 qualifiée", "Analyse d'impact sur le système de management actuel", "Plan de mise en conformité priorisé, ou alerte argumentée si l'engagement n'est pas tenable"],
+  vigilance: ["Ne pas endosser silencieusement un engagement déjà pris sans en avoir vérifié la faisabilité", "Clarifier les responsabilités transverses entre commercial, qualité et système d'information"]
 });
 
 console.log("14 documents veille-reglementaire générés.");

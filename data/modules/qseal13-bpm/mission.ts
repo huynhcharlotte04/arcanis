@@ -232,18 +232,15 @@ export const simulation: SimulationData = {
         "La revue de direction attend une lecture claire de nos processus et des leviers concrets pour réduire les réclamations.",
         "Je serai attentive à la manière dont vous proposez d'embarquer les pilotes : une bonne cartographie mal accueillie ne produira aucun effet."
       ]
-    }
-  ],
-  preparedEvents: [
+    },
     {
       id: "dq-cadrage-processus",
-      triggerTitle: "Mail Responsable Qualité - Cadrage du processus",
       sender: "Camille Ferrand",
       role: "Responsable qualité groupe",
-      simulatedTime: "13:05",
-      summary:
-        "La direction qualité confirme le périmètre du processus confié et le niveau de détail attendu.",
       subject: "Cadrage du processus à cartographier",
+      preview:
+        "La direction qualité confirme le périmètre du processus confié et le niveau de détail attendu.",
+      receivedAt: "13:05",
       body: [
         "Bonjour,",
         "Je vous confirme le périmètre du processus confié à votre équipe. Restez sur ce périmètre, mais regardez toujours ses interfaces amont et aval.",
@@ -252,13 +249,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "reclamations-synthese",
-      triggerTitle: "Mail Service Client - Synthèse des réclamations",
       sender: "Elodie Nguyen",
       role: "Responsable service client",
-      simulatedTime: "13:40",
-      summary:
-        "Le service client transmet une synthèse des réclamations récentes sur le traitement des commandes.",
       subject: "Synthèse des réclamations du trimestre",
+      preview:
+        "Le service client transmet une synthèse des réclamations récentes sur le traitement des commandes.",
+      receivedAt: "13:40",
       body: [
         "Bonjour,",
         "Vous trouverez les grandes familles de réclamations : délais non tenus, confirmations erronées, informations produits incomplètes.",
@@ -267,13 +263,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "pilote-ouverture",
-      triggerTitle: "Mail Pilote réticent - Ouverture prudente",
       sender: "Gerard Lemoine",
       role: "Pilote de processus (production)",
-      simulatedTime: "14:15",
-      summary:
-        "Le pilote réticent accepte d'échanger, à condition que la démarche reste concrète et utile au terrain.",
       subject: "D'accord pour échanger, mais du concret",
+      preview:
+        "Le pilote réticent accepte d'échanger, à condition que la démarche reste concrète et utile au terrain.",
+      receivedAt: "14:15",
       body: [
         "Bonjour,",
         "Je veux bien vous consacrer un moment. Mais montrez-moi que votre cartographie sert à resoudre des problèmes réels, pas à nous surveiller.",
@@ -282,13 +277,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "qse-interfaces",
-      triggerTitle: "Mail Manager QSE - Interfaces critiques",
       sender: "Nadia Cherif",
       role: "Manager QSE",
-      simulatedTime: "14:45",
-      summary:
-        "Le manager QSE insiste sur les interfaces entre processus comme source principale de réclamations.",
       subject: "Ne negligez pas les interfaces",
+      preview:
+        "Le manager QSE insiste sur les interfaces entre processus comme source principale de réclamations.",
+      receivedAt: "14:45",
       body: [
         "Bonjour,",
         "Nos analyses montrent que la majorite des réclamations naissent aux interfaces entre processus, pas au cœur d'un seul service.",
@@ -297,13 +291,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "dg-mobilisation",
-      triggerTitle: "Mail Directrice Générale - Mobilisation des pilotes",
       sender: "Claire Montreuil",
       role: "Directrice générale",
-      simulatedTime: "15:10",
-      summary:
-        "La direction rappelle que la réussite depend de l'adhésion des pilotes de processus.",
       subject: "La mobilisation des pilotes est décisive",
+      preview:
+        "La direction rappelle que la réussite depend de l'adhésion des pilotes de processus.",
+      receivedAt: "15:10",
       body: [
         "Bonjour,",
         "Je compte sur vous pour proposer des leviers de mobilisation concrets. Une cartographie n'a de valeur que si les pilotes se l'approprient.",
@@ -312,13 +305,12 @@ export const simulation: SimulationData = {
     },
     {
       id: "copil-attentes-restitution",
-      triggerTitle: "Mail Revue de direction - Attentes de restitution",
       sender: "Secrétariat de direction",
       role: "Revue de direction",
-      simulatedTime: "15:35",
-      summary:
-        "La revue de direction précise les attendus de la restitution finale.",
       subject: "Attentes pour la restitution de 16h30",
+      preview:
+        "La revue de direction précise les attendus de la restitution finale.",
+      receivedAt: "15:35",
       body: [
         "Bonjour,",
         "Pour la restitution, la revue de direction attend une cartographie de processus annotée, les points de rupture, un plan d'indicateurs et des leviers de mobilisation.",

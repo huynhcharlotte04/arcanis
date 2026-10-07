@@ -3,19 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { getModuleById } from "@/data/modules-registry";
 import { getMandateById } from "@/lib/mandates";
-import {
-  emptyConsultantSession,
-  loadConsultantSession,
-  loadTriggeredEventIds
-} from "@/lib/storage";
+import { emptyConsultantSession, loadConsultantSession } from "@/lib/storage";
 import type { ConsultantSession, MailMessage } from "@/lib/types";
 
 export function MailInbox() {
-  const [triggeredIds, setTriggeredIds] = useState<string[]>([]);
   const [session, setSession] = useState<ConsultantSession>(emptyConsultantSession);
 
   useEffect(() => {
-    setTriggeredIds(loadTriggeredEventIds());
     setSession(loadConsultantSession());
   }, []);
 
@@ -24,23 +18,11 @@ export function MailInbox() {
 
   const messages = useMemo<MailMessage[]>(() => {
     const mandate = getMandateById(activeModule.mandates, session.mandateId);
-    const triggeredMessages = simulation.preparedEvents
-      .filter((event) => triggeredIds.includes(event.id))
-      .map((event) => ({
-        id: event.id,
-        sender: event.sender,
-        role: event.role,
-        subject: event.subject,
-        preview: event.summary,
-        receivedAt: event.simulatedTime,
-        body: event.body,
-        isNew: true
-      }));
 
-    return [...simulation.messages, ...mandate.specificMessages, ...triggeredMessages].sort((a, b) =>
+    return [...simulation.messages, ...mandate.specificMessages].sort((a, b) =>
       a.receivedAt.localeCompare(b.receivedAt)
     );
-  }, [activeModule, simulation, session.mandateId, triggeredIds]);
+  }, [activeModule, simulation, session.mandateId]);
 
   const [selectedId, setSelectedId] = useState(simulation.messages[0]?.id ?? "");
   const selected = messages.find((message) => message.id === selectedId) ?? messages[0];
@@ -81,11 +63,6 @@ export function MailInbox() {
                 <p className="text-xs uppercase tracking-[0.16em] text-brass">
                   {message.role}
                 </p>
-                {message.isNew ? (
-                  <span className="rounded-full border border-brass/45 bg-brass/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-brass">
-                    Nouveau
-                  </span>
-                ) : null}
               </div>
               <p className="mt-3 text-sm font-medium text-porcelain">
                 {message.subject}
