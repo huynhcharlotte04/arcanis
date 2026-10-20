@@ -140,7 +140,8 @@ export type SimulationData = {
 export type DeliverableType =
   | "restitution-comex"
   | "cartographie-annotee"
-  | "plan-action";
+  | "plan-action"
+  | "cartographie-parties-prenantes";
 
 export type SimulationModule = {
   id: string;
