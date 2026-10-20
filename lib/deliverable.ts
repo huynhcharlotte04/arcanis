@@ -24,6 +24,11 @@ export type DossierFraming = {
   stakeLabel: string;
   stakeValue: string;
   frameworkLabel: string;
+  // Intitulé de la ligne "mandate.sector" dans le bloc "Mandat confié à
+  // votre cabinet". Par défaut "Secteur" ; certains modules (ex. QSEAL11,
+  // où sector désigne un prisme partie prenante et non un secteur) ont
+  // besoin d'un intitulé différent pour rester clairs.
+  mandateScopeLabel: string;
 };
 
 export type RestitutionFraming = {
@@ -126,7 +131,8 @@ export function getDossierFraming(type: DeliverableType): DossierFraming {
       missionContext: "Restitution attendue en revue de direction aujourd'hui à 16h30",
       stakeLabel: "Enjeu direction",
       stakeValue: "Réduire les réclamations en embarquant les pilotes de processus",
-      frameworkLabel: "Cadre"
+      frameworkLabel: "Cadre",
+      mandateScopeLabel: "Secteur"
     };
   }
 
@@ -137,18 +143,20 @@ export function getDossierFraming(type: DeliverableType): DossierFraming {
       missionContext: "Restitution attendue au comité de conformité aujourd'hui à 16h30",
       stakeLabel: "Enjeu conformité",
       stakeValue: "Détecter à temps les évolutions applicables et rester en conformité",
-      frameworkLabel: "Cadre"
+      frameworkLabel: "Cadre",
+      mandateScopeLabel: "Secteur"
     };
   }
 
   if (type === "cartographie-parties-prenantes") {
     return {
       strategicObjective: "Refondre la cartographie des processus en intégrant les parties prenantes",
-      targetsLabel: "Prismes parties prenantes",
+      targetsLabel: "Les 4 prismes de la mission (un par cabinet)",
       missionContext: "Pitch attendu devant le comité de direction aujourd'hui à 16h30",
       stakeLabel: "Enjeu direction",
       stakeValue: "Faire de la cartographie un outil de pilotage avant l'audit client dans 6 mois",
-      frameworkLabel: "Cadre"
+      frameworkLabel: "Cadre",
+      mandateScopeLabel: "Votre prisme"
     };
   }
 
@@ -158,7 +166,8 @@ export function getDossierFraming(type: DeliverableType): DossierFraming {
     missionContext: "Restitution attendue devant le COMEX aujourd'hui à 16h30",
     stakeLabel: "Enjeu COMEX",
     stakeValue: "Arbitrer une trajectoire crédible sans surestimer la maturité interne",
-    frameworkLabel: "Référentiel"
+    frameworkLabel: "Référentiel",
+    mandateScopeLabel: "Secteur"
   };
 }
 

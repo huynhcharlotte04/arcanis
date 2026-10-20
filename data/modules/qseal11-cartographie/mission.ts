@@ -16,7 +16,7 @@ export const mandates: Mandate[] = [
     id: "carto-clients",
     cabinetName: "Cabinet Horizon",
     title: "Cartographie — Prisme Clients",
-    sector: "Lentille Clients",
+    sector: "Clients",
     referential: "Cartographie des processus et parties prenantes",
     objective:
       "Vérifier que la cartographie « version 0 » de Montrel rend visible, de bout en bout, le parcours qui crée de la valeur pour le client, et corriger les écarts qui expliquent la hausse de 18 % des réclamations en 12 mois.",
@@ -54,7 +54,7 @@ export const mandates: Mandate[] = [
     id: "carto-collaborateurs",
     cabinetName: "Cabinet Polaris",
     title: "Cartographie — Prisme Collaborateurs",
-    sector: "Lentille Collaborateurs",
+    sector: "Collaborateurs",
     referential: "Cartographie des processus et parties prenantes",
     objective:
       "Vérifier que la cartographie « version 0 » de Montrel intègre les exigences des collaborateurs (sécurité, compétences) et corriger l'absence de processus dédiés à la santé-sécurité et à l'environnement.",
@@ -92,7 +92,7 @@ export const mandates: Mandate[] = [
     id: "carto-autorites",
     cabinetName: "Cabinet Meridian",
     title: "Cartographie — Prisme Autorités & société",
-    sector: "Lentille Autorités & société",
+    sector: "Autorités & société",
     referential: "Cartographie des processus et parties prenantes",
     objective:
       "Vérifier que la cartographie « version 0 » de Montrel couvre la veille réglementaire et le référentiel sectoriel attendu par un client export, avant l'audit client prévu dans 6 mois.",
@@ -130,7 +130,7 @@ export const mandates: Mandate[] = [
     id: "carto-direction",
     cabinetName: "Cabinet Nova",
     title: "Cartographie — Prisme Direction & performance",
-    sector: "Lentille Direction & performance",
+    sector: "Direction & performance",
     referential: "Cartographie des processus et parties prenantes",
     objective:
       "Sélectionner, à partir de la cartographie « version 0 » de Montrel, les processus réellement clés pour la direction (grille d'impact AFNOR FD X 50-176), et construire le pitch qui justifie d'y concentrer les moyens.",

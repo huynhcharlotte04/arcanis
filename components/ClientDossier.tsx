@@ -152,7 +152,7 @@ export function ClientDossier() {
           Mandat confié à votre cabinet
         </h2>
         <div className="mt-4 grid gap-4 lg:grid-cols-[0.32fr_0.28fr_1fr]">
-          <Metric label="Secteur" value={mandate.sector} />
+          <Metric label={framing.mandateScopeLabel} value={mandate.sector} />
           <Metric label={framing.frameworkLabel} value={mandate.referential} />
           <div className="rounded-md border border-inkline bg-obsidian/35 p-4">
             <p className="text-xs uppercase tracking-[0.18em] text-mist">
