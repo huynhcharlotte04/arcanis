@@ -1,5 +1,6 @@
 import type { SimulationModule } from "@/lib/types";
 import { autresReferentielsModule } from "./modules/autres-referentiels";
+import { qseal11CartographieModule } from "./modules/qseal11-cartographie";
 import { qseal13BpmModule } from "./modules/qseal13-bpm";
 import { veilleReglementaireModule } from "./modules/veille-reglementaire";
 
@@ -7,6 +8,7 @@ import { veilleReglementaireModule } from "./modules/veille-reglementaire";
 // Ajouter un module = importer son dossier et l'ajouter à cette liste.
 export const modules: SimulationModule[] = [
   autresReferentielsModule,
+  qseal11CartographieModule,
   qseal13BpmModule,
   veilleReglementaireModule
 ];

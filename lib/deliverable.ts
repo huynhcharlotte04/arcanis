@@ -5,6 +5,8 @@ import type { DeliverableType, Mandate } from "@/lib/types";
 // du module "Autres référentiels" (aucune regression). "cartographie-annotee"
 // fournit le cadrage "revue de direction" de QSEAL13. "plan-action" fournit le
 // cadrage "comité de conformité" du module Veille réglementaire.
+// "cartographie-parties-prenantes" fournit le cadrage "comité de direction"
+// du module QSEAL11.
 
 export type LetterFraming = {
   audienceSuffix: string;
@@ -61,6 +63,17 @@ export function getLetterFraming(
     };
   }
 
+  if (type === "cartographie-parties-prenantes") {
+    return {
+      audienceSuffix: "Comité de direction",
+      context: `Montrel Industries a vu ses réclamations augmenter de 18 % en douze mois et doit prouver la maîtrise de ses processus lors d'un audit client prévu dans six mois. Une première cartographie existe, mais elle cumule les défauts (processus nommés par service, aucune famille management, aucun pilote désigné). Votre équipe reprend cette cartographie à travers le prisme ${mandate.sector}. Cette mission est aussi une mise à l'épreuve : votre pitch devant le comité de direction déterminera si Montrel Industries vous confie la suite du chantier.`,
+      scope: `Le prisme ${mandate.sector} constitue le périmètre de votre analyse : vérifier que la cartographie de Montrel sert bien les attentes de cette partie prenante, à chaque niveau (carte macro, fiches de processus, indicateurs).`,
+      mandateLine: mandate.title,
+      expectationsLabel: "Attentes du comité de direction",
+      presentationLabel: "Pitch devant le comité de direction"
+    };
+  }
+
   return {
     audienceSuffix: "COMEX",
     context: `Le COMEX souhaite explorer l'entrée sur le marché ${mandate.sector}. Votre cabinet est mandaté pour évaluer la faisabilité de cette trajectoire, identifier les écarts avec le système ISO 9001 actuel et proposer un plan de transition réaliste.`,
@@ -90,6 +103,17 @@ export function getDossierFraming(type: DeliverableType): DossierFraming {
       missionContext: "Restitution attendue au comité de conformité aujourd'hui à 16h30",
       stakeLabel: "Enjeu conformité",
       stakeValue: "Détecter à temps les évolutions applicables et rester en conformité",
+      frameworkLabel: "Cadre"
+    };
+  }
+
+  if (type === "cartographie-parties-prenantes") {
+    return {
+      strategicObjective: "Refondre la cartographie des processus en intégrant les parties prenantes",
+      targetsLabel: "Prismes parties prenantes",
+      missionContext: "Pitch attendu devant le comité de direction aujourd'hui à 16h30",
+      stakeLabel: "Enjeu direction",
+      stakeValue: "Faire de la cartographie un outil de pilotage avant l'audit client dans 6 mois",
       frameworkLabel: "Cadre"
     };
   }
@@ -134,6 +158,22 @@ export function getRestitutionFraming(type: DeliverableType): RestitutionFraming
         "Votre équipe prépare son tableau de veille, son analyse d'impact et son plan de mise en conformité en autonomie. ARCANIS fournit le contexte professionnel, pas le livrable.",
       panelNote:
         "Un tableau de veille exhaustif pourra être challenge s'il n'evalue pas l'impact réel des évolutions ni les priorités de mise en conformité."
+    };
+  }
+
+  if (type === "cartographie-parties-prenantes") {
+    return {
+      navLabel: "Pitch",
+      pageTitle: "Face au comité de direction",
+      pageSubtitle:
+        "Votre équipe prépare maintenant sa cartographie annotée et son pitch de sélection des processus clés.",
+      expectationsTitle: "Le comité de direction attend",
+      panelEyebrow: "Pitch devant le comité de direction",
+      panelTitle: "Préparation hors plateforme",
+      panelBody:
+        "Votre équipe prépare sa cartographie annotée, sa sélection de processus clés et son pitch en autonomie. ARCANIS fournit le contexte professionnel, pas le livrable.",
+      panelNote:
+        "Une cartographie techniquement juste pourra être challengée si elle oublie une partie prenante, un pilote désigné, ou si le pitch ne débouche sur aucune décision."
     };
   }
 
