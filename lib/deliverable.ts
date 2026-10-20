@@ -98,10 +98,11 @@ export function getLetterFraming(
   }
 
   if (type === "cartographie-parties-prenantes") {
+    const companyName = mandate.company?.name ?? "Votre client";
     return {
       audienceSuffix: getAudienceSuffix(type),
-      context: `Montrel Industries a vu ses réclamations augmenter de 18 % en douze mois et doit prouver la maîtrise de ses processus lors d'un audit client prévu dans six mois. Une première cartographie existe, mais elle cumule les défauts (processus nommés par service, aucune famille management, aucun pilote désigné). Votre équipe reprend cette cartographie à travers le prisme ${mandate.sector}. Cette mission est aussi une mise à l'épreuve : votre pitch devant le comité de direction déterminera si Montrel Industries vous confie la suite du chantier.`,
-      scope: `Le prisme ${mandate.sector} constitue le périmètre de votre analyse : vérifier que la cartographie de Montrel sert bien les attentes de cette partie prenante, à chaque niveau (carte macro, fiches de processus, indicateurs).`,
+      context: `${companyName} évolue dans le secteur ${mandate.sector}. Une première cartographie de ses processus existe, mais elle cumule les défauts classiques (processus nommés par service, aucune famille de management, aucun pilote désigné). Cette mission est aussi une mise à l'épreuve : votre pitch devant le comité de direction déterminera si ${companyName} vous confie la suite du chantier.`,
+      scope: `Le périmètre de votre analyse est l'ensemble des processus de ${companyName}. Il s'agit de vérifier que sa cartographie « version 0 » reflète vraiment son activité et ses parties prenantes, à chaque niveau (carte macro, fiches de processus, indicateurs).`,
       mandateLine: mandate.title,
       expectationsLabel: "Attentes du comité de direction",
       presentationLabel: "Pitch devant le comité de direction"
@@ -143,11 +144,11 @@ export function getDossierFraming(type: DeliverableType): DossierFraming {
 
   if (type === "cartographie-parties-prenantes") {
     return {
-      strategicObjective: "Refondre la cartographie des processus en intégrant les parties prenantes",
-      targetsLabel: "Prismes parties prenantes",
+      strategicObjective: "Cartographier les processus en intégrant les parties prenantes",
+      targetsLabel: "Secteurs des 4 entreprises de la mission (une par cabinet)",
       missionContext: "Pitch attendu devant le comité de direction aujourd'hui à 16h30",
       stakeLabel: "Enjeu direction",
-      stakeValue: "Faire de la cartographie un outil de pilotage avant l'audit client dans 6 mois",
+      stakeValue: "Faire de la cartographie un outil de pilotage avant le prochain audit ou la prochaine échéance client",
       frameworkLabel: "Cadre"
     };
   }

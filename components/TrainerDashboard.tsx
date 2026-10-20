@@ -19,6 +19,7 @@ export function TrainerDashboard() {
   const selectedModule = getModuleById(session.moduleId);
   const { mandates } = selectedModule;
   const hasSession = session.sessionCode.trim().length > 0;
+  const hasPerMandateCompanies = mandates.some((mandate) => mandate.company);
   const shareLink = hasSession
     ? `${typeof window !== "undefined" ? window.location.origin : ""}/rejoindre?code=${session.sessionCode}`
     : "";
@@ -138,10 +139,14 @@ export function TrainerDashboard() {
               Entreprise cliente
             </span>
             <p className="mt-3 w-full rounded-md border border-inkline bg-obsidian/40 px-4 py-3 text-porcelain">
-              {selectedModule.company.name}
+              {hasPerMandateCompanies
+                ? "4 entreprises indépendantes (une par cabinet)"
+                : selectedModule.company.name}
             </p>
             <span className="mt-2 block text-xs leading-6 text-mist">
-              Déterminée par le module sélectionné.
+              {hasPerMandateCompanies
+                ? "Voir le détail par cabinet dans le tableau d'attribution ci-contre."
+                : "Déterminée par le module sélectionné."}
             </span>
           </div>
         </div>
@@ -187,8 +192,9 @@ export function TrainerDashboard() {
             Attribution des mandats
           </p>
           <div className="mt-5 overflow-hidden rounded-md border border-inkline">
-            <div className="grid grid-cols-[0.75fr_1fr_0.48fr_0.36fr] gap-3 bg-obsidian/45 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-mist">
+            <div className="grid grid-cols-[0.6fr_0.78fr_0.85fr_0.42fr_0.32fr] gap-3 bg-obsidian/45 px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-mist">
               <span>Cabinet</span>
+              <span>Entreprise</span>
               <span>Mandat</span>
               <span>Référentiel</span>
               <span>Statut</span>
@@ -197,10 +203,13 @@ export function TrainerDashboard() {
               {mandates.map((mandate) => (
                 <article
                   key={mandate.id}
-                  className="grid grid-cols-[0.75fr_1fr_0.48fr_0.36fr] items-center gap-3 px-4 py-4"
+                  className="grid grid-cols-[0.6fr_0.78fr_0.85fr_0.42fr_0.32fr] items-center gap-3 px-4 py-4"
                 >
                   <p className="text-sm font-semibold text-porcelain">
                     {mandate.cabinetName}
+                  </p>
+                  <p className="text-sm leading-6 text-mist">
+                    {mandate.company?.name ?? selectedModule.company.name}
                   </p>
                   <p className="text-sm leading-6 text-mist">{mandate.title}</p>
                   <p className="text-sm font-semibold text-brass">
