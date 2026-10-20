@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getModuleByCode } from "@/data/modules-registry";
 import { getAudienceIntro } from "@/lib/deliverable";
-import { getMandateByCabinetName, hasKnownCabinetName } from "@/lib/mandates";
+import { getMandateByCabinetName } from "@/lib/mandates";
 import {
   emptyConsultantSession,
   loadConsultantSession,
@@ -29,13 +29,19 @@ export function JoinMissionPanel() {
     const sessionCode = codeFromUrl || storedSession.sessionCode;
     const moduleForSession = getModuleByCode(sessionCode);
 
+    // Normalise le nom de cabinet stocké (ex. ancienne saisie libre, casse
+    // ou espace différents) vers sa forme canonique, pour que le menu
+    // déroulant affiche bien la bonne sélection.
+    const resolvedMandate = storedSession.cabinetName
+      ? getMandateByCabinetName(moduleForSession.mandates, storedSession.cabinetName)
+      : null;
+
     const next: ConsultantSession = {
       ...storedSession,
       sessionCode,
       moduleId: moduleForSession.id,
-      mandateId: storedSession.cabinetName
-        ? getMandateByCabinetName(moduleForSession.mandates, storedSession.cabinetName).id
-        : storedSession.mandateId
+      cabinetName: resolvedMandate ? resolvedMandate.cabinetName : storedSession.cabinetName,
+      mandateId: resolvedMandate ? resolvedMandate.id : storedSession.mandateId
     };
 
     setSession(next);
@@ -68,9 +74,7 @@ export function JoinMissionPanel() {
     saveConsultantSession(next);
   }
 
-  const hasCabinet = session.cabinetName.trim().length > 0;
   const hasSessionCode = session.sessionCode.trim().length > 0;
-  const isKnownCabinet = hasKnownCabinetName(activeModule.mandates, session.cabinetName);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
@@ -107,20 +111,20 @@ export function JoinMissionPanel() {
             <span className="text-sm font-semibold text-porcelain">
               Nom du cabinet
             </span>
-            <input
+            <select
               id="cabinetName"
               value={session.cabinetName}
               onChange={(event) => update("cabinetName", event.target.value)}
-              placeholder="Ex. Cabinet Meridian"
-              className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/72"
-            />
+              className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain"
+            >
+              <option value="">Sélectionnez votre cabinet</option>
+              {activeModule.mandates.map((mandate) => (
+                <option key={mandate.id} value={mandate.cabinetName}>
+                  {mandate.cabinetName}
+                </option>
+              ))}
+            </select>
           </label>
-          {hasCabinet && !isKnownCabinet ? (
-            <p className="rounded-md border border-brass/30 bg-brass/10 px-4 py-3 text-sm leading-6 text-mist">
-              Cabinet non reconnu dans la session locale. Un mandat par défaut
-              sera ouvert et confirme dans la lettre de mission.
-            </p>
-          ) : null}
         </div>
 
         {canJoin ? (
