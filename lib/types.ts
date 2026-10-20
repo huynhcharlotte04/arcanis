@@ -33,6 +33,9 @@ export type Mandate = {
   sector: string;
   referential: string;
   objective: string;
+  // Question qui cadre le défi du cabinet (mission + restitution). Optionnel :
+  // les modules n'ayant pas encore cette mécanique n'ont rien à fournir.
+  problematique?: string;
   issues: string[];
   comexExpectations: string[];
   specificMessages: MailMessage[];

@@ -53,7 +53,7 @@ export function getLetterFraming(
   if (type === "plan-action") {
     return {
       audienceSuffix: "Comité de conformité",
-      context: `À la suite d'un audit ayant révélé une détection trop tardive des évolutions applicables, Montrel Industries structure sa veille réglementaire et normative. Votre équipe prend en charge la veille du domaine ${mandate.sector} : identifier les exigences applicables, évaluer l'impact des évolutions récentes et proposer un plan de mise en conformité.`,
+      context: `À la suite d'un audit ayant révélé une détection trop tardive des évolutions applicables, Montrel Industries structure sa veille réglementaire et normative. Votre équipe prend en charge la veille du domaine ${mandate.sector} : identifier les exigences applicables, évaluer l'impact des évolutions récentes et proposer un plan de mise en conformité. Cette mission est aussi une mise à l'épreuve : la qualité de votre restitution déterminera si Montrel Industries reconduit votre cabinet sur ce dossier.`,
       scope: `Le domaine ${mandate.sector} constitue le périmètre de veille confié à votre équipe. Il s'agit d'en couvrir les sources, les exigences applicables et les évolutions récentes.`,
       mandateLine: mandate.title,
       expectationsLabel: "Attentes du comité de conformité",
