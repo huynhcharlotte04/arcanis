@@ -43,7 +43,7 @@ export default function HomePage() {
             <div className="glass-panel mb-8 rounded-lg p-5 sm:p-7">
               <div className="mb-6 flex items-center justify-between border-b border-inkline pb-4">
                 <span className="text-xs uppercase tracking-[0.24em] text-mist">
-                  Mandat actif
+                  Exemple de mandat
                 </span>
                 <span className="rounded-full border border-copper/50 px-3 py-1 text-xs text-brass">
                   QSE

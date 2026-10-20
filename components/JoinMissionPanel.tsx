@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getModuleByCode } from "@/data/modules-registry";
+import { getAudienceIntro } from "@/lib/deliverable";
 import { getMandateByCabinetName, hasKnownCabinetName } from "@/lib/mandates";
 import {
   emptyConsultantSession,
@@ -91,7 +92,7 @@ export function JoinMissionPanel() {
               id="sessionCode"
               value={session.sessionCode}
               onChange={(event) => update("sessionCode", event.target.value)}
-              placeholder="Ex. AR-4821"
+              placeholder="Ex. XXXX-1234"
               className="field-focus mt-3 w-full rounded-md border border-inkline bg-obsidian/70 px-4 py-3 text-porcelain placeholder:text-mist/72"
             />
             {hasSessionCode ? (
@@ -146,7 +147,7 @@ export function JoinMissionPanel() {
           Mandat consultant
         </p>
         <h2 className="mt-4 text-3xl font-semibold text-porcelain">
-          Vous intervenez pour le COMEX.
+          {getAudienceIntro(activeModule.deliverableType)}
         </h2>
         <p className="mt-5 text-base leading-8 text-mist">
           La plateforme vous ouvre le contexte professionnel. Votre cabinet

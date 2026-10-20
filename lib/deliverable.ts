@@ -37,13 +37,47 @@ export type RestitutionFraming = {
   panelNote: string;
 };
 
+// Instance devant laquelle le cabinet intervient, et phrase d'intro associée
+// (utilisées avant même la sélection d'un mandat, ex. écran "Rejoindre").
+export function getAudienceSuffix(type: DeliverableType): string {
+  if (type === "cartographie-annotee") {
+    return "Revue de direction";
+  }
+
+  if (type === "plan-action") {
+    return "Comité de conformité";
+  }
+
+  if (type === "cartographie-parties-prenantes") {
+    return "Comité de direction";
+  }
+
+  return "COMEX";
+}
+
+export function getAudienceIntro(type: DeliverableType): string {
+  if (type === "cartographie-annotee") {
+    return "Vous intervenez en revue de direction.";
+  }
+
+  if (type === "plan-action") {
+    return "Vous intervenez pour le comité de conformité.";
+  }
+
+  if (type === "cartographie-parties-prenantes") {
+    return "Vous intervenez pour le comité de direction.";
+  }
+
+  return "Vous intervenez pour le COMEX.";
+}
+
 export function getLetterFraming(
   type: DeliverableType,
   mandate: Mandate
 ): LetterFraming {
   if (type === "cartographie-annotee") {
     return {
-      audienceSuffix: "Revue de direction",
+      audienceSuffix: getAudienceSuffix(type),
       context: `La direction de Montrel Industries engage la structuration de son management par les processus, à la suite d'une hausse des réclamations sur le traitement des commandes. Votre équipe cartographie le processus ${mandate.sector}, identifie ses points de rupture et propose un plan d'indicateurs.`,
       scope: `Le processus ${mandate.sector} constitue le périmètre confié à votre équipe. Il s'agit de le cartographier tel qu'il fonctionne réellement, sans en sortir, mais en regardant ses interfaces amont et aval.`,
       mandateLine: mandate.title,
@@ -54,7 +88,7 @@ export function getLetterFraming(
 
   if (type === "plan-action") {
     return {
-      audienceSuffix: "Comité de conformité",
+      audienceSuffix: getAudienceSuffix(type),
       context: `À la suite d'un audit ayant révélé une détection trop tardive des évolutions applicables, Montrel Industries structure sa veille réglementaire et normative. Votre équipe prend en charge la veille du domaine ${mandate.sector} : identifier les exigences applicables, évaluer l'impact des évolutions récentes et proposer un plan de mise en conformité. Cette mission est aussi une mise à l'épreuve : la qualité de votre restitution déterminera si Montrel Industries reconduit votre cabinet sur ce dossier.`,
       scope: `Le domaine ${mandate.sector} constitue le périmètre de veille confié à votre équipe. Il s'agit d'en couvrir les sources, les exigences applicables et les évolutions récentes.`,
       mandateLine: mandate.title,
@@ -65,7 +99,7 @@ export function getLetterFraming(
 
   if (type === "cartographie-parties-prenantes") {
     return {
-      audienceSuffix: "Comité de direction",
+      audienceSuffix: getAudienceSuffix(type),
       context: `Montrel Industries a vu ses réclamations augmenter de 18 % en douze mois et doit prouver la maîtrise de ses processus lors d'un audit client prévu dans six mois. Une première cartographie existe, mais elle cumule les défauts (processus nommés par service, aucune famille management, aucun pilote désigné). Votre équipe reprend cette cartographie à travers le prisme ${mandate.sector}. Cette mission est aussi une mise à l'épreuve : votre pitch devant le comité de direction déterminera si Montrel Industries vous confie la suite du chantier.`,
       scope: `Le prisme ${mandate.sector} constitue le périmètre de votre analyse : vérifier que la cartographie de Montrel sert bien les attentes de cette partie prenante, à chaque niveau (carte macro, fiches de processus, indicateurs).`,
       mandateLine: mandate.title,
@@ -75,7 +109,7 @@ export function getLetterFraming(
   }
 
   return {
-    audienceSuffix: "COMEX",
+    audienceSuffix: getAudienceSuffix(type),
     context: `Le COMEX souhaite explorer l'entrée sur le marché ${mandate.sector}. Votre cabinet est mandaté pour évaluer la faisabilité de cette trajectoire, identifier les écarts avec le système ISO 9001 actuel et proposer un plan de transition réaliste.`,
     scope: `Le référentiel ${mandate.referential} est associé au mandat confié par le COMEX. Il constitue une contrainte de départ, pas une variable d'arbitrage.`,
     mandateLine: `${mandate.title} - ${mandate.referential}`,
