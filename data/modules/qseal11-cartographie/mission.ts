@@ -305,7 +305,7 @@ export const mandates: Mandate[] = [
       name: "Virel Semiconducteurs",
       monogram: "VS",
       presentation:
-        "Fabricant de composants électroniques pour l'automobile et l'industrie, avec une salle blanche et des cycles de qualification produit très longs. Un client automobile vient d'exiger un niveau de traçabilité et de maîtrise des changements que la cartographie actuelle ne permet pas de démontrer.",
+        "Fabricant de composants électroniques pour l'automobile et l'industrie, avec une salle blanche et des cycles de qualification produit très longs. Un client automobile vient d'exiger un niveau de traçabilité et de maîtrise des changements que l'entreprise ne peut pas démontrer aujourd'hui, faute de cartographie formalisée.",
       location: "Grenoble, Auvergne-Rhône-Alpes, France",
       headquartersVisual: "Site de fabrication en salle blanche et laboratoire de caractérisation",
       sector: "Semi-conducteurs",
@@ -536,11 +536,11 @@ export const simulation: SimulationData = {
       role: "Direction de la simulation",
       subject: "Attentes pour le pitch de 16h30",
       preview:
-        "Le comité de direction de votre entreprise cliente attend une cartographie corrigée et une décision précise.",
+        "Le comité de direction de votre entreprise cliente attend une cartographie complète et une décision précise.",
       receivedAt: "15:35",
       body: [
         "Bonjour,",
-        "Pour le pitch de 16h30, le comité de direction de votre entreprise cliente attend : la cartographie corrigée, les processus clés sélectionnés et justifiés, et une décision précise à faire trancher.",
+        "Pour le pitch de 16h30, le comité de direction de votre entreprise cliente attend : la cartographie complète que vous avez construite, les processus clés sélectionnés et justifiés, et une décision précise à faire trancher.",
         "Évitez un pitch descriptif : nous attendons une valeur argumentée et une décision à prendre, pas un rappel de ce qui existe déjà."
       ]
     }
