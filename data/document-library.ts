@@ -757,7 +757,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/keryos/TEM-KM-2_Temoignage_Selia_Fontaine.pdf",
-    owner: "Direction qualité",
+    owner: "Assurance qualité et affaires réglementaires",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -773,7 +773,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/keryos/TEM-KM-3_Temoignage_Marc_Oriol.pdf",
-    owner: "Direction qualité",
+    owner: "Production",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -789,7 +789,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/keryos/TEM-KM-4_Temoignage_Noor_Haddad.pdf",
-    owner: "Direction qualité",
+    owner: "R&D",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -805,7 +805,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/keryos/TEM-KM-5_Temoignage_Ines_Travers.pdf",
-    owner: "Direction qualité",
+    owner: "Achats et logistique",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -871,7 +871,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/arvano/TEM-AC-2_Temoignage_Thibault_Varane.pdf",
-    owner: "Direction qualité",
+    owner: "Qualité et méthodes",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -887,7 +887,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/arvano/TEM-AC-3_Temoignage_Margaux_Soubise.pdf",
-    owner: "Direction qualité",
+    owner: "Avant-vente",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -903,7 +903,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/arvano/TEM-AC-4_Temoignage_Hugo_Lescure.pdf",
-    owner: "Direction qualité",
+    owner: "Missions",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -919,7 +919,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/arvano/TEM-AC-5_Temoignage_Zoe_Rambert.pdf",
-    owner: "Direction qualité",
+    owner: "RH et recrutement",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -985,7 +985,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/virel/TEM-VS-2_Temoignage_Gauthier_Pradier.pdf",
-    owner: "Direction qualité",
+    owner: "Qualité fournisseur et client",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -1001,7 +1001,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/virel/TEM-VS-3_Temoignage_Anissa_Kerbrat.pdf",
-    owner: "Direction qualité",
+    owner: "Salle blanche / production",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -1017,7 +1017,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/virel/TEM-VS-4_Temoignage_Paul_Henri_Ziegler.pdf",
-    owner: "Direction qualité",
+    owner: "R&D et qualification produit",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -1033,7 +1033,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/virel/TEM-VS-5_Temoignage_Lena_Castex.pdf",
-    owner: "Direction qualité",
+    owner: "Achats composants",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -1099,7 +1099,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/haranis/TEM-HC-2_Temoignage_Oriane_Delcasse.pdf",
-    owner: "Direction qualité",
+    owner: "QSE groupe",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -1115,7 +1115,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/haranis/TEM-HC-3_Temoignage_Yanis_Berger.pdf",
-    owner: "Direction qualité",
+    owner: "Conducteur de travaux",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -1131,7 +1131,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/haranis/TEM-HC-4_Temoignage_Sofia_Nardelli.pdf",
-    owner: "Direction qualité",
+    owner: "Bureau d'études / chiffrage",
     date: "01/07/2026",
     classification: "Interne"
   },
@@ -1147,7 +1147,7 @@ export const documentLibrary: DocumentLibraryItem[] = [
     visibility: ["Consultant", "Formateur"],
     type: "PDF",
     href: "/documents/qseal11-cartographie/haranis/TEM-HC-5_Temoignage_Karl_Dumesnil.pdf",
-    owner: "Direction qualité",
+    owner: "Achats et sous-traitance",
     date: "01/07/2026",
     classification: "Interne"
   },
