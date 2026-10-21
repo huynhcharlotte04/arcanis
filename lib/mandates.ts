@@ -31,14 +31,3 @@ export function getMandateByCabinetName(
     ) ?? getDefaultMandate(mandates)
   );
 }
-
-export function hasKnownCabinetName(
-  mandates: Mandate[],
-  cabinetName: string
-): boolean {
-  const normalizedCabinetName = normalizeCabinetName(cabinetName);
-
-  return mandates.some(
-    (mandate) => normalizeCabinetName(mandate.cabinetName) === normalizedCabinetName
-  );
-}
