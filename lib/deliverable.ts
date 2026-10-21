@@ -101,8 +101,8 @@ export function getLetterFraming(
     const companyName = mandate.company?.name ?? "Votre client";
     return {
       audienceSuffix: getAudienceSuffix(type),
-      context: `${companyName} évolue dans le secteur ${mandate.sector}. Une première cartographie de ses processus existe, mais elle cumule les défauts classiques (processus nommés par service, aucune famille de management, aucun pilote désigné). Cette mission est aussi une mise à l'épreuve : votre pitch devant le comité de direction déterminera si ${companyName} vous confie la suite du chantier.`,
-      scope: `Le périmètre de votre analyse est l'ensemble des processus de ${companyName}. Il s'agit de vérifier que sa cartographie « version 0 » reflète vraiment son activité et ses parties prenantes, à chaque niveau (carte macro, fiches de processus, indicateurs).`,
+      context: `${companyName} évolue dans le secteur ${mandate.sector}. Aucune cartographie de ses processus n'a jamais été formalisée : les documents mis à votre disposition décrivent l'activité, pas une carte. Cette mission est aussi une mise à l'épreuve : votre pitch devant le comité de direction déterminera si ${companyName} vous confie la suite du chantier.`,
+      scope: `Le périmètre de votre analyse est l'ensemble des processus de ${companyName}. Il s'agit de construire, à partir des documents fournis, une cartographie qui reflète vraiment son activité et ses parties prenantes, à chaque niveau (carte macro, fiches de processus, indicateurs).`,
       mandateLine: mandate.title,
       expectationsLabel: "Attentes du comité de direction",
       presentationLabel: "Pitch devant le comité de direction"
@@ -201,12 +201,12 @@ export function getRestitutionFraming(type: DeliverableType): RestitutionFraming
       navLabel: "Pitch",
       pageTitle: "Face au comité de direction",
       pageSubtitle:
-        "Votre équipe prépare maintenant sa cartographie annotée et son pitch de sélection des processus clés.",
+        "Votre équipe prépare maintenant sa cartographie complète et son pitch de sélection des processus clés.",
       expectationsTitle: "Le comité de direction attend",
       panelEyebrow: "Pitch devant le comité de direction",
       panelTitle: "Préparation hors plateforme",
       panelBody:
-        "Votre équipe prépare sa cartographie annotée, sa sélection de processus clés et son pitch en autonomie. ARCANIS fournit le contexte professionnel, pas le livrable.",
+        "Votre équipe construit sa cartographie à partir des documents fournis, prépare sa sélection de processus clés et son pitch en autonomie. ARCANIS fournit le contexte professionnel, pas le livrable.",
       panelNote:
         "Une cartographie techniquement juste pourra être challengée si elle oublie une partie prenante, un pilote désigné, ou si le pitch ne débouche sur aucune décision."
     };

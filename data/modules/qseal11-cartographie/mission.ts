@@ -6,10 +6,11 @@ import type { Mandate, SimulationData } from "@/lib/types";
 // différente, dans un secteur différent (plutôt qu'une seule entreprise vue
 // sous 4 angles) : Keryos Médical (dispositifs médicaux), Arvano Conseil
 // (conseil), Virel Semiconducteurs (semi-conducteurs), Haranis Construction
-// (BTP). Chaque entreprise a sa propre cartographie « version 0 » à corriger,
-// grounded dans les exigences réelles de son secteur. Les noms de cabinets
-// sont repris des autres modules pour une resolution "cabinet -> mandat"
-// identique.
+// (BTP). Aucune entreprise n'a de cartographie formalisée : chaque équipe
+// doit la CONSTRUIRE entièrement, à partir de documents bruts (organigramme,
+// témoignages des équipes), en décortiquant elle-même les activités décrites
+// pour en déduire les processus. Les noms de cabinets sont repris des autres
+// modules pour une resolution "cabinet -> mandat" identique.
 //   sector      = secteur de l'entreprise confiée
 //   referential = cadre de travail (cartographie des processus)
 export const mandates: Mandate[] = [
@@ -20,18 +21,18 @@ export const mandates: Mandate[] = [
     sector: "Dispositifs médicaux",
     referential: "Cartographie des processus et parties prenantes",
     objective:
-      "Cartographier Keryos Médical en intégrant le processus de matériovigilance exigé par le Règlement (UE) 2017/745, et démontrer la traçabilité des lots jusqu'au patient, avant l'audit de l'organisme notifié.",
+      "Construire, pour la première fois, la cartographie complète des processus de Keryos Médical à partir des documents mis à disposition — en intégrant notamment le processus de matériovigilance exigé par le Règlement (UE) 2017/745 — et démontrer la traçabilité des lots jusqu'au patient, avant l'audit de l'organisme notifié.",
     problematique:
-      "Votre cabinet saura-t-il cartographier Keryos Médical pour démontrer, preuves à l'appui, la maîtrise exigée par le règlement européen sur les dispositifs médicaux — avec un pitch qui convainc la direction de vous confier la suite avant le passage de l'organisme notifié ?",
+      "Votre cabinet saura-t-il construire, à partir de rien, une cartographie de Keryos Médical qui démontre, preuves à l'appui, la maîtrise exigée par le règlement européen sur les dispositifs médicaux — avec un pitch qui convainc la direction de vous confier la suite avant le passage de l'organisme notifié ?",
     issues: [
-      "La cartographie « version 0 » de Keryos Médical ne fait apparaître aucun processus de matériovigilance, alors que le Règlement (UE) 2017/745 l'exige explicitement.",
-      "Les processus sont nommés par service (« Production », « Qualité », « R&D ») : impossible de tracer un lot de la réception des matières premières jusqu'à la livraison à l'hôpital.",
-      "Aucun pilote n'est désigné : en cas de nouvelle alerte de matériovigilance, personne ne sait qui doit la faire remonter, ni en combien de temps."
+      "Keryos Médical n'a jamais formalisé de cartographie de ses processus : aucun processus de matériovigilance n'apparaît nulle part, alors que le Règlement (UE) 2017/745 l'exige explicitement.",
+      "Les témoignages recueillis décrivent des activités très différentes (réception, fabrication, stérilisation, libération des lots...) sans qu'aucun lien, aucun pilote ni aucune hiérarchie ne soit établi entre elles.",
+      "Une alerte de matériovigilance récente a mis 19 jours à remonter jusqu'à la direction qualité, faute de processus clair pour la faire circuler."
     ],
     comexExpectations: [
-      "Le processus de matériovigilance positionné sur la carte, avec un pilote et un délai de remontée clair.",
-      "Une traçabilité lot par lot visible de bout en bout sur la cartographie.",
-      "Une carte assez solide pour être présentée telle quelle à l'organisme notifié dans 4 mois."
+      "Le processus de matériovigilance positionné sur la carte construite, avec un pilote et un délai de remontée clair.",
+      "Une traçabilité lot par lot visible de bout en bout sur la cartographie construite.",
+      "Une carte complète, assez solide pour être présentée telle quelle à l'organisme notifié dans 4 mois."
     ],
     specificMessages: [
       {
@@ -44,9 +45,9 @@ export const mandates: Mandate[] = [
         receivedAt: "10:35",
         body: [
           "Bonjour,",
-          "En préparant l'audit de l'organisme notifié dans 4 mois, j'ai relu notre cartographie « version 0 » : elle date de notre première certification ISO 13485 et n'a jamais été reprise.",
-          "Aucun processus de matériovigilance n'y figure, alors que le Règlement (UE) 2017/745 l'exige. Une alerte récente sur un lot a mis 19 jours à remonter jusqu'à moi, faute de processus clair.",
-          "J'ai besoin d'une cartographie qui tienne vraiment devant l'auditeur, pas seulement sur le papier."
+          "En préparant l'audit de l'organisme notifié dans 4 mois, je réalise qu'aucune cartographie de nos processus n'a jamais été formalisée chez Keryos Médical, malgré nos certifications successives.",
+          "Aucun processus de matériovigilance n'existe nulle part, alors que le Règlement (UE) 2017/745 l'exige. Une alerte récente sur un lot a mis 19 jours à remonter jusqu'à moi, faute de processus clair.",
+          "J'ai besoin d'une cartographie construite de zéro, qui tienne vraiment devant l'auditeur."
         ]
       },
       {
@@ -59,8 +60,8 @@ export const mandates: Mandate[] = [
         receivedAt: "11:50",
         body: [
           "Bonjour,",
-          "Sur le terrain, notre cartographie actuelle nomme les cases par service (« Production », « Qualité »), pas par ce qui se passe réellement. Du coup, personne ne sait vraiment qui pilote quoi d'un lot à l'autre.",
-          "J'aimerais une carte qui montre le vrai parcours, de la réception des matières premières jusqu'à la livraison à l'hôpital."
+          "Sur le terrain, chacun a sa propre idée de ce qu'il fait, mais rien n'est écrit nulle part qui montre comment un lot avance vraiment, étape par étape. Du coup, personne ne sait vraiment qui pilote quoi d'un lot à l'autre.",
+          "J'aimerais qu'on construise enfin une carte qui montre le vrai parcours, de la réception des matières premières jusqu'à la livraison à l'hôpital."
         ]
       }
     ],
@@ -81,7 +82,7 @@ export const mandates: Mandate[] = [
         "Direction générale et qualité réglementaire au siège d'Annecy",
         "Un seul site de production, salle blanche classée",
         "Fonction R&D rattachée à la direction technique",
-        "Pas de cartographie formalisée depuis la dernière certification"
+        "Aucune cartographie des processus n'a jamais été formalisée"
       ],
       certifications: [
         "ISO 9001 depuis 2016",
@@ -106,7 +107,7 @@ export const mandates: Mandate[] = [
         "Préparer une cartographie qui tienne devant l'organisme notifié"
       ],
       currentSituation: [
-        "Un audit interne récent a révélé une cartographie « version 0 » jamais mise à jour depuis la première certification ISO 13485.",
+        "Un audit interne récent a confirmé qu'aucune cartographie des processus n'a jamais été formalisée chez Keryos Médical, malgré ses certifications successives.",
         "Une alerte de matériovigilance sur un lot a mis 19 jours à remonter jusqu'à la direction qualité, faute de processus clair.",
         "L'organisme notifié audite la maîtrise des processus et de leurs interactions dans 4 mois.",
         "La direction veut une cartographie qui serve de preuve, pas seulement un schéma d'audit."
@@ -139,16 +140,16 @@ export const mandates: Mandate[] = [
     sector: "Conseil",
     referential: "Cartographie des processus et parties prenantes",
     objective:
-      "Reconstruire la cartographie d'Arvano Conseil pour refléter une activité de service, sécuriser l'interface avant-vente / mission à l'origine des réclamations, et donner à la direction un document présentable avant le renouvellement du contrat-cadre avec son plus gros client.",
+      "Construire, pour la première fois, la cartographie complète des processus d'Arvano Conseil en reflétant une activité de service, sécuriser l'interface avant-vente / mission à l'origine des réclamations, et donner à la direction un document présentable avant le renouvellement du contrat-cadre avec son plus gros client.",
     problematique:
-      "Votre cabinet saura-t-il remettre à plat la cartographie d'Arvano Conseil — manifestement calquée sur une usine — avec un pitch qui rassure la direction avant le renouvellement du contrat-cadre, plutôt que de laisser la suite à une autre équipe ?",
+      "Votre cabinet saura-t-il construire, à partir de rien, une cartographie d'Arvano Conseil qui reflète vraiment une activité de service — avec un pitch qui rassure la direction avant le renouvellement du contrat-cadre, plutôt que de laisser la suite à une autre équipe ?",
     issues: [
-      "La cartographie « version 0 » d'Arvano a été recopiée d'un ancien client industriel : elle contient encore des processus comme « Stocker les matières premières », qui n'ont aucun sens pour un cabinet de conseil.",
+      "Arvano Conseil n'a jamais formalisé de cartographie de ses processus : personne ne sait précisément où se situe la frontière entre l'avant-vente et la mission, ni qui en répond.",
       "Le plus gros client d'Arvano a signalé deux fois ce trimestre un écart entre ce qui a été vendu en avant-vente et ce qui a été livré en mission : l'interface entre les deux n'est tracée nulle part.",
       "Aucun processus ne capitalise les retours d'expérience d'une mission à l'autre : chaque consultant repart de zéro, ce qui nuit à la qualité perçue."
     ],
     comexExpectations: [
-      "Une cartographie qui reflète une activité de service, avec des processus nommés en conséquence (plus aucune trace de vocabulaire industriel).",
+      "Une cartographie construite qui reflète une activité de service, avec des processus nommés en conséquence (aucun vocabulaire industriel).",
       "L'interface avant-vente / mission clairement tracée, avec un responsable identifié de chaque côté.",
       "Un processus de capitalisation des retours d'expérience, positionné sur la carte."
     ],
@@ -157,15 +158,15 @@ export const mandates: Mandate[] = [
         id: "arvano-qualite",
         sender: "Thibault Varane",
         role: "Directeur qualité et méthodes",
-        subject: "Notre cartographie vient d'une usine, pas de chez nous",
+        subject: "On fonctionne à l'instinct depuis toujours",
         preview:
-          "Notre carte contient encore un processus « Stocker les matières premières » : elle a été recopiée d'un ancien client.",
+          "Aucune cartographie de nos processus n'a jamais été formalisée chez Arvano.",
         receivedAt: "10:38",
         body: [
           "Bonjour,",
-          "En relisant notre cartographie « version 0 », je suis tombé sur un processus « Stocker les matières premières ». On a visiblement recopié celle d'un ancien client industriel sans l'adapter.",
+          "Je me rends compte qu'aucune cartographie de nos processus n'a jamais été formalisée chez Arvano : on fonctionne depuis toujours à l'instinct, mission après mission.",
           "Notre plus gros client a signalé deux fois ce trimestre un écart entre ce qu'on lui vend en avant-vente et ce qu'on lui livre en mission. Le renouvellement du contrat-cadre se discute dans 2 mois.",
-          "J'ai besoin d'une cartographie qui ressemble enfin à ce qu'on fait vraiment."
+          "J'ai besoin d'une cartographie qui montre enfin, noir sur blanc, ce qu'on fait vraiment."
         ]
       },
       {
@@ -179,7 +180,7 @@ export const mandates: Mandate[] = [
         body: [
           "Bonjour,",
           "De mon côté avant-vente, je signe des offres sur la base d'hypothèses qui ne remontent pas toujours correctement aux équipes de mission.",
-          "Notre cartographie ne montre nulle part ce qui doit se passer entre la signature et le démarrage réel : c'est pourtant là que les écarts se créent."
+          "Rien n'est écrit nulle part sur ce qui doit se passer entre la signature et le démarrage réel : c'est pourtant là que les écarts se créent."
         ]
       }
     ],
@@ -187,7 +188,7 @@ export const mandates: Mandate[] = [
       name: "Arvano Conseil",
       monogram: "AC",
       presentation:
-        "Cabinet de conseil en transformation digitale, une quarantaine de consultants, qui a triplé ses effectifs en trois ans. Sa cartographie des processus a été copiée telle quelle depuis un client industriel, sans être adaptée à une activité de service.",
+        "Cabinet de conseil en transformation digitale, une quarantaine de consultants, qui a triplé ses effectifs en trois ans sans jamais formaliser de cartographie de ses processus.",
       location: "Nantes, Pays de la Loire, France",
       headquartersVisual: "Bureaux et salles de projet, pas de site de production",
       sector: "Conseil",
@@ -200,14 +201,14 @@ export const mandates: Mandate[] = [
         "Direction générale et associés fondateurs",
         "Équipes projet constituées mission par mission",
         "Fonction avant-vente distincte des équipes de mission",
-        "Cartographie héritée d'un ancien client industriel, jamais retravaillée"
+        "Aucune cartographie des processus n'a jamais été formalisée, malgré la forte croissance des trois dernières années"
       ],
       certifications: [
         "ISO 9001 depuis 2020 (exigée par plusieurs appels d'offres)",
         "Référencement sur plusieurs accords-cadres publics"
       ],
       strategicObjectives: [
-        "Remettre à plat une cartographie manifestement calquée sur une usine",
+        "Construire une cartographie qui reflète enfin une activité de service",
         "Sécuriser la bascule entre avant-vente et mission",
         "Capitaliser les retours d'expérience d'une mission à l'autre",
         "Rassurer le plus gros client avant le renouvellement du contrat-cadre"
@@ -223,7 +224,7 @@ export const mandates: Mandate[] = [
         "Donner à la direction une carte qu'elle n'aura pas honte de montrer à son client"
       ],
       currentSituation: [
-        "La cartographie « version 0 » d'Arvano a été reprise telle quelle d'un ancien client industriel : elle contient encore un processus « Stocker les matières premières ».",
+        "Aucune cartographie des processus n'a jamais été formalisée chez Arvano, malgré une croissance rapide des effectifs ces trois dernières années.",
         "Le plus gros client d'Arvano a signalé deux fois ce trimestre un décalage entre ce qui a été vendu en avant-vente et ce qui a été livré en mission.",
         "Aucun processus ne capitalise les retours d'expérience : chaque consultant repart de zéro.",
         "Le renouvellement du contrat-cadre avec ce client est en discussion dans 2 mois."
@@ -235,7 +236,7 @@ export const mandates: Mandate[] = [
         "Délai serré avant le renouvellement du contrat-cadre"
       ],
       risks: [
-        "Garder par habitude des processus calqués sur l'industrie",
+        "Décrire la cartographie avec un vocabulaire calqué sur l'industrie, alors qu'Arvano est un pur cabinet de service",
         "Négliger l'interface avant-vente / mission, pourtant la plus citée dans les réclamations",
         "Produire une cartographie qui ne convainc pas le client avant le renouvellement",
         "Oublier la capitalisation comme processus à part entière"
@@ -256,16 +257,16 @@ export const mandates: Mandate[] = [
     sector: "Semi-conducteurs",
     referential: "Cartographie des processus et parties prenantes",
     objective:
-      "Cartographier Virel Semiconducteurs en intégrant un processus de gestion des changements répondant à l'exigence d'un client automobile, et distinguer la qualification produit de la production en continu.",
+      "Construire, pour la première fois, la cartographie complète des processus de Virel Semiconducteurs, en intégrant un processus de gestion des changements répondant à l'exigence d'un client automobile, et en distinguant la qualification produit de la production en continu.",
     problematique:
-      "Votre cabinet saura-t-il cartographier Virel Semiconducteurs pour démontrer au client automobile une vraie maîtrise des changements de process, avec un pitch qui convainc la direction de vous confier la suite plutôt que de gérer ça en interne ?",
+      "Votre cabinet saura-t-il construire, à partir de rien, une cartographie de Virel Semiconducteurs qui démontre au client automobile une vraie maîtrise des changements de process, avec un pitch qui convainc la direction de vous confier la suite plutôt que de gérer ça en interne ?",
     issues: [
-      "Un client automobile stratégique exige désormais la preuve d'une gestion maîtrisée des changements de process — un processus absent de la cartographie « version 0 ».",
-      "La qualification d'un nouveau produit et la production en continu sont confondues dans un seul bloc « Production », alors que leurs exigences et leurs risques sont très différents.",
+      "Virel Semiconducteurs n'a jamais formalisé de cartographie de ses processus : un client automobile stratégique exige désormais la preuve d'une gestion maîtrisée des changements de process, et personne ne sait où la positionner.",
+      "Les témoignages recueillis mélangent systématiquement la qualification d'un nouveau produit et la production en continu, alors que leurs exigences et leurs risques sont très différents.",
       "Le taux de rebut en salle blanche a augmenté ce trimestre, sans qu'aucun processus ne permette d'en localiser la cause."
     ],
     comexExpectations: [
-      "Un processus de gestion des changements positionné sur la carte, avec un pilote et relié à l'exigence du client automobile.",
+      "Un processus de gestion des changements positionné sur la carte construite, avec un pilote et relié à l'exigence du client automobile.",
       "La qualification produit et la production en continu distinguées en deux processus séparés.",
       "Un indicateur relié au taux de rebut, permettant de localiser où il se forme."
     ],
@@ -280,9 +281,9 @@ export const mandates: Mandate[] = [
         receivedAt: "10:41",
         body: [
           "Bonjour,",
-          "Un de nos clients automobiles stratégiques exige, dans un avenant, la preuve d'une gestion maîtrisée des changements de process. Notre cartographie « version 0 » n'en fait même pas mention.",
-          "En plus, elle confond la qualification d'un nouveau produit et la production en continu dans le même bloc « Production » : ce sont pourtant deux mondes très différents.",
-          "J'ai besoin d'une cartographie qui réponde précisément à cette exigence."
+          "Un de nos clients automobiles stratégiques exige, dans un avenant, la preuve d'une gestion maîtrisée des changements de process. Je me rends compte qu'aucune cartographie de nos processus n'a jamais été formalisée chez Virel : impossible de montrer où ce processus devrait se situer.",
+          "En plus, dans tout ce qu'on me décrit, la qualification d'un nouveau produit et la production en continu sont systématiquement mélangées : ce sont pourtant deux mondes très différents.",
+          "J'ai besoin d'une cartographie construite qui réponde précisément à cette exigence."
         ]
       },
       {
@@ -295,8 +296,8 @@ export const mandates: Mandate[] = [
         receivedAt: "11:58",
         body: [
           "Bonjour,",
-          "Le taux de rebut en salle blanche a augmenté ce trimestre. Le problème, c'est que notre cartographie actuelle ne distingue pas assez les étapes pour que je sache où ça se forme réellement.",
-          "Une carte plus précise m'aiderait à cibler où agir en priorité."
+          "Le taux de rebut en salle blanche a augmenté ce trimestre. Le problème, c'est que rien n'est écrit nulle part qui distingue assez les étapes pour que je sache où ça se forme réellement.",
+          "Une cartographie construite, plus précise, m'aiderait à cibler où agir en priorité."
         ]
       }
     ],
@@ -342,7 +343,7 @@ export const mandates: Mandate[] = [
       ],
       currentSituation: [
         "Un client automobile stratégique a exigé, dans un avenant contractuel, la preuve d'une gestion maîtrisée des changements de process.",
-        "La cartographie « version 0 » ne distingue pas la qualification d'un nouveau produit de la production en continu : les deux sont confondus dans un seul bloc.",
+        "Aucune cartographie des processus n'a jamais été formalisée chez Virel Semiconducteurs : la qualification d'un nouveau produit et la production en continu sont décrites de façon confuse, sans qu'on sache où commence l'une et finit l'autre.",
         "Le taux de rebut en salle blanche a augmenté sur le dernier trimestre, sans que personne ne sache quel processus en est la cause.",
         "Aucun processus de gestion des changements n'est formalisé à l'échelle de l'entreprise."
       ],
@@ -353,7 +354,7 @@ export const mandates: Mandate[] = [
         "Exigences clients automobiles proches de l'IATF 16949 sans certification formelle"
       ],
       risks: [
-        "Confondre qualification produit et production en continu dans la même case",
+        "Confondre qualification produit et production en continu dans le même processus",
         "Minimiser l'exigence du client automobile sur la gestion des changements",
         "Produire une cartographie qui n'aide pas à localiser la cause du rebut",
         "Oublier de distinguer les deux populations (R&D et production) dans les interfaces"
@@ -374,16 +375,16 @@ export const mandates: Mandate[] = [
     sector: "BTP",
     referential: "Cartographie des processus et parties prenantes",
     objective:
-      "Cartographier Haranis Construction en distinguant le chiffrage, le chantier et la réception, et en formalisant la qualification et la coordination sécurité des sous-traitants, après un incident récent.",
+      "Construire, pour la première fois, la cartographie complète des processus de Haranis Construction, en distinguant le chiffrage, le chantier et la réception, et en formalisant la qualification et la coordination sécurité des sous-traitants, après un incident récent.",
     problematique:
-      "Votre cabinet saura-t-il cartographier Haranis Construction de façon à sécuriser la coordination avec les sous-traitants, avec un pitch qui convainc la direction de vous confier la suite après l'incident récent ?",
+      "Votre cabinet saura-t-il construire, à partir de rien, une cartographie de Haranis Construction qui sécurise la coordination avec les sous-traitants, avec un pitch qui convainc la direction de vous confier la suite après l'incident récent ?",
     issues: [
-      "Un incident de sécurité récent sur un chantier impliquait un sous-traitant que personne n'avait formellement qualifié : aucun processus ne couvre cette étape.",
-      "La cartographie « version 0 » regroupe le chiffrage, le chantier et la réception dans un seul bloc « Travaux », alors que leurs risques et leurs responsables sont très différents.",
+      "Haranis Construction n'a jamais formalisé de cartographie de ses processus : un incident de sécurité récent impliquait un sous-traitant que personne n'avait formellement qualifié, et aucun processus ne couvre cette étape.",
+      "Les témoignages recueillis regroupent systématiquement le chiffrage, le chantier et la réception sous le même terme générique « travaux », alors que leurs risques et leurs responsables sont très différents.",
       "Le taux de réserves à la réception des chantiers reste élevé, sans qu'aucun indicateur ne permette d'en suivre l'évolution."
     ],
     comexExpectations: [
-      "Un processus de qualification des sous-traitants positionné sur la carte, relié à la coordination sécurité.",
+      "Un processus de qualification des sous-traitants positionné sur la carte construite, relié à la coordination sécurité.",
       "Le chiffrage, le chantier et la réception distingués en processus séparés, avec un pilote chacun.",
       "Un indicateur de réserves à la réception, avec une cible et un plan d'action."
     ],
@@ -398,9 +399,9 @@ export const mandates: Mandate[] = [
         receivedAt: "10:44",
         body: [
           "Bonjour,",
-          "Suite à l'incident de sécurité sur le chantier de la semaine dernière, j'ai cherché dans notre cartographie « version 0 » où était censée se faire la qualification des sous-traitants. Rien.",
-          "Tout notre chiffrage, nos chantiers et nos réceptions sont regroupés dans un seul bloc « Travaux » : impossible de savoir qui répond de quoi à chaque étape.",
-          "J'ai besoin d'une cartographie qui évite qu'un tel incident se reproduise."
+          "Suite à l'incident de sécurité sur le chantier de la semaine dernière, j'ai cherché où était censée se faire la qualification des sous-traitants. Nulle part : aucune cartographie de nos processus n'a jamais été formalisée chez Haranis.",
+          "Tout le monde parle de « travaux » pour désigner le chiffrage, le chantier et la réception en même temps : impossible de savoir qui répond de quoi à chaque étape.",
+          "J'ai besoin d'une cartographie construite qui évite qu'un tel incident se reproduise."
         ]
       },
       {
@@ -414,7 +415,7 @@ export const mandates: Mandate[] = [
         body: [
           "Bonjour,",
           "Sur le terrain, on découvre souvent les problèmes trop tard, au moment de la réception du chantier, avec des réserves qui s'accumulent.",
-          "Une cartographie qui distingue mieux le chiffrage, le chantier et la réception m'aiderait à anticiper au lieu de subir."
+          "Une cartographie construite qui distingue mieux le chiffrage, le chantier et la réception m'aiderait à anticiper au lieu de subir."
         ]
       }
     ],
@@ -460,7 +461,7 @@ export const mandates: Mandate[] = [
       ],
       currentSituation: [
         "Un incident de sécurité est survenu récemment sur un chantier impliquant un sous-traitant non qualifié par Haranis.",
-        "La cartographie « version 0 » ne distingue pas le chiffrage, le chantier et la réception : tout est regroupé dans un seul bloc « Travaux ».",
+        "Aucune cartographie des processus n'a jamais été formalisée chez Haranis Construction : chiffrage, chantier et réception sont désignés indifféremment sous le même terme « travaux ».",
         "Aucun processus ne qualifie formellement les sous-traitants avant leur intervention.",
         "Le taux de réserves à la réception des chantiers reste élevé depuis plusieurs trimestres."
       ],
@@ -491,13 +492,13 @@ export const simulation: SimulationData = {
   missionLetter: {
     clientCompany: "Entreprise confiée à votre cabinet",
     context:
-      "Chaque cabinet reçoit une entreprise cliente différente, dans un secteur différent, avec sa propre cartographie « version 0 » à corriger.",
+      "Chaque cabinet reçoit une entreprise cliente différente, dans un secteur différent, dont la cartographie des processus n'a jamais été formalisée.",
     objective:
-      "Identifier les exigences de l'entreprise confiée, corriger les défauts de sa cartographie existante, et proposer une sélection de processus clés.",
+      "Identifier les exigences de l'entreprise confiée, construire sa cartographie des processus à partir de rien, et proposer une sélection de processus clés.",
     assignedMandate:
-      "L'entreprise confiée à votre équipe constitue le périmètre de votre analyse. Il s'agit de vérifier que sa cartographie sert vraiment ses parties prenantes, à chaque niveau de la carte.",
+      "L'entreprise confiée à votre équipe constitue le périmètre de votre analyse. Il s'agit de construire, à partir des documents fournis, une cartographie qui serve vraiment ses parties prenantes, à chaque niveau de la carte.",
     expectedDeliverable:
-      "Une cartographie de processus annotée, intégrant les parties prenantes, et une sélection de processus clés justifiée, présentées en pitch devant le comité de direction de votre entreprise cliente.",
+      "Une cartographie de processus complète, construite par votre équipe et intégrant les parties prenantes, et une sélection de processus clés justifiée, présentées en pitch devant le comité de direction de votre entreprise cliente.",
     presentationDate: "Aujourd'hui, 16h30"
   },
   messages: [
@@ -512,7 +513,7 @@ export const simulation: SimulationData = {
       body: [
         "Bonjour,",
         "Cette session confie à chaque cabinet une entreprise cliente différente, dans un secteur différent. Vous trouverez le détail de la vôtre dans votre lettre de mission et votre dossier client.",
-        "Le principe reste le même pour tous : une cartographie « version 0 » existe déjà chez votre client, mais elle est pleine de défauts. Votre travail est de la corriger, pas de repartir de zéro."
+        "Le principe reste le même pour tous : aucune cartographie des processus n'existe chez votre client. Votre travail est de la construire entièrement, à partir des documents mis à votre disposition (organigramme, témoignages des équipes)."
       ]
     },
     {
@@ -546,9 +547,9 @@ export const simulation: SimulationData = {
   ],
   comexExpectations: [
     {
-      title: "Une cartographie corrigée sur l'entreprise confiée",
+      title: "Une cartographie complète construite sur l'entreprise confiée",
       detail:
-        "Le comité de direction attend une cartographie qui corrige les défauts constatés sur la « version 0 » de l'entreprise confiée."
+        "Le comité de direction attend une cartographie entièrement construite par votre équipe, puisqu'aucune n'existait avant votre intervention."
     },
     {
       title: "Les parties prenantes à tous les niveaux",
