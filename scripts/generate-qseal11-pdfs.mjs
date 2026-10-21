@@ -1,9 +1,17 @@
 // Générateur des documents PDF du module « Cartographie des processus et
 // parties prenantes » (QSEAL11).
 //
-// Source versionnée du pack documentaire : chaque document est décrit en
-// données ci-dessous, puis rendu en PDF avec l'en-tête commun de la
-// plateforme (emblème Montrel + filet doré), défini dans ./lib/letterhead.mjs.
+// Chaque cabinet traite une entreprise cliente différente (secteur
+// différent) : Keryos Médical, Arvano Conseil, Virel Semiconducteurs,
+// Haranis Construction. Aucune entreprise n'a de cartographie formalisée :
+// le dossier documentaire de chacune se limite à un organigramme, cinq
+// témoignages narratifs (le DG puis les 4 responsables de l'organigramme,
+// chacun décrivant en prose ce qu'il fait réellement) et une note de
+// mandat. Les processus doivent être déduits et construits par les
+// étudiants eux-mêmes à partir de ces récits — aucun document ne nomme ni
+// ne regroupe les activités à leur place. Rendu avec l'en-tête commun de la
+// plateforme mais le nom et le monogramme de SON entreprise (voir
+// ./lib/letterhead.mjs).
 //
 // Prérequis : pdfkit doit être résolvable (lien symbolique ou installation).
 // Puis : `node scripts/generate-qseal11-pdfs.mjs`.
@@ -16,299 +24,428 @@ const ROOT = path.resolve(fileURLToPath(import.meta.url), "../..");
 const OUT = path.join(ROOT, "public/documents/qseal11-cartographie");
 const BANNER = "Cartographie des processus et parties prenantes";
 
-function build(ref, rel, docTitle, blocks) {
+function build(ref, rel, docTitle, blocks, companyName, monogram) {
   return buildDocument({
     outPath: path.join(OUT, rel),
     ref,
     headerSubtitle: BANNER,
     docTitle,
-    blocks
+    blocks,
+    companyName,
+    monogram
   });
 }
 
-// -- Fabriques de documents récurrents -------------------------------------
+// -- Fabriques de documents récurrents, par entreprise ---------------------
 
-function ficheLentille(ref, rel, { prisme, contexte, attentes, sources, evolutions, attention }) {
-  return build(ref, rel, `Attentes à vérifier — ${prisme}`, [
-    { p: "Attentes de la partie prenante confiée, et endroit où elles doivent apparaître sur la cartographie." },
-    { meta: [["Version", "1.0"], ["Statut", "Validé"]] },
-    { h: "Périmètre du prisme" },
-    { p: contexte },
-    { h: "Attentes à vérifier sur la cartographie" },
-    { table: { head: ["Attente de la partie prenante", "Où elle doit apparaître sur la carte", "Statut actuel"], widths: [1.7, 1.8, 1.5] , rows: attentes } },
-    { h: "Sources à consulter" },
-    { list: sources },
-    { h: "Évolutions récentes à intégrer" },
-    { list: evolutions },
-    { h: "Points d'attention" },
-    { list: attention }
-  ]);
+function ficheOrganigramme(ref, rel, { company, monogram, dg, equipe, effectif, siteDetail }) {
+  return build(
+    ref,
+    rel,
+    "Organigramme",
+    [
+      { meta: [["Référence", ref], ["Entreprise", company], ["Diffusion", "Encadrement, sur demande auditeurs/clients"]] },
+      { h: "Direction" },
+      { table: { head: ["Fonction", "Nom", "Rattachement"], widths: [2.2, 1.6, 1.6], rows: [[dg.role, dg.nom, "—"], ...equipe.map((p) => [p.role, p.nom, dg.nom])] } },
+      { h: "Effectif" },
+      { p: effectif },
+      { h: "Implantation" },
+      { p: siteDetail }
+    ],
+    company.toUpperCase(),
+    monogram
+  );
 }
 
-function noteMandat(ref, rel, { prisme, cabinet, contexte, perimetre, attendus, vigilance }) {
-  return build(ref, rel, `Note de mandat — Prisme ${prisme}`, [
-    { meta: [["Équipe missionnée", cabinet], ["Émetteur", "Direction qualité"], ["Version", "1.0"], ["Statut", "Validé"]] },
-    { h: "Contexte" },
-    { p: contexte },
-    { h: "Périmètre confié" },
-    { p: perimetre },
-    { h: "Attendus du comité de direction" },
-    { list: attendus },
-    { h: "Points de vigilance" },
-    { list: vigilance }
-  ]);
+function ficheTemoignage(ref, rel, { company, monogram, auteur, role, paragraphs }) {
+  return build(
+    ref,
+    rel,
+    `Témoignage — ${auteur}, ${role}`,
+    [
+      { meta: [["Entreprise", company], ["Rédigé par", auteur], ["Fonction", role], ["Nature", "Témoignage libre, aucune cartographie fournie"]] },
+      ...paragraphs.map((p) => ({ p }))
+    ],
+    company.toUpperCase(),
+    monogram
+  );
 }
 
-// -- Documents communs (niveau mission) ------------------------------------
+function noteMandat(ref, rel, { company, monogram, cabinet, contexte, perimetre, attendus, vigilance }) {
+  return build(
+    ref,
+    rel,
+    `Note de mandat — ${company}`,
+    [
+      { meta: [["Équipe missionnée", cabinet], ["Entreprise", company], ["Émetteur", "Direction qualité"], ["Statut", "Validé"]] },
+      { h: "Contexte" },
+      { p: contexte },
+      { h: "Périmètre confié" },
+      { p: perimetre },
+      { h: "Attendus du comité de direction" },
+      { list: attendus },
+      { h: "Points de vigilance" },
+      { list: vigilance }
+    ],
+    company.toUpperCase(),
+    monogram
+  );
+}
 
-// Organigramme et politique qualité : identiques à ceux des autres modules
-// (même entreprise réelle), pour que le centre documentaire reste cohérent
-// avec le reste de l'univers Montrel Industries.
-await build("ORG-004", "rh/ORG-004_Organigramme.pdf", "Organigramme de Direction", [
-  { meta: [["Référence", "ORG-004"], ["Indice de version", "4"], ["Mise à jour", "18/09/2023"], ["Diffusion", "Personnel encadrant, RH, sur demande auditeurs/clients"]] },
-  { h: "Comité exécutif (COMEX)" },
-  { table: { head: ["Fonction", "Nom", "Rattachement"], widths: [2.2, 1.6, 1.6], rows: [
-    ["Directrice Générale", "Claire MONTREUIL", "—"],
-    ["Responsable Qualité Groupe", "Camille FERRAND", "Directrice Générale"],
-    ["Directeur Commercial", "Karim BELKACEM", "Directrice Générale"],
-    ["Directrice de Production — Site de Lyon", "Sophie LANGLOIS", "Directrice Générale"],
-    ["Directeur du Site secondaire", "Marc DUBREUIL", "Directrice Générale"],
-    ["Directeur Financier", "Antoine MERCIER", "Directrice Générale"],
-    ["Responsable R&D / Bureau d'études", "Julie ANDRÉ", "Directrice de Production"],
-    ["Responsable Ressources Humaines", "Nadia SAÏDI", "Directrice Générale"]
-  ] } },
-  { h: "Fonction Qualité — détail des rattachements" },
-  { table: { head: ["Poste", "Titulaire", "Rattachement hiérarchique", "Rattachement fonctionnel"], widths: [1.8, 1.8, 1.4, 1.4], rows: [
-    ["Responsable Qualité Groupe", "Camille FERRAND", "Directrice Générale", "—"],
-    ["Responsable Qualité — Site de Lyon", "Élodie PASCAL", "Sophie LANGLOIS", "Camille FERRAND"],
-    ["Responsable Qualité — Site secondaire", "Poste en recrutement depuis juillet 2023", "Marc DUBREUIL", "Camille FERRAND (liaison non formalisée)"]
-  ] } },
-  { p: "Intérim assuré par Marc DUBREUIL sur les missions qualité courantes du site secondaire." },
-  { h: "Effectifs par site" },
-  { table: { head: ["Site", "Effectif", "Fonctions principales"], widths: [1.4, 0.9, 3], rows: [
-    ["Lyon (siège)", "260", "Direction, Commercial, R&D, Production, Qualité Groupe"],
-    ["Site secondaire", "160", "Production, Qualité (intérim), Logistique"]
-  ] } },
-  { p: "Le présent organigramme est mis à jour à chaque mouvement de personnel d'encadrement." }
-]);
+// -- Document commun (toutes les entreprises) -------------------------------
 
-await build("POL-004", "qualite/POL-004_Politique_Qualite.pdf", "Politique Qualité", [
-  { meta: [["Référence", "POL-004"], ["Indice de version", "6"], ["Date d'application", "15/01/2024"], ["Diffusion", "Ensemble du personnel, clients et parties intéressées sur demande"]] },
-  { h: "Le mot de la Direction" },
-  { p: "Depuis 2018, Montrel Industries s'appuie sur un système de management de la qualité certifié ISO 9001. Cette politique qualité fixe le cadre dans lequel s'inscrit l'ensemble de nos collaborateurs, sur nos deux sites de production." },
-  { h: "Présentation de l'entreprise" },
-  { p: "Montrel Industries conçoit et fabrique des équipements industriels pour des environnements techniques exigeants. L'entreprise emploie 420 collaborateurs répartis sur deux sites et réalise un chiffre d'affaires de 86 M€." },
-  { h: "Nos engagements" },
-  { list: [
-    "Garantir la conformité de nos produits et services aux exigences contractuelles et réglementaires applicables.",
-    "Respecter les délais de livraison convenus avec nos clients.",
-    "Assurer la traçabilité des opérations de conception, de fabrication et de contrôle.",
-    "Développer les compétences de nos équipes sur nos deux sites.",
-    "Faire de notre cartographie des processus un outil de pilotage, pas un document d'audit."
-  ] },
-  { h: "Objectifs qualité 2024" },
-  { table: { head: ["Objectif", "Cible", "Résultat 2023", "Résultat 2022"], widths: [3, 1, 1.2, 1.2], rows: [
-    ["Taux de service client (livraisons conformes et à l'heure)", ">= 95 %", "95,1 %", "94,8 %"],
-    ["Taux de non-conformité produit interne", "< 1,2 %", "1,3 %", "1,4 %"],
-    ["Réclamations clients traitées sous 15 jours", "100 %", "92 %", "90 %"]
-  ] } },
-  { h: "Revue et diffusion" },
-  { p: "Cette politique est revue lors de la revue de direction annuelle. Elle est diffusée à l'ensemble du personnel par voie d'affichage et transmise aux clients qui en font la demande dans le cadre de leurs audits fournisseurs." },
-  { signoff: [{ t: "Fait à Lyon, le 15 janvier 2024" }, { t: "La Directrice Générale" }, { t: "Claire MONTREUIL", b: true }] }
-]);
+await build(
+  "REGLES-004",
+  "direction/REGLES-004_Regles_Exercice.pdf",
+  "Règles de l'exercice",
+  [
+    { p: "Document commun aux 4 cabinets de cette session, quelle que soit l'entreprise confiée." },
+    { meta: [["Émetteur", "Direction de la simulation"], ["Version", "1.0"], ["Statut", "Validé"]] },
+    { h: "Principe" },
+    { p: "Chaque cabinet reçoit une entreprise cliente différente, dans un secteur différent. Aucune n'a de cartographie formalisée de ses processus. Votre travail est de la construire entièrement, en identifiant et en structurant vous-même les processus à partir des documents fournis — aucun schéma, aucune liste de processus ne vous est donné." },
+    { h: "Ce qui est fourni pour votre entreprise" },
+    { list: [
+      "Une fiche entreprise (dossier client de la plateforme)",
+      "Un organigramme",
+      "Cinq témoignages narratifs (le dirigeant puis les 4 responsables), décrivant en prose ce que chacun fait réellement",
+      "Une note de mandat précisant les attendus"
+    ] },
+    { h: "Ce qui est attendu en pitch" },
+    { list: [
+      "Une cartographie complète, construite par votre équipe, sur l'entreprise confiée",
+      "Les parties prenantes intégrées à tous les niveaux (carte, processus, fiches, indicateurs)",
+      "Des processus nommés et hiérarchisés (10 à 16 processus au niveau 1)",
+      "Des processus clés sélectionnés et justifiés (matrice d'impact)",
+      "Au moins un pilote désigné sur les processus critiques",
+      "Une décision précise demandée au comité de direction"
+    ] },
+    { h: "Restitution croisée" },
+    { p: "Chaque cabinet présente à une autre équipe, qui joue le comité de direction de l'entreprise. Comme les 4 entreprises sont différentes, chaque pitch apporte un cas réellement nouveau aux autres équipes." }
+  ]
+);
 
-await build("NOTE-004", "direction/NOTE-004_Note_Cadrage.pdf", "Note de cadrage — Refonte de la cartographie", [
-  { p: "Orientations de la direction pour reprendre la cartographie des processus." },
-  { meta: [["Émetteur", "Direction générale"], ["Version", "1.0"], ["Statut", "Validé"]] },
-  { h: "Objectif" },
-  { p: "Faire de la cartographie des processus de Montrel Industries un outil de pilotage réel, intégrant les parties prenantes à tous les niveaux, avant l'audit client prévu dans 6 mois." },
-  { h: "Constat de départ" },
-  { p: "Une cartographie « version 0 » existe depuis deux ans. Un audit interne récent en a relevé neuf défauts majeurs (voir le rapport d'audit AUD-004). Elle n'a jamais été revue ni validée par la direction." },
-  { h: "Principes attendus" },
-  { list: [
-    "Reprendre l'existant plutôt que repartir de zéro",
-    "Intégrer les parties prenantes à chaque niveau de la carte, pas seulement en façade",
-    "Hiérarchiser les processus et sélectionner ceux qui sont réellement clés",
-    "Désigner un pilote par processus clé, avec une autorité réelle"
-  ] },
-  { h: "Périmètre de la mission" },
-  { p: "Quatre équipes reprennent la cartographie « version 0 », chacune à travers le prisme d'une famille de parties prenantes : clients, collaborateurs, autorités et société, direction et performance." }
-]);
+// -- Keryos Médical (Cabinet Horizon, dispositifs médicaux) -----------------
 
-await build("COPIL-004", "direction/COPIL-004_Ordre_du_jour_Comite_Direction.pdf", "Ordre du jour — Comité de direction", [
-  { p: "Pitch de restitution par prisme de parties prenantes." },
-  { meta: [["Émetteur", "Direction générale"], ["Version", "1.0"], ["Statut", "Validé"]] },
-  { h: "Objet" },
-  { p: "Présenter, pour chaque prisme, la cartographie corrigée, les processus clés sélectionnés et une décision à faire trancher par le comité de direction." },
-  { h: "Attendus par équipe" },
-  { list: [
-    "Cartographie corrigée sur le prisme confié, avec les parties prenantes intégrées à tous les niveaux",
-    "Processus clés sélectionnés et justifiés par une matrice d'impact",
-    "Au moins un pilote désigné sur les processus critiques du prisme",
-    "Une décision précise demandée au comité de direction"
-  ] },
-  { h: "Déroulé" },
-  { list: [
-    "Pitch par prisme (5 minutes)",
-    "Questions du comité de direction",
-    "Décisions retenues et priorités de mise en œuvre"
-  ] }
-]);
-
-await build("AUD-004", "qualite/AUD-004_Rapport_Audit_Cartographie.pdf", "Rapport d'audit — Cartographie « version 0 »", [
-  { p: "Constat à l'origine de la mission de refonte de la cartographie." },
-  { meta: [["Émetteur", "Audit interne"], ["Version", "1.0"], ["Statut", "Validé"]] },
-  { h: "Constat" },
-  { p: "L'audit interne a examiné la cartographie des processus existante (« version 0 »), en place depuis deux ans sans révision ni validation par la direction. Neuf défauts ont été relevés." },
-  { h: "Les neuf défauts relevés" },
-  { list: [
-    "Le client n'apparaît qu'à une seule extrémité de la carte, jamais à l'intérieur des processus",
-    "Les processus sont nommés par des services (« Qualité », « Production »), pas par un verbe d'action et un objet",
-    "Aucune famille de management (stratégie, pilotage, amélioration) n'est identifiée",
-    "Le processus « Production » est un bloc fourre-tout qui absorbe plusieurs activités distinctes",
-    "Aucun processus de sécurité ni d'environnement n'apparaît sur la carte",
-    "Aucun pilote n'est désigné sur l'ensemble des processus",
-    "Aucune interaction ni flux n'est tracé entre les processus",
-    "34 processus figurent au même niveau, sans hiérarchie",
-    "Aucun indicateur ni lien avec la stratégie de l'entreprise n'est visible"
-  ] },
-  { h: "Document associé" },
-  { p: "L'état actuel de la cartographie « version 0 » est détaillé dans le document CARTO-004. L'inventaire des activités disponible pour la reconstruire figure dans le document INV-004." },
-  { h: "Recommandation" },
-  { p: "Reprendre la cartographie par prisme de parties prenantes, corriger les neuf défauts sur chaque prisme, et sélectionner les processus clés avant l'audit client prévu dans 6 mois." }
-]);
-
-await build("CARTO-004", "qualite/CARTO-004_Cartographie_Version_0.pdf", "Cartographie « version 0 » (état actuel)", [
-  { p: "Carte actuelle de Montrel Industries, non revue depuis deux ans. Présentée ici telle quelle, défauts inclus : c'est le point de départ de la mission, pas un exemple à suivre." },
-  { meta: [["Émetteur", "Direction qualité"], ["Version", "0"], ["Statut", "Non validé"]] },
-  { h: "Cases identifiées sur la carte actuelle" },
-  { table: { head: ["Case", "Nature", "Pilote désigné"], widths: [1.8, 2, 1.4], rows: [
-    ["Clients", "Partie prenante, visible à une seule extrémité", "—"],
-    ["Service Commercial", "Nommé par un service", "Aucun"],
-    ["Service Qualité", "Nommé par un service", "Aucun"],
-    ["Production", "Bloc fourre-tout (conception, fabrication, contrôle)", "Aucun"],
-    ["Logistique", "Nommé par un service", "Aucun"],
-    ["Achats", "Nommé par un service", "Aucun"],
-    ["RH", "Nommé par un service", "Aucun"],
-    ["Maintenance", "Nommé par un service", "Aucun"],
-    ["Informatique", "Nommé par un service", "Aucun"],
-    ["Comptabilité", "Nommé par un service", "Aucun"],
-    ["Qualité (bis)", "Doublon non résolu", "Aucun"],
-    ["Production (bis)", "Doublon non résolu", "Aucun"],
-    ["Direction", "Présente, mais sans processus de pilotage identifié", "Aucun"]
-  ] } },
-  { h: "Limite principale" },
-  { p: "Et 21 autres cases du même niveau, sans pilote, sans flèche entre elles, et sans indicateur associé. Aucune hiérarchie, aucune famille de management, aucune trace de la sécurité ou de l'environnement." },
-  { h: "À faire" },
-  { p: "Chaque équipe reprend cette carte à travers son prisme de parties prenantes et propose une version corrigée, en s'appuyant sur l'inventaire des activités (INV-004)." }
-]);
-
-await build("INV-004", "qualite/INV-004_Inventaire_Activites.pdf", "Inventaire des activités de Montrel Industries", [
-  { p: "Matière première pour reconstruire la cartographie : liste des activités réellement observées, à regrouper, nommer et trier." },
-  { meta: [["Émetteur", "Direction qualité"], ["Version", "1.0"], ["Statut", "Validé"]] },
-  { h: "Activités recensées" },
-  { list: [
-    "Établir les devis", "Saisir les commandes", "Planifier la production", "Contrôler à réception",
-    "Réaliser les audits internes", "Étalonner les instruments", "Gérer les formations", "Suivre les rejets atelier",
-    "Négocier avec les fournisseurs", "Préparer les expéditions", "Évaluer les risques professionnels", "Gérer les déchets",
-    "Répondre aux appels d'offres", "Maintenir les machines", "Animer la revue de direction", "Traiter les réclamations",
-    "Gérer les droits d'accès SI", "Archiver les enregistrements", "Qualifier les fournisseurs", "Faire la veille réglementaire",
-    "Facturer les clients", "Recruter", "Concevoir les produits", "Gérer les non-conformités",
-    "Suivre la consommation d'énergie", "Piloter les budgets", "Accueillir les nouveaux", "Piloter les plans d'action",
-    "Suivre la satisfaction client", "Gérer les habilitations"
-  ] },
-  { h: "Point de méthode" },
-  { p: "Cette liste mélange volontairement des activités de nature différente : certaines sont des processus, d'autres des tâches ou des documents. Certaines se recoupent (par exemple « Gérer les non-conformités » et « Traiter les réclamations »). Le travail de chaque équipe est de les regrouper, de les nommer par un verbe d'action et un objet, et de les situer sur son prisme." }
-]);
-
-// -- Par prisme : fiche d'attentes + note de mandat ------------------------
-
-await ficheLentille("FV-CLI", "clients/FV-CLI_Attentes_Clients.pdf", {
-  prisme: "Clients",
-  contexte: "Les clients de Montrel attendent un produit conforme, livré à la date promise, et une réponse rapide en cas de réclamation. La cartographie « version 0 » ne le montre pas : le client n'apparaît qu'à une extrémité de la carte, et le bloc « Production » absorbe tout le parcours qui le concerne.",
-  attentes: [
-    ["Produit conforme livré à la date promise", "Processus Vendre -> Produire -> Livrer, avec le client nommé à chaque étape", "Client visible seulement aux deux extrémités de la carte macro"],
-    ["Réponse rapide et traçable en cas de réclamation", "Processus Traiter les réclamations, avec boucle de retour vers l'amont", "Aucune boucle de retour tracée vers la vente, la conception ou les achats"],
-    ["Information fiable sur l'avancement de la commande", "Interfaces entre Vendre, Produire et Livrer", "Bloc « Production » fourre-tout : interfaces invisibles"]
+ficheOrganigramme("ORG-KM", "keryos/ORG-KM_Organigramme.pdf", {
+  company: "Keryos Médical",
+  monogram: "KM",
+  dg: { role: "Directeur général", nom: "Laurent Chambon" },
+  equipe: [
+    { role: "Responsable assurance qualité et affaires réglementaires", nom: "Sélia Fontaine" },
+    { role: "Responsable de production", nom: "Marc Oriol" },
+    { role: "Responsable R&D", nom: "Noor Haddad" },
+    { role: "Responsable achats et logistique", nom: "Inès Travers" }
   ],
-  sources: ["Entretiens avec le service commercial et le service client", "Synthèse des réclamations clients du trimestre (centre documentaire)", "Inventaire des activités de Montrel (INV-004)", "Cartographie « version 0 » (CARTO-004)"],
-  evolutions: ["La cartographie actuelle ne montre pas comment les exigences clients sont reprises à l'intérieur des processus.", "Le traitement des réclamations n'a aucune boucle de retour tracée vers les processus amont."],
-  attention: ["Ne pas se contenter de replacer le mot « client » sur la carte macro : l'exigence doit être vérifiable à chaque niveau.", "Découper le bloc « Production » selon la règle de nommage (verbe d'action + objet), pas selon les habitudes de service."]
+  effectif: "95 collaborateurs, répartis entre la production en salle blanche, le laboratoire de contrôle qualité et les fonctions support.",
+  siteDetail: "Site unique à Annecy : production, laboratoire de contrôle qualité et siège administratif."
 });
 
-await noteMandat("NM-CLI", "clients/NM-CLI_Note_Mandat_Clients.pdf", {
-  prisme: "Clients",
+ficheTemoignage("TEM-KM-DG", "keryos/TEM-KM-1_Temoignage_Laurent_Chambon.pdf", {
+  company: "Keryos Médical",
+  monogram: "KM",
+  auteur: "Laurent Chambon",
+  role: "Directeur général",
+  paragraphs: [
+    "Chaque trimestre, je réunis les responsables de service pour faire le point : résultats qualité, avancement des projets, décisions à prendre. C'est aussi dans ce cadre que je valide la facturation des hôpitaux clients et que je fais préparer les dossiers attendus par l'organisme notifié avant chaque audit de surveillance.",
+    "Je constate qu'on prépare ces audits dans l'urgence, service par service, sans vue d'ensemble de ce qui doit être démontré. J'aimerais qu'on puisse, à l'avenir, s'appuyer sur une vision claire de nos activités pour anticiper ces échéances au lieu de les subir."
+  ]
+});
+
+ficheTemoignage("TEM-KM-2", "keryos/TEM-KM-2_Temoignage_Selia_Fontaine.pdf", {
+  company: "Keryos Médical",
+  monogram: "KM",
+  auteur: "Sélia Fontaine",
+  role: "Responsable assurance qualité et affaires réglementaires",
+  paragraphs: [
+    "Quand une non-conformité est détectée, en production ou lors d'un contrôle, c'est à moi qu'elle remonte : j'ouvre un dossier, je fais qualifier la gravité et je m'assure qu'une action corrective est mise en place. Je traite aussi directement les réclamations des hôpitaux clients, qui peuvent signaler un défaut sur un dispositif livré.",
+    "Le plus sensible, c'est la matériovigilance : une alerte sur un lot doit remonter vite. Récemment, il a fallu 19 jours avant que je sois informée d'un problème, parce que personne ne savait exactement à qui le signaler ni dans quel délai."
+  ]
+});
+
+ficheTemoignage("TEM-KM-3", "keryos/TEM-KM-3_Temoignage_Marc_Oriol.pdf", {
+  company: "Keryos Médical",
+  monogram: "KM",
+  auteur: "Marc Oriol",
+  role: "Responsable de production",
+  paragraphs: [
+    "Mon équipe fabrique les dispositifs en salle blanche, à partir des matières premières réceptionnées et contrôlées par les achats. Chaque étape de fabrication fait l'objet d'un contrôle en cours de production, avant que les dispositifs ne passent en stérilisation. C'est moi qui signe la libération finale d'un lot, une fois tous les contrôles validés.",
+    "Dès qu'on veut changer quelque chose dans le process — un réglage machine, un fournisseur de consommable — il faut faire valider le changement, et ça prend du temps que personne ne planifie vraiment à l'avance."
+  ]
+});
+
+ficheTemoignage("TEM-KM-4", "keryos/TEM-KM-4_Temoignage_Noor_Haddad.pdf", {
+  company: "Keryos Médical",
+  monogram: "KM",
+  auteur: "Noor Haddad",
+  role: "Responsable R&D",
+  paragraphs: [
+    "Je conçois les nouveaux dispositifs, en lien avec les retours clients et les évolutions réglementaires. Une fois qu'un nouveau produit est prêt à passer en fabrication, c'est aussi mon équipe qui forme les opérateurs de production aux nouvelles exigences.",
+    "On s'occupe également de l'étalonnage des instruments de mesure utilisés en laboratoire et en salle blanche, mais c'est souvent fait au dernier moment, sans planning partagé avec la production."
+  ]
+});
+
+ficheTemoignage("TEM-KM-5", "keryos/TEM-KM-5_Temoignage_Ines_Travers.pdf", {
+  company: "Keryos Médical",
+  monogram: "KM",
+  auteur: "Inès Travers",
+  role: "Responsable achats et logistique",
+  paragraphs: [
+    "Je qualifie les fournisseurs de matières premières avant qu'ils ne puissent livrer Keryos, et je réceptionne chaque arrivage pour vérifier sa conformité avant qu'il n'entre en production. Je gère aussi les stocks de consommables stériles, pour que la production ne soit jamais en rupture.",
+    "Une fois un lot libéré, c'est mon service qui archive le dossier complet — matières utilisées, contrôles, stérilisation — en cas de demande d'un hôpital ou d'un auditeur."
+  ]
+});
+
+noteMandat("NM-KM", "keryos/NM-KM_Note_Mandat.pdf", {
+  company: "Keryos Médical",
+  monogram: "KM",
   cabinet: "Cabinet Horizon",
-  contexte: "La cartographie « version 0 » de Montrel ne montre le client qu'à une seule extrémité de la carte, et le bloc « Production » absorbe tout le parcours qui crée sa valeur, sans qu'aucune boucle de retour des réclamations ne soit tracée.",
-  perimetre: "Vérifier, prisme par prisme, que les exigences du client sont reprises à chaque niveau de la cartographie, et corriger le bloc « Production » et l'absence de boucle de retour des réclamations.",
-  attendus: ["Le client visible à chaque étape du parcours, pas seulement en entrée et en sortie", "Le bloc « Production » découpé en processus nommés par un verbe d'action et un résultat", "Un indicateur de résultat relié à l'attente client la plus citée dans les réclamations"],
-  vigilance: ["Ne pas confondre satisfaction client affichée et exigence réellement portée par un processus", "Vérifier que la boucle de retour des réclamations remonte bien jusqu'à la vente et à la conception"]
+  contexte: "Aucune cartographie des processus n'a jamais été formalisée chez Keryos Médical. Le Règlement (UE) 2017/745 exige pourtant un processus de matériovigilance démontrable, à 4 mois de l'audit de l'organisme notifié.",
+  perimetre: "Construire la cartographie complète de Keryos Médical en intégrant le processus de matériovigilance et la traçabilité lot par lot, avant l'audit de l'organisme notifié.",
+  attendus: ["Le processus de matériovigilance positionné sur la carte construite, avec un pilote et un délai de remontée", "Une traçabilité lot par lot visible de bout en bout", "Une carte complète, présentable telle quelle à l'organisme notifié"],
+  vigilance: ["Ne pas sous-estimer l'exigence réglementaire du Règlement (UE) 2017/745", "Distinguer la qualification d'un changement de process de la production courante"]
 });
 
-await ficheLentille("FV-COL", "collaborateurs/FV-COL_Attentes_Collaborateurs.pdf", {
-  prisme: "Collaborateurs",
-  contexte: "Les collaborateurs de Montrel attendent la sécurité au poste de travail, le développement de leurs compétences, et d'être informés par leurs représentants. La cartographie « version 0 » ne comporte aucun processus de sécurité ni d'environnement, et aucun pilote n'est désigné.",
-  attentes: [
-    ["Sécurité au poste de travail", "Processus dédié santé-sécurité, ou exigences intégrées au processus Produire", "Aucun processus sécurité sur la carte « version 0 »"],
-    ["Développement des compétences", "Processus Gérer les compétences, positionné sur la carte", "Processus non positionné sur la carte actuelle"],
-    ["Être informé et consulté (représentants du personnel)", "Partie prenante identifiée aux extrémités de la carte et dans les instances de pilotage", "Représentants du personnel absents de la carte"]
+// -- Arvano Conseil (Cabinet Polaris, conseil) -------------------------------
+
+ficheOrganigramme("ORG-AC", "arvano/ORG-AC_Organigramme.pdf", {
+  company: "Arvano Conseil",
+  monogram: "AC",
+  dg: { role: "Directrice générale et associée fondatrice", nom: "Delphine Ayrault" },
+  equipe: [
+    { role: "Directeur qualité et méthodes", nom: "Thibault Varane" },
+    { role: "Responsable avant-vente", nom: "Margaux Soubise" },
+    { role: "Responsable des missions", nom: "Hugo Lescure" },
+    { role: "Responsable RH et recrutement", nom: "Zoé Rambert" }
   ],
-  sources: ["Entretiens avec les ressources humaines et les représentants du personnel", "Documents des démarches ISO 45001 / ISO 14001 du site secondaire", "Inventaire des activités de Montrel (INV-004)", "Cartographie « version 0 » (CARTO-004)"],
-  evolutions: ["Les démarches ISO 45001 et ISO 14001 engagées sur le site secondaire avancent sans lien visible avec la cartographie.", "Aucun pilote n'est désigné sur les 34 cases de la carte actuelle."],
-  attention: ["Choisir et argumenter entre processus dédiés (sécurité, environnement) et exigences intégrées à chaque processus concerné, sans se contenter d'empiler les deux.", "Vérifier qu'au moins un pilote est désigné avec une lettre de mission sur les processus les plus critiques pour les collaborateurs."]
+  effectif: "42 collaborateurs, dont la majorité des consultants sont en mission chez les clients. Effectif triplé en trois ans.",
+  siteDetail: "Bureaux à Nantes ; consultants majoritairement affectés chez les clients, pas de site de production."
 });
 
-await noteMandat("NM-COL", "collaborateurs/NM-COL_Note_Mandat_Collaborateurs.pdf", {
-  prisme: "Collaborateurs",
+ficheTemoignage("TEM-AC-DG", "arvano/TEM-AC-1_Temoignage_Delphine_Ayrault.pdf", {
+  company: "Arvano Conseil",
+  monogram: "AC",
+  auteur: "Delphine Ayrault",
+  role: "Directrice générale et associée fondatrice",
+  paragraphs: [
+    "Je signe personnellement les contrats-cadres avec nos clients les plus importants, et je négocie leur renouvellement quand l'échéance approche — c'est le cas avec notre plus gros client dans deux mois. Chaque trimestre, je réunis l'équipe de direction pour faire le point sur l'activité et la rentabilité de chaque mission en cours.",
+    "Ce qui m'inquiète, c'est qu'on pilote la rentabilité mission par mission, sans jamais remonter sur ce qui se passe réellement entre la vente d'une offre et sa réalisation : les écarts qu'on nous signale viennent forcément de là."
+  ]
+});
+
+ficheTemoignage("TEM-AC-2", "arvano/TEM-AC-2_Temoignage_Thibault_Varane.pdf", {
+  company: "Arvano Conseil",
+  monogram: "AC",
+  auteur: "Thibault Varane",
+  role: "Directeur qualité et méthodes",
+  paragraphs: [
+    "Quand une mission se termine, je m'assure qu'elle est correctement clôturée côté administratif, et j'essaie de récupérer les enseignements auprès du consultant qui l'a menée — avec plus ou moins de succès, parce que rien n'oblige vraiment à le faire. Je suis aussi celui qui reçoit les réclamations clients quand quelque chose n'a pas été au niveau attendu.",
+    "Le problème, c'est qu'on ne garde quasiment aucune trace exploitable d'une mission à l'autre : chaque nouveau consultant repart avec les mêmes questions que le précédent."
+  ]
+});
+
+ficheTemoignage("TEM-AC-3", "arvano/TEM-AC-3_Temoignage_Margaux_Soubise.pdf", {
+  company: "Arvano Conseil",
+  monogram: "AC",
+  auteur: "Margaux Soubise",
+  role: "Responsable avant-vente",
+  paragraphs: [
+    "Je réponds aux appels d'offres et je chiffre les propositions commerciales, en estimant le temps et les compétences nécessaires. Une fois l'offre signée, je participe au cadrage initial de la mission avec le client, avant de passer la main à l'équipe qui va la réaliser.",
+    "Le souci, c'est que cette passation se fait souvent à l'oral, vite, sans document qui reprenne précisément ce qui a été promis au client. Je découvre parfois après coup que l'équipe de mission a compris autre chose."
+  ]
+});
+
+ficheTemoignage("TEM-AC-4", "arvano/TEM-AC-4_Temoignage_Hugo_Lescure.pdf", {
+  company: "Arvano Conseil",
+  monogram: "AC",
+  auteur: "Hugo Lescure",
+  role: "Responsable des missions",
+  paragraphs: [
+    "Je recrute et j'affecte les consultants sur les missions en fonction des besoins clients. Mon équipe réalise les missions de conseil elles-mêmes — audit, accompagnement au changement — et développe parfois des outils internes sur mesure pour un client. Je suis l'avancement de chaque mission pour anticiper les dérapages.",
+    "Mais je découvre souvent l'existence d'engagements pris en avant-vente au moment où le client s'étonne qu'on ne les tienne pas : rien ne me prévient de ce qui a été vendu avant que la mission démarre."
+  ]
+});
+
+ficheTemoignage("TEM-AC-5", "arvano/TEM-AC-5_Temoignage_Zoe_Rambert.pdf", {
+  company: "Arvano Conseil",
+  monogram: "AC",
+  auteur: "Zoé Rambert",
+  role: "Responsable RH et recrutement",
+  paragraphs: [
+    "Je m'occupe de la formation des consultants, notamment des nouveaux arrivants, pour qu'ils soient rapidement opérationnels en mission. Je gère aussi la facturation au temps passé, à partir des relevés d'activité remplis par chacun.",
+    "Avec le triplement des effectifs en trois ans, j'ai de plus en plus de mal à transmettre les bons réflexes : chacun fait un peu à sa façon, faute de référence commune sur ce qu'on attend à chaque étape d'une mission."
+  ]
+});
+
+noteMandat("NM-AC", "arvano/NM-AC_Note_Mandat.pdf", {
+  company: "Arvano Conseil",
+  monogram: "AC",
   cabinet: "Cabinet Polaris",
-  contexte: "La cartographie « version 0 » de Montrel ne comporte aucun processus de sécurité ni d'environnement, alors que des démarches ISO 45001 et ISO 14001 sont déjà engagées sur le site secondaire, et aucun pilote n'est désigné sur l'ensemble de la carte.",
-  perimetre: "Vérifier que les exigences des collaborateurs (sécurité, compétences, représentation) sont intégrées à la cartographie, et proposer une décision argumentée sur le positionnement des processus sécurité et environnement.",
-  attendus: ["Une décision claire : processus dédiés ou exigences intégrées, argumentée et pas improvisée", "Au moins un pilote désigné, avec lettre de mission, sur les processus critiques du prisme", "Un indicateur de sécurité ou de compétences relié à une attente concrète des équipes"],
-  vigilance: ["Ne pas réduire les collaborateurs à une ligne « RH » sur la carte : leurs attentes traversent plusieurs processus", "Ne pas oublier les représentants du personnel comme partie prenante à part entière"]
+  contexte: "Aucune cartographie des processus n'a jamais été formalisée chez Arvano Conseil ; l'interface avant-vente / mission, source de réclamations, n'est tracée nulle part.",
+  perimetre: "Construire la cartographie complète d'Arvano Conseil en processus de service, et sécuriser l'interface avant-vente / mission avant le renouvellement du contrat-cadre avec le plus gros client.",
+  attendus: ["Une cartographie en vocabulaire de service, sans trace industrielle", "L'interface avant-vente / mission clairement tracée", "Un processus de capitalisation des retours d'expérience"],
+  vigilance: ["Ne pas calquer des processus industriels par réflexe", "Le renouvellement du contrat-cadre se joue dans 2 mois : rester concret et convaincant"]
 });
 
-await ficheLentille("FV-AUT", "autorites/FV-AUT_Attentes_Autorites.pdf", {
-  prisme: "Autorités & société",
-  contexte: "Montrel détient déjà quatre référentiels (ISO 9001, 14001, 45001, exigences clients) qui avancent chacun de leur côté, sans vue commune, et un client export réclame un référentiel sectoriel absent de la cartographie actuelle, à l'approche d'un audit client dans 6 mois.",
-  attentes: [
-    ["Conformité réglementaire à jour", "Processus de veille réglementaire et normative, positionné sur la carte", "Processus absent de la carte « version 0 »"],
-    ["Conformité au référentiel sectoriel exigé par le client export", "Processus concernés identifiés et évalués au regard du référentiel", "Non évalué à ce jour"],
-    ["Maîtrise démontrable des processus et de leurs interactions (préparation de l'audit client)", "Carte avec pilotes désignés et interactions tracées", "34 processus sans pilote ni interaction"]
+// -- Virel Semiconducteurs (Cabinet Meridian, semi-conducteurs) -------------
+
+ficheOrganigramme("ORG-VS", "virel/ORG-VS_Organigramme.pdf", {
+  company: "Virel Semiconducteurs",
+  monogram: "VS",
+  dg: { role: "Directeur général", nom: "Frédéric Lannoy" },
+  equipe: [
+    { role: "Responsable qualité fournisseur et client", nom: "Gauthier Pradier" },
+    { role: "Responsable salle blanche / production", nom: "Anissa Kerbrat" },
+    { role: "Responsable R&D et qualification produit", nom: "Paul-Henri Ziegler" },
+    { role: "Responsable achats composants", nom: "Léna Castex" }
   ],
-  sources: ["Veille réglementaire et normative (voir le module QSE1)", "Cahier des charges de l'appel d'offres du client export", "Inventaire des activités de Montrel (INV-004)", "Cartographie « version 0 » (CARTO-004)"],
-  evolutions: ["Un client export a conditionné un appel d'offres à un référentiel sectoriel absent de la cartographie actuelle.", "L'audit client annoncé dans 6 mois porte précisément sur la maîtrise des processus et de leurs interactions (ISO 9001:2015, art. 4.4)."],
-  attention: ["Identifier le référentiel sectoriel réellement applicable au secteur du client export (par exemple IATF 16949 ou ISO 13485, selon le cas) avant d'en tirer des conséquences sur la carte.", "Ne pas traiter la veille réglementaire comme un sujet isolé : elle doit être positionnée sur la carte, avec un pilote."]
+  effectif: "210 collaborateurs, entre ingénieurs R&D, opérateurs de salle blanche et fonctions support.",
+  siteDetail: "Site unique à Grenoble : salle blanche de fabrication, laboratoire de caractérisation et siège."
 });
 
-await noteMandat("NM-AUT", "autorites/NM-AUT_Note_Mandat_Autorites.pdf", {
-  prisme: "Autorités & société",
+ficheTemoignage("TEM-VS-DG", "virel/TEM-VS-1_Temoignage_Frederic_Lannoy.pdf", {
+  company: "Virel Semiconducteurs",
+  monogram: "VS",
+  auteur: "Frédéric Lannoy",
+  role: "Directeur général",
+  paragraphs: [
+    "Je porte personnellement la réponse aux appels d'offres de nos clients automobiles stratégiques, qui exigent un niveau de garanties de plus en plus élevé. Chaque trimestre, je réunis l'équipe de direction pour passer en revue l'activité, et je valide la facturation de nos clients.",
+    "Le dernier avenant signé avec un client automobile nous impose de prouver une maîtrise des changements de process que je ne suis pas sûr qu'on puisse démontrer aujourd'hui, faute de vue d'ensemble sur nos activités."
+  ]
+});
+
+ficheTemoignage("TEM-VS-2", "virel/TEM-VS-2_Temoignage_Gauthier_Pradier.pdf", {
+  company: "Virel Semiconducteurs",
+  monogram: "VS",
+  auteur: "Gauthier Pradier",
+  role: "Responsable qualité fournisseur et client",
+  paragraphs: [
+    "Je traite les réclamations de nos clients industriels et automobiles quand un composant livré pose problème, et je qualifie les fournisseurs de matières avant qu'ils ne puissent nous livrer. Je mène aussi des audits internes réguliers pour vérifier que nos pratiques tiennent la route.",
+    "Le dernier avenant d'un client automobile stratégique exige une preuve de maîtrise des changements de process : je ne sais même pas vers qui me tourner en interne pour savoir comment un changement est aujourd'hui décidé et validé."
+  ]
+});
+
+ficheTemoignage("TEM-VS-3", "virel/TEM-VS-3_Temoignage_Anissa_Kerbrat.pdf", {
+  company: "Virel Semiconducteurs",
+  monogram: "VS",
+  auteur: "Anissa Kerbrat",
+  role: "Responsable salle blanche / production",
+  paragraphs: [
+    "Mon équipe fabrique les plaquettes en salle blanche et les contrôle à plusieurs étapes du process. Je suis le taux de rebut, qui a augmenté ce trimestre sans que je sache précisément à quelle étape il se forme. Quand on doit changer un réglage ou un équipement, je gère ce changement à mon niveau, sans qu'il y ait de règle écrite partagée avec les autres équipes.",
+    "C'est justement cette gestion des changements, au cas par cas, que notre client automobile ne veut plus accepter sans preuve écrite."
+  ]
+});
+
+ficheTemoignage("TEM-VS-4", "virel/TEM-VS-4_Temoignage_Paul_Henri_Ziegler.pdf", {
+  company: "Virel Semiconducteurs",
+  monogram: "VS",
+  auteur: "Paul-Henri Ziegler",
+  role: "Responsable R&D et qualification produit",
+  paragraphs: [
+    "Je conçois les nouveaux composants et je pilote leur qualification avant le lancement en production (ce qu'on appelle le NPI). Une fois les premiers lots fabriqués, mon équipe teste les composants finis pour valider qu'ils répondent au cahier des charges.",
+    "Le problème, c'est que cette phase de qualification et la production en continu qui suit se chevauchent souvent dans le planning, sans frontière claire sur qui décide quoi une fois le produit « qualifié »."
+  ]
+});
+
+ficheTemoignage("TEM-VS-5", "virel/TEM-VS-5_Temoignage_Lena_Castex.pdf", {
+  company: "Virel Semiconducteurs",
+  monogram: "VS",
+  auteur: "Léna Castex",
+  role: "Responsable achats composants",
+  paragraphs: [
+    "J'approvisionne les plaquettes de silicium et les matières nécessaires à la production, en anticipant les délais parfois longs de nos fournisseurs. Je coordonne aussi l'étalonnage des équipements de salle blanche et la formation des nouveaux opérateurs sur ces équipements.",
+    "Avec la montée en cadence de ces derniers mois, je commence à avoir du mal à garantir que chaque équipement est étalonné à temps avant qu'un opérateur ne l'utilise."
+  ]
+});
+
+noteMandat("NM-VS", "virel/NM-VS_Note_Mandat.pdf", {
+  company: "Virel Semiconducteurs",
+  monogram: "VS",
   cabinet: "Cabinet Meridian",
-  contexte: "La cartographie « version 0 » de Montrel ne fait apparaître aucun processus de veille réglementaire, et un client export réclame un référentiel sectoriel non couvert, à six mois d'un audit client qui portera sur la maîtrise des processus.",
-  perimetre: "Positionner la veille réglementaire et normative sur la cartographie, qualifier l'exigence du référentiel sectoriel, et préparer la carte à servir de preuve lors de l'audit client.",
-  attendus: ["Le processus de veille réglementaire et normative positionné sur la carte, avec un pilote identifié", "Une lecture claire de ce qu'ajoute le référentiel sectoriel identifié", "Une cartographie assez solide pour servir de preuve face à l'audit client dans 6 mois"],
-  vigilance: ["Ne pas confondre les quatre référentiels existants (ISO 9001, 14001, 45001, exigences clients) : préciser ce que chacun ajoute à la carte", "Vérifier que le référentiel sectoriel identifié est bien applicable au secteur réel du client export"]
+  contexte: "Aucune cartographie des processus n'a jamais été formalisée chez Virel Semiconducteurs. Un client automobile stratégique exige désormais la preuve d'une gestion maîtrisée des changements de process.",
+  perimetre: "Construire la cartographie complète de Virel Semiconducteurs en intégrant un processus de gestion des changements répondant à l'exigence du client automobile, et en distinguant la qualification produit de la production en continu.",
+  attendus: ["Un processus de gestion des changements, avec un pilote, relié à l'exigence client", "Qualification produit et production en continu distinguées", "Un indicateur relié au taux de rebut"],
+  vigilance: ["Ne pas minimiser l'exigence du client automobile : elle conditionne la relation commerciale", "Vérifier que les deux populations (R&D, production) sont bien distinguées dans les interfaces"]
 });
 
-await ficheLentille("FV-DIR", "direction/FV-DIR_Attentes_Direction.pdf", {
-  prisme: "Direction & performance",
-  contexte: "Face à la hausse de 18 % des réclamations en 12 mois, la direction n'a aujourd'hui aucun moyen objectif de choisir où concentrer ses efforts : la cartographie « version 0 » aligne 34 processus au même niveau, sans famille de management ni lien avec la stratégie.",
-  attentes: [
-    ["Vision hiérarchisée des processus", "Carte à plusieurs niveaux (10 à 16 processus au niveau 1)", "34 processus au même niveau"],
-    ["Processus clés identifiés et justifiés", "Matrice d'impact (AFNOR FD X 50-176, 2017)", "Aucune sélection à ce jour"],
-    ["Lien entre stratégie, objectifs et processus", "Famille de management positionnée sur la carte", "Aucun processus de management sur la carte actuelle"]
+// -- Haranis Construction (Cabinet Nova, BTP) --------------------------------
+
+ficheOrganigramme("ORG-HC", "haranis/ORG-HC_Organigramme.pdf", {
+  company: "Haranis Construction",
+  monogram: "HC",
+  dg: { role: "Directeur général", nom: "Bertrand Mallet" },
+  equipe: [
+    { role: "Responsable QSE groupe", nom: "Oriane Delcasse" },
+    { role: "Conducteur de travaux senior", nom: "Yanis Berger" },
+    { role: "Responsable bureau d'études / chiffrage", nom: "Sofia Nardelli" },
+    { role: "Responsable achats et sous-traitance", nom: "Karl Dumesnil" }
   ],
-  sources: ["Entretiens avec la direction financière et la direction générale", "AFNOR FD X 50-176 (2017), grille de sélection des processus clés", "Inventaire des activités de Montrel (INV-004)", "Cartographie « version 0 » (CARTO-004)"],
-  evolutions: ["Aucun processus de management n'apparaît sur la carte actuelle.", "La direction ne dispose d'aucun critère objectif pour arbitrer où concentrer les moyens face à la hausse des réclamations."],
-  attention: ["La sélection des processus clés doit rester un acte de direction objectivé par une matrice, pas une liste imposée par l'équipe.", "Un pitch qui ne débouche sur aucune décision précise ne répond pas à la commande du comité de direction."]
+  effectif: "160 collaborateurs, entre le siège de Toulouse et les équipes mobilisées sur les chantiers en cours.",
+  siteDetail: "Siège administratif et dépôt de matériel à Toulouse ; activité répartie sur plusieurs chantiers simultanés."
 });
 
-await noteMandat("NM-DIR", "direction/NM-DIR_Note_Mandat_Direction.pdf", {
-  prisme: "Direction & performance",
+ficheTemoignage("TEM-HC-DG", "haranis/TEM-HC-1_Temoignage_Bertrand_Mallet.pdf", {
+  company: "Haranis Construction",
+  monogram: "HC",
+  auteur: "Bertrand Mallet",
+  role: "Directeur général",
+  paragraphs: [
+    "Je porte la réponse aux appels d'offres publics et je valide chaque mois la facturation des situations de travaux sur l'ensemble de nos chantiers. En revue de direction trimestrielle, je passe en revue l'avancement des chantiers en cours avec les conducteurs de travaux.",
+    "Depuis l'incident de sécurité du mois dernier, je me rends compte qu'on n'a jamais formalisé qui répond de quoi entre le chiffrage d'un chantier, sa réalisation et sa réception : chacun gère son bout, à sa manière."
+  ]
+});
+
+ficheTemoignage("TEM-HC-2", "haranis/TEM-HC-2_Temoignage_Oriane_Delcasse.pdf", {
+  company: "Haranis Construction",
+  monogram: "HC",
+  auteur: "Oriane Delcasse",
+  role: "Responsable QSE groupe",
+  paragraphs: [
+    "Je coordonne la sécurité sur les chantiers (SPS) et j'interviens dès qu'un incident de sécurité survient, comme celui du mois dernier impliquant un sous-traitant. Je contrôle aussi la qualité d'exécution des travaux, en complément des conducteurs de travaux.",
+    "En reprenant le dossier de l'incident, j'ai découvert que ce sous-traitant n'avait jamais été formellement qualifié avant son intervention : personne n'a identifié que cette étape nous manquait."
+  ]
+});
+
+ficheTemoignage("TEM-HC-3", "haranis/TEM-HC-3_Temoignage_Yanis_Berger.pdf", {
+  company: "Haranis Construction",
+  monogram: "HC",
+  auteur: "Yanis Berger",
+  role: "Conducteur de travaux senior",
+  paragraphs: [
+    "Je planifie chaque chantier dont j'ai la charge, je pilote la réalisation des travaux sur le terrain, puis je mène la réception du chantier avec le client en fin d'exécution. Après la réception, je m'occupe de lever les réserves identifiées.",
+    "Le taux de réserves reste élevé chantier après chantier, et je découvre souvent les problèmes seulement à la réception, parce que rien ne me permet de les détecter plus tôt pendant l'exécution."
+  ]
+});
+
+ficheTemoignage("TEM-HC-4", "haranis/TEM-HC-4_Temoignage_Sofia_Nardelli.pdf", {
+  company: "Haranis Construction",
+  monogram: "HC",
+  auteur: "Sofia Nardelli",
+  role: "Responsable bureau d'études / chiffrage",
+  paragraphs: [
+    "Je chiffre chaque chantier avant la réponse à l'appel d'offres, à partir des plans et du cahier des charges du client. Une fois le chantier terminé, j'archive le dossier d'ouvrage exécuté qui en garde la trace.",
+    "Entre mon chiffrage initial et ce qui se passe vraiment sur le chantier, je n'ai aucune visibilité : je ne sais jamais si mes hypothèses de départ ont tenu la route ou pas."
+  ]
+});
+
+ficheTemoignage("TEM-HC-5", "haranis/TEM-HC-5_Temoignage_Karl_Dumesnil.pdf", {
+  company: "Haranis Construction",
+  monogram: "HC",
+  auteur: "Karl Dumesnil",
+  role: "Responsable achats et sous-traitance",
+  paragraphs: [
+    "Je sélectionne et je suis censé qualifier les sous-traitants qui interviennent sur nos chantiers, j'approvisionne les matériaux et je gère le parc de matériel et d'engins partagé entre les chantiers. J'organise aussi certaines formations des équipes chantier.",
+    "Avec le volume actuel, la qualification des sous-traitants se fait parfois dans l'urgence, juste avant leur intervention — c'est exactement ce qui s'est produit avec le sous-traitant impliqué dans l'incident récent."
+  ]
+});
+
+noteMandat("NM-HC", "haranis/NM-HC_Note_Mandat.pdf", {
+  company: "Haranis Construction",
+  monogram: "HC",
   cabinet: "Cabinet Nova",
-  contexte: "La cartographie « version 0 » de Montrel aligne 34 processus au même niveau, sans famille de management ni lien avec la stratégie, alors que la direction doit arbitrer où concentrer ses efforts face à la hausse des réclamations.",
-  perimetre: "Hiérarchiser la cartographie, sélectionner 4 à 6 processus clés à l'aide d'une matrice d'impact, et construire un pitch qui porte une décision précise pour la direction.",
-  attendus: ["Une hiérarchie claire de la carte, avec la famille management explicitée", "Une sélection de processus clés justifiée par une matrice d'impact", "Un pitch qui porte une décision précise, pas un simple constat"],
-  vigilance: ["Ne pas sélectionner les processus clés par habitude : utiliser systématiquement la matrice d'impact", "Anticiper au moins deux objections du comité de direction (coût, temps) et préparer une réponse"]
+  contexte: "Aucune cartographie des processus n'a jamais été formalisée chez Haranis Construction. Un incident de sécurité récent impliquait un sous-traitant jamais formellement qualifié.",
+  perimetre: "Construire la cartographie complète de Haranis Construction en distinguant le chiffrage, le chantier et la réception, et en formalisant la qualification et la coordination sécurité des sous-traitants.",
+  attendus: ["Un processus de qualification des sous-traitants, relié à la coordination sécurité", "Chiffrage, chantier et réception distingués, avec un pilote chacun", "Un indicateur de réserves à la réception, avec cible et plan d'action"],
+  vigilance: ["Ne pas minimiser l'incident de sécurité récent dans la restitution", "Tenir compte de la mobilité des équipes terrain, peu disponibles"]
 });
 
-console.log("15 documents qseal11-cartographie générés.");
+console.log("29 documents qseal11-cartographie générés.");

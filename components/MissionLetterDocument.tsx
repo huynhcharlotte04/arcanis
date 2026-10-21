@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getModuleById } from "@/data/modules-registry";
+import { CompanyMark } from "@/components/CompanyMark";
 import { MontrelMark } from "@/components/MontrelMark";
 import { getLetterFraming } from "@/lib/deliverable";
 import { getMandateById } from "@/lib/mandates";
@@ -19,8 +20,9 @@ export function MissionLetterDocument() {
   const { simulation } = activeModule;
   const mandate = getMandateById(activeModule.mandates, session.mandateId);
   const framing = getLetterFraming(activeModule.deliverableType, mandate);
+  const clientCompanyName = mandate.company?.name ?? simulation.missionLetter.clientCompany;
   const letterRows = [
-    ["Entreprise cliente", simulation.missionLetter.clientCompany],
+    ["Entreprise cliente", clientCompanyName],
     ["Contexte", framing.context],
     ["Objectif", mandate.objective],
     ["Mandat attribué", framing.mandateLine],
@@ -40,16 +42,20 @@ export function MissionLetterDocument() {
       <div className="relative flex items-start justify-between gap-6 border-b border-inkline pb-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.26em] text-brass">
-            {simulation.missionLetter.clientCompany} - {framing.audienceSuffix}
+            {clientCompanyName} - {framing.audienceSuffix}
           </p>
           <h2 className="mt-4 text-4xl font-semibold text-porcelain">
             Lettre de mission
           </h2>
         </div>
         <div className="hidden shrink-0 flex-col items-center gap-2 text-brass sm:flex">
-          <MontrelMark size={44} title={`Emblème ${simulation.missionLetter.clientCompany}`} />
+          {mandate.company ? (
+            <CompanyMark monogram={mandate.company.monogram} size={44} title={`Emblème ${clientCompanyName}`} />
+          ) : (
+            <MontrelMark size={44} title={`Emblème ${clientCompanyName}`} />
+          )}
           <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-mist">
-            {simulation.missionLetter.clientCompany}
+            {clientCompanyName}
           </span>
         </div>
       </div>

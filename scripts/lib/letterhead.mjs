@@ -24,8 +24,12 @@ export const contentW = () => PAGE_W - M * 2;
 // contenu identique), ce qui évite des diffs parasites sur les PDF versionnés.
 const FIXED_DATE = new Date(Date.UTC(2024, 0, 1, 0, 0, 0));
 
-// -- Emblème Montrel (monogramme M dans un hexagone), dessiné en vectoriel --
-export function drawEmblem(doc, x, y, size, color = GOLD) {
+// -- Emblème (monogramme dans un hexagone), dessiné en vectoriel --------
+// Par défaut, dessine le "M" de Montrel Industries (tracé en dur, utilisé
+// par les 3 modules bâtis autour de cette entreprise). Si `monogram` est
+// fourni (ex. module où chaque cabinet traite une entreprise différente),
+// affiche ce monogramme en texte à la place.
+export function drawEmblem(doc, x, y, size, color = GOLD, monogram = null) {
   const s = size / 48;
   doc.save();
   doc.translate(x, y).scale(s);
@@ -35,19 +39,28 @@ export function drawEmblem(doc, x, y, size, color = GOLD) {
     .lineWidth(1.4)
     .polygon([24, 3], [41.2, 13.5], [41.2, 34.5], [24, 45], [6.8, 34.5], [6.8, 13.5])
     .stroke();
-  doc.strokeOpacity(1).lineWidth(2).path("M15 33 L15 16 L24 26 L33 16 L33 33").stroke();
-  doc.fillColor(color).fillOpacity(1).circle(24, 38.5, 1.3).fill();
+  if (monogram) {
+    doc
+      .fillColor(color)
+      .fillOpacity(1)
+      .font("Helvetica-Bold")
+      .fontSize(16)
+      .text(monogram, 6.8, 18, { width: 34.4, align: "center" });
+  } else {
+    doc.strokeOpacity(1).lineWidth(2).path("M15 33 L15 16 L24 26 L33 16 L33 33").stroke();
+    doc.fillColor(color).fillOpacity(1).circle(24, 38.5, 1.3).fill();
+  }
   doc.restore();
   doc.strokeOpacity(1).fillOpacity(1);
 }
 
-function header(doc, ref, subtitle) {
-  drawEmblem(doc, M, 40, 30);
+function header(doc, ref, subtitle, companyName = "MONTREL INDUSTRIES", monogram = null) {
+  drawEmblem(doc, M, 40, 30, GOLD, monogram);
   doc
     .fillColor(INK)
     .font("Helvetica-Bold")
     .fontSize(10)
-    .text("MONTREL INDUSTRIES", M + 40, 44, { characterSpacing: 1.5 });
+    .text(companyName, M + 40, 44, { characterSpacing: 1.5 });
   doc
     .fillColor(MUTED)
     .font("Helvetica")
@@ -68,14 +81,14 @@ function header(doc, ref, subtitle) {
   doc.y = 96;
 }
 
-function footer(doc, ref, page, total) {
+function footer(doc, ref, page, total, companyName = "Montrel Industries") {
   doc.page.margins.bottom = 0; // évite une pagination auto en écrivant en bas de page
   doc
     .fillColor("#9a9385")
     .font("Helvetica")
     .fontSize(7.5)
     .text(
-      `${ref} — Document interne Montrel Industries — Usage simulation ARCANIS`,
+      `${ref} — Document interne ${companyName} — Usage simulation ARCANIS`,
       M,
       812,
       { width: contentW() - 60, lineBreak: false }
@@ -169,21 +182,29 @@ export function renderBlocks(doc, blocks) {
 //   headerSubtitle : petite ligne sous « MONTREL INDUSTRIES »
 //   docTitle       : titre principal (H1) du document
 //   blocks         : blocs de contenu (voir renderBlocks)
-export function buildDocument({ outPath, ref, headerSubtitle, docTitle, blocks }) {
+export function buildDocument({
+  outPath,
+  ref,
+  headerSubtitle,
+  docTitle,
+  blocks,
+  companyName = "MONTREL INDUSTRIES",
+  monogram = null
+}) {
   const doc = new PDFDocument({ size: "A4", margin: M, bufferPages: true });
   doc.info.CreationDate = FIXED_DATE;
   doc.info.ModDate = FIXED_DATE;
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   doc.pipe(fs.createWriteStream(outPath));
-  doc.on("pageAdded", () => header(doc, ref, headerSubtitle));
-  header(doc, ref, headerSubtitle);
+  doc.on("pageAdded", () => header(doc, ref, headerSubtitle, companyName, monogram));
+  header(doc, ref, headerSubtitle, companyName, monogram);
   doc.fillColor(INK).font("Helvetica-Bold").fontSize(19).text(docTitle, M, doc.y, { width: contentW() });
   doc.moveDown(0.6);
   renderBlocks(doc, blocks);
   const range = doc.bufferedPageRange();
   for (let i = 0; i < range.count; i++) {
     doc.switchToPage(i);
-    footer(doc, ref, i + 1, range.count);
+    footer(doc, ref, i + 1, range.count, companyName);
   }
   doc.end();
   return new Promise((res) => doc.on("end", res));

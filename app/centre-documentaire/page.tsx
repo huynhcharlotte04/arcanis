@@ -7,8 +7,8 @@ export default function DocumentCenterPage() {
   return (
     <AppShell currentStep="centre-documentaire">
       <SectionHeader eyebrow="Centre documentaire" title="Bibliotheque client">
-        Accedez aux documents internes transmis par Montrel Industries pour
-        préparer votre analyse.
+        Accedez aux documents internes transmis par votre entreprise cliente
+        pour préparer votre analyse.
       </SectionHeader>
       <DocumentCenter />
       <div className="mt-8">

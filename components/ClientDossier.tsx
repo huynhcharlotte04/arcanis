@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getModuleById } from "@/data/modules-registry";
+import { CompanyMark } from "@/components/CompanyMark";
 import { MontrelMark } from "@/components/MontrelMark";
 import { getDossierFraming } from "@/lib/deliverable";
 import { getMandateById } from "@/lib/mandates";
@@ -55,8 +56,9 @@ export function ClientDossier() {
   }, []);
 
   const activeModule = getModuleById(session.moduleId);
-  const { company, mandates } = activeModule;
+  const { mandates } = activeModule;
   const mandate = getMandateById(mandates, session.mandateId);
+  const company = mandate.company ?? activeModule.company;
   const framing = getDossierFraming(activeModule.deliverableType);
 
   return (
@@ -66,7 +68,11 @@ export function ClientDossier() {
           <div className="p-6 sm:p-8">
             <div className="flex items-center gap-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-md border border-brass/55 bg-brass/10 text-brass">
-                <MontrelMark size={38} title={`Emblème ${company.name}`} />
+                {mandate.company ? (
+                  <CompanyMark monogram={mandate.company.monogram} size={38} title={`Emblème ${company.name}`} />
+                ) : (
+                  <MontrelMark size={38} title={`Emblème ${company.name}`} />
+                )}
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brass">

@@ -39,6 +39,10 @@ export type Mandate = {
   issues: string[];
   comexExpectations: string[];
   specificMessages: MailMessage[];
+  // Entreprise cliente propre à ce mandat. Optionnel : seuls les modules où
+  // chaque cabinet traite une entreprise différente (ex. QSEAL11) le
+  // renseignent ; les autres restent sur ClientCompany au niveau du module.
+  company?: ClientCompany;
 };
 
 export type ClientCompany = {
