@@ -158,6 +158,7 @@ ficheTemoignage("TEM-KM-2", "keryos/TEM-KM-2_Temoignage_Selia_Fontaine.pdf", {
   role: "Responsable assurance qualité et affaires réglementaires",
   paragraphs: [
     "Quand une non-conformité est détectée, en production ou lors d'un contrôle, c'est à moi qu'elle remonte : j'ouvre un dossier, je fais qualifier la gravité et je m'assure qu'une action corrective est mise en place. Je traite aussi directement les réclamations des hôpitaux clients, qui peuvent signaler un défaut sur un dispositif livré.",
+    "C'est également moi qui prépare les dossiers attendus par l'organisme notifié avant chaque audit de surveillance, en rassemblant les preuves fournies par chaque service — dossiers de lot, contrôles, formations, étalonnages.",
     "Le plus sensible, c'est la matériovigilance : une alerte sur un lot doit remonter vite. Récemment, il a fallu 19 jours avant que je sois informée d'un problème, parce que personne ne savait exactement à qui le signaler ni dans quel délai."
   ]
 });
@@ -191,7 +192,7 @@ ficheTemoignage("TEM-KM-5", "keryos/TEM-KM-5_Temoignage_Ines_Travers.pdf", {
   role: "Responsable achats et logistique",
   paragraphs: [
     "Je qualifie les fournisseurs de matières premières avant qu'ils ne puissent livrer Keryos, et je réceptionne chaque arrivage pour vérifier sa conformité avant qu'il n'entre en production. Je gère aussi les stocks de consommables stériles, pour que la production ne soit jamais en rupture.",
-    "Une fois un lot libéré, c'est mon service qui archive le dossier complet — matières utilisées, contrôles, stérilisation — en cas de demande d'un hôpital ou d'un auditeur."
+    "Une fois un lot libéré par la production, c'est mon service qui organise son expédition vers les hôpitaux commanditaires — c'est sur cette base que la direction facture ensuite le client — et qui archive le dossier complet — matières utilisées, contrôles, stérilisation — en cas de demande d'un hôpital ou d'un auditeur."
   ]
 });
 
@@ -331,6 +332,7 @@ ficheTemoignage("TEM-VS-3", "virel/TEM-VS-3_Temoignage_Anissa_Kerbrat.pdf", {
   role: "Responsable salle blanche / production",
   paragraphs: [
     "Mon équipe fabrique les plaquettes en salle blanche et les contrôle à plusieurs étapes du process. Je suis le taux de rebut, qui a augmenté ce trimestre sans que je sache précisément à quelle étape il se forme. Quand on doit changer un réglage ou un équipement, je gère ce changement à mon niveau, sans qu'il y ait de règle écrite partagée avec les autres équipes.",
+    "Une fois les composants testés et validés par la R&D, c'est aussi mon équipe qui les conditionne et les expédie vers nos clients — c'est cette expédition qui déclenche la facturation.",
     "C'est justement cette gestion des changements, au cas par cas, que notre client automobile ne veut plus accepter sans preuve écrite."
   ]
 });
