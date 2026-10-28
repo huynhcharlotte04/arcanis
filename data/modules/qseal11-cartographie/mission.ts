@@ -444,7 +444,7 @@ export const mandates: Mandate[] = [
         "Obligations de coordination SPS (sécurité et protection de la santé) sur les chantiers"
       ],
       strategicObjectives: [
-        "Cartographier le parcours chiffrage -> chantier -> réception",
+        "Cartographier le parcours chiffrage → chantier → réception",
         "Formaliser la coordination sécurité et la qualification des sous-traitants",
         "Réduire les reprises et les réserves à la réception",
         "Donner à la direction une cartographie utilisable chantier après chantier"
