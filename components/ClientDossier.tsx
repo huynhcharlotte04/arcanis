@@ -102,7 +102,7 @@ export function ClientDossier() {
                 Instantané client
               </p>
               <div className="mt-5 space-y-4">
-                <SnapshotItem label="Certification actuelle" value="ISO 9001" />
+                <SnapshotItem label="Certification actuelle" value={company.certifications[0]} />
                 <SnapshotItem
                   label="Objectif stratégique"
                   value={framing.strategicObjective}
