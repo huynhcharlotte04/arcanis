@@ -223,7 +223,7 @@ export function TrainerDashboard() {
             </div>
           </div>
           <div className="mt-6 rounded-md border border-inkline bg-obsidian/35 p-4 text-sm leading-7 text-mist">
-            Les attributions sont preparées avant la mission. Chaque cabinet
+            Les attributions sont préparées avant la mission. Chaque cabinet
             ouvre automatiquement son mandat depuis son nom.
           </div>
         </section>
